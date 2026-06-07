@@ -21,9 +21,9 @@ Key reference frames:
 - `/work/blog-desktop`, `/work/speaker-desktop`, `/work/gallery-desktop`, `/work/footer` — secondary surfaces.
 - `/ui-kit/frame` — the type + colour specimen ("UI KIT WEB").
 
-Design credit in the source: **busy.studio**. The event is an independent TEDx
-event operated under license from TED. No live codebase or repo was provided —
-if one exists, attach it to raise UI-kit fidelity.
+The event is an independent TEDx event operated under license from TED.
+No live codebase or repo was provided — if one exists, attach it to raise
+UI-kit fidelity.
 
 ---
 
