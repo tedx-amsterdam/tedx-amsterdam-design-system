@@ -58,6 +58,8 @@ export function Button({
 
   const onDown = (e) => { if (!disabled) e.currentTarget.style.transform = "scale(0.97)"; };
   const onUp = (e) => { e.currentTarget.style.transform = "scale(1)"; };
+  const onKeyDown = (e) => { if (e.key === "Enter" || e.key === " ") onDown(e); };
+  const onKeyUp = (e) => { if (e.key === "Enter" || e.key === " ") onUp(e); };
   const onEnter = (e) => {
     if (disabled) return;
     if (variant === "primary") e.currentTarget.style.background = "var(--accent-hover)";
@@ -77,7 +79,12 @@ export function Button({
   ) : null;
 
   const Tag = href ? "a" : "button";
-  const tagProps = href ? { href } : { type, disabled };
+  const tagProps = href
+    ? {
+        href: disabled ? undefined : href,
+        ...(disabled && { "aria-disabled": true, tabIndex: 0 }),
+      }
+    : { type, disabled, ...(disabled && { "aria-disabled": true }) };
 
   return (
     <Tag
@@ -86,6 +93,8 @@ export function Button({
       style={baseStyle}
       onMouseDown={onDown}
       onMouseUp={onUp}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
       {...rest}
