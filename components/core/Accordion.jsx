@@ -11,9 +11,14 @@ export function Accordion({ items = [], defaultOpen = 0, style }) {
     <div style={style}>
       {items.map((it, i) => {
         const isOpen = open === i;
+        const btnId = `accordion-btn-${i}`;
+        const panelId = `accordion-panel-${i}`;
         return (
           <div key={i} style={{ borderTop: "1px solid var(--border-hairline)" }}>
             <button
+              id={btnId}
+              aria-expanded={isOpen}
+              aria-controls={panelId}
               onClick={() => setOpen(isOpen ? -1 : i)}
               style={{
                 width: "100%", background: "none", border: "none", cursor: "pointer",
@@ -24,12 +29,18 @@ export function Accordion({ items = [], defaultOpen = 0, style }) {
               <span style={{ font: "700 22px/1.2 var(--font-display)", letterSpacing: "-.01em", textTransform: "uppercase", color: isOpen ? "var(--tedx-red)" : "var(--tedx-white)" }}>
                 {it.q}
               </span>
-              <span style={{ flex: "none", width: 26, height: 26, position: "relative", color: isOpen ? "var(--tedx-red)" : "var(--tedx-white)" }}>
+              <span aria-hidden="true" style={{ flex: "none", width: 26, height: 26, position: "relative", color: isOpen ? "var(--tedx-red)" : "var(--tedx-white)" }}>
                 <span style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 2, background: "currentColor", transform: "translateY(-50%)" }} />
                 <span style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: 2, background: "currentColor", transform: `translateX(-50%) scaleY(${isOpen ? 0 : 1})`, transition: "transform var(--dur) var(--ease-out)" }} />
               </span>
             </button>
-            <div style={{ maxHeight: isOpen ? 260 : 0, overflow: "hidden", transition: "max-height var(--dur-slow) var(--ease-out)" }}>
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={btnId}
+              aria-hidden={!isOpen}
+              style={{ maxHeight: isOpen ? 260 : 0, overflow: "hidden", transition: "max-height var(--dur-slow) var(--ease-out)" }}
+            >
               <p style={{ margin: 0, padding: "0 0 26px", font: "var(--text-body)", color: "var(--text-secondary)", maxWidth: 760 }}>{it.a}</p>
             </div>
           </div>
