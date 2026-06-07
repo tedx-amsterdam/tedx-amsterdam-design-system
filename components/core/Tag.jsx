@@ -31,6 +31,7 @@ export function Tag({ children, color = "red", dot = false, style, ...rest }) {
     >
       {dot && (
         <span
+          aria-hidden="true"
           style={{
             width: 8,
             height: 8,
