@@ -10,18 +10,20 @@ import React from "react";
  */
 export function Toast({ message, type = "info", duration = 4000, onDismiss, style }) {
   const [visible, setVisible] = React.useState(false);
+  const onDismissRef = React.useRef(onDismiss);
+  React.useEffect(() => { onDismissRef.current = onDismiss; });
 
   React.useEffect(() => {
     const enter = setTimeout(() => setVisible(true), 16);
     if (duration > 0) {
       const dismiss = setTimeout(() => {
         setVisible(false);
-        setTimeout(() => onDismiss?.(), 300);
+        setTimeout(() => onDismissRef.current?.(), 300);
       }, duration);
       return () => { clearTimeout(enter); clearTimeout(dismiss); };
     }
     return () => clearTimeout(enter);
-  }, [duration, onDismiss]);
+  }, [duration]);
 
   const isUrgent = type === "error" || type === "warning";
   const accentColor = isUrgent ? "var(--tedx-red)" : "var(--tedx-white)";
@@ -54,7 +56,7 @@ export function Toast({ message, type = "info", duration = 4000, onDismiss, styl
         {message}
       </p>
       <button
-        onClick={() => { setVisible(false); setTimeout(() => onDismiss?.(), 300); }}
+        onClick={() => { setVisible(false); setTimeout(() => onDismissRef.current?.(), 300); }}
         aria-label="Dismiss notification"
         style={{
           background: "none",

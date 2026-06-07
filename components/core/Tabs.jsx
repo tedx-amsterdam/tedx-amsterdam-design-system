@@ -8,6 +8,7 @@ import React from "react";
  */
 export function Tabs({ tabs = [], defaultIndex = 0, style }) {
   const [active, setActive] = React.useState(defaultIndex);
+  const uid = React.useId();
   const tabRefs = React.useRef([]);
 
   const onKeyDown = (e, i) => {
@@ -38,8 +39,8 @@ export function Tabs({ tabs = [], defaultIndex = 0, style }) {
             ref={(el) => (tabRefs.current[i] = el)}
             role="tab"
             aria-selected={active === i}
-            aria-controls={`tabpanel-${i}`}
-            id={`tab-btn-${i}`}
+            aria-controls={`tabpanel-${uid}-${i}`}
+            id={`tab-btn-${uid}-${i}`}
             tabIndex={active === i ? 0 : -1}
             onClick={() => setActive(i)}
             onKeyDown={(e) => onKeyDown(e, i)}
@@ -47,7 +48,7 @@ export function Tabs({ tabs = [], defaultIndex = 0, style }) {
               background: "none",
               border: "none",
               borderBottom: `2px solid ${active === i ? "var(--tedx-red)" : "transparent"}`,
-              marginBottom: -1,
+              marginBottom: -1, /* overlap the tablist hairline border */
               cursor: "pointer",
               padding: "var(--space-3) var(--space-6)",
               fontFamily: "var(--font-sans)",
@@ -66,9 +67,9 @@ export function Tabs({ tabs = [], defaultIndex = 0, style }) {
       {tabs.map((tab, i) => (
         <div
           key={i}
-          id={`tabpanel-${i}`}
+          id={`tabpanel-${uid}-${i}`}
           role="tabpanel"
-          aria-labelledby={`tab-btn-${i}`}
+          aria-labelledby={`tab-btn-${uid}-${i}`}
           style={{ display: active === i ? "block" : "none" }}
         >
           {tab.content}

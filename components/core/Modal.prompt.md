@@ -11,7 +11,7 @@ const [open, setOpen] = React.useState(false);
   title="Confirm registration"
 >
   <p>Are you sure you want to register for this event?</p>
-  <div style={{ display: "flex", gap: 12, marginTop: 24 }}>
+  <div style={{ display: "flex", gap: "var(--space-3)", marginTop: "var(--space-6)" }}>
     <Button variant="primary" onClick={() => setOpen(false)}>Confirm</Button>
     <Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
   </div>
