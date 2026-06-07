@@ -21,10 +21,14 @@
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script src="../../_ds_bundle.js"></script>
 <script type="text/babel">
-  const { Button, Tag, ArrowLink, SectionHeader, Stat, MediaCard, Input, SocialLink, Accordion } =
-    window.TEDxAmsterdamDesignSystem_a084aa;
+  const {
+    Button, Tag, ArrowLink, SectionHeader, Stat, MediaCard, Input, SocialLink, Accordion, Logo,
+    Select, Textarea, Checkbox, Radio, FormField, Modal, Toast, Badge, Breadcrumb, Tabs, NavigationBar
+  } = window.TEDxAmsterdamDesignSystem_a084aa;
 
   function Demo() {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const [toast, setToast] = React.useState(null);
     return (
       <div>
         <div className="grp">
@@ -92,6 +96,84 @@
               <SocialLink network="youtube" label="YouTube" base="../../" />
             </div>
           </div>
+        </div>
+
+        <div className="grp">
+          <div className="lbl">Select &amp; Textarea</div>
+          <div className="col" style={{ maxWidth: 320 }}>
+            <Select
+              label="Country"
+              options={[{ value: "nl", label: "Netherlands" }, { value: "de", label: "Germany" }]}
+              value=""
+              onChange={() => {}}
+            />
+            <Textarea label="Message" rows={3} placeholder="Tell us your idea…" />
+          </div>
+        </div>
+
+        <div className="grp">
+          <div className="lbl">Checkbox &amp; Radio</div>
+          <div className="col">
+            <Checkbox label="I agree to the terms" checked={false} onChange={() => {}} />
+            <Checkbox label="Subscribe to newsletter" checked={true} onChange={() => {}} />
+            <Radio
+              legend="Session type"
+              name="session-demo"
+              options={[{ value: "morning", label: "Morning" }, { value: "evening", label: "Evening" }]}
+              value="morning"
+              onChange={() => {}}
+            />
+          </div>
+        </div>
+
+        <div className="grp">
+          <div className="lbl">Badge &amp; Breadcrumb</div>
+          <div className="col">
+            <div className="row">
+              <Badge label="New" />
+              <Badge label="Live" color="red" />
+              <Badge label="Draft" color="muted" />
+              <Badge label="Sold out" color="white" size="sm" />
+            </div>
+            <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Speakers", href: "/speakers" }, { label: "Ada Lovelace" }]} />
+          </div>
+        </div>
+
+        <div className="grp">
+          <div className="lbl">Tabs</div>
+          <Tabs tabs={[
+            { label: "Overview", content: <p style={{ color: "var(--text-secondary)", margin: "16px 0 0" }}>Overview content.</p> },
+            { label: "Schedule", content: <p style={{ color: "var(--text-secondary)", margin: "16px 0 0" }}>Schedule details.</p> },
+          ]} />
+        </div>
+
+        <div className="grp">
+          <div className="lbl">Modal</div>
+          <div className="row">
+            <Button variant="primary" onClick={() => setModalOpen(true)}>Open Modal</Button>
+          </div>
+          <Modal
+            isOpen={modalOpen}
+            onClose={() => setModalOpen(false)}
+            title="Confirm registration"
+          >
+            <p style={{ color: "var(--text-secondary)" }}>Are you sure you want to register?</p>
+            <div style={{ display: "flex", gap: "var(--space-3)", marginTop: "var(--space-6)" }}>
+              <Button variant="primary" onClick={() => setModalOpen(false)}>Confirm</Button>
+              <Button variant="ghost" onClick={() => setModalOpen(false)}>Cancel</Button>
+            </div>
+          </Modal>
+        </div>
+
+        <div className="grp">
+          <div className="lbl">Toast</div>
+          <div className="row">
+            <Button variant="secondary" onClick={() => setToast({ type: "info", message: "Changes saved." })}>Info toast</Button>
+            <Button variant="primary" onClick={() => setToast({ type: "error", message: "Something went wrong." })}>Error toast</Button>
+          </div>
+          {toast && (
+            <Toast message={toast.message} type={toast.type} onDismiss={() => setToast(null)} />
+          )}
         </div>
       </div>
     );
