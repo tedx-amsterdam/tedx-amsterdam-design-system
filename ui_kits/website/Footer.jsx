@@ -84,7 +84,6 @@ function Footer() {
           <span>Copyright Stichting TEDxAmsterdam, 2025</span>
           <span>All Rights Reserved</span>
           <span>Privacy policy</span>
-          <span>Design busy.studio</span>
         </div>
       </div>
     </footer>

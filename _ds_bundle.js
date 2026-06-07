@@ -1461,7 +1461,7 @@ function Footer() {
       fontSize: 13,
       color: "rgba(255,255,255,.85)"
     }
-  }, /*#__PURE__*/React.createElement("span", null, "This independent TEDx event is operated under license from TED"), /*#__PURE__*/React.createElement("span", null, "Copyright Stichting TEDxAmsterdam, 2025"), /*#__PURE__*/React.createElement("span", null, "All Rights Reserved"), /*#__PURE__*/React.createElement("span", null, "Privacy policy"), /*#__PURE__*/React.createElement("span", null, "Design busy.studio"))));
+  }, /*#__PURE__*/React.createElement("span", null, "This independent TEDx event is operated under license from TED"), /*#__PURE__*/React.createElement("span", null, "Copyright Stichting TEDxAmsterdam, 2025"), /*#__PURE__*/React.createElement("span", null, "All Rights Reserved"), /*#__PURE__*/React.createElement("span", null, "Privacy policy"), /*#__PURE__*/React.createElement(React.Fragment, null))));
 }
 window.Footer = Footer;
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/website/Footer.jsx", error: String((e && e.message) || e) }); }
