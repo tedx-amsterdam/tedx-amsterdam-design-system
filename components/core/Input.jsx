@@ -37,8 +37,9 @@ export function Input({
           padding: "8px 0",
           font: "var(--text-body)",
           color: ink,
-          outline: "none",
-          transition: "border-color var(--dur) var(--ease-standard)",
+          outline: focused ? "2px solid var(--focus-ring)" : "none",
+          outlineOffset: "2px",
+          transition: "border-color var(--dur) var(--ease-standard), outline var(--dur-fast) var(--ease-standard)",
         }}
         {...rest}
       />
