@@ -1461,7 +1461,7 @@ function Footer() {
       fontSize: 13,
       color: "rgba(255,255,255,.85)"
     }
-  }, /*#__PURE__*/React.createElement("span", null, "This independent TEDx event is operated under license from TED"), /*#__PURE__*/React.createElement("span", null, "Copyright Stichting TEDxAmsterdam, 2025"), /*#__PURE__*/React.createElement("span", null, "All Rights Reserved"), /*#__PURE__*/React.createElement("span", null, "Privacy policy"), /*#__PURE__*/React.createElement(React.Fragment, null))));
+  }, /*#__PURE__*/React.createElement("span", null, "This independent TEDx event is operated under license from TED"), /*#__PURE__*/React.createElement("span", null, "Copyright Stichting TEDxAmsterdam, 2025"), /*#__PURE__*/React.createElement("span", null, "All Rights Reserved"), /*#__PURE__*/React.createElement("span", null, "Privacy policy"), /*#__PURE__*/React.createElement("span", null, "Design busy.studio"))));
 }
 window.Footer = Footer;
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/website/Footer.jsx", error: String((e && e.message) || e) }); }
@@ -4292,6 +4292,863 @@ Object.assign(window, {
 });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/website/ui.jsx", error: String((e && e.message) || e) }); }
 
+
+// components/core/Badge.jsx
+try { (() => {
+function Badge({ label, color = "red", size = "md", style }) {
+  const colors = {
+    red: { background: "var(--tedx-red)", color: "var(--tedx-white)" },
+    white: { background: "var(--tedx-white)", color: "var(--tedx-black)" },
+    muted: { background: "rgba(255,255,255,0.12)", color: "var(--text-secondary)" }
+  };
+  const fontSize = size === "sm" ? 10 : 12;
+  const padding = size === "sm" ? "2px 8px" : "4px 10px";
+  return /* @__PURE__ */ React.createElement(
+    "span",
+    {
+      style: {
+        display: "inline-block",
+        fontFamily: "var(--font-sans)",
+        fontWeight: "var(--weight-bold)",
+        fontSize,
+        lineHeight: 1.4,
+        letterSpacing: "var(--ls-wide)",
+        padding,
+        borderRadius: "var(--radius-full)",
+        ...colors[color],
+        ...style
+      }
+    },
+    label
+  );
+}
+__ds_scope.Badge = Badge;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Badge.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Breadcrumb.jsx
+try { (() => {
+function Breadcrumb({ items = [], ariaLabel = "Breadcrumb", style }) {
+  return /* @__PURE__ */ React.createElement("nav", { "aria-label": ariaLabel, style }, /* @__PURE__ */ React.createElement(
+    "ol",
+    {
+      style: {
+        display: "flex",
+        flexWrap: "wrap",
+        alignItems: "center",
+        gap: "var(--space-2)",
+        listStyle: "none",
+        margin: 0,
+        padding: 0,
+        fontFamily: "var(--font-sans)",
+        fontWeight: "var(--weight-bold)",
+        fontSize: "var(--fs-tag)",
+        letterSpacing: "var(--ls-wide)",
+        textTransform: "uppercase"
+      }
+    },
+    items.map((item, i) => {
+      const isCurrent = i === items.length - 1;
+      return /* @__PURE__ */ React.createElement("li", { key: i, style: { display: "flex", alignItems: "center", gap: "var(--space-2)" } }, !isCurrent && item.href ? /* @__PURE__ */ React.createElement(
+        "a",
+        {
+          href: item.href,
+          style: { color: "var(--text-secondary)", textDecoration: "none" }
+        },
+        item.label
+      ) : /* @__PURE__ */ React.createElement(
+        "span",
+        {
+          "aria-current": isCurrent ? "page" : void 0,
+          style: { color: isCurrent ? "var(--text-primary)" : "var(--text-secondary)" }
+        },
+        item.label
+      ), !isCurrent && /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true", style: { color: "var(--text-muted)" } }, "\u203A"));
+    })
+  ));
+}
+__ds_scope.Breadcrumb = Breadcrumb;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Breadcrumb.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Checkbox.jsx
+try { (() => {
+function Checkbox({ label, checked, onChange, disabled = false, id, style }) {
+  const checkId = id || `checkbox-${String(label).toLowerCase().replace(/\s+/g, "-")}`;
+  return /* @__PURE__ */ React.createElement(
+    "label",
+    {
+      htmlFor: checkId,
+      style: {
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "var(--space-3)",
+        cursor: disabled ? "not-allowed" : "pointer",
+        opacity: disabled ? 0.45 : 1,
+        ...style
+      }
+    },
+    /* @__PURE__ */ React.createElement(
+      "span",
+      {
+        style: {
+          position: "relative",
+          width: 18,
+          height: 18,
+          flex: "none",
+          border: `1.5px solid ${checked ? "var(--tedx-red)" : "var(--border-hairline)"}`,
+          borderRadius: 2,
+          background: checked ? "var(--tedx-red)" : "transparent",
+          transition: "background var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard)"
+        }
+      },
+      checked && /* @__PURE__ */ React.createElement(
+        "svg",
+        {
+          "aria-hidden": "true",
+          width: "10",
+          height: "8",
+          viewBox: "0 0 10 8",
+          fill: "none",
+          style: {
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)"
+          }
+        },
+        /* @__PURE__ */ React.createElement(
+          "path",
+          {
+            d: "M1 4l2.5 2.5L9 1",
+            stroke: "white",
+            strokeWidth: "1.8",
+            strokeLinecap: "round",
+            strokeLinejoin: "round"
+          }
+        )
+      ),
+      /* @__PURE__ */ React.createElement(
+        "input",
+        {
+          id: checkId,
+          type: "checkbox",
+          checked,
+          onChange: (e) => onChange?.(e.target.checked),
+          disabled,
+          style: {
+            position: "absolute",
+            opacity: 0,
+            width: "100%",
+            height: "100%",
+            margin: 0,
+            cursor: "inherit"
+          }
+        }
+      )
+    ),
+    /* @__PURE__ */ React.createElement("span", { style: { font: "var(--text-body)", fontSize: 16, color: "var(--text-primary)" } }, label)
+  );
+}
+__ds_scope.Checkbox = Checkbox;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Checkbox.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/FormField.jsx
+try { (() => {
+function FormField({ label, htmlFor, hint, error, required = false, children, style }) {
+  const errorId = error && htmlFor ? `${htmlFor}-formfield-error` : void 0;
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "var(--space-1)", ...style } }, label && /* @__PURE__ */ React.createElement(
+    "label",
+    {
+      htmlFor,
+      style: { font: "var(--text-body)", fontSize: 16, color: "var(--text-primary)", opacity: 0.85 }
+    },
+    label,
+    required && /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true", style: { color: "var(--tedx-red)", marginLeft: 2 } }, "*")
+  ), hint && /* @__PURE__ */ React.createElement("span", { style: { font: "var(--text-tag)", color: "var(--text-muted)" } }, hint), children, error && /* @__PURE__ */ React.createElement("span", { id: errorId, role: "alert", style: { font: "var(--text-tag)", color: "var(--tedx-red)" } }, error));
+}
+__ds_scope.FormField = FormField;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/FormField.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Modal.jsx
+try { (() => {
+function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton = false, style }) {
+  const dialogRef = React.useRef(null);
+  const titleId = `modal-title-${React.useId()}`;
+  const maxWidths = { sm: 480, md: 640, lg: 800 };
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [isOpen, onClose]);
+  React.useEffect(() => {
+    if (!isOpen || !dialogRef.current) return;
+    const getFirst = () => dialogRef.current?.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )[0];
+    getFirst()?.focus();
+    const trap = (e) => {
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const focusable = Array.from(dialogRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      ));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", trap);
+    return () => document.removeEventListener("keydown", trap);
+  }, [isOpen]);
+  if (!isOpen) return null;
+  return /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      onClick: onClose,
+      style: {
+        position: "fixed",
+        inset: 0,
+        background: "rgba(0,0,0,0.8)",
+        backdropFilter: "blur(4px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "var(--space-6)",
+        zIndex: 1e3
+      }
+    },
+    /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        ref: dialogRef,
+        role: "dialog",
+        "aria-modal": "true",
+        "aria-labelledby": title ? titleId : void 0,
+        onClick: (e) => e.stopPropagation(),
+        style: {
+          background: "var(--bg-elevated)",
+          borderTop: "2px solid var(--tedx-red)",
+          borderRadius: "var(--radius-card)",
+          width: "100%",
+          maxWidth: maxWidths[size],
+          padding: "var(--space-8)",
+          position: "relative",
+          boxShadow: "var(--shadow-card)",
+          ...style
+        }
+      },
+      /* @__PURE__ */ React.createElement(
+        "div",
+        {
+          style: {
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            marginBottom: "var(--space-6)"
+          }
+        },
+        title && /* @__PURE__ */ React.createElement(
+          "h2",
+          {
+            id: titleId,
+            style: {
+              margin: 0,
+              font: "var(--text-h3)",
+              color: "var(--text-primary)",
+              textTransform: "uppercase",
+              letterSpacing: "var(--ls-display)"
+            }
+          },
+          title
+        ),
+        !hideCloseButton && /* @__PURE__ */ React.createElement(
+          "button",
+          {
+            onClick: onClose,
+            "aria-label": "Close dialog",
+            style: {
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--text-secondary)",
+              fontSize: 24,
+              lineHeight: 1,
+              padding: "var(--space-1)",
+              marginLeft: "var(--space-4)",
+              flex: "none"
+            }
+          },
+          "\xD7"
+        )
+      ),
+      /* @__PURE__ */ React.createElement("div", { style: { color: "var(--text-secondary)", font: "var(--text-body)", fontSize: 16 } }, children)
+    )
+  );
+}
+__ds_scope.Modal = Modal;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Modal.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/NavigationBar.jsx
+try { (() => {
+function NavigationBar({ links = [], ctaLabel, ctaHref, logoHref = "/", activePath, base = "", style }) {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
+  const uid = React.useId();
+  const menuId = `nav-mobile-menu-${uid}`;
+  const hamburgerRef = React.useRef(null);
+  React.useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  React.useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        hamburgerRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+  const logoSrc = base + "assets/logo-tedxamsterdam-white.png";
+  const linkStyle = (href) => ({
+    fontFamily: "var(--font-sans)",
+    fontWeight: "var(--weight-bold)",
+    fontSize: "var(--fs-tag)",
+    letterSpacing: "var(--ls-wide)",
+    textTransform: "uppercase",
+    color: activePath === href ? "var(--text-accent)" : "var(--text-primary)",
+    textDecoration: "none"
+  });
+  const ctaStyle = {
+    display: "inline-flex",
+    alignItems: "center",
+    fontFamily: "var(--font-sans)",
+    fontWeight: "var(--weight-bold)",
+    fontSize: 14,
+    padding: "12px 24px",
+    background: "var(--tedx-red)",
+    color: "var(--tedx-white)",
+    borderRadius: "var(--radius-button)",
+    textDecoration: "none",
+    flex: "none",
+    lineHeight: 1
+  };
+  return /* @__PURE__ */ React.createElement(
+    "header",
+    {
+      style: {
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        width: "100%",
+        background: "var(--bg-base)",
+        borderBottom: "1px solid var(--border-hairline)",
+        boxSizing: "border-box",
+        ...style
+      }
+    },
+    /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        style: {
+          height: "var(--header-height)",
+          display: "flex",
+          alignItems: "center",
+          padding: "0 var(--gutter)",
+          gap: "var(--space-8)"
+        }
+      },
+      /* @__PURE__ */ React.createElement("a", { href: logoHref, style: { display: "inline-flex", textDecoration: "none", flex: "none" } }, /* @__PURE__ */ React.createElement("img", { src: logoSrc, alt: "TEDxAmsterdam", style: { width: 160, height: "auto", display: "block" } })),
+      !isMobile && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("nav", { "aria-label": "Main navigation", style: { display: "flex", alignItems: "center", gap: "var(--space-8)", marginLeft: "auto" } }, links.map((link) => /* @__PURE__ */ React.createElement("a", { key: link.href, href: link.href, "aria-current": activePath === link.href ? "page" : void 0, style: linkStyle(link.href) }, link.label))), ctaHref && ctaLabel && /* @__PURE__ */ React.createElement("a", { href: ctaHref, style: ctaStyle }, ctaLabel)),
+      isMobile && /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          ref: hamburgerRef,
+          type: "button",
+          "aria-expanded": menuOpen,
+          "aria-controls": menuId,
+          "aria-label": menuOpen ? "Close menu" : "Open menu",
+          onClick: () => setMenuOpen(!menuOpen),
+          style: {
+            marginLeft: "auto",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "var(--text-primary)",
+            padding: "var(--space-2)",
+            display: "flex",
+            alignItems: "center"
+          }
+        },
+        /* @__PURE__ */ React.createElement("svg", { "aria-hidden": "true", width: "24", height: "18", viewBox: "0 0 24 18", fill: "none" }, menuOpen ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("line", { x1: "2", y1: "2", x2: "22", y2: "16", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" }), /* @__PURE__ */ React.createElement("line", { x1: "22", y1: "2", x2: "2", y2: "16", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" })) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("line", { x1: "0", y1: "2", x2: "24", y2: "2", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" }), /* @__PURE__ */ React.createElement("line", { x1: "0", y1: "9", x2: "24", y2: "9", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" }), /* @__PURE__ */ React.createElement("line", { x1: "0", y1: "16", x2: "24", y2: "16", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" })))
+      )
+    ),
+    isMobile && menuOpen && /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        id: menuId,
+        style: {
+          background: "var(--bg-base)",
+          borderBottom: "1px solid var(--border-hairline)",
+          padding: "var(--space-6) var(--gutter)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "var(--space-4)"
+        }
+      },
+      /* @__PURE__ */ React.createElement("nav", { "aria-label": "Main navigation" }, links.map((link) => /* @__PURE__ */ React.createElement(
+        "a",
+        {
+          key: link.href,
+          href: link.href,
+          onClick: () => setMenuOpen(false),
+          "aria-current": activePath === link.href ? "page" : void 0,
+          style: { ...linkStyle(link.href), display: "block", padding: "var(--space-2) 0" }
+        },
+        link.label
+      ))),
+      ctaHref && ctaLabel && /* @__PURE__ */ React.createElement("a", { href: ctaHref, onClick: () => setMenuOpen(false), style: { ...ctaStyle, alignSelf: "flex-start" } }, ctaLabel)
+    )
+  );
+}
+__ds_scope.NavigationBar = NavigationBar;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/NavigationBar.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Radio.jsx
+try { (() => {
+function Radio({ legend, options = [], value, onChange, name, disabled = false, style }) {
+  return /* @__PURE__ */ React.createElement(
+    "fieldset",
+    {
+      style: {
+        border: "none",
+        padding: 0,
+        margin: 0,
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--space-3)",
+        ...style
+      }
+    },
+    legend && /* @__PURE__ */ React.createElement(
+      "legend",
+      {
+        style: {
+          font: "var(--text-body)",
+          fontSize: 16,
+          color: "var(--text-primary)",
+          opacity: 0.85,
+          padding: 0,
+          marginBottom: "var(--space-2)"
+        }
+      },
+      legend
+    ),
+    options.map((opt) => {
+      const isSelected = value === opt.value;
+      const radioId = `${name}-${opt.value}`;
+      return /* @__PURE__ */ React.createElement(
+        "label",
+        {
+          key: opt.value,
+          htmlFor: radioId,
+          style: {
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "var(--space-3)",
+            cursor: disabled ? "not-allowed" : "pointer",
+            opacity: disabled ? 0.45 : 1
+          }
+        },
+        /* @__PURE__ */ React.createElement(
+          "span",
+          {
+            style: {
+              position: "relative",
+              width: 18,
+              height: 18,
+              flex: "none",
+              border: `1.5px solid ${isSelected ? "var(--tedx-red)" : "var(--border-hairline)"}`,
+              borderRadius: "var(--radius-full)",
+              background: "transparent",
+              transition: "border-color var(--dur) var(--ease-standard)"
+            }
+          },
+          isSelected && /* @__PURE__ */ React.createElement(
+            "span",
+            {
+              style: {
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: 8,
+                height: 8,
+                borderRadius: "var(--radius-full)",
+                background: "var(--tedx-red)"
+              }
+            }
+          ),
+          /* @__PURE__ */ React.createElement(
+            "input",
+            {
+              id: radioId,
+              type: "radio",
+              name,
+              value: opt.value,
+              checked: isSelected,
+              onChange: () => onChange?.(opt.value),
+              disabled,
+              style: {
+                position: "absolute",
+                opacity: 0,
+                width: "100%",
+                height: "100%",
+                margin: 0,
+                cursor: "inherit"
+              }
+            }
+          )
+        ),
+        /* @__PURE__ */ React.createElement("span", { style: { font: "var(--text-body)", fontSize: 16, color: "var(--text-primary)" } }, opt.label)
+      );
+    })
+  );
+}
+__ds_scope.Radio = Radio;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Radio.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Select.jsx
+try { (() => {
+function Select({
+  label,
+  options = [],
+  value,
+  onChange,
+  placeholder = "Select\u2026",
+  disabled = false,
+  error,
+  id,
+  style,
+  ...rest
+}) {
+  const [focused, setFocused] = React.useState(false);
+  const selectId = id || `select-${String(label).toLowerCase().replace(/\s+/g, "-")}`;
+  const errorId = error ? `${selectId}-error` : void 0;
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "var(--space-2)", ...style } }, label && /* @__PURE__ */ React.createElement(
+    "label",
+    {
+      htmlFor: selectId,
+      style: { font: "var(--text-body)", fontSize: 16, color: "var(--text-primary)", opacity: 0.85 }
+    },
+    label
+  ), /* @__PURE__ */ React.createElement("div", { style: { position: "relative" } }, /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      id: selectId,
+      value: value ?? "",
+      onChange: (e) => onChange?.(e.target.value),
+      disabled,
+      "aria-invalid": !!error,
+      "aria-describedby": errorId,
+      onFocus: () => setFocused(true),
+      onBlur: () => setFocused(false),
+      style: {
+        appearance: "none",
+        width: "100%",
+        background: "transparent",
+        border: "none",
+        borderBottom: `1px solid ${error ? "var(--tedx-red)" : focused ? "var(--tedx-red)" : "var(--border-hairline)"}`,
+        paddingTop: "var(--space-2)",
+        paddingBottom: "var(--space-2)",
+        paddingRight: "var(--space-8)",
+        paddingLeft: 0,
+        font: "var(--text-body)",
+        fontSize: 16,
+        color: value ? "var(--text-primary)" : "var(--text-secondary)",
+        cursor: disabled ? "not-allowed" : "pointer",
+        opacity: disabled ? 0.45 : 1,
+        outline: focused ? "2px solid var(--focus-ring)" : "none",
+        outlineOffset: "2px",
+        transition: "border-color var(--dur) var(--ease-standard)"
+      },
+      ...rest
+    },
+    placeholder && /* @__PURE__ */ React.createElement("option", { value: "", disabled: true, hidden: true }, placeholder),
+    options.map((opt) => /* @__PURE__ */ React.createElement("option", { key: opt.value, value: opt.value }, opt.label))
+  ), /* @__PURE__ */ React.createElement(
+    "svg",
+    {
+      "aria-hidden": "true",
+      width: "12",
+      height: "7",
+      viewBox: "0 0 12 7",
+      fill: "none",
+      style: {
+        position: "absolute",
+        right: 0,
+        top: "50%",
+        transform: "translateY(-50%)",
+        pointerEvents: "none",
+        color: "var(--text-secondary)"
+      }
+    },
+    /* @__PURE__ */ React.createElement("path", { d: "M1 1l5 5 5-5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" })
+  )), error && /* @__PURE__ */ React.createElement("span", { id: errorId, style: { font: "var(--text-tag)", color: "var(--tedx-red)" } }, error));
+}
+__ds_scope.Select = Select;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Select.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Tabs.jsx
+try { (() => {
+function Tabs({ tabs = [], defaultIndex = 0, style }) {
+  const [active, setActive] = React.useState(defaultIndex);
+  const uid = React.useId();
+  const tabRefs = React.useRef([]);
+  const onKeyDown = (e, i) => {
+    if (e.key === "ArrowRight") {
+      const next = (i + 1) % tabs.length;
+      setActive(next);
+      tabRefs.current[next]?.focus();
+    } else if (e.key === "ArrowLeft") {
+      const prev = (i - 1 + tabs.length) % tabs.length;
+      setActive(prev);
+      tabRefs.current[prev]?.focus();
+    }
+  };
+  return /* @__PURE__ */ React.createElement("div", { style }, /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      role: "tablist",
+      style: {
+        display: "flex",
+        borderBottom: "1px solid var(--border-hairline)",
+        marginBottom: "var(--space-6)"
+      }
+    },
+    tabs.map((tab, i) => /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        key: i,
+        ref: (el) => tabRefs.current[i] = el,
+        role: "tab",
+        "aria-selected": active === i,
+        "aria-controls": `tabpanel-${uid}-${i}`,
+        id: `tab-btn-${uid}-${i}`,
+        tabIndex: active === i ? 0 : -1,
+        onClick: () => setActive(i),
+        onKeyDown: (e) => onKeyDown(e, i),
+        style: {
+          background: "none",
+          border: "none",
+          borderBottom: `2px solid ${active === i ? "var(--tedx-red)" : "transparent"}`,
+          marginBottom: -1,
+          /* overlap the tablist hairline border */
+          cursor: "pointer",
+          padding: "var(--space-3) var(--space-6)",
+          fontFamily: "var(--font-sans)",
+          fontWeight: "var(--weight-bold)",
+          fontSize: "var(--fs-tag)",
+          letterSpacing: "var(--ls-wide)",
+          textTransform: "uppercase",
+          color: active === i ? "var(--text-primary)" : "var(--text-secondary)",
+          transition: "color var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard)"
+        }
+      },
+      tab.label
+    ))
+  ), tabs.map((tab, i) => /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      key: i,
+      id: `tabpanel-${uid}-${i}`,
+      role: "tabpanel",
+      "aria-labelledby": `tab-btn-${uid}-${i}`,
+      style: { display: active === i ? "block" : "none" }
+    },
+    tab.content
+  )));
+}
+__ds_scope.Tabs = Tabs;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Tabs.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Textarea.jsx
+try { (() => {
+function Textarea({
+  label,
+  value,
+  onChange,
+  placeholder,
+  rows = 4,
+  disabled = false,
+  error,
+  id,
+  style,
+  ...rest
+}) {
+  const [focused, setFocused] = React.useState(false);
+  const taId = id || `textarea-${String(label).toLowerCase().replace(/\s+/g, "-")}`;
+  const errorId = error ? `${taId}-error` : void 0;
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "var(--space-2)", ...style } }, label && /* @__PURE__ */ React.createElement(
+    "label",
+    {
+      htmlFor: taId,
+      style: { font: "var(--text-body)", fontSize: 16, color: "var(--text-primary)", opacity: 0.85 }
+    },
+    label
+  ), /* @__PURE__ */ React.createElement(
+    "textarea",
+    {
+      id: taId,
+      value,
+      onChange: (e) => onChange?.(e.target.value),
+      placeholder,
+      rows,
+      disabled,
+      "aria-invalid": !!error,
+      "aria-describedby": errorId,
+      onFocus: () => setFocused(true),
+      onBlur: () => setFocused(false),
+      style: {
+        appearance: "none",
+        background: "transparent",
+        border: "none",
+        borderBottom: `1px solid ${error ? "var(--tedx-red)" : focused ? "var(--tedx-red)" : "var(--border-hairline)"}`,
+        padding: "var(--space-2) 0",
+        font: "var(--text-body)",
+        fontSize: 16,
+        color: "var(--text-primary)",
+        resize: "vertical",
+        cursor: disabled ? "not-allowed" : "auto",
+        opacity: disabled ? 0.45 : 1,
+        outline: focused ? "2px solid var(--focus-ring)" : "none",
+        outlineOffset: "2px",
+        transition: "border-color var(--dur) var(--ease-standard)",
+        fontFamily: "var(--font-sans)"
+      },
+      ...rest
+    }
+  ), error && /* @__PURE__ */ React.createElement("span", { id: errorId, style: { font: "var(--text-tag)", color: "var(--tedx-red)" } }, error));
+}
+__ds_scope.Textarea = Textarea;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Textarea.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Toast.jsx
+try { (() => {
+function Toast({ message, type = "info", duration = 4e3, onDismiss, style }) {
+  const [visible, setVisible] = React.useState(false);
+  const onDismissRef = React.useRef(onDismiss);
+  React.useEffect(() => {
+    onDismissRef.current = onDismiss;
+  });
+  React.useEffect(() => {
+    const enter = setTimeout(() => setVisible(true), 16);
+    if (duration > 0) {
+      const dismiss = setTimeout(() => {
+        setVisible(false);
+        setTimeout(() => onDismissRef.current?.(), 300);
+      }, duration);
+      return () => {
+        clearTimeout(enter);
+        clearTimeout(dismiss);
+      };
+    }
+    return () => clearTimeout(enter);
+  }, [duration]);
+  const isUrgent = type === "error" || type === "warning";
+  const accentColor = isUrgent ? "var(--tedx-red)" : "var(--tedx-white)";
+  return /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      role: isUrgent ? "alert" : "status",
+      "aria-live": isUrgent ? "assertive" : "polite",
+      style: {
+        position: "fixed",
+        bottom: "var(--space-6)",
+        right: "var(--space-6)",
+        maxWidth: 360,
+        background: "var(--bg-elevated)",
+        borderLeft: `3px solid ${accentColor}`,
+        borderRadius: "var(--radius-card)",
+        padding: "var(--space-4) var(--space-6)",
+        boxShadow: "var(--shadow-card)",
+        display: "flex",
+        alignItems: "flex-start",
+        gap: "var(--space-4)",
+        zIndex: 1100,
+        transform: visible ? "translateX(0)" : "translateX(calc(100% + var(--space-6)))",
+        opacity: visible ? 1 : 0,
+        transition: "transform var(--dur-slow) var(--ease-out), opacity var(--dur) var(--ease-standard)",
+        ...style
+      }
+    },
+    /* @__PURE__ */ React.createElement("p", { style: { margin: 0, font: "var(--text-body)", fontSize: 16, color: "var(--text-primary)", flex: 1 } }, message),
+    /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => {
+          setVisible(false);
+          setTimeout(() => onDismissRef.current?.(), 300);
+        },
+        "aria-label": "Dismiss notification",
+        style: {
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          color: "var(--text-muted)",
+          fontSize: 18,
+          lineHeight: 1,
+          padding: 0,
+          flex: "none"
+        }
+      },
+      "\xD7"
+    )
+  );
+}
+__ds_scope.Toast = Toast;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Toast.jsx", error: String((e && e.message) || e) }); }
+
+__ds_ns.Badge = __ds_scope.Badge;
+
+__ds_ns.Breadcrumb = __ds_scope.Breadcrumb;
+
+__ds_ns.Checkbox = __ds_scope.Checkbox;
+
+__ds_ns.FormField = __ds_scope.FormField;
+
+__ds_ns.Modal = __ds_scope.Modal;
+
+__ds_ns.NavigationBar = __ds_scope.NavigationBar;
+
+__ds_ns.Radio = __ds_scope.Radio;
+
+__ds_ns.Select = __ds_scope.Select;
+
+__ds_ns.Tabs = __ds_scope.Tabs;
+
+__ds_ns.Textarea = __ds_scope.Textarea;
+
+__ds_ns.Toast = __ds_scope.Toast;
 __ds_ns.Accordion = __ds_scope.Accordion;
 
 __ds_ns.ArrowLink = __ds_scope.ArrowLink;
