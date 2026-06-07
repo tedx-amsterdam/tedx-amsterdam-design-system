@@ -1,0 +1,11 @@
+{
+  "name": "tedx-amsterdam-design-system",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/extend-bundle.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
