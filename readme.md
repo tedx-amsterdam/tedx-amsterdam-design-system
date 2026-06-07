@@ -40,17 +40,30 @@ All design tokens are then available as CSS custom properties:
 | `tokens/spacing.css` | 4px spacing scale + layout tokens (frame, gutters, header). |
 | `tokens/effects.css` | Radii, shadows, heat-gradient system, motion tokens. |
 | `guidelines/*.html` | Foundation specimen cards — open in a browser for reference. |
-| `components/core/` | 10 React primitives with TypeScript declarations. |
+| `components/core/` | 21 React primitives with TypeScript declarations. |
 | `ui_kits/website/` | Click-through website recreation — 10 screens, responsive. |
 | `assets/` | Logos (SVG + PNG), social icons, event photography. |
 
 ### Components
 
-`Button` · `Tag` · `ArrowLink` · `SectionHeader` · `Stat` · `MediaCard` · `Input` · `SocialLink` · `Logo` · `Accordion`
+**Primitives**
+`Button` · `Tag` · `Badge` · `ArrowLink` · `Logo`
+
+**Form**
+`Input` · `Select` · `Textarea` · `Checkbox` · `Radio` · `FormField`
+
+**Content**
+`SectionHeader` · `Stat` · `MediaCard` · `Accordion` · `Tabs`
+
+**Navigation**
+`NavigationBar` · `Breadcrumb` · `SocialLink`
+
+**Feedback**
+`Modal` · `Toast`
 
 Each ships with a `.jsx` source, a `.d.ts` type declaration, and a `.prompt.md` usage guide.
 
-Open `components/core/core.card.html` in a browser to see all components in one live preview.
+Open `components/core/core.card.html` in a browser to see all 21 components in one live preview.
 
 ---
 
@@ -116,7 +129,13 @@ The system targets WCAG 2.1 AA:
 - Global `:focus-visible` ring via `--focus-ring` (`#EB0028`) declared in `styles.css`.
 - Accordion follows the WAI-ARIA Disclosure pattern (`aria-expanded`, `aria-controls`, `role="region"`).
 - Button exposes `aria-disabled` and supports keyboard press feedback (Enter / Space).
-- Input provides a visible focus ring without suppressing the browser outline.
+- Input, Select, Textarea: visible focus ring, `aria-invalid` + `aria-describedby` for error states.
+- Checkbox and Radio: visually-hidden native inputs with associated labels; Radio uses `<fieldset>` + `<legend>`.
+- Tabs: full `role="tablist"` / `role="tab"` / `role="tabpanel"` pattern with Left/Right arrow navigation.
+- Modal: `role="dialog"`, `aria-modal`, focus trap, body scroll lock, Escape-key close.
+- Toast: `role="alert"` (error/warning) or `role="status"` (info/success) live regions.
+- NavigationBar: `aria-expanded` hamburger, `aria-current="page"` on active link, Escape-key close.
+- Breadcrumb: `<nav>` + `<ol>` with `aria-current="page"` on the current item.
 - Decorative SVGs and icon dots carry `aria-hidden="true"`.
 - Contrast: all text meets the 4.5:1 AA threshold at its rendered size.
 
