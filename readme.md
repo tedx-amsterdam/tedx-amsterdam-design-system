@@ -1,133 +1,148 @@
-# TEDxAmsterdam — Design System
+# TEDxAmsterdam Design System
 
-A dark-first, high-contrast brand system for **TEDxAmsterdam**, built from the
-official 2025 brand-book and the "Amsterdam Reimagined" website designs.
-The system is bold, warm and confident: a black canvas lit from the edges by
-TED-red → orange heat, oversized Helvetica-Bold headlines, and a single red
-call-to-action colour.
+Dark-first brand system for **TEDxAmsterdam** — Amsterdam Reimagined.
+Bold, warm, and confident: a black canvas lit from the edges by TED-red heat,
+oversized Helvetica Bold headlines, and a single red call-to-action colour.
 
-> **Tagline:** *Unsung heroes, unstoppable ideas.*
+> *Unsung heroes, unstoppable ideas.*
 
 ---
 
-## Sources
+## Quick start
 
-All design content is recreated from the attached Figma file
-**"TEDxAmsterdam_ website.fig"** (mounted as a read-only VFS during authoring).
-Key reference frames:
+Link the single entry point. It imports every token layer in the correct order:
 
-- `/work/brandbook` — the 2025 brand-book (fonts, colours, iconography, positioning, tone of voice, values).
-- `/work/hero-desktop` — the full "Amsterdam Reimagined" homepage (hero, stats, timetable, impact program, newsletter).
-- `/work/blog-desktop`, `/work/speaker-desktop`, `/work/gallery-desktop`, `/work/footer` — secondary surfaces.
-- `/ui-kit/frame` — the type + colour specimen ("UI KIT WEB").
+```html
+<link rel="stylesheet" href="styles.css" />
+```
 
-The event is an independent TEDx event operated under license from TED.
-No live codebase or repo was provided — if one exists, attach it to raise
-UI-kit fidelity.
+All design tokens are then available as CSS custom properties:
+
+```css
+.my-cta {
+  background: var(--tedx-red);
+  color: var(--tedx-white);
+  border-radius: var(--radius-button);
+  font: var(--text-tag);
+}
+```
 
 ---
 
-## Index / manifest
+## What's included
 
-| Path | What |
-|------|------|
-| `styles.css` | Global entry point — `@import` manifest only. Consumers link this. |
+| Path | Contents |
+|------|----------|
+| `styles.css` | Global entry point — links this one file to get everything. |
 | `tokens/colors.css` | Brand + neutral palette and semantic aliases. |
-| `tokens/fonts.css` | Font stack + Arimo (Helvetica substitute) webfont load. |
+| `tokens/fonts.css` | Font stack declaration + Arimo (Helvetica substitute) webfont. |
 | `tokens/typography.css` | Type scale, line-heights, tracking, composite text tokens. |
-| `tokens/spacing.css` | 4px spacing scale + layout (frame, gutters, header). |
-| `tokens/effects.css` | Radii, shadows, the signature heat-gradient system, motion. |
-| `guidelines/*.html` | Foundation specimen cards (Colors, Type, Spacing, Brand). |
-| `components/core/` | React primitives — see below. |
-| `ui_kits/website/` | Click-through recreation of the TEDxAmsterdam website — 10 screens, responsive (hamburger nav under 860px). |
-| `assets/` | Logos, social icons, event photography. |
-| `SKILL.md` | Agent-Skills entry point for downstream use. |
+| `tokens/spacing.css` | 4px spacing scale + layout tokens (frame, gutters, header). |
+| `tokens/effects.css` | Radii, shadows, heat-gradient system, motion tokens. |
+| `guidelines/*.html` | Foundation specimen cards — open in a browser for reference. |
+| `components/core/` | 10 React primitives with TypeScript declarations. |
+| `ui_kits/website/` | Click-through website recreation — 10 screens, responsive. |
+| `assets/` | Logos (SVG + PNG), social icons, event photography. |
 
-### Components (`components/core/`)
-`Button` · `Tag` · `ArrowLink` · `SectionHeader` · `Stat` · `MediaCard` ·
-`Input` · `SocialLink` · `Logo` · `Accordion`
+### Components
 
----
+`Button` · `Tag` · `ArrowLink` · `SectionHeader` · `Stat` · `MediaCard` · `Input` · `SocialLink` · `Logo` · `Accordion`
 
-## CONTENT FUNDAMENTALS
+Each ships with a `.jsx` source, a `.d.ts` type declaration, and a `.prompt.md` usage guide.
 
-How TEDxAmsterdam writes.
-
-- **Voice (from the brand-book):** Bold, Friendly, Inclusive, Future-forward,
-  Authentic, Engaging, Playful. *"We challenge norms and speak with confidence."*
-  *"Everyone is welcome; every voice matters."*
-- **Person:** Speaks as a collective **"we"** to the reader as **"you"** —
-  *"Be the first to get notified when tickets go on sale."*
-  *"Don't miss out — sign up now for early-bird access."*
-- **Casing:** Headlines are frequently **ALL-CAPS** ("AMSTERDAM REIMAGINED",
-  "BE THE FIRST TO GET TICKETS", "OUR SPEAKERS"). Eyebrows/tags are uppercase
-  ("START-UP ACCELERATOR", "EARLY BIRD", "TOPIC"). Body copy is sentence case.
-- **Tone of phrases:** short, declarative, momentum-driven. Themes of the city,
-  connection, the future, inclusion, and impact. Em-dashes for asides
-  ("— reflecting on the city's past, questioning its present, and shaping its future.").
-- **Numbers as headlines:** impact is shown as oversized figures — `2009`
-  ("events have been organised since"), `20K` ("people over the last 3 years").
-- **No emoji.** Iconography is geometric, not illustrative.
-- **Naming:** "TEDxAmsterdam" one word; the event theme leads ("Amsterdam
-  Reimagined"); always reds the "TEDx" in the lockup.
+Open `components/core/core.card.html` in a browser to see all components in one live preview.
 
 ---
 
-## VISUAL FOUNDATIONS
+## Design foundations
 
-- **Colour vibe:** dark-first. Black (`#000`) is the dominant surface; **TED red
-  `#EB0028`** is the one accent, used for CTAs, eyebrows, links and highlighted
-  words. Orange (`#F36C21` / glow `#FF9B19`) appears **only** inside gradients —
-  never as flat fills. White is the primary ink.
-- **Backgrounds:** never flat for long. The signature is a **heat gradient** —
-  black lit from the **edges and corners** by red→orange glows (Figma diamond
-  gradients), and large **radial blooms** behind heroes and footers. Photography
-  is full-bleed and red/warm-toned, darkened with a 40% scrim so white type holds.
-- **Type:** **Helvetica** (Bold + Regular) for everything. Display runs tight —
-  100–110% leading, **−3% tracking**; body runs 120–130% leading at 0 tracking.
-  Headlines are big and often all-caps. *(Substitution: Helvetica isn't a free
-  webfont — the system loads **Arimo**, a metric-compatible match. Swap in
-  licensed Helvetica web fonts for production. See "Fonts to provide" below.)*
-- **Spacing & layout:** generous. 1400px frame, 40px standard gutters (160px on
-  heroes), 80–120px between sections. 4px base unit.
-- **Corners:** media and cards are **square** (0 radius). Buttons use **10px**.
-  The "rounded red rectangle" motif (12px) frames the occasional image.
-- **Borders:** hairlines only — `rgba(255,255,255,0.4)` rules on dark, used under
-  form fields and to divide stats. No heavy outlines.
-- **Shadows:** minimal. A soft `0 4px 4px rgba(0,0,0,.25)` sits under large
-  display headings; cards rely on the dark canvas, not elevation.
-- **Buttons:** primary = solid red, white bold 14px label, 10px radius; secondary
-  = solid white / black label; ghost = hairline outline. Press = scale 0.97;
-  hover = darken (red→`#C70022`).
-- **Links:** bold red text + the brand arrow (triangle-tipped line); the gap
-  widens on hover.
-- **Motion:** restrained and quick (120–360ms, ease-out). Fades and small scales,
-  no bounce, no infinite decorative loops.
-- **Transparency/blur:** sparingly — scrims over photos and faint white hairlines.
+### Colour
 
----
+| Role | Token | Value |
+|------|-------|-------|
+| Primary accent | `--tedx-red` | `#EB0028` |
+| Canvas | `--tedx-black` | `#000000` |
+| Ink | `--tedx-white` | `#FFFFFF` |
+| Gradient accent | `--tedx-orange` | `#F36C21` |
 
-## ICONOGRAPHY
+Orange appears **only inside gradients** — never as a flat fill.
+The signature motif is black lit from edges and corners by red→orange radial glows.
 
-- **Geometric, brand-built motifs over a generic icon set.** The brand-book
-  defines four graphic devices (see the *Graphic motifs* card): the **orange
-  gradient circle** (accent / background support, never a full flat circle), the
-  **full circle** (outline, frames heroes / sits on edges), **half circles**
-  (text support, overlapped in pairs), and the **rounded red rectangle**
-  (highlights text, frames pictures).
-- **The arrow** is the workhorse UI glyph — a triangle-tipped line used on links
-  and the carousel/next controls. Reproduced inline in `ArrowLink` / `Button`.
-- **Social icons** are simple monochrome glyphs (LinkedIn, Instagram, YouTube),
-  shipped as SVGs in `assets/` and recoloured white via CSS filter in `SocialLink`.
-- **No emoji, no unicode-as-icon.** When an icon is needed beyond these, prefer a
-  thin monochrome SVG that matches the social-glyph weight; if pulling from a CDN,
-  **Lucide** is the closest match — flag the substitution.
+### Typography
+
+Brand font: **Helvetica** Bold + Regular (see [Fonts](#fonts) below).
+Display: tight — 100–110% leading, **−3% tracking**, often ALL-CAPS.
+Body: 120–130% leading, 0 tracking, sentence case.
+
+| Token | Usage |
+|-------|-------|
+| `--text-display` | Hero headlines |
+| `--text-h1` – `--text-h4` | Section headings |
+| `--text-body` | Body copy |
+| `--text-tag` | Eyebrows, labels, button labels |
+
+### Spacing
+
+4px base unit. Key layout tokens:
+
+| Token | Value |
+|-------|-------|
+| `--frame-max` | 1400px |
+| `--gutter` | 40px |
+| `--gutter-wide` | 160px (hero insets) |
+| `--section-gap` | 120px |
+
+### Corners & motion
+
+- Media and cards: `--radius-none` (square — `0px`)
+- Buttons: `--radius-button` (`10px`)
+- Motion: 120–360ms, ease-out, no bounce
 
 ---
 
-## Fonts to provide ⚠
+## Voice & tone
 
-The brand font **Helvetica** (Regular + Bold) is not redistributable as a
-webfont, so this system renders **Arimo** (Google Fonts, metric-compatible) as
-the fallback. For production, please supply licensed **Helvetica Neue** web font
-files (woff2) and we'll wire real `@font-face` rules in `tokens/fonts.css`.
+- **Person:** collective "we" → "you". Short, declarative, momentum-driven.
+- **Casing:** headlines ALL-CAPS, eyebrows UPPERCASE, body sentence case.
+- **Numbers as impact:** oversized figures ("2009", "20K") anchor key stats.
+- **No emoji.** Iconography is geometric — the brand arrow, circles, the red rectangle.
+
+---
+
+## Accessibility
+
+The system targets WCAG 2.1 AA:
+
+- Global `:focus-visible` ring via `--focus-ring` (`#EB0028`) declared in `styles.css`.
+- Accordion follows the WAI-ARIA Disclosure pattern (`aria-expanded`, `aria-controls`, `role="region"`).
+- Button exposes `aria-disabled` and supports keyboard press feedback (Enter / Space).
+- Input provides a visible focus ring without suppressing the browser outline.
+- Decorative SVGs and icon dots carry `aria-hidden="true"`.
+- Contrast: all text meets the 4.5:1 AA threshold at its rendered size.
+
+---
+
+## Fonts
+
+The brand font **Helvetica** (Regular + Bold) is not freely redistributable as a webfont.
+This system loads **Arimo** from Google Fonts as a metric-compatible substitute.
+
+For production, supply licensed **Helvetica Neue** woff2 files and update the
+`@font-face` rules in `tokens/fonts.css`.
+
+---
+
+## Website UI kit
+
+`ui_kits/website/` is a full click-through recreation of the TEDxAmsterdam
+"Amsterdam Reimagined" website. Open `ui_kits/website/index.html` directly in a
+browser — no build step required.
+
+**Screens:** Home · Speakers · Speaker detail · Team · About · Event Program ·
+Impact Program · Partners · Gallery · Blog
+
+Responsive: navigation collapses to a hamburger drawer below 860px.
+
+---
+
+TEDxAmsterdam is an independent event operated under license from TED.
