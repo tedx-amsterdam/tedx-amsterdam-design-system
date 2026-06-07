@@ -29,14 +29,17 @@ export function Modal({ isOpen, onClose, title, children, size = "md", hideClose
   // Focus trap
   React.useEffect(() => {
     if (!isOpen || !dialogRef.current) return;
-    const focusable = dialogRef.current.querySelectorAll(
+    const getFirst = () => dialogRef.current?.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    first?.focus();
+    )[0];
+    getFirst()?.focus();
     const trap = (e) => {
-      if (e.key !== "Tab") return;
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const focusable = Array.from(dialogRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      ));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
       if (e.shiftKey) {
         if (document.activeElement === first) { e.preventDefault(); last?.focus(); }
       } else {
@@ -51,7 +54,6 @@ export function Modal({ isOpen, onClose, title, children, size = "md", hideClose
 
   return (
     <div
-      role="presentation"
       onClick={onClose}
       style={{
         position: "fixed",
@@ -69,7 +71,7 @@ export function Modal({ isOpen, onClose, title, children, size = "md", hideClose
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={titleId}
+        aria-labelledby={title ? titleId : undefined}
         onClick={(e) => e.stopPropagation()}
         style={{
           background: "var(--bg-elevated)",
