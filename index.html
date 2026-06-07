@@ -10,6 +10,22 @@
   html, body { background: var(--tedx-black); color: var(--tedx-white); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
 
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    top: -9999px;
+    left: 16px;
+    z-index: 9999;
+    background: var(--tedx-red);
+    color: var(--tedx-white);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 0 0 var(--radius-button) var(--radius-button);
+    text-decoration: none;
+  }
+  .skip-link:focus { top: 0; }
+
   /* ── Layout ── */
   .frame { max-width: var(--frame-max); margin: 0 auto; padding: 0 var(--gutter); }
 
@@ -19,9 +35,10 @@
   .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
   .nav-logo img { height: 22px; }
   .nav-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.18); }
-  .nav-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-  .nav-github { margin-left: auto; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: rgba(255,255,255,0.4); text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 6px 14px; transition: color 180ms, border-color 180ms; }
-  .nav-github:hover { color: var(--tedx-white); border-color: rgba(255,255,255,0.35); }
+  .nav-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .nav-github { margin-left: auto; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: rgba(255,255,255,0.6); text-decoration: none; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; padding: 6px 14px; transition: color 180ms, border-color 180ms; }
+  .nav-github:hover { color: var(--tedx-white); border-color: rgba(255,255,255,0.45); }
+  .nav-github:focus-visible { outline: 2px solid var(--tedx-red); outline-offset: 3px; }
 
   /* ── Hero ── */
   .hero { padding: 96px 0 80px; position: relative; overflow: hidden; }
@@ -38,7 +55,7 @@
   .hero-desc { font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.55); max-width: 480px; margin-bottom: 52px; }
   .hero-stats { display: flex; gap: 48px; }
   .stat-value { font-size: 36px; font-weight: 700; line-height: 1; }
-  .stat-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); margin-top: 6px; }
+  .stat-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.55); margin-top: 6px; }
 
   /* ── Section ── */
   .section { padding: 72px 0; border-top: 1px solid rgba(255,255,255,0.07); }
@@ -58,9 +75,10 @@
   .card-preview { margin-bottom: 4px; }
   .card-group { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tedx-red); }
   .card-title { font-size: 18px; font-weight: 700; line-height: 1.2; }
-  .card-sub { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.5; }
-  .card-cta { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.22); margin-top: auto; transition: color 180ms; letter-spacing: 0.04em; }
+  .card-sub { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+  .card-cta { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); margin-top: auto; transition: color 180ms; letter-spacing: 0.04em; }
   .card:hover .card-cta { color: var(--tedx-red); }
+  .card:focus-visible { outline: 2px solid var(--tedx-red); outline-offset: 0; position: relative; z-index: 1; }
   .span-2 { grid-column: span 2; }
   .span-3 { grid-column: span 3; }
 
@@ -78,7 +96,7 @@
 
   /* ── Pill tags ── */
   .pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; color: rgba(255,255,255,0.4); }
+  .pill { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.18); border-radius: 100px; color: rgba(255,255,255,0.55); }
 
   /* ── Full-bleed kit card ── */
   .kit-card { min-height: 300px; justify-content: flex-end; background: #060606; }
@@ -87,8 +105,8 @@
   /* ── Footer ── */
   footer { border-top: 1px solid rgba(255,255,255,0.07); }
   .footer-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; }
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
-  .footer-logo img { height: 18px; opacity: 0.2; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.45); }
+  .footer-logo img { height: 18px; opacity: 0.35; }
 
   /* ── Responsive ── */
   @media (max-width: 900px) {
@@ -106,7 +124,9 @@
 </head>
 <body>
 
-<nav>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Primary">
   <div class="frame nav-inner">
     <a class="nav-logo" href="/">
       <img src="assets/logo-tedx.svg" alt="TEDx" />
@@ -117,7 +137,7 @@
   </div>
 </nav>
 
-<main>
+<main id="main">
 
   <!-- ── Hero ── -->
   <section class="hero">
