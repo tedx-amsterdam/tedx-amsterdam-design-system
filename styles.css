@@ -8,3 +8,9 @@
 @import url("tokens/typography.css");
 @import url("tokens/spacing.css");
 @import url("tokens/effects.css");
+
+/* Global focus ring — uses the brand red token */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
