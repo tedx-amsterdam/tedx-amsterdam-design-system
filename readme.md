@@ -146,3 +146,4 @@ Responsive: navigation collapses to a hamburger drawer below 860px.
 ---
 
 TEDxAmsterdam is an independent event operated under license from TED.
+Original design: busy.studio. Extended by Julian Aijal.
