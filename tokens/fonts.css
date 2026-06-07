@@ -1,0 +1,22 @@
+/* ============================================================
+   TEDxAmsterdam — Fonts
+   Brand font is HELVETICA (Regular + Bold), tracking set to 0
+   except display headings which run at -3%.
+   Helvetica ships on most Apple/Win systems; for guaranteed
+   web rendering we load ARIMO — a metric-compatible substitute
+   for Helvetica/Arial — from Google Fonts as the fallback.
+   ⚠ SUBSTITUTION: replace Arimo with licensed Helvetica web
+   fonts in production. (See readme.md › Visual Foundations.)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+:root {
+  /* Primary type stack — Helvetica first, Arimo as the loaded fallback */
+  --font-sans: 'Helvetica Neue', Helvetica, 'Arimo', Arial, sans-serif;
+  --font-display: 'Helvetica Neue', Helvetica, 'Arimo', Arial, sans-serif;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+}

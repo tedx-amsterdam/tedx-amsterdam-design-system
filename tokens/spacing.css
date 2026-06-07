@@ -1,0 +1,33 @@
+/* ============================================================
+   TEDxAmsterdam — Spacing & Layout
+   Generous, grid-driven rhythm. Base unit = 4px.
+   Page content runs in a 1400px frame; side gutters are 40px
+   (standard) or 160px (hero / wide sections). Section blocks
+   are separated by 80–120px of vertical space.
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (px) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-30: 120px;
+  --space-40: 160px;
+
+  /* ---- Layout ---- */
+  --frame-max: 1400px;       /* design frame width */
+  --content-max: 1080px;     /* inner content column (hero) */
+  --gutter: 40px;            /* standard page side padding */
+  --gutter-wide: 160px;      /* hero / wide section side padding */
+  --header-height: 80px;     /* fixed top nav */
+  --section-gap: 120px;      /* between major sections */
+  --stack-gap: 32px;         /* default vertical gap inside a block */
+}

@@ -1,0 +1,63 @@
+/* ============================================================
+   TEDxAmsterdam — Typography
+   Helvetica Bold for everything structural; Helvetica Regular
+   for body. Headings are frequently set ALL-CAPS. Display sizes
+   run tight: 100–110% leading, −3% tracking. Body runs at
+   120–130% leading, 0 tracking.
+   Scale lifted from the Figma "UI KIT WEB" type specimen.
+   ============================================================ */
+
+:root {
+  /* ---- Font sizes (desktop) ---- */
+  --fs-display: 121px;  /* hero wordmark — "AMSTERDAM REIMAGINED" */
+  --fs-mega: 140px;     /* oversized stat numbers — "2009" */
+  --fs-h1: 80px;        /* H1 — Bold / 100% / -3% */
+  --fs-h2: 56px;        /* H2 — Bold / 120% / -3% */
+  --fs-h2-lg: 72px;     /* big section header variant */
+  --fs-h3: 32px;        /* H3 — Bold / 120% / -3% */
+  --fs-h4: 20px;        /* h4 — Bold / 120% */
+  --fs-body: 20px;      /* body-text — Regular / 130% */
+  --fs-body-sm: 16px;   /* description / menu — Regular / 120% */
+  --fs-tag: 14px;       /* tag / link — Bold / 120% (usually UPPERCASE) */
+  --fs-caption: 12px;   /* fine print */
+
+  /* ---- Mobile counterparts ---- */
+  --fs-h1-m: 55px;      /* Bold / 90% / -3% */
+  --fs-h2-m: 30px;
+  --fs-h3-m: 20px;
+  --fs-body-m: 16px;
+
+  /* ---- Line heights ---- */
+  --lh-tight: 1;        /* @kind other */ /* display / H1 */
+  --lh-snug: 1.1;       /* @kind other */ /* large headings */
+  --lh-heading: 1.2;    /* @kind other */ /* H2–H4 */
+  --lh-body: 1.3;       /* @kind other */ /* body copy */
+
+  /* ---- Letter spacing ---- */
+  --ls-display: -0.03em;  /* @kind other */ /* -3% on display + headings */
+  --ls-normal: 0;         /* @kind other */
+  --ls-wide: 0.04em;      /* @kind other */ /* occasional wide caps */
+
+  /* ---- Composite text tokens ---- */
+  --text-display: var(--weight-bold) var(--fs-display) / var(--lh-tight) var(--font-display);
+  --text-h1: var(--weight-bold) var(--fs-h1) / var(--lh-tight) var(--font-display);
+  --text-h2: var(--weight-bold) var(--fs-h2) / var(--lh-heading) var(--font-display);
+  --text-h3: var(--weight-bold) var(--fs-h3) / var(--lh-heading) var(--font-display);
+  --text-h4: var(--weight-bold) var(--fs-h4) / var(--lh-heading) var(--font-sans);
+  --text-body: var(--weight-regular) var(--fs-body) / var(--lh-body) var(--font-sans);
+  --text-tag: var(--weight-bold) var(--fs-tag) / var(--lh-heading) var(--font-sans);
+}
+
+/* ---- Optional utility classes (foundation cards / quick markup) ---- */
+.tedx-h1 { font: var(--text-h1); letter-spacing: var(--ls-display); color: var(--text-primary); margin: 0; }
+.tedx-h2 { font: var(--text-h2); letter-spacing: var(--ls-display); color: var(--text-primary); margin: 0; }
+.tedx-h3 { font: var(--text-h3); letter-spacing: var(--ls-display); color: var(--text-primary); margin: 0; }
+.tedx-h4 { font: var(--text-h4); color: var(--text-primary); margin: 0; }
+.tedx-body { font: var(--text-body); color: var(--text-primary); margin: 0; }
+.tedx-tag {
+  font: var(--text-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text-accent);
+  margin: 0;
+}

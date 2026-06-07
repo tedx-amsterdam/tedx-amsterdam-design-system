@@ -1,0 +1,61 @@
+/* ============================================================
+   TEDxAmsterdam — Colors
+   Source: brand-book "OUR COLORS" + Figma usage metadata.
+   The brand is built on TED Red over black, with white type
+   and an orange accent used only for glows / gradient support.
+   ============================================================ */
+
+:root {
+  /* ---- Core brand palette (brand-book) ---- */
+  --tedx-red: #eb0028;          /* TED Red — C0 M100 Y90 K0 / 235,0,40 */
+  --tedx-black: #000000;        /* Black — primary surface */
+  --tedx-white: #ffffff;        /* White — primary type on dark */
+  --tedx-orange: #f36c21;       /* Accent orange — C0 M72 Y98 K0 / 243,108,33 */
+
+  /* ---- Extended reds / oranges (gradient + glow support) ---- */
+  --tedx-red-bright: #ff0000;   /* hot red used inside heat gradients */
+  --tedx-orange-glow: #ff9b19;  /* 255,155,25 — the warm core of edge glows */
+  --tedx-orange-amber: #ff7919; /* 255,121,25 — secondary heat tone */
+
+  /* ---- Neutrals ---- */
+  --tedx-ink: #141316;          /* 20,19,22 — near-black header / overlay */
+  --tedx-gray-900: #111111;
+  --tedx-gray-700: #313131;     /* 49,49,49 */
+  --tedx-gray-600: #505050;     /* 80,80,80 */
+  --tedx-gray-400: #939393;     /* 147,147,147 — UI-kit annotation gray */
+  --tedx-gray-300: #c5c5c5;
+  --tedx-gray-200: #d9d9d9;     /* 217,217,217 — image placeholder fill */
+  --tedx-gray-100: #f1f1f1;
+
+  /* ---- Alpha helpers ---- */
+  --tedx-white-40: rgba(255, 255, 255, 0.4);  /* hairline rules on dark */
+  --tedx-white-60: rgba(255, 255, 255, 0.6);
+  --tedx-black-25: rgba(0, 0, 0, 0.25);       /* drop-shadow on display type */
+
+  /* ============================================================
+     SEMANTIC ALIASES — reach for these in components.
+     The system is dark-first: black canvas, white ink, red accent.
+     ============================================================ */
+  --bg-base: var(--tedx-black);
+  --bg-elevated: var(--tedx-ink);
+  --bg-inverse: var(--tedx-white);
+  --bg-accent: var(--tedx-red);
+
+  --surface-card: var(--tedx-black);
+  --surface-image: var(--tedx-gray-200);  /* placeholder before a photo loads */
+
+  --text-primary: var(--tedx-white);       /* on dark */
+  --text-secondary: var(--tedx-white-60);
+  --text-muted: var(--tedx-gray-400);
+  --text-on-light: var(--tedx-black);       /* on white surfaces */
+  --text-accent: var(--tedx-red);           /* tags, links, emphasis */
+  --text-inverse: var(--tedx-black);
+
+  --border-hairline: var(--tedx-white-40);
+  --border-hairline-dark: rgba(0, 0, 0, 0.5);
+  --border-strong: var(--tedx-white);
+
+  --accent: var(--tedx-red);
+  --accent-hover: #c70022;       /* red, pressed/hover darken */
+  --focus-ring: var(--tedx-red);
+}

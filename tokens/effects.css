@@ -1,0 +1,66 @@
+/* ============================================================
+   TEDxAmsterdam — Effects
+   Radii, shadows, and the signature heat-gradient system.
+   The brand's defining motif: a black canvas lit from the
+   edges/corners by red→orange "glows" (approximated diamond
+   gradients in Figma), plus full/half circles and the rounded
+   red rectangle used to frame imagery.
+   ============================================================ */
+
+:root {
+  /* ---- Corner radii ---- */
+  --radius-none: 0;          /* cards & images are square-cornered */
+  --radius-button: 10px;     /* primary button / pill chips */
+  --radius-card: 12px;       /* soft media frames (rounded red rectangle) */
+  --radius-full: 9999px;
+
+  /* ---- Shadows ---- */
+  --shadow-display: 0 4px 4px var(--tedx-black-25);  /* on large headings */
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --shadow-glow-red: 0 0 80px rgba(235, 0, 40, 0.45);
+
+  /* ============================================================
+     SIGNATURE GRADIENTS
+     ============================================================ */
+
+  /* Vertical edge-glow strip — runs down the left & right edges
+     of dark sections (Figma: 220px-wide gradient bars). */
+  --glow-edge: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) -13.89%,
+    var(--tedx-red) 53.72%,
+    var(--tedx-orange-glow) 71.91%,
+    var(--tedx-red) 86.11%,
+    rgba(0, 0, 0, 0) 104.29%
+  );
+
+  /* Corner heat — orange core melting into red then black. */
+  --glow-corner: linear-gradient(
+    90deg,
+    var(--tedx-orange-glow) -7.9%,
+    var(--tedx-red) 42.01%,
+    var(--tedx-black) 104.29%
+  );
+
+  /* Hero / footer ambient heat — radial bloom for big surfaces. */
+  --glow-radial: radial-gradient(
+    120% 120% at 70% 40%,
+    var(--tedx-orange-glow) 0%,
+    var(--tedx-red) 38%,
+    #5a0010 70%,
+    var(--tedx-black) 100%
+  );
+
+  /* Speaker / media tile fill — diagonal red→orange. */
+  --grad-tile: linear-gradient(135deg, var(--tedx-red) 0%, var(--tedx-orange-amber) 100%);
+
+  /* Photo darkening wash so white type stays legible over images. */
+  --img-scrim: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)); /* @kind other */
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);   /* @kind other */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --dur-fast: 120ms;  /* @kind other */
+  --dur: 200ms;       /* @kind other */
+  --dur-slow: 360ms;  /* @kind other */
+}
