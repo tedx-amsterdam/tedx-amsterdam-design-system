@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design System — TEDxAmsterdam</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--tedx-black); color: var(--tedx-white); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+
+  /* ── Layout ── */
+  .frame { max-width: var(--frame-max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ── Nav ── */
+  nav { height: var(--header-height); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .nav-inner { height: 100%; display: flex; align-items: center; gap: 14px; }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo img { height: 22px; }
+  .nav-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.18); }
+  .nav-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .nav-github { margin-left: auto; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: rgba(255,255,255,0.4); text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 6px 14px; transition: color 180ms, border-color 180ms; }
+  .nav-github:hover { color: var(--tedx-white); border-color: rgba(255,255,255,0.35); }
+
+  /* ── Hero ── */
+  .hero { padding: 96px 0 80px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -120px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(235,0,40,0.28) 0%, rgba(243,108,33,0.1) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tedx-red); margin-bottom: 20px; }
+  .hero-title { font-size: clamp(52px, 7vw, 104px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 28px; }
+  .hero-desc { font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.55); max-width: 480px; margin-bottom: 52px; }
+  .hero-stats { display: flex; gap: 48px; }
+  .stat-value { font-size: 36px; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); margin-top: 6px; }
+
+  /* ── Section ── */
+  .section { padding: 72px 0; border-top: 1px solid rgba(255,255,255,0.07); }
+  .section-head { margin-bottom: 32px; }
+  .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tedx-red); margin-bottom: 8px; }
+  .section-title { font-size: 28px; font-weight: 700; line-height: 1.15; }
+
+  /* ── Card grid ── */
+  .grid { display: grid; gap: 2px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  /* ── Card ── */
+  .card { background: #090909; padding: 28px; text-decoration: none; color: var(--tedx-white); display: flex; flex-direction: column; gap: 10px; min-height: 196px; transition: background 180ms; position: relative; overflow: hidden; }
+  .card:hover { background: #0f0f0f; }
+  .card-preview { margin-bottom: 4px; }
+  .card-group { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tedx-red); }
+  .card-title { font-size: 18px; font-weight: 700; line-height: 1.2; }
+  .card-sub { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.5; }
+  .card-cta { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.22); margin-top: auto; transition: color 180ms; letter-spacing: 0.04em; }
+  .card:hover .card-cta { color: var(--tedx-red); }
+  .span-2 { grid-column: span 2; }
+  .span-3 { grid-column: span 3; }
+
+  /* ── Swatch row ── */
+  .swatches { display: flex; gap: 5px; }
+  .sw { width: 22px; height: 22px; border-radius: 3px; }
+
+  /* ── Spacing bars ── */
+  .bars { display: flex; align-items: flex-end; gap: 3px; }
+  .bar { width: 5px; background: rgba(255,255,255,0.35); }
+
+  /* ── Radius preview ── */
+  .radius-row { display: flex; gap: 10px; align-items: center; }
+  .r-box { width: 36px; height: 36px; }
+
+  /* ── Pill tags ── */
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; color: rgba(255,255,255,0.4); }
+
+  /* ── Full-bleed kit card ── */
+  .kit-card { min-height: 300px; justify-content: flex-end; background: #060606; }
+  .kit-glow { position: absolute; top: -60px; right: -60px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(235,0,40,0.2) 0%, transparent 65%); pointer-events: none; }
+
+  /* ── Footer ── */
+  footer { border-top: 1px solid rgba(255,255,255,0.07); }
+  .footer-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+  .footer-logo img { height: 18px; opacity: 0.2; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .span-2, .span-3 { grid-column: span 2; }
+    .nav-github { display: none; }
+  }
+  @media (max-width: 560px) {
+    .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+    .span-2, .span-3 { grid-column: span 1; }
+    .hero-stats { flex-wrap: wrap; gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="frame nav-inner">
+    <a class="nav-logo" href="/">
+      <img src="assets/logo-tedx.svg" alt="TEDx" />
+      <span class="nav-divider"></span>
+      <span class="nav-label">Design System</span>
+    </a>
+    <a class="nav-github" href="https://github.com/julianaijal/tedx-amsterdam-design-system" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="frame">
+      <p class="hero-eyebrow">TEDxAmsterdam · Amsterdam Reimagined · 2025</p>
+      <h1 class="hero-title">Design<br>System</h1>
+      <p class="hero-desc">A dark-first, high-contrast brand system built from the official 2025 brand-book. Black canvas, TED-red heat, oversized Helvetica.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-value">5</div>
+          <div class="stat-label">Token layers</div>
+        </div>
+        <div>
+          <div class="stat-value">10</div>
+          <div class="stat-label">Components</div>
+        </div>
+        <div>
+          <div class="stat-value">10</div>
+          <div class="stat-label">Website screens</div>
+        </div>
+        <div>
+          <div class="stat-value">9</div>
+          <div class="stat-label">Guideline cards</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Foundation ── -->
+  <section class="section">
+    <div class="frame">
+      <div class="section-head">
+        <p class="section-eyebrow">Foundation</p>
+        <h2 class="section-title">Design Tokens</h2>
+      </div>
+      <div class="grid grid-4">
+
+        <a class="card" href="guidelines/colors-core.html">
+          <div class="card-preview swatches">
+            <div class="sw" style="background:#EB0028"></div>
+            <div class="sw" style="background:#fff; outline:1px solid #222"></div>
+            <div class="sw" style="background:#000; outline:1px solid #222"></div>
+            <div class="sw" style="background:#F36C21"></div>
+          </div>
+          <span class="card-group">Colors</span>
+          <span class="card-title">Core Palette</span>
+          <span class="card-sub">TED Red · White · Black · Orange accent</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+        <a class="card" href="guidelines/colors-gradients.html">
+          <div class="card-preview" style="height:36px; border-radius:3px; background: radial-gradient(120% 120% at 70% 40%, #FF9B19 0%, #EB0028 38%, #5a0010 70%, #000 100%);"></div>
+          <span class="card-group">Colors</span>
+          <span class="card-title">Heat Gradients</span>
+          <span class="card-sub">Edge · corner · radial glow system</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+        <a class="card" href="guidelines/colors-neutrals.html">
+          <div class="card-preview swatches">
+            <div class="sw" style="background:#111"></div>
+            <div class="sw" style="background:#313131"></div>
+            <div class="sw" style="background:#505050"></div>
+            <div class="sw" style="background:#939393"></div>
+            <div class="sw" style="background:#f1f1f1; outline:1px solid #222"></div>
+          </div>
+          <span class="card-group">Colors</span>
+          <span class="card-title">Neutrals</span>
+          <span class="card-sub">Ink · gray scale · placeholder fill</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+        <a class="card" href="guidelines/type-display.html">
+          <div class="card-preview" style="font-size:40px; font-weight:700; line-height:1; letter-spacing:-0.03em;">Aa</div>
+          <span class="card-group">Typography</span>
+          <span class="card-title">Display & Headings</span>
+          <span class="card-sub">Helvetica Bold · 100–110% leading · −3%</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+        <a class="card" href="guidelines/type-body.html">
+          <div class="card-preview" style="display:flex; flex-direction:column; gap:4px;">
+            <div style="font-size:14px; line-height:1.5; color:rgba(255,255,255,0.6);">Body copy — sentence case, 20px regular</div>
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--tedx-red);">TAG · UPPERCASE</div>
+          </div>
+          <span class="card-group">Typography</span>
+          <span class="card-title">Body, Tag & Link</span>
+          <span class="card-sub">Regular body · red tags · arrow links</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+        <a class="card" href="guidelines/spacing-scale.html">
+          <div class="card-preview bars">
+            <div class="bar" style="height:8px"></div>
+            <div class="bar" style="height:14px"></div>
+            <div class="bar" style="height:20px"></div>
+            <div class="bar" style="height:32px"></div>
+            <div class="bar" style="height:48px"></div>
+            <div class="bar" style="height:64px"></div>
+          </div>
+          <span class="card-group">Spacing</span>
+          <span class="card-title">Spacing Scale</span>
+          <span class="card-sub">4px base unit · 1400px frame · 40px gutters</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+        <a class="card" href="guidelines/radius-shadow.html">
+          <div class="card-preview radius-row">
+            <div class="r-box" style="background:var(--tedx-red); border-radius:10px;"></div>
+            <div class="r-box" style="background:#1a1a1a; border-radius:0; border:1px solid #2a2a2a;"></div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.3);">10px · 0px</div>
+          </div>
+          <span class="card-group">Spacing</span>
+          <span class="card-title">Radius & Shadow</span>
+          <span class="card-sub">10px buttons · square media · display shadow</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+        <a class="card" href="guidelines/brand-logo.html">
+          <div class="card-preview">
+            <img src="assets/logo-tedxamsterdam.svg" alt="TEDxAmsterdam" style="height:26px;" />
+          </div>
+          <span class="card-group">Brand</span>
+          <span class="card-title">Logo</span>
+          <span class="card-sub">Lockup · clear space · colour variants</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+        <a class="card" href="guidelines/brand-motifs.html">
+          <div class="card-preview" style="display:flex; gap:8px; align-items:center;">
+            <div style="width:34px; height:34px; border-radius:50%; border:2px solid rgba(255,255,255,0.25);"></div>
+            <div style="width:34px; height:17px; border-radius:0 0 50px 50px; border:2px solid rgba(255,255,255,0.25); border-top:none;"></div>
+            <div style="width:26px; height:10px; border-radius:4px; background:var(--tedx-red);"></div>
+            <div style="width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,#FF9B19,#EB0028); opacity:0.75;"></div>
+          </div>
+          <span class="card-group">Brand</span>
+          <span class="card-title">Graphic Motifs</span>
+          <span class="card-sub">Circles · half circles · red rectangle · arrow</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Components ── -->
+  <section class="section">
+    <div class="frame">
+      <div class="section-head">
+        <p class="section-eyebrow">Components</p>
+        <h2 class="section-title">Core Primitives</h2>
+      </div>
+      <div class="grid grid-3">
+
+        <a class="card span-2" href="components/core/core.card.html" style="min-height:240px;">
+          <div class="card-preview pills">
+            <span class="pill">Button</span>
+            <span class="pill">Tag</span>
+            <span class="pill">ArrowLink</span>
+            <span class="pill">SectionHeader</span>
+            <span class="pill">Stat</span>
+            <span class="pill">MediaCard</span>
+            <span class="pill">Input</span>
+            <span class="pill">SocialLink</span>
+            <span class="pill">Logo</span>
+            <span class="pill">Accordion</span>
+          </div>
+          <span class="card-group">React · Live preview</span>
+          <span class="card-title">10 Components</span>
+          <span class="card-sub">All primitives in one interactive showcase</span>
+          <span class="card-cta">Open showcase →</span>
+        </a>
+
+        <a class="card" href="components/core/core.card.html" style="background: linear-gradient(150deg, #0c0002 0%, #0f0f0f 100%); justify-content:flex-end;">
+          <div style="position:absolute; top:20px; right:20px; font-size:52px; font-weight:700; line-height:1; letter-spacing:-0.03em; color:var(--tedx-red); opacity:0.12; pointer-events:none; user-select:none;">TSX</div>
+          <span class="card-group">Source</span>
+          <span class="card-title">JSX + TypeScript</span>
+          <span class="card-sub">Each component ships with .jsx, .d.ts and .prompt.md usage notes</span>
+          <span class="card-cta">View →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Website UI Kit ── -->
+  <section class="section">
+    <div class="frame">
+      <div class="section-head">
+        <p class="section-eyebrow">Website</p>
+        <h2 class="section-title">UI Kit</h2>
+      </div>
+      <div class="grid grid-3">
+
+        <a class="card kit-card span-3" href="ui_kits/website/">
+          <div class="kit-glow"></div>
+          <div style="position:absolute; top:28px; left:28px; display:flex; align-items:center; gap:12px;">
+            <img src="assets/logo-tedx.svg" alt="TEDx" style="height:16px; opacity:0.35;" />
+            <span style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.2);">Amsterdam Reimagined</span>
+          </div>
+          <div class="pills" style="margin-bottom:20px;">
+            <span class="pill">Home</span>
+            <span class="pill">Speakers</span>
+            <span class="pill">Speaker detail</span>
+            <span class="pill">Team</span>
+            <span class="pill">About</span>
+            <span class="pill">Event Program</span>
+            <span class="pill">Impact Program</span>
+            <span class="pill">Partners</span>
+            <span class="pill">Gallery</span>
+            <span class="pill">Blog</span>
+          </div>
+          <span class="card-group">Click-through · Responsive · 10 screens</span>
+          <span class="card-title">TEDxAmsterdam Website</span>
+          <span class="card-sub">Full recreation of "Amsterdam Reimagined". Nav collapses to hamburger under 860px.</span>
+          <span class="card-cta">Open website →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="frame">
+    <div class="footer-inner">
+      <span class="footer-copy">TEDxAmsterdam Design System · 2025 · Design by busy.studio</span>
+      <div class="footer-logo"><img src="assets/logo-tedxamsterdam-white.png" alt="TEDxAmsterdam" /></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
