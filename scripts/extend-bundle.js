@@ -27,7 +27,12 @@ function transformJsx(source) {
 
 const blocks = NEW_COMPONENTS.map(name => {
   const path = `components/core/${name}.jsx`;
-  const source = readFileSync(join(ROOT, path), 'utf8');
+  let source;
+  try {
+    source = readFileSync(join(ROOT, path), 'utf8');
+  } catch {
+    throw new Error(`Cannot read ${path} — has it been created?`);
+  }
   const code = transformJsx(source);
   return (
     `// ${path}\n` +
@@ -41,6 +46,12 @@ const exportLines = NEW_COMPONENTS
   .join('\n\n');
 
 let bundle = readFileSync(join(ROOT, '_ds_bundle.js'), 'utf8');
+
+// Guard against double-execution
+if (bundle.includes('__ds_ns.Badge = __ds_scope.Badge;')) {
+  console.log('Bundle already extended — nothing to do.');
+  process.exit(0);
+}
 
 // Insert before the first __ds_ns.Accordion export line
 const ANCHOR = '\n__ds_ns.Accordion = __ds_scope.Accordion;';
