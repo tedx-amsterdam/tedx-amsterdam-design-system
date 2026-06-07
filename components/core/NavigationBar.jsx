@@ -8,22 +8,28 @@ import React from "react";
  */
 export function NavigationBar({ links = [], ctaLabel, ctaHref, logoHref = "/", activePath, base = "", style }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(
-    typeof window !== "undefined" && window.innerWidth < 768
-  );
-  const menuId = "nav-mobile-menu";
+  const [isMobile, setIsMobile] = React.useState(false);
+  const uid = React.useId();
+  const menuId = `nav-mobile-menu-${uid}`;
+  const hamburgerRef = React.useRef(null);
 
-  // Responsive detection
+  // Responsive detection — initialise on mount to avoid SSR hydration mismatch
   React.useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Close menu on Escape
+  // Close menu on Escape and return focus to hamburger button
   React.useEffect(() => {
     if (!menuOpen) return;
-    const onKey = (e) => { if (e.key === "Escape") setMenuOpen(false); };
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        hamburgerRef.current?.focus();
+      }
+    };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [menuOpen]);
@@ -101,6 +107,8 @@ export function NavigationBar({ links = [], ctaLabel, ctaHref, logoHref = "/", a
         {/* Mobile: hamburger */}
         {isMobile && (
           <button
+            ref={hamburgerRef}
+            type="button"
             aria-expanded={menuOpen}
             aria-controls={menuId}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -161,7 +169,7 @@ export function NavigationBar({ links = [], ctaLabel, ctaHref, logoHref = "/", a
             ))}
           </nav>
           {ctaHref && ctaLabel && (
-            <a href={ctaHref} style={{ ...ctaStyle, alignSelf: "flex-start" }}>{ctaLabel}</a>
+            <a href={ctaHref} onClick={() => setMenuOpen(false)} style={{ ...ctaStyle, alignSelf: "flex-start" }}>{ctaLabel}</a>
           )}
         </div>
       )}
