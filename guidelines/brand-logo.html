@@ -1,0 +1,26 @@
+<!-- @dsCard group="Brand" viewport="700x240" name="Logo" subtitle="Red TEDx + white/black Amsterdam wordmark" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); display: grid; grid-template-columns: 1fr 1fr; }
+  .panel { padding: 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; min-height: 160px; }
+  .dark { background: var(--tedx-black); color: #fff; }
+  .light { background: var(--tedx-white); color: #000; }
+  .logo { width: 230px; height: auto; }
+  .cap { font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.6; }
+</style>
+</head>
+<body>
+  <div class="panel dark">
+    <img class="logo" src="../assets/logo-tedxamsterdam.svg" alt="TEDxAmsterdam" />
+    <span class="cap">On black — white wordmark</span>
+  </div>
+  <div class="panel light">
+    <img class="logo" src="../assets/logo-tedxamsterdam.svg" alt="TEDxAmsterdam" />
+    <span class="cap">On white — black wordmark</span>
+  </div>
+</body>
+</html>

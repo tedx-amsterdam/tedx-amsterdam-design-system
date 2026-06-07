@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Neutrals" subtitle="Inks, grays & placeholder fill" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--tedx-black); font-family: var(--font-sans); }
+  .row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; padding: 24px; }
+  .sw { height: 100px; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; box-sizing: border-box; }
+  .sw .hex { font-size: 11px; letter-spacing: 0.02em; }
+  .l { color: #000; }
+  .d { color: #fff; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw d" style="background:var(--tedx-ink)"><span class="hex">Ink</span></div>
+    <div class="sw d" style="background:var(--tedx-gray-700)"><span class="hex">700</span></div>
+    <div class="sw d" style="background:var(--tedx-gray-600)"><span class="hex">600</span></div>
+    <div class="sw d" style="background:var(--tedx-gray-400)"><span class="hex">400</span></div>
+    <div class="sw l" style="background:var(--tedx-gray-300)"><span class="hex">300</span></div>
+    <div class="sw l" style="background:var(--tedx-gray-200)"><span class="hex">200 · img</span></div>
+    <div class="sw l" style="background:var(--tedx-gray-100)"><span class="hex">100</span></div>
+  </div>
+</body>
+</html>

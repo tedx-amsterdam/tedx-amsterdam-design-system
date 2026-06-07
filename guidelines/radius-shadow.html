@@ -1,0 +1,27 @@
+<!-- @dsCard group="Spacing" viewport="700x200" name="Radius & shadow" subtitle="10px button radius · square media · display shadow" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--tedx-black); font-family: var(--font-sans); color: #fff; padding: 28px 32px; }
+  .row { display: flex; gap: 28px; align-items: center; }
+  .item { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .box { width: 120px; height: 90px; background: var(--grad-tile); }
+  .r0 { border-radius: var(--radius-none); }
+  .rbtn { border-radius: var(--radius-button); }
+  .rcard { border-radius: var(--radius-card); }
+  .v { font-size: 12px; color: var(--tedx-gray-400); }
+  .btn { background: var(--tedx-red); color: #fff; border-radius: var(--radius-button); padding: 14px 28px; font-weight: 700; font-size: 14px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box r0"></div><span class="v">none · media</span></div>
+    <div class="item"><div class="box rbtn"></div><span class="v">10 · button</span></div>
+    <div class="item"><div class="box rcard"></div><span class="v">12 · frame</span></div>
+    <div class="item"><div class="btn">notify me</div><span class="v">primary button</span></div>
+  </div>
+</body>
+</html>

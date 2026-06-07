@@ -1,0 +1,30 @@
+<!-- @dsCard group="Type" viewport="700x300" name="Body, tag & link" subtitle="Regular body · uppercase red tags · arrow links" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--tedx-black); font-family: var(--font-sans); color: #fff; padding: 28px 32px; }
+  .spec { display: flex; flex-direction: column; gap: 24px; max-width: 560px; }
+  .block { display: flex; flex-direction: column; gap: 8px; }
+  .meta { color: var(--tedx-gray-400); font-size: 12px; letter-spacing: 0.02em; }
+  .h4 { font-size: 20px; font-weight: 700; line-height: 1.2; margin: 0; }
+  .body { font-size: 20px; line-height: 1.3; margin: 0; }
+  .desc { font-size: 16px; line-height: 1.2; color: var(--tedx-white-60); margin: 0; }
+  .tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--tedx-red); }
+  .link { font-size: 14px; font-weight: 700; color: var(--tedx-red); display: inline-flex; align-items: center; gap: 8px; }
+  .link svg { width: 16px; height: 8px; }
+</style>
+</head>
+<body>
+  <div class="spec">
+    <div class="block"><span class="meta">tag · 14 / 700 / uppercase</span><span class="tag">Start-up Accelerator</span></div>
+    <div class="block"><span class="meta">h4 · 20 / 700</span><p class="h4">Be inspired and first to know about our events.</p></div>
+    <div class="block"><span class="meta">body · 20 / 400 / 130%</span><p class="body">TEDxAmsterdam invites speakers to take the stage and inspire the audience with their powerful stories.</p></div>
+    <div class="block"><span class="meta">link · 14 / 700 / red + arrow</span><span class="link">Check out our past Speakers
+      <svg viewBox="0 0 22 8" fill="none"><path d="M0 4h17" stroke="currentColor" stroke-width="1.4"/><path d="M14 1l4 3-4 3" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+    </span></div>
+  </div>
+</body>
+</html>

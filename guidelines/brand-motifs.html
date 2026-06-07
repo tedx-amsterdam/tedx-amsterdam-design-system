@@ -1,0 +1,30 @@
+<!-- @dsCard group="Brand" viewport="700x220" name="Graphic motifs" subtitle="Orange gradient circle · full / half circles · red rectangle" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--tedx-black); font-family: var(--font-sans); color: #fff; padding: 28px 24px; }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .stage { width: 120px; height: 120px; position: relative; display: flex; align-items: center; justify-content: center; }
+  .v { font-size: 11px; color: var(--tedx-gray-400); text-align: center; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .orange-circle { width: 92px; height: 92px; border-radius: 50%; background: radial-gradient(circle at 50% 45%, var(--tedx-orange-glow) 0%, var(--tedx-orange-amber) 38%, var(--tedx-red) 70%, rgba(0,0,0,0) 100%); filter: blur(1px); }
+  .full-circle { width: 92px; height: 92px; border-radius: 50%; border: 2px solid var(--tedx-red); }
+  .half { position: absolute; width: 92px; height: 92px; border-radius: 50%; }
+  .half-a { background: var(--grad-tile); clip-path: inset(0 50% 0 0); left: 8px; }
+  .half-b { background: linear-gradient(135deg, var(--tedx-orange-amber), var(--tedx-red)); clip-path: inset(0 0 0 50%); left: 20px; opacity: 0.85; }
+  .red-rect { width: 100px; height: 64px; border-radius: 12px; background: var(--tedx-red); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="cell"><div class="stage"><div class="orange-circle"></div></div><span class="v">Orange gradient<br>circle</span></div>
+    <div class="cell"><div class="stage"><div class="full-circle"></div></div><span class="v">Full circle</span></div>
+    <div class="cell"><div class="stage"><div class="half half-a"></div><div class="half half-b"></div></div><span class="v">Half circles</span></div>
+    <div class="cell"><div class="stage"><div class="red-rect"></div></div><span class="v">Red rectangle</span></div>
+  </div>
+</body>
+</html>
