@@ -164,4 +164,4 @@ function CarouselBtn({ dir, onClick }) {
     </button>
   );
 }
-window.Home = Home;
+Object.assign(window, { Home, CarouselBtn });

@@ -26,7 +26,6 @@ function BlogCard({ p, onClick }) {
         <span style={{ position: "absolute", left: 16, top: 16, fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".04em", color: "#fff", textShadow: "0 1px 6px rgba(0,0,0,.6)" }}>{p.cat}</span>
       </div>
       <h3 style={{ margin: 0, font: "700 24px/1.15 var(--font-display)", letterSpacing: "-.02em", textTransform: "uppercase" }}>{p.title}</h3>
-      <p style={{ margin: 0, fontFamily: "var(--font-sans)", fontSize: 16, color: "var(--tedx-gray-400)" }}>{p.title}</p>
       <Tag color="white" dot>{p.date}</Tag>
     </a>
   );
