@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "node scripts/extend-bundle.js",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc",
+    "build": "node scripts/build-bundle.js",
+    "build:website": "node scripts/build-website.js"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
