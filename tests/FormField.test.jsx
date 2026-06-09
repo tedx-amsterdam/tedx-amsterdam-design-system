@@ -47,8 +47,10 @@ describe('FormField', () => {
     expect(screen.getByText('*')).toBeInTheDocument();
   });
 
-  it('no error span when error prop is absent', () => {
-    const { container } = render(<FormField label="Name"><input /></FormField>);
-    expect(container.querySelector('[aria-live]')).toBeNull();
+  it('error span is always in the DOM; empty when error prop is absent', () => {
+    const { container } = render(<FormField label="Name" htmlFor="name"><input id="name" /></FormField>);
+    const span = container.querySelector('[aria-live]');
+    expect(span).not.toBeNull();
+    expect(span.textContent).toBe('');
   });
 });
