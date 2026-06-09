@@ -16,4 +16,4 @@ export interface ToastProps {
  * Caller renders/unrenders via state; use `onDismiss` to clean up.
  * error/warning use `role="alert"` (assertive); info/success use `role="status"` (polite).
  */
-export function Toast(props: ToastProps): JSX.Element;
+export function Toast(props: ToastProps): React.ReactElement;

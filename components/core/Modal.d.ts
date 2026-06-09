@@ -18,4 +18,4 @@ export interface ModalProps {
  * Overlay dialog. Traps focus, locks scroll, closes on Escape or overlay click.
  * Red top border signals brand dialog.
  */
-export function Modal(props: ModalProps): JSX.Element | null;
+export function Modal(props: ModalProps): React.ReactElement | null;

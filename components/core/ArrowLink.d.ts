@@ -9,4 +9,4 @@ export interface ArrowLinkProps {
 }
 
 /** Bold red text link with the trailing brand arrow. */
-export function ArrowLink(props: ArrowLinkProps): JSX.Element;
+export function ArrowLink(props: ArrowLinkProps): React.ReactElement;

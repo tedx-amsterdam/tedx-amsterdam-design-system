@@ -12,4 +12,4 @@ export interface CheckboxProps {
 }
 
 /** Single checkbox. Checked state: red fill + white tick. */
-export function Checkbox(props: CheckboxProps): JSX.Element;
+export function Checkbox(props: CheckboxProps): React.ReactElement;

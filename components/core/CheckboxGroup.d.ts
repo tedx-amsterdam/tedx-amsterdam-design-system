@@ -8,4 +8,4 @@ export interface CheckboxGroupProps {
 }
 
 /** Fieldset wrapper for accessible grouping of multiple Checkbox components. */
-export function CheckboxGroup(props: CheckboxGroupProps): JSX.Element;
+export function CheckboxGroup(props: CheckboxGroupProps): React.ReactElement;

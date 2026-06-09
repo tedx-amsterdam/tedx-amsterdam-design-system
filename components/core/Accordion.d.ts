@@ -13,4 +13,4 @@ export interface AccordionProps {
 }
 
 /** FAQ-style disclosure list; one row open at a time, red active question. */
-export function Accordion(props: AccordionProps): JSX.Element;
+export function Accordion(props: AccordionProps): React.ReactElement;

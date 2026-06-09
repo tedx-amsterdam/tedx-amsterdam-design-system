@@ -18,7 +18,7 @@ export interface RadioGroupProps {
 }
 
 export declare const RadioGroup: {
-  (props: RadioGroupProps): JSX.Element;
+  (props: RadioGroupProps): React.ReactElement;
   /** Individual radio option — must be a direct child of RadioGroup. */
-  Option(props: RadioGroupOptionProps): JSX.Element;
+  Option(props: RadioGroupOptionProps): React.ReactElement;
 };

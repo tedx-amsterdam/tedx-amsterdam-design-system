@@ -26,4 +26,4 @@ export interface NavigationBarProps {
  * Sticky top nav bar. Desktop: logo + links + CTA. Mobile (< 768px): hamburger.
  * Active link highlighted in red via `activePath`.
  */
-export function NavigationBar(props: NavigationBarProps): JSX.Element;
+export function NavigationBar(props: NavigationBarProps): React.ReactElement;

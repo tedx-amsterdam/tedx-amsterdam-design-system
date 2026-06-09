@@ -10,4 +10,4 @@ export interface BadgeProps {
 }
 
 /** Small inline pill label. Distinct from Tag: no dot, pill shape, inline flow. */
-export function Badge(props: BadgeProps): JSX.Element;
+export function Badge(props: BadgeProps): React.ReactElement;

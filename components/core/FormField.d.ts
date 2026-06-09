@@ -17,4 +17,4 @@ export interface FormFieldProps {
 }
 
 /** Slot-based form wrapper: label → hint → children → error. */
-export function FormField(props: FormFieldProps): JSX.Element;
+export function FormField(props: FormFieldProps): React.ReactElement;

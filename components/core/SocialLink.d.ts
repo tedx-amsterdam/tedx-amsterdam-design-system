@@ -10,4 +10,4 @@ export interface SocialLinkProps {
 }
 
 /** White social icon + label that reddens on hover. */
-export function SocialLink(props: SocialLinkProps): JSX.Element;
+export function SocialLink(props: SocialLinkProps): React.ReactElement;

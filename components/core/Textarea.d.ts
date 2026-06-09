@@ -16,4 +16,4 @@ export interface TextareaProps {
 }
 
 /** Multi-line text input matching the Input underline style. */
-export function Textarea(props: TextareaProps): JSX.Element;
+export function Textarea(props: TextareaProps): React.ReactElement;

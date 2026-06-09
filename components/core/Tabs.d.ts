@@ -17,4 +17,4 @@ export interface TabsProps {
 }
 
 /** Tabbed switcher. Active tab: red bottom border. Arrow keys navigate between tabs. */
-export function Tabs(props: TabsProps): JSX.Element;
+export function Tabs(props: TabsProps): React.ReactElement;

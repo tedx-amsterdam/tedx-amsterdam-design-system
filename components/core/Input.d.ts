@@ -13,4 +13,4 @@ export interface InputProps {
 }
 
 /** Underline form field; rule turns red on focus. */
-export function Input(props: InputProps): JSX.Element;
+export function Input(props: InputProps): React.ReactElement;
