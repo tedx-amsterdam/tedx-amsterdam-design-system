@@ -30,7 +30,7 @@ export function FormField({ label, htmlFor, hint, error, required = false, child
       )}
       {children}
       {error && (
-        <span id={errorId} role="alert" style={{ font: "var(--text-tag)", color: "var(--tedx-red)" }}>
+        <span id={errorId} aria-live="polite" style={{ font: "var(--text-tag)", color: "var(--tedx-red)" }}>
           {error}
         </span>
       )}
