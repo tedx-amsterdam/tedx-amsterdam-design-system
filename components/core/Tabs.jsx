@@ -6,10 +6,18 @@ import React from "react";
  * Keyboard: Left/Right arrows move focus; Enter/Space activates.
  * ARIA: tablist + tab + tabpanel pattern.
  */
-export function Tabs({ tabs = [], defaultIndex = 0, style }) {
-  const [active, setActive] = React.useState(defaultIndex);
+export function Tabs({ tabs = [], defaultIndex = 0, selectedIndex, onTabChange, style }) {
+  const [internalActive, setInternalActive] = React.useState(defaultIndex);
   const uid = React.useId();
   const tabRefs = React.useRef([]);
+
+  const isControlled = selectedIndex !== undefined;
+  const active = isControlled ? selectedIndex : internalActive;
+
+  const setActive = (i) => {
+    if (!isControlled) setInternalActive(i);
+    onTabChange?.(i);
+  };
 
   const onKeyDown = (e, i) => {
     if (e.key === "ArrowRight") {
