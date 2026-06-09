@@ -150,7 +150,7 @@ export function NavigationBar({
 
       {menuOpen && (
         <div id={menuId} style={{ background: "var(--bg-base)", borderBottom: "1px solid var(--border-hairline)", padding: "var(--space-6) var(--gutter)", display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-          <nav aria-label="Main navigation">
+          <nav aria-label="Mobile navigation">
             {links.map((link) => (
               <a key={link.href} href={link.href}
                 onClick={() => setMenuOpen(false)}

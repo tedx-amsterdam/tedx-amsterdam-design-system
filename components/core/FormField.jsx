@@ -8,7 +8,7 @@ import React from "react";
  * without repeating markup.
  */
 export function FormField({ label, htmlFor, hint, error, required = false, children, style }) {
-  const errorId = error && htmlFor ? `${htmlFor}-formfield-error` : undefined;
+  const errorId = htmlFor ? `${htmlFor}-formfield-error` : undefined;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)", ...style }}>
@@ -29,11 +29,13 @@ export function FormField({ label, htmlFor, hint, error, required = false, child
         <span style={{ font: "var(--text-tag)", color: "var(--text-muted)" }}>{hint}</span>
       )}
       {children}
-      {error && (
-        <span id={errorId} aria-live="polite" style={{ font: "var(--text-tag)", color: "var(--tedx-red)" }}>
-          {error}
-        </span>
-      )}
+      <span
+        id={htmlFor ? `${htmlFor}-formfield-error` : undefined}
+        aria-live="polite"
+        style={{ font: "var(--text-tag)", color: "var(--tedx-red)", minHeight: "1em" }}
+      >
+        {error ?? ""}
+      </span>
     </div>
   );
 }
