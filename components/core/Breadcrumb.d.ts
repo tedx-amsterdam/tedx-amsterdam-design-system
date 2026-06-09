@@ -14,4 +14,4 @@ export interface BreadcrumbProps {
 }
 
 /** Hierarchical navigation trail. Last item is current page. */
-export function Breadcrumb(props: BreadcrumbProps): JSX.Element;
+export function Breadcrumb(props: BreadcrumbProps): React.ReactElement;

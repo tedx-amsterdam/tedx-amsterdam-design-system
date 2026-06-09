@@ -10,4 +10,4 @@ export interface TagProps {
 }
 
 /** Uppercase eyebrow / meta label. Red by default. */
-export function Tag(props: TagProps): JSX.Element;
+export function Tag(props: TagProps): React.ReactElement;

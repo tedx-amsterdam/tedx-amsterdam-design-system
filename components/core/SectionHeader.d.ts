@@ -14,4 +14,4 @@ export interface SectionHeaderProps {
 }
 
 /** Eyebrow + heading + description + arrow-link section intro. */
-export function SectionHeader(props: SectionHeaderProps): JSX.Element;
+export function SectionHeader(props: SectionHeaderProps): React.ReactElement;

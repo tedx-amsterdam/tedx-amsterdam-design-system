@@ -22,4 +22,4 @@ export interface MediaCardProps {
 /**
  * Image-led blog / event card with corner category label.
  */
-export function MediaCard(props: MediaCardProps): JSX.Element;
+export function MediaCard(props: MediaCardProps): React.ReactElement;

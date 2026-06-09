@@ -12,4 +12,4 @@ export interface LogoProps {
 }
 
 /** Locked-up red TEDx + Amsterdam wordmark. */
-export function Logo(props: LogoProps): JSX.Element;
+export function Logo(props: LogoProps): React.ReactElement;

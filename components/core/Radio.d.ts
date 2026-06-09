@@ -19,4 +19,4 @@ export interface RadioProps {
 }
 
 /** Radio button group. Selected option shows red dot. Uses fieldset/legend for a11y. */
-export function Radio(props: RadioProps): JSX.Element;
+export function Radio(props: RadioProps): React.ReactElement;

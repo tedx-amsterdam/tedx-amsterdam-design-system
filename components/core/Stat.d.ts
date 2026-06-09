@@ -11,4 +11,4 @@ export interface StatProps {
 }
 
 /** Oversized stat figure with supporting label. */
-export function Stat(props: StatProps): JSX.Element;
+export function Stat(props: StatProps): React.ReactElement;

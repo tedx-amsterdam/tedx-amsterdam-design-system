@@ -23,4 +23,4 @@ export interface SelectProps {
 }
 
 /** Branded native dropdown matching the Input underline style. */
-export function Select(props: SelectProps): JSX.Element;
+export function Select(props: SelectProps): React.ReactElement;
