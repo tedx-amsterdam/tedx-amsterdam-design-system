@@ -18,7 +18,7 @@ describe('Button', () => {
     const btn = screen.getByRole('button');
 
     // Track whether style was set via React (style prop) vs direct mutation
-    const styleSetSpy = jest.spyOn(btn.style, 'setProperty');
+    const styleSetSpy = vi.spyOn(btn.style, 'setProperty');
 
     fireEvent.mouseEnter(btn);
     // React drives the style object — direct .style.setProperty must NOT be called
