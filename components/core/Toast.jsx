@@ -32,6 +32,7 @@ export function Toast({ message, type = "info", duration = 4000, onDismiss, styl
     <div
       role={isUrgent ? "alert" : "status"}
       aria-live={isUrgent ? "assertive" : "polite"}
+      aria-atomic="true"
       style={{
         position: "fixed",
         bottom: "var(--space-6)",
