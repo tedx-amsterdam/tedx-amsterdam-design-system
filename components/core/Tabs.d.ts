@@ -7,8 +7,12 @@ export interface TabItem {
 
 export interface TabsProps {
   tabs: TabItem[];
-  /** Initially active tab index. @default 0 */
+  /** Initially active tab index (uncontrolled). @default 0 */
   defaultIndex?: number;
+  /** Active tab index (controlled). Provide onTabChange alongside this. */
+  selectedIndex?: number;
+  /** Called with the new index when a tab is activated. */
+  onTabChange?: (index: number) => void;
   style?: React.CSSProperties;
 }
 
