@@ -17,6 +17,8 @@ export interface NavigationBarProps {
   activePath?: string;
   /** Asset path prefix. Use `"../../"` from nested HTML files. @default "" */
   base?: string;
+  /** href for the skip-to-content link. @default "#main-content" */
+  skipTarget?: string;
   style?: React.CSSProperties;
 }
 
