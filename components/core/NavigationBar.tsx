@@ -44,8 +44,7 @@ export function NavigationBar({
   style,
 }: NavigationBarProps): React.ReactElement {
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const uid = React.useId();
-  const menuId = `nav-mobile-menu-${uid}`;
+  const menuId = `nav-mobile-menu-${React.useId()}`;
   const hamburgerRef = React.useRef<HTMLButtonElement>(null);
 
   React.useEffect(() => {
