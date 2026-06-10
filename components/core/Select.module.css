@@ -1,0 +1,79 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font: var(--text-body);
+  font-size: 16px;
+  color: var(--text-primary);
+  opacity: 0.85;
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.select {
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-hairline);
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-right: var(--space-8);
+  padding-left: 0;
+  font: var(--text-body);
+  font-size: 16px;
+  color: var(--text-primary);
+  cursor: pointer;
+  opacity: 1;
+  outline: none;
+  transition: border-color var(--dur) var(--ease-standard);
+}
+
+/* Placeholder state — no value selected */
+.select.placeholder {
+  color: var(--text-secondary);
+}
+
+/* Error state */
+.select.error {
+  border-bottom-color: var(--tedx-red);
+}
+
+/* Disabled state */
+.select.disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* Focus via CSS — no JS state */
+.select:focus {
+  border-bottom-color: var(--tedx-red);
+}
+
+.select.error:focus {
+  border-bottom-color: var(--tedx-red);
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.chevron {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-secondary);
+}
+
+.errorMsg {
+  font: var(--text-tag);
+  color: var(--tedx-red);
+}

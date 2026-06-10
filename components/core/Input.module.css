@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Label colour by tone */
+.dark .label {
+  color: var(--tedx-white);
+}
+
+.light .label {
+  color: var(--tedx-black);
+}
+
+.label {
+  font: var(--text-body);
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+.input {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 8px 0;
+  font: var(--text-body);
+  /* colour inherited from wrapper tone via currentColor cascade */
+  color: inherit;
+  outline: none;
+  transition: border-color var(--dur) var(--ease-standard),
+    outline var(--dur-fast) var(--ease-standard);
+}
+
+/* For the dark tone, override border colour to a translucent dark */
+.light .input {
+  border-bottom-color: rgba(0, 0, 0, 0.3);
+}
+
+.input:focus {
+  border-bottom-color: var(--tedx-red);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
