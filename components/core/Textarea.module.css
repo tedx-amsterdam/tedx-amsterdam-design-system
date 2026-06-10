@@ -6,7 +6,7 @@
 
 .label {
   font: var(--text-body);
-  font-size: 16px;
+  font-size: var(--fs-body-sm);
   color: var(--text-primary);
   opacity: 0.85;
 }
@@ -18,7 +18,7 @@
   border-bottom: 1px solid var(--border-hairline);
   padding: var(--space-2) 0;
   font: var(--text-body);
-  font-size: 16px;
+  font-size: var(--fs-body-sm);
   font-family: var(--font-sans);
   color: var(--text-primary);
   resize: vertical;

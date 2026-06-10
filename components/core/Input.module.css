@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 /* Label colour by tone */
@@ -15,7 +15,7 @@
 
 .label {
   font: var(--text-body);
-  font-size: 16px;
+  font-size: var(--fs-body-sm);
   opacity: 0.85;
 }
 
@@ -24,7 +24,7 @@
   background: transparent;
   border: none;
   border-bottom: 1px solid var(--border-hairline);
-  padding: 8px 0;
+  padding: var(--space-2) 0;
   font: var(--text-body);
   /* colour inherited from wrapper tone via currentColor cascade */
   color: inherit;
@@ -45,4 +45,14 @@
 .input:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
+}
+
+/* Error state */
+.input.error {
+  border-bottom-color: var(--tedx-red);
+}
+
+.errorMsg {
+  font: var(--text-tag);
+  color: var(--tedx-red);
 }
