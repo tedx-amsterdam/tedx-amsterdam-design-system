@@ -46,3 +46,11 @@
   font-size: 16px;
   color: var(--text-muted);
 }
+
+.date {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}

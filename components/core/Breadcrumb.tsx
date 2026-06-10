@@ -22,7 +22,7 @@ export function Breadcrumb({ items = [], ariaLabel = 'Breadcrumb', style }: Brea
         {items.map((item, i) => {
           const isCurrent = i === items.length - 1;
           return (
-            <li key={i} className={styles.item}>
+            <li key={item.href ?? item.label} className={styles.item}>
               {!isCurrent && item.href ? (
                 <a href={item.href} className={styles.link}>
                   {item.label}

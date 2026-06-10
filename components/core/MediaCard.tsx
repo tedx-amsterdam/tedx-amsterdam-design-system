@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tag } from './Tag';
 import styles from './MediaCard.module.css';
 
 export interface MediaCardProps {
@@ -60,9 +59,9 @@ export function MediaCard({
         </p>
       )}
       {date && (
-        <Tag color="white" dot style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400, fontSize: 16 }}>
+        <span className={styles.date}>
           {date}
-        </Tag>
+        </span>
       )}
     </a>
   );
