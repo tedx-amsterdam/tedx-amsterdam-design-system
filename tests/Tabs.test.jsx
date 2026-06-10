@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Tabs } from '../components/core/Tabs.jsx';
+import { Tabs } from '../components/core/Tabs';
 
 const TABS = [
   { label: 'Alpha', content: <p>Alpha content</p> },

@@ -1,0 +1,36 @@
+.root {}
+
+.tablist {
+  display: flex;
+  border-bottom: 1px solid var(--border-hairline);
+  margin-bottom: var(--space-6);
+}
+
+.tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px; /* overlap the tablist hairline border */
+  cursor: pointer;
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  font-size: var(--fs-tag);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard);
+}
+
+.tab.active {
+  border-bottom-color: var(--tedx-red);
+  color: var(--text-primary);
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
