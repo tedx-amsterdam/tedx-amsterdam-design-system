@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { CheckboxGroup } from '../components/core/CheckboxGroup.jsx';
-import { Checkbox } from '../components/core/Checkbox.jsx';
+import { CheckboxGroup } from '../components/core/CheckboxGroup';
+import { Checkbox } from '../components/core/Checkbox';
 
 describe('CheckboxGroup', () => {
   it('renders a fieldset with a legend', () => {

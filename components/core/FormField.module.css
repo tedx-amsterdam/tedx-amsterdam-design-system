@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font: var(--text-body);
+  font-size: 16px;
+  color: var(--text-primary);
+  opacity: 0.85;
+}
+
+.required {
+  color: var(--tedx-red);
+  margin-left: 2px;
+}
+
+.hint {
+  font: var(--text-tag);
+  color: var(--text-muted);
+}
+
+.error {
+  font: var(--text-tag);
+  color: var(--tedx-red);
+  min-height: 1em;
+}
