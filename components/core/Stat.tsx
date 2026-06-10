@@ -14,14 +14,13 @@ export interface StatProps {
 
 /** Oversized stat figure with supporting label. */
 export function Stat({ value, label, size = 'lg', style }: StatProps): React.ReactElement {
-  const labelPaddingTop = size === 'xl' ? 24 : 14;
   return (
     <div className={styles.root} style={style}>
       <span className={cn(styles.value, styles[size])}>
         {value}
       </span>
       {label && (
-        <span className={styles.label} style={{ paddingTop: labelPaddingTop }}>
+        <span className={cn(styles.label, size === 'xl' && styles.labelXl)}>
           {label}
         </span>
       )}
