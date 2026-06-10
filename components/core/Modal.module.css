@@ -1,0 +1,54 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  z-index: 1000;
+}
+
+.dialog {
+  background: var(--bg-elevated);
+  border-top: 2px solid var(--tedx-red);
+  border-radius: var(--radius-card);
+  width: 100%;
+  padding: var(--space-8);
+  position: relative;
+  box-shadow: var(--shadow-card);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  margin: 0;
+  font: var(--text-h3);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-display);
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 24px;
+  line-height: 1;
+  padding: var(--space-1);
+  margin-left: var(--space-4);
+  flex: none;
+}
+
+.body {
+  color: var(--text-secondary);
+  font: var(--text-body);
+  font-size: 16px;
+}

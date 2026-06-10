@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Toast } from '../components/core/Toast.jsx';
+import { Toast } from '../components/core/Toast';
 
 describe('Toast', () => {
   it('has aria-atomic="true" on the live region', () => {
