@@ -30,8 +30,8 @@ export function Textarea({
   style,
   ...rest
 }: TextareaProps & Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, keyof TextareaProps>): React.ReactElement {
-  const taId = id || `textarea-${String(label).toLowerCase().replace(/\s+/g, '-')}`;
-  const errorId = error ? `${taId}-error` : undefined;
+  const taId = id || (label ? `textarea-${String(label).toLowerCase().replace(/\s+/g, '-')}` : undefined);
+  const errorId = taId && error ? `${taId}-error` : undefined;
 
   return (
     <div className={styles.wrapper} style={style}>

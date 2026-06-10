@@ -37,8 +37,8 @@ export function Select({
   style,
   ...rest
 }: SelectProps & Omit<React.SelectHTMLAttributes<HTMLSelectElement>, keyof SelectProps>): React.ReactElement {
-  const selectId = id || `select-${String(label).toLowerCase().replace(/\s+/g, '-')}`;
-  const errorId = error ? `${selectId}-error` : undefined;
+  const selectId = id || (label ? `select-${String(label).toLowerCase().replace(/\s+/g, '-')}` : undefined);
+  const errorId = selectId && error ? `${selectId}-error` : undefined;
   const hasValue = Boolean(value);
 
   return (
