@@ -46,12 +46,17 @@ if (!jsOut) throw new Error('esbuild produced no JS output');
 // Convert the ESM named exports into window.TEDxAmsterdamDesignSystem assignments.
 let esmCode = jsOut.text;
 const exportMatch = esmCode.match(/^export\s*\{([^}]+)\}\s*;?\s*$/m);
-const exportedNames = exportMatch
-  ? exportMatch[1].split(',').map(s => s.trim().split(/\s+as\s+/).pop().trim())
-  : COMPONENTS;
-esmCode = esmCode.replace(/^export\s*\{[^}]+\}\s*;?\s*$/m, '');
+const exportedPairs = exportMatch
+  ? exportMatch[1].split(',').map(s => {
+      const parts = s.trim().split(/\s+as\s+/);
+      return { internal: parts[0].trim(), public: parts[parts.length - 1].trim() };
+    })
+  : COMPONENTS.map(n => ({ internal: n, public: n }));
+esmCode = esmCode.replace(/^export\s*\{[^}]+\}\s*;?\s*$/gm, '');
 
-const assigns = exportedNames.map(n => `  __ds_ns.${n} = typeof ${n} !== 'undefined' ? ${n} : undefined;`).join('\n');
+const assigns = exportedPairs
+  .map(p => `  __ds_ns.${p.public} = typeof ${p.internal} !== 'undefined' ? ${p.internal} : undefined;`)
+  .join('\n');
 
 const iife = [
   '// TEDxAmsterdam Design System — browser bundle',
