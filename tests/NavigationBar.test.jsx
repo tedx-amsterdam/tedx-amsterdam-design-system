@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { NavigationBar } from '../components/core/NavigationBar.jsx';
+import { NavigationBar } from '../components/core/NavigationBar';
 
 const LINKS = [
   { href: '/about', label: 'About' },

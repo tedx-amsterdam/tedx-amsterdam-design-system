@@ -1,0 +1,123 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--border-hairline);
+  box-sizing: border-box;
+}
+
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 16px;
+  z-index: 200;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-button);
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  font-size: 14px;
+  text-decoration: none;
+  transition: top var(--dur-fast) var(--ease-standard);
+}
+.skipLink:focus {
+  top: 8px;
+}
+
+.bar {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
+  gap: var(--space-8);
+}
+
+.logoLink {
+  display: inline-flex;
+  text-decoration: none;
+  flex: none;
+}
+.logoImg {
+  width: 160px;
+  height: auto;
+  display: block;
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-left: auto;
+}
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.navLink {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  font-size: var(--fs-tag);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.navLink.active {
+  color: var(--text-accent);
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  font-size: 14px;
+  padding: 12px 24px;
+  background: var(--tedx-red);
+  color: var(--tedx-white);
+  border-radius: var(--radius-button);
+  text-decoration: none;
+  flex: none;
+  line-height: 1;
+}
+
+.hamburger {
+  display: none;
+  align-items: center;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  padding: var(--space-2);
+}
+
+.mobileMenu {
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--border-hairline);
+  padding: var(--space-6) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.mobileLink {
+  display: block;
+  padding: var(--space-2) 0;
+}
+.mobileCta {
+  align-self: flex-start;
+}
+
+@media (max-width: 767px) {
+  .desktopNav {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
