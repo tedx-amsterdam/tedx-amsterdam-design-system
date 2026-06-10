@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { FormField } from '../components/core/FormField.jsx';
+import { FormField } from '../components/core/FormField';
 
 describe('FormField', () => {
   it('renders label text', () => {

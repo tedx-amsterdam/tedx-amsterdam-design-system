@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { RadioGroup } from '../components/core/RadioGroup.jsx';
+import { RadioGroup } from '../components/core/RadioGroup';
 
 describe('RadioGroup', () => {
   it('renders a fieldset with a legend', () => {
