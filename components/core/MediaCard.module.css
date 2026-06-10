@@ -1,0 +1,48 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.imgOuter {
+  position: relative;
+  overflow: hidden;
+  background: var(--grad-tile);
+}
+
+.imgInner {
+  position: absolute;
+  inset: 0;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.card:hover .imgInner {
+  transform: scale(1.04);
+}
+
+.category {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  font: var(--text-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--tedx-white);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.title {
+  margin: 0;
+  font: 700 22px/1.15 var(--font-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+}
+
+.description {
+  margin: 0;
+  font: var(--text-body);
+  font-size: 16px;
+  color: var(--text-muted);
+}

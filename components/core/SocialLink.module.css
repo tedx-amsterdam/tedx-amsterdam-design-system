@@ -1,0 +1,20 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font: var(--text-body);
+  color: var(--text-primary);
+  transition: color var(--dur) var(--ease-standard);
+}
+
+.link:hover {
+  color: var(--tedx-red);
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}

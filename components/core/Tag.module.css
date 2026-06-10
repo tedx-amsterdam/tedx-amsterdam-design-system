@@ -1,0 +1,33 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-tag);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Color variants */
+.red {
+  color: var(--tedx-red);
+}
+
+.white {
+  color: var(--tedx-white);
+}
+
+.muted {
+  color: var(--tedx-gray-400);
+}
+
+/* Dot bullet */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tedx-red);
+  flex: none;
+}

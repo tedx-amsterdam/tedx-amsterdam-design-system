@@ -1,0 +1,9 @@
+.wrap {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.img {
+  height: auto;
+  display: block;
+}

@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.value {
+  letter-spacing: var(--ls-display);
+  color: var(--text-primary);
+  line-height: 1;
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+
+/* Size variants for value */
+.xl {
+  font-size: 140px;
+}
+
+.lg {
+  font-size: 80px;
+}
+
+.md {
+  font-size: 56px;
+}
+
+.label {
+  font: var(--text-body);
+  color: var(--text-secondary);
+  max-width: 170px;
+}
