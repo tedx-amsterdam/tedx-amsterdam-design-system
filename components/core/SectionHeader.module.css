@@ -1,0 +1,33 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 540px;
+}
+
+.left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font: var(--text-h2);
+  letter-spacing: var(--ls-display);
+  color: var(--text-primary);
+}
+
+.description {
+  margin: 0;
+  font: var(--text-body);
+  color: var(--text-secondary);
+}
+
+.linkWrap {
+  margin-top: 4px;
+}
