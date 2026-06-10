@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Button } from '../components/core/Button.jsx';
+import { Button } from '../components/core/Button';
 
 describe('Button', () => {
   it('renders children inside a button element', () => {

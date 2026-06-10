@@ -1,0 +1,28 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-button);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background var(--dur) var(--ease-standard),
+    transform var(--dur-fast) var(--ease-standard),
+    opacity var(--dur) var(--ease-standard);
+}
+
+.sm { font-size: 14px; padding: 12px 24px; }
+.md { font-size: 14px; padding: 16px 30px; }
+.lg { font-size: 16px; padding: 22px 34px; }
+
+/* border and color only — background comes from inline style via useState */
+.primary   { border: none; color: var(--tedx-white); }
+.secondary { border: none; color: var(--tedx-black); }
+.ghost     { border: 1.5px solid var(--border-hairline); color: var(--tedx-white); }
+
+.arrow { display: inline-flex; align-items: center; }
