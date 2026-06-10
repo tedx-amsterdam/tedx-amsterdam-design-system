@@ -8,5 +8,11 @@
     "noEmit": true,
     "skipLibCheck": false
   },
-  "include": ["components/**/*.d.ts"]
+  "include": [
+    "components/**/*.tsx",
+    "components/**/*.ts"
+  ],
+  "exclude": [
+    "components/core/index.ts"
+  ]
 }
