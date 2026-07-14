@@ -170,11 +170,15 @@
   letter-spacing: 0.01em;
   border-radius: var(--radius-button);
   text-decoration: none;
+  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition:
     background var(--dur) var(--ease-standard),
     transform var(--dur-fast) var(--ease-standard),
     opacity var(--dur) var(--ease-standard);
+}
+.Button_btn:active:not(.Button_disabled) {
+  transform: scale(0.97);
 }
 .Button_sm {
   font-size: 14px;
@@ -191,14 +195,30 @@
 .Button_primary {
   border: none;
   color: var(--tedx-white);
+  background: var(--tedx-red);
+}
+.Button_primary:hover:not(.Button_disabled) {
+  background: var(--accent-hover);
 }
 .Button_secondary {
   border: none;
   color: var(--tedx-black);
+  background: var(--tedx-white);
+}
+.Button_secondary:hover:not(.Button_disabled) {
+  background: var(--surface-light-hover);
 }
 .Button_ghost {
   border: 1.5px solid var(--border-hairline);
   color: var(--tedx-white);
+  background: transparent;
+}
+.Button_ghost:hover:not(.Button_disabled) {
+  background: var(--tedx-white-08);
+}
+.Button_disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
 }
 .Button_arrow {
   display: inline-flex;

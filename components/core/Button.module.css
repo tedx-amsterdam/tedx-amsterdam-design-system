@@ -9,6 +9,7 @@
   letter-spacing: 0.01em;
   border-radius: var(--radius-button);
   text-decoration: none;
+  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition:
     background var(--dur) var(--ease-standard),
@@ -16,13 +17,21 @@
     opacity var(--dur) var(--ease-standard);
 }
 
+.btn:active:not(.disabled) { transform: scale(0.97); }
+
 .sm { font-size: 14px; padding: 12px 24px; }
 .md { font-size: 14px; padding: 16px 30px; }
 .lg { font-size: 16px; padding: 22px 34px; }
 
-/* border and color only — background comes from inline style via useState */
-.primary   { border: none; color: var(--tedx-white); }
-.secondary { border: none; color: var(--tedx-black); }
-.ghost     { border: 1.5px solid var(--border-hairline); color: var(--tedx-white); }
+.primary { border: none; color: var(--tedx-white); background: var(--tedx-red); }
+.primary:hover:not(.disabled) { background: var(--accent-hover); }
+
+.secondary { border: none; color: var(--tedx-black); background: var(--tedx-white); }
+.secondary:hover:not(.disabled) { background: var(--surface-light-hover); }
+
+.ghost { border: 1.5px solid var(--border-hairline); color: var(--tedx-white); background: transparent; }
+.ghost:hover:not(.disabled) { background: var(--tedx-white-08); }
+
+.disabled { cursor: not-allowed; opacity: 0.45; }
 
 .arrow { display: inline-flex; align-items: center; }
