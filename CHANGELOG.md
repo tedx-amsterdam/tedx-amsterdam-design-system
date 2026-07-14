@@ -6,6 +6,13 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased]
+
+### Fixed
+- Align `@types/react`/`@types/react-dom` with React 18; commit `package-lock.json` for reproducible CI installs.
+
+---
+
 ## [1.1.0] — 2026-06-09
 
 ### Added
