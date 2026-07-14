@@ -141,12 +141,10 @@ function Breadcrumb({ items = [], ariaLabel = "Breadcrumb", style }) {
   }) }) });
 }
 
-// components/core/Button.tsx
-import React2 from "react";
-
 // components/core/Button.module.css
 var Button_default = {
   btn: "Button_btn",
+  disabled: "Button_disabled",
   sm: "Button_sm",
   md: "Button_md",
   lg: "Button_lg",
@@ -157,81 +155,56 @@ var Button_default = {
 };
 
 // components/core/Button.tsx
-import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
-var BASE_BG = {
-  primary: "var(--tedx-red)",
-  secondary: "var(--tedx-white)",
-  ghost: "transparent"
-};
-var HOVER_BG = {
-  primary: "var(--accent-hover)",
-  secondary: "#eaeaea",
-  ghost: "rgba(255,255,255,0.08)"
-};
+import { Fragment, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
 function Button({
   variant = "primary",
   size = "md",
   disabled = false,
   arrow = false,
+  className,
   style,
   children,
   ...rest
 }) {
-  const [hovered, setHovered] = React2.useState(false);
-  const [pressed, setPressed] = React2.useState(false);
-  const isHovered = hovered && !disabled;
-  const isPressed = pressed && !disabled;
-  const dynamicStyle = {
-    background: isHovered ? HOVER_BG[variant] : BASE_BG[variant],
-    transform: isPressed ? "scale(0.97)" : "scale(1)",
-    cursor: disabled ? "not-allowed" : "pointer",
-    opacity: disabled ? 0.45 : 1,
-    ...style
+  const classes = cn(Button_default.btn, Button_default[variant], Button_default[size], disabled && Button_default.disabled, className);
+  const handleClick = (e) => {
+    if (disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    rest.onClick?.(e);
   };
-  const Tag2 = rest.href ? "a" : "button";
-  if (Tag2 === "a") {
+  const content = /* @__PURE__ */ jsxs4(Fragment, { children: [
+    children,
+    arrow && /* @__PURE__ */ jsx5("span", { className: Button_default.arrow, "aria-hidden": "true", children: "\u2192" })
+  ] });
+  if (rest.href !== void 0) {
     const { href, ...anchorRest } = rest;
-    return /* @__PURE__ */ jsxs4(
+    return /* @__PURE__ */ jsx5(
       "a",
       {
-        href,
-        className: cn(Button_default.btn, Button_default[variant], Button_default[size]),
-        style: dynamicStyle,
-        onMouseEnter: () => setHovered(true),
-        onMouseLeave: () => {
-          setHovered(false);
-          setPressed(false);
-        },
-        onMouseDown: () => setPressed(true),
-        onMouseUp: () => setPressed(false),
         ...anchorRest,
-        children: [
-          children,
-          arrow && /* @__PURE__ */ jsx5("span", { className: Button_default.arrow, "aria-hidden": "true", children: "\u2192" })
-        ]
+        href: disabled ? void 0 : href,
+        "aria-disabled": disabled || void 0,
+        className: classes,
+        style,
+        onClick: handleClick,
+        children: content
       }
     );
   }
-  const { ...buttonRest } = rest;
-  return /* @__PURE__ */ jsxs4(
+  const buttonRest = rest;
+  return /* @__PURE__ */ jsx5(
     "button",
     {
-      type: "button",
-      "aria-disabled": disabled,
-      className: cn(Button_default.btn, Button_default[variant], Button_default[size]),
-      style: dynamicStyle,
-      onMouseEnter: () => setHovered(true),
-      onMouseLeave: () => {
-        setHovered(false);
-        setPressed(false);
-      },
-      onMouseDown: () => setPressed(true),
-      onMouseUp: () => setPressed(false),
       ...buttonRest,
-      children: [
-        children,
-        arrow && /* @__PURE__ */ jsx5("span", { className: Button_default.arrow, "aria-hidden": "true", children: "\u2192" })
-      ]
+      type: buttonRest.type ?? "button",
+      "aria-disabled": disabled || void 0,
+      className: classes,
+      style,
+      onClick: handleClick,
+      children: content
     }
   );
 }
@@ -471,7 +444,7 @@ function MediaCard({
 }
 
 // components/core/Modal.tsx
-import React3 from "react";
+import React2 from "react";
 
 // components/core/Modal.module.css
 var Modal_default = {
@@ -491,9 +464,9 @@ var maxWidths = {
   lg: 800
 };
 function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton = false, style }) {
-  const dialogRef = React3.useRef(null);
-  const titleId = `modal-title-${React3.useId()}`;
-  React3.useEffect(() => {
+  const dialogRef = React2.useRef(null);
+  const titleId = `modal-title-${React2.useId()}`;
+  React2.useEffect(() => {
     if (!isOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -506,7 +479,7 @@ function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton 
       document.removeEventListener("keydown", onKey);
     };
   }, [isOpen, onClose]);
-  React3.useEffect(() => {
+  React2.useEffect(() => {
     if (!isOpen || !dialogRef.current) return;
     const getFirst = () => dialogRef.current?.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -565,7 +538,7 @@ function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton 
 }
 
 // components/core/NavigationBar.tsx
-import React4 from "react";
+import React3 from "react";
 
 // components/core/NavigationBar.module.css
 var NavigationBar_default = {
@@ -586,7 +559,7 @@ var NavigationBar_default = {
 };
 
 // components/core/NavigationBar.tsx
-import { Fragment, jsx as jsx13, jsxs as jsxs11 } from "react/jsx-runtime";
+import { Fragment as Fragment2, jsx as jsx13, jsxs as jsxs11 } from "react/jsx-runtime";
 function NavigationBar({
   links = [],
   ctaLabel,
@@ -597,10 +570,10 @@ function NavigationBar({
   skipTarget = "#main-content",
   style
 }) {
-  const [menuOpen, setMenuOpen] = React4.useState(false);
-  const menuId = `nav-mobile-menu-${React4.useId()}`;
-  const hamburgerRef = React4.useRef(null);
-  React4.useEffect(() => {
+  const [menuOpen, setMenuOpen] = React3.useState(false);
+  const menuId = `nav-mobile-menu-${React3.useId()}`;
+  const hamburgerRef = React3.useRef(null);
+  React3.useEffect(() => {
     if (!menuOpen) return;
     const onKey = (e) => {
       if (e.key === "Escape") {
@@ -639,10 +612,10 @@ function NavigationBar({
           "aria-controls": menuId,
           "aria-label": menuOpen ? "Close menu" : "Open menu",
           onClick: () => setMenuOpen(!menuOpen),
-          children: /* @__PURE__ */ jsx13("svg", { "aria-hidden": "true", width: "24", height: "18", viewBox: "0 0 24 18", fill: "none", children: menuOpen ? /* @__PURE__ */ jsxs11(Fragment, { children: [
+          children: /* @__PURE__ */ jsx13("svg", { "aria-hidden": "true", width: "24", height: "18", viewBox: "0 0 24 18", fill: "none", children: menuOpen ? /* @__PURE__ */ jsxs11(Fragment2, { children: [
             /* @__PURE__ */ jsx13("line", { x1: "2", y1: "2", x2: "22", y2: "16", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" }),
             /* @__PURE__ */ jsx13("line", { x1: "22", y1: "2", x2: "2", y2: "16", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" })
-          ] }) : /* @__PURE__ */ jsxs11(Fragment, { children: [
+          ] }) : /* @__PURE__ */ jsxs11(Fragment2, { children: [
             /* @__PURE__ */ jsx13("line", { x1: "0", y1: "2", x2: "24", y2: "2", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" }),
             /* @__PURE__ */ jsx13("line", { x1: "0", y1: "9", x2: "24", y2: "9", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" }),
             /* @__PURE__ */ jsx13("line", { x1: "0", y1: "16", x2: "24", y2: "16", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" })
@@ -728,7 +701,7 @@ function Radio({ legend, options = [], value, onChange, name, disabled = false, 
 }
 
 // components/core/RadioGroup.tsx
-import React5 from "react";
+import React4 from "react";
 
 // components/core/RadioGroup.module.css
 var RadioGroup_default = {
@@ -778,9 +751,9 @@ function RadioOption({ value, label, _name, _groupValue, _onChange, _disabled })
 function RadioGroupRoot({ name, legend, value, onChange, disabled = false, children, style }) {
   return /* @__PURE__ */ jsxs13("fieldset", { className: RadioGroup_default.fieldset, style, children: [
     legend && /* @__PURE__ */ jsx15("legend", { className: RadioGroup_default.legend, children: legend }),
-    React5.Children.map(
+    React4.Children.map(
       children,
-      (child) => React5.isValidElement(child) ? React5.cloneElement(child, {
+      (child) => React4.isValidElement(child) ? React4.cloneElement(child, {
         _name: name,
         _groupValue: value,
         _onChange: onChange,
@@ -991,7 +964,7 @@ function Stat({ value, label, size = "lg", style }) {
 }
 
 // components/core/Tabs.tsx
-import React6 from "react";
+import React5 from "react";
 
 // components/core/Tabs.module.css
 var Tabs_default = {
@@ -1005,9 +978,9 @@ var Tabs_default = {
 // components/core/Tabs.tsx
 import { jsx as jsx21, jsxs as jsxs19 } from "react/jsx-runtime";
 function Tabs({ tabs = [], defaultIndex = 0, selectedIndex, onTabChange, style }) {
-  const [internalActive, setInternalActive] = React6.useState(defaultIndex);
-  const uid = React6.useId();
-  const tabRefs = React6.useRef([]);
+  const [internalActive, setInternalActive] = React5.useState(defaultIndex);
+  const uid = React5.useId();
+  const tabRefs = React5.useRef([]);
   const isControlled = selectedIndex !== void 0;
   const active = isControlled ? selectedIndex : internalActive;
   const setActive = (i) => {
@@ -1110,7 +1083,7 @@ function Textarea({
 }
 
 // components/core/Toast.tsx
-import React7 from "react";
+import React6 from "react";
 
 // components/core/Toast.module.css
 var Toast_default = {
@@ -1124,12 +1097,12 @@ var Toast_default = {
 // components/core/Toast.tsx
 import { jsx as jsx23, jsxs as jsxs21 } from "react/jsx-runtime";
 function Toast({ message, type = "info", duration = 4e3, onDismiss, style }) {
-  const [visible, setVisible] = React7.useState(false);
-  const onDismissRef = React7.useRef(onDismiss);
-  React7.useEffect(() => {
+  const [visible, setVisible] = React6.useState(false);
+  const onDismissRef = React6.useRef(onDismiss);
+  React6.useEffect(() => {
     onDismissRef.current = onDismiss;
   });
-  React7.useEffect(() => {
+  React6.useEffect(() => {
     const enter = setTimeout(() => setVisible(true), 16);
     if (duration > 0) {
       const dismiss = setTimeout(() => {

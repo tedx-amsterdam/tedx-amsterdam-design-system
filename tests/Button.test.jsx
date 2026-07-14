@@ -10,80 +10,55 @@ describe('Button', () => {
 
   it('renders as an anchor when href is provided', () => {
     render(<Button href="/about">About</Button>);
-    expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about');
   });
 
-  it('applies hover background via React state — not direct DOM mutation', () => {
-    render(<Button variant="primary">Hover</Button>);
+  it('applies variant and size classes; state styling lives in CSS, not inline styles', () => {
+    render(<Button variant="secondary" size="lg">Go</Button>);
     const btn = screen.getByRole('button');
-
-    // Track whether style was set via React (style prop) vs direct mutation
-    const styleSetSpy = vi.spyOn(btn.style, 'setProperty');
-
-    fireEvent.mouseEnter(btn);
-    // React drives the style object — direct .style.setProperty must NOT be called
-    expect(styleSetSpy).not.toHaveBeenCalled();
-    // Background should now be the hover value (set via style prop by React)
-    expect(btn.style.background).toBe('var(--accent-hover)');
-
-    fireEvent.mouseLeave(btn);
-    expect(btn.style.background).toBe('var(--tedx-red)');
+    expect(btn.className).toContain('btn');
+    expect(btn.className).toContain('secondary');
+    expect(btn.className).toContain('lg');
+    expect(btn.style.background).toBe('');
+    expect(btn.style.transform).toBe('');
   });
 
-  it('applies press scale via React state', () => {
-    render(<Button>Press</Button>);
-    const btn = screen.getByRole('button');
-
-    fireEvent.mouseDown(btn);
-    expect(btn.style.transform).toBe('scale(0.97)');
-
-    fireEvent.mouseUp(btn);
-    expect(btn.style.transform).toBe('scale(1)');
+  it('merges a consumer className', () => {
+    render(<Button className="consumer">Go</Button>);
+    expect(screen.getByRole('button').className).toContain('consumer');
   });
 
-  it('does not change background on hover when disabled', () => {
-    render(<Button disabled>Disabled</Button>);
-    const btn = screen.getByRole('button');
-    const bgBefore = btn.style.background;
-
-    fireEvent.mouseEnter(btn);
-    expect(btn.style.background).toBe(bgBefore);
+  it('fires onClick when enabled', () => {
+    const onClick = vi.fn();
+    render(<Button onClick={onClick}>Go</Button>);
+    fireEvent.click(screen.getByRole('button'));
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('does not apply press scale when disabled', () => {
-    render(<Button disabled>Disabled</Button>);
-    const btn = screen.getByRole('button');
-
-    fireEvent.mouseDown(btn);
-    expect(btn.style.transform).toBe('scale(1)');
+  it('does NOT fire onClick when disabled', () => {
+    const onClick = vi.fn();
+    render(<Button disabled onClick={onClick}>Nope</Button>);
+    fireEvent.click(screen.getByRole('button'));
+    expect(onClick).not.toHaveBeenCalled();
   });
 
-  it('resets press state on mouseleave without mouseup', () => {
-    render(<Button>Test</Button>);
+  it('sets aria-disabled and the disabled class when disabled', () => {
+    render(<Button disabled>Nope</Button>);
     const btn = screen.getByRole('button');
-
-    fireEvent.mouseDown(btn);
-    expect(btn.style.transform).toBe('scale(0.97)');
-
-    fireEvent.mouseLeave(btn);
-    expect(btn.style.transform).toBe('scale(1)');
+    expect(btn).toHaveAttribute('aria-disabled', 'true');
+    expect(btn.className).toContain('disabled');
   });
 
-  it('secondary variant shows correct hover background', () => {
-    render(<Button variant="secondary">Secondary</Button>);
-    const btn = screen.getByRole('button');
-
-    fireEvent.mouseEnter(btn);
-    // jsdom normalises #eaeaea -> rgb(234, 234, 234)
-    expect(btn.style.background).toBe('rgb(234, 234, 234)');
+  it('renders a disabled link without href so it is not navigable', () => {
+    render(<Button href="/x" disabled>Link</Button>);
+    const el = screen.getByText('Link').closest('a');
+    expect(el).not.toHaveAttribute('href');
+    expect(el).toHaveAttribute('aria-disabled', 'true');
   });
 
-  it('ghost variant shows correct hover background', () => {
-    render(<Button variant="ghost">Ghost</Button>);
-    const btn = screen.getByRole('button');
-
-    fireEvent.mouseEnter(btn);
-    // jsdom normalises rgba(255,255,255,0.08) -> rgba(255, 255, 255, 0.08)
-    expect(btn.style.background).toBe('rgba(255, 255, 255, 0.08)');
+  it('renders the arrow glyph as aria-hidden when arrow is set', () => {
+    render(<Button arrow>Next</Button>);
+    const arrow = screen.getByText('→');
+    expect(arrow).toHaveAttribute('aria-hidden', 'true');
   });
 });
