@@ -9,6 +9,7 @@
     "typecheck": "tsc",
     "lint": "oxlint components scripts tests",
     "build": "node scripts/build-bundle.js",
+    "build:dist": "node scripts/build-dist.js && npm run build:types",
     "build:types": "tsc -p tsconfig.build.json",
     "build:website": "node scripts/build-website.js"
   },
