@@ -8,6 +8,9 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- `npm run lint` (oxlint) across components, scripts, and tests.
+
 ### Fixed
 - Align `@types/react`/`@types/react-dom` with React 18; commit `package-lock.json` for reproducible CI installs.
 
