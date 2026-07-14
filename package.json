@@ -7,6 +7,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc",
+    "lint": "oxlint components scripts tests",
     "build": "node scripts/build-bundle.js",
     "build:website": "node scripts/build-website.js"
   },
@@ -20,6 +21,7 @@
     "esbuild": "^0.25.0",
     "jest-axe": "^9.0.0",
     "jsdom": "^25.0.1",
+    "oxlint": "^1.16.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typescript": "^6.0.3",
