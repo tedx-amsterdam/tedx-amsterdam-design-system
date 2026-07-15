@@ -445,6 +445,7 @@ function MediaCard({
 
 // components/core/Modal.tsx
 import React2 from "react";
+import { createPortal } from "react-dom";
 
 // components/core/Modal.module.css
 var Modal_default = {
@@ -463,33 +464,35 @@ var maxWidths = {
   md: 640,
   lg: 800
 };
-function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton = false, style }) {
+var FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton = false, className, style }) {
   const dialogRef = React2.useRef(null);
+  const restoreFocusRef = React2.useRef(null);
   const titleId = `modal-title-${React2.useId()}`;
   React2.useEffect(() => {
     if (!isOpen) return;
-    const prev = document.body.style.overflow;
+    const prevOverflow = document.body.style.overflow;
+    const prevPadding = document.body.style.paddingRight;
+    const scrollbar = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
     const onKey = (e) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPadding;
       document.removeEventListener("keydown", onKey);
     };
   }, [isOpen, onClose]);
   React2.useEffect(() => {
     if (!isOpen || !dialogRef.current) return;
-    const getFirst = () => dialogRef.current?.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    )[0];
-    getFirst()?.focus();
+    restoreFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    dialogRef.current.querySelectorAll(FOCUSABLE)[0]?.focus();
     const trap = (e) => {
       if (e.key !== "Tab" || !dialogRef.current) return;
-      const focusable = Array.from(dialogRef.current.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      ));
+      const focusable = Array.from(dialogRef.current.querySelectorAll(FOCUSABLE));
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
       if (e.shiftKey) {
@@ -505,36 +508,42 @@ function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton 
       }
     };
     document.addEventListener("keydown", trap);
-    return () => document.removeEventListener("keydown", trap);
+    return () => {
+      document.removeEventListener("keydown", trap);
+      restoreFocusRef.current?.focus();
+    };
   }, [isOpen]);
   if (!isOpen) return null;
-  return /* @__PURE__ */ jsx12("div", { className: Modal_default.overlay, onClick: onClose, children: /* @__PURE__ */ jsxs10(
-    "div",
-    {
-      ref: dialogRef,
-      role: "dialog",
-      "aria-modal": "true",
-      "aria-labelledby": title ? titleId : void 0,
-      onClick: (e) => e.stopPropagation(),
-      className: Modal_default.dialog,
-      style: { maxWidth: maxWidths[size], ...style },
-      children: [
-        /* @__PURE__ */ jsxs10("div", { className: Modal_default.header, children: [
-          title && /* @__PURE__ */ jsx12("h2", { id: titleId, className: Modal_default.title, children: title }),
-          !hideCloseButton && /* @__PURE__ */ jsx12(
-            "button",
-            {
-              onClick: onClose,
-              "aria-label": "Close dialog",
-              className: Modal_default.closeBtn,
-              children: "\xD7"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsx12("div", { className: Modal_default.body, children })
-      ]
-    }
-  ) });
+  return createPortal(
+    /* @__PURE__ */ jsx12("div", { className: Modal_default.overlay, onClick: onClose, children: /* @__PURE__ */ jsxs10(
+      "div",
+      {
+        ref: dialogRef,
+        role: "dialog",
+        "aria-modal": "true",
+        "aria-labelledby": title ? titleId : void 0,
+        onClick: (e) => e.stopPropagation(),
+        className: cn(Modal_default.dialog, className),
+        style: { maxWidth: maxWidths[size], ...style },
+        children: [
+          /* @__PURE__ */ jsxs10("div", { className: Modal_default.header, children: [
+            title && /* @__PURE__ */ jsx12("h2", { id: titleId, className: Modal_default.title, children: title }),
+            !hideCloseButton && /* @__PURE__ */ jsx12(
+              "button",
+              {
+                onClick: onClose,
+                "aria-label": "Close dialog",
+                className: Modal_default.closeBtn,
+                children: "\xD7"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsx12("div", { className: Modal_default.body, children })
+        ]
+      }
+    ) }),
+    document.body
+  );
 }
 
 // components/core/NavigationBar.tsx
