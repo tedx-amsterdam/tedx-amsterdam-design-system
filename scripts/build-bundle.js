@@ -25,7 +25,7 @@ const result = buildSync({
   platform: 'browser',
   target: ['es2020'],
   // React is loaded from CDN in consumer HTML pages — do not bundle it.
-  external: ['react', 'react/jsx-runtime'],
+  external: ['react', 'react-dom', 'react/jsx-runtime'],
   loader: {
     '.tsx': 'tsx',
     '.ts':  'ts',

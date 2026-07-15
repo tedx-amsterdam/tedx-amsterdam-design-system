@@ -19,3 +19,7 @@ const [open, setOpen] = React.useState(false);
 ```
 
 Three sizes: `sm` (480px), `md` (640px, default), `lg` (800px). Use `hideCloseButton` if your content provides its own close action.
+
+- Renders through a portal to `document.body`; safe inside overflow/stacking contexts.
+- On close, focus returns to the element focused before opening (WAI-ARIA dialog pattern).
+- `className` merges onto the dialog element.
