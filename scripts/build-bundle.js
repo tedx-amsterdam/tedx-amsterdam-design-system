@@ -18,6 +18,11 @@ const COMPONENTS = [
 
 // Bundle to ESM in-memory; esbuild emits a sibling .css file automatically
 // when CSS Module imports are present.
+// tsconfigRaw overrides the project tsconfig's `jsx: 'react-jsx'` (which would
+// cause react/jsx-runtime imports that have no browser UMD global).  Setting
+// `jsx: 'react'` makes esbuild emit React.createElement calls instead, so the
+// only external imports remaining are from 'react' and 'react-dom', which are
+// then rewritten to window.React / window.ReactDOM by the post-processing step.
 const result = buildSync({
   entryPoints: [join(ROOT, 'components/core/index.ts')],
   bundle: true,
@@ -25,13 +30,25 @@ const result = buildSync({
   platform: 'browser',
   target: ['es2020'],
   // React is loaded from CDN in consumer HTML pages — do not bundle it.
-  external: ['react', 'react-dom', 'react/jsx-runtime'],
+  external: ['react', 'react-dom'],
   loader: {
     '.tsx': 'tsx',
     '.ts':  'ts',
     '.module.css': 'local-css',
   },
-  jsxImportSource: 'react',
+  // Override tsconfig jsx:'react-jsx' so esbuild uses React.createElement
+  // (classic transform) instead of react/jsx-runtime — no UMD global exists
+  // for react/jsx-runtime in CDN setups.
+  tsconfigRaw: JSON.stringify({
+    compilerOptions: {
+      target: 'ES2020',
+      module: 'ESNext',
+      moduleResolution: 'bundler',
+      jsx: 'react',
+      strict: true,
+      skipLibCheck: false,
+    },
+  }),
   outdir: ROOT,
   outExtension: { '.js': '._esm_tmp.js' },
   write: false,
@@ -53,6 +70,53 @@ const exportedPairs = exportMatch
     })
   : COMPONENTS.map(n => ({ internal: n, public: n }));
 esmCode = esmCode.replace(/^export\s*\{[^}]+\}\s*;?\s*$/gm, '');
+
+// Rewrite ESM external imports into window global lookups so the resulting
+// IIFE is a valid classic script (no `import` statements inside a function).
+//
+// Handles:
+//   import ReactN from "react";                            → const ReactN = window.React;
+//   import { foo, bar as baz } from "react";              → const { foo, bar: baz } = window.React;
+//   import { foo, bar as baz } from "react-dom";          → const { foo, bar: baz } = window.ReactDOM;
+//
+// The react → window.React and react-dom → window.ReactDOM mapping covers all
+// browser CDN setups where React is loaded as a UMD global before this bundle.
+
+const GLOBAL_MAP = { react: 'window.React', 'react-dom': 'window.ReactDOM' };
+
+function rewriteNamedSpecifiers(specifiers) {
+  // 'foo, bar as baz' → 'foo, bar: baz'
+  return specifiers
+    .split(',')
+    .map(s => {
+      const m = s.trim().match(/^(\w+)\s+as\s+(\w+)$/);
+      return m ? `${m[1]}: ${m[2]}` : s.trim();
+    })
+    .join(', ');
+}
+
+esmCode = esmCode
+  // Default import: import Foo from "react";  or  import Foo from "react-dom";
+  .replace(
+    /^import\s+(\w+)\s+from\s+"(react|react-dom)"\s*;?\s*$/gm,
+    (_, name, pkg) => `const ${name} = ${GLOBAL_MAP[pkg]};`,
+  )
+  // Named import: import { a, b as c } from "react";  or  "react-dom"
+  .replace(
+    /^import\s+\{([^}]+)\}\s+from\s+"(react|react-dom)"\s*;?\s*$/gm,
+    (_, specifiers, pkg) =>
+      `const { ${rewriteNamedSpecifiers(specifiers)} } = ${GLOBAL_MAP[pkg]};`,
+  );
+
+// Safety assertion: no `import ` lines should remain — future external drift
+// would ship a broken artifact without this guard.
+const remainingImports = esmCode.split('\n').filter(l => /^import\s/.test(l));
+if (remainingImports.length > 0) {
+  throw new Error(
+    `build-bundle: unresolved import statements after rewrite:\n${remainingImports.join('\n')}\n` +
+    'Add the package to GLOBAL_MAP or mark it as non-external.',
+  );
+}
 
 const assigns = exportedPairs
   .map(p => `  __ds_ns.${p.public} = typeof ${p.internal} !== 'undefined' ? ${p.internal} : undefined;`)
