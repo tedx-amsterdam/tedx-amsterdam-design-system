@@ -18,7 +18,7 @@ export function useFormField(): FormFieldContextValue | null {
   return React.useContext(FormFieldContext);
 }
 
-export interface FormFieldProps {
+export interface FormFieldProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Visible label above the slot. */
   label?: string;
   /** `id` for the child control. Auto-generated when omitted. */
@@ -31,8 +31,6 @@ export interface FormFieldProps {
   required?: boolean;
   /** The input, select, textarea, or any form element. */
   children?: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**
@@ -40,7 +38,7 @@ export interface FormFieldProps {
  * Provides FormFieldContext so Input/Select/Textarea auto-wire
  * id, aria-describedby, aria-invalid, and required.
  */
-export function FormField({ label, htmlFor, hint, error, required = false, children, className, style }: FormFieldProps): React.ReactElement {
+export function FormField({ label, htmlFor, hint, error, required = false, children, className, style, ...rest }: FormFieldProps): React.ReactElement {
   const autoId = React.useId();
   const fieldId = htmlFor ?? `field-${autoId}`;
   const errorId = `${fieldId}-formfield-error`;
@@ -52,7 +50,7 @@ export function FormField({ label, htmlFor, hint, error, required = false, child
 
   return (
     <FormFieldContext.Provider value={ctx}>
-      <div className={cn(styles.wrapper, className)} style={style}>
+      <div {...rest} className={cn(styles.wrapper, className)} style={style}>
         {label && (
           <label htmlFor={fieldId} className={styles.label}>
             {label}
