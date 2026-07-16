@@ -7,17 +7,16 @@ export interface BreadcrumbItem {
   href?: string;
 }
 
-export interface BreadcrumbProps {
+export interface BreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   items: BreadcrumbItem[];
   /** `aria-label` on the `<nav>`. @default "Breadcrumb" */
   ariaLabel?: string;
-  style?: React.CSSProperties;
 }
 
 /** Hierarchical navigation trail. Last item is current page. */
-export function Breadcrumb({ items = [], ariaLabel = 'Breadcrumb', style }: BreadcrumbProps): React.ReactElement {
+export function Breadcrumb({ items = [], ariaLabel = 'Breadcrumb', className, style, ...rest }: BreadcrumbProps): React.ReactElement {
   return (
-    <nav aria-label={ariaLabel} style={style}>
+    <nav aria-label={ariaLabel} className={className} style={style} {...rest}>
       <ol className={styles.list}>
         {items.map((item, i) => {
           const isCurrent = i === items.length - 1;

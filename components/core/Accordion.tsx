@@ -7,20 +7,19 @@ export interface AccordionItem {
   a: React.ReactNode;
 }
 
-export interface AccordionProps {
+export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   items: AccordionItem[];
   /** Index open on mount; -1 for all closed. @default 0 */
   defaultOpen?: number;
-  style?: React.CSSProperties;
 }
 
 /** FAQ-style disclosure list; one row open at a time, red active question. */
-export function Accordion({ items = [], defaultOpen = 0, style }: AccordionProps): React.ReactElement {
+export function Accordion({ items = [], defaultOpen = 0, className, style, ...rest }: AccordionProps): React.ReactElement {
   const [open, setOpen] = React.useState(defaultOpen);
   const uid = React.useId();
 
   return (
-    <div style={style}>
+    <div className={className} style={style} {...rest}>
       {items.map((it, i) => {
         const isOpen = open === i;
         const btnId = `accordion-${uid}-btn-${i}`;
