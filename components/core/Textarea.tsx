@@ -15,6 +15,7 @@ export interface TextareaProps {
   /** Validation message; triggers red error state. */
   error?: string;
   id?: string;
+  className?: string;
   style?: React.CSSProperties;
 }
 
@@ -28,6 +29,7 @@ export function Textarea({
   disabled = false,
   error,
   id,
+  className,
   style,
   ...rest
 }: TextareaProps & Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, keyof TextareaProps>): React.ReactElement {
@@ -37,7 +39,7 @@ export function Textarea({
   const describedBy = [errorId, field?.errorId].filter(Boolean).join(' ') || undefined;
 
   return (
-    <div className={styles.wrapper} style={style}>
+    <div className={cn(styles.wrapper, className)} style={style}>
       {label && (
         <label htmlFor={taId} className={styles.label}>
           {label}

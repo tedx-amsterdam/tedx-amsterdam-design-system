@@ -12,7 +12,7 @@ export interface RadioGroupOptionProps {
   _disabled?: boolean;
 }
 
-export interface RadioGroupProps {
+export interface RadioGroupProps extends Omit<React.FieldsetHTMLAttributes<HTMLFieldSetElement>, 'onChange'> {
   /** Shared name attribute for the radio inputs. */
   name: string;
   legend?: string;
@@ -21,7 +21,6 @@ export interface RadioGroupProps {
   onChange: (value: string) => void;
   disabled?: boolean;
   children: React.ReactNode;
-  style?: React.CSSProperties;
 }
 
 function RadioOption({ value, label, _name, _groupValue, _onChange, _disabled }: RadioGroupOptionProps): React.ReactElement {
@@ -52,9 +51,9 @@ function RadioOption({ value, label, _name, _groupValue, _onChange, _disabled }:
   );
 }
 
-function RadioGroupRoot({ name, legend, value, onChange, disabled = false, children, style }: RadioGroupProps): React.ReactElement {
+function RadioGroupRoot({ name, legend, value, onChange, disabled = false, children, className, style, ...rest }: RadioGroupProps): React.ReactElement {
   return (
-    <fieldset className={styles.fieldset} style={style}>
+    <fieldset {...rest} className={cn(styles.fieldset, className)} style={style}>
       {legend && (
         <legend className={styles.legend}>{legend}</legend>
       )}

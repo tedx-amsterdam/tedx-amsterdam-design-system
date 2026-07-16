@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../utils/cn';
 import styles from './Checkbox.module.css';
 
-export interface CheckboxProps {
+export interface CheckboxProps extends Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> {
   /** Visible label beside the checkbox. */
   label: string;
   checked: boolean;
@@ -10,17 +10,17 @@ export interface CheckboxProps {
   disabled?: boolean;
   /** Associates the native input; defaults to a slug of label. */
   id?: string;
-  style?: React.CSSProperties;
 }
 
 /** Single checkbox. Checked state: red fill + white tick. */
-export function Checkbox({ label, checked, onChange, disabled = false, id, style }: CheckboxProps): React.ReactElement {
+export function Checkbox({ label, checked, onChange, disabled = false, id, className, style, ...rest }: CheckboxProps): React.ReactElement {
   const checkId = id || `checkbox-${String(label).toLowerCase().replace(/\s+/g, '-')}`;
 
   return (
     <label
+      {...rest}
       htmlFor={checkId}
-      className={cn(styles.label, disabled && styles.disabled)}
+      className={cn(styles.label, disabled && styles.disabled, className)}
       style={style}
     >
       <span className={cn(styles.indicator, checked && styles.checked)}>
