@@ -30,10 +30,11 @@ var Accordion_default = {
 // components/core/Accordion.tsx
 function Accordion({ items = [], defaultOpen = 0, style }) {
   const [open, setOpen] = React.useState(defaultOpen);
+  const uid = React.useId();
   return /* @__PURE__ */ React.createElement("div", { style }, items.map((it, i) => {
     const isOpen = open === i;
-    const btnId = `accordion-btn-${i}`;
-    const panelId = `accordion-panel-${i}`;
+    const btnId = `accordion-${uid}-btn-${i}`;
+    const panelId = `accordion-${uid}-panel-${i}`;
     return /* @__PURE__ */ React.createElement("div", { key: i, className: Accordion_default.item }, /* @__PURE__ */ React.createElement(
       "button",
       {
