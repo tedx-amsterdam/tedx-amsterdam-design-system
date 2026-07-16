@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../utils/cn';
+import { useFormField } from './FormField';
 import styles from './Textarea.module.css';
 
 export interface TextareaProps {
@@ -30,8 +31,10 @@ export function Textarea({
   style,
   ...rest
 }: TextareaProps & Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, keyof TextareaProps>): React.ReactElement {
-  const taId = id || (label ? `textarea-${String(label).toLowerCase().replace(/\s+/g, '-')}` : undefined);
+  const field = useFormField();
+  const taId = id || field?.id || (label ? `textarea-${String(label).toLowerCase().replace(/\s+/g, '-')}` : undefined);
   const errorId = taId && error ? `${taId}-error` : undefined;
+  const describedBy = [errorId, field?.errorId].filter(Boolean).join(' ') || undefined;
 
   return (
     <div className={styles.wrapper} style={style}>
@@ -47,8 +50,9 @@ export function Textarea({
         placeholder={placeholder}
         rows={rows}
         disabled={disabled}
-        aria-invalid={!!error}
-        aria-describedby={errorId}
+        required={field?.required || undefined}
+        aria-invalid={Boolean(error) || Boolean(field?.invalid)}
+        aria-describedby={describedBy}
         className={cn(
           styles.textarea,
           error && styles.error,

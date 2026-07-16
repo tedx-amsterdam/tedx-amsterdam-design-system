@@ -275,16 +275,27 @@ var FormField_default = {
 };
 
 // components/core/FormField.tsx
-function FormField({ label, htmlFor, hint, error, required = false, children, style }) {
-  return /* @__PURE__ */ React8.createElement("div", { className: FormField_default.wrapper, style }, label && /* @__PURE__ */ React8.createElement("label", { htmlFor, className: FormField_default.label }, label, required && /* @__PURE__ */ React8.createElement("span", { "aria-hidden": "true", className: FormField_default.required }, "*")), hint && /* @__PURE__ */ React8.createElement("span", { className: FormField_default.hint }, hint), children, /* @__PURE__ */ React8.createElement(
+var FormFieldContext = React8.createContext(null);
+function useFormField() {
+  return React8.useContext(FormFieldContext);
+}
+function FormField({ label, htmlFor, hint, error, required = false, children, className, style }) {
+  const autoId = React8.useId();
+  const fieldId = htmlFor ?? `field-${autoId}`;
+  const errorId = `${fieldId}-formfield-error`;
+  const ctx = React8.useMemo(
+    () => ({ id: fieldId, errorId, invalid: Boolean(error), required }),
+    [fieldId, errorId, error, required]
+  );
+  return /* @__PURE__ */ React8.createElement(FormFieldContext.Provider, { value: ctx }, /* @__PURE__ */ React8.createElement("div", { className: cn(FormField_default.wrapper, className), style }, label && /* @__PURE__ */ React8.createElement("label", { htmlFor: fieldId, className: FormField_default.label }, label, required && /* @__PURE__ */ React8.createElement("span", { "aria-hidden": "true", className: FormField_default.required }, "*")), hint && /* @__PURE__ */ React8.createElement("span", { className: FormField_default.hint }, hint), children, /* @__PURE__ */ React8.createElement(
     "span",
     {
-      id: htmlFor ? `${htmlFor}-formfield-error` : void 0,
+      id: errorId,
       "aria-live": "polite",
       className: FormField_default.error
     },
     error ?? ""
-  ));
+  )));
 }
 
 // components/core/Input.tsx
@@ -313,8 +324,10 @@ function Input({
   style,
   ...rest
 }) {
-  const inputId = id || `input-${String(label).toLowerCase().replace(/\s+/g, "-")}`;
-  const errorId = inputId ? `${inputId}-error` : void 0;
+  const field = useFormField();
+  const inputId = id || field?.id || `input-${String(label).toLowerCase().replace(/\s+/g, "-")}`;
+  const errorId = `${inputId}-error`;
+  const describedBy = [errorId, field?.errorId].filter(Boolean).join(" ");
   return /* @__PURE__ */ React9.createElement("label", { className: cn(Input_default.wrapper, Input_default[tone]), style }, /* @__PURE__ */ React9.createElement("span", { className: Input_default.label }, label), /* @__PURE__ */ React9.createElement(
     "input",
     {
@@ -323,8 +336,9 @@ function Input({
       placeholder,
       value,
       onChange,
-      "aria-invalid": !!error,
-      "aria-describedby": errorId,
+      required: field?.required || void 0,
+      "aria-invalid": Boolean(error) || Boolean(field?.invalid),
+      "aria-describedby": describedBy,
       className: cn(Input_default.input, error && Input_default.error),
       ...rest
     }
@@ -786,8 +800,10 @@ function Select({
   style,
   ...rest
 }) {
-  const selectId = id || (label ? `select-${String(label).toLowerCase().replace(/\s+/g, "-")}` : void 0);
+  const field = useFormField();
+  const selectId = id || field?.id || (label ? `select-${String(label).toLowerCase().replace(/\s+/g, "-")}` : void 0);
   const errorId = selectId && error ? `${selectId}-error` : void 0;
+  const describedBy = [errorId, field?.errorId].filter(Boolean).join(" ") || void 0;
   const hasValue = Boolean(value);
   return /* @__PURE__ */ React18.createElement("div", { className: Select_default.wrapper, style }, label && /* @__PURE__ */ React18.createElement("label", { htmlFor: selectId, className: Select_default.label }, label), /* @__PURE__ */ React18.createElement("div", { className: Select_default.selectWrap }, /* @__PURE__ */ React18.createElement(
     "select",
@@ -796,8 +812,9 @@ function Select({
       value: value ?? "",
       onChange: (e) => onChange?.(e.target.value),
       disabled,
-      "aria-invalid": !!error,
-      "aria-describedby": errorId,
+      required: field?.required || void 0,
+      "aria-invalid": Boolean(error) || Boolean(field?.invalid),
+      "aria-describedby": describedBy,
       className: cn(
         Select_default.select,
         error && Select_default.error,
@@ -965,8 +982,10 @@ function Textarea({
   style,
   ...rest
 }) {
-  const taId = id || (label ? `textarea-${String(label).toLowerCase().replace(/\s+/g, "-")}` : void 0);
+  const field = useFormField();
+  const taId = id || field?.id || (label ? `textarea-${String(label).toLowerCase().replace(/\s+/g, "-")}` : void 0);
   const errorId = taId && error ? `${taId}-error` : void 0;
+  const describedBy = [errorId, field?.errorId].filter(Boolean).join(" ") || void 0;
   return /* @__PURE__ */ React22.createElement("div", { className: Textarea_default.wrapper, style }, label && /* @__PURE__ */ React22.createElement("label", { htmlFor: taId, className: Textarea_default.label }, label), /* @__PURE__ */ React22.createElement(
     "textarea",
     {
@@ -976,8 +995,9 @@ function Textarea({
       placeholder,
       rows,
       disabled,
-      "aria-invalid": !!error,
-      "aria-describedby": errorId,
+      required: field?.required || void 0,
+      "aria-invalid": Boolean(error) || Boolean(field?.invalid),
+      "aria-describedby": describedBy,
       className: cn(
         Textarea_default.textarea,
         error && Textarea_default.error,

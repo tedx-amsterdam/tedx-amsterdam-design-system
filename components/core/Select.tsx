@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../utils/cn';
+import { useFormField } from './FormField';
 import styles from './Select.module.css';
 
 export interface SelectOption {
@@ -37,8 +38,10 @@ export function Select({
   style,
   ...rest
 }: SelectProps & Omit<React.SelectHTMLAttributes<HTMLSelectElement>, keyof SelectProps>): React.ReactElement {
-  const selectId = id || (label ? `select-${String(label).toLowerCase().replace(/\s+/g, '-')}` : undefined);
+  const field = useFormField();
+  const selectId = id || field?.id || (label ? `select-${String(label).toLowerCase().replace(/\s+/g, '-')}` : undefined);
   const errorId = selectId && error ? `${selectId}-error` : undefined;
+  const describedBy = [errorId, field?.errorId].filter(Boolean).join(' ') || undefined;
   const hasValue = Boolean(value);
 
   return (
@@ -54,8 +57,9 @@ export function Select({
           value={value ?? ''}
           onChange={(e) => onChange?.(e.target.value)}
           disabled={disabled}
-          aria-invalid={!!error}
-          aria-describedby={errorId}
+          required={field?.required || undefined}
+          aria-invalid={Boolean(error) || Boolean(field?.invalid)}
+          aria-describedby={describedBy}
           className={cn(
             styles.select,
             error && styles.error,

@@ -18,3 +18,5 @@ Wrapper that adds label, hint, and validation error around any form input. Use i
 ```
 
 `htmlFor` must match the `id` of the child input for correct label association. The `error` prop also triggers a live `role="alert"` region.
+
+- Wrapping an Input/Select/Textarea auto-wires `id`, `aria-describedby`, `aria-invalid`, and `required` via FormFieldContext — no manual linking needed. Explicit props on the child win.
