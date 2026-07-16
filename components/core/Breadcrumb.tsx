@@ -16,7 +16,7 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
 /** Hierarchical navigation trail. Last item is current page. */
 export function Breadcrumb({ items = [], ariaLabel = 'Breadcrumb', className, style, ...rest }: BreadcrumbProps): React.ReactElement {
   return (
-    <nav aria-label={ariaLabel} className={className} style={style} {...rest}>
+    <nav {...rest} aria-label={ariaLabel} className={className} style={style}>
       <ol className={styles.list}>
         {items.map((item, i) => {
           const isCurrent = i === items.length - 1;
