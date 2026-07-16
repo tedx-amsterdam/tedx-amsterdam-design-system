@@ -1,7 +1,8 @@
 import React from 'react';
+import { cn } from '../utils/cn';
 import styles from './MediaCard.module.css';
 
-export interface MediaCardProps {
+export interface MediaCardProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'title'> {
   /** Image URL. Falls back to the red-orange tile gradient. */
   image?: string;
   /** Corner category label, e.g. "NEWS" / "PODCAST". */
@@ -10,10 +11,8 @@ export interface MediaCardProps {
   description?: React.ReactNode;
   /** Dated meta line (rendered with a red bullet). */
   date?: React.ReactNode;
-  href?: string;
   /** CSS aspect-ratio for the image. @default "4 / 3" */
   ratio?: string;
-  style?: React.CSSProperties;
 }
 
 /** Image-led blog / event card with corner category label. */
@@ -25,13 +24,16 @@ export function MediaCard({
   date,
   href = '#',
   ratio = '4 / 3',
+  className,
   style,
+  ...rest
 }: MediaCardProps): React.ReactElement {
   return (
     <a
       href={href}
-      className={styles.card}
+      className={cn(styles.card, className)}
       style={style}
+      {...rest}
     >
       <div
         className={styles.imgOuter}

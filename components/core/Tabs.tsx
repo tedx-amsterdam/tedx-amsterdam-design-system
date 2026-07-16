@@ -7,7 +7,7 @@ export interface TabItem {
   content: React.ReactNode;
 }
 
-export interface TabsProps {
+export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   tabs: TabItem[];
   /** Initially active tab index (uncontrolled). @default 0 */
   defaultIndex?: number;
@@ -15,11 +15,10 @@ export interface TabsProps {
   selectedIndex?: number;
   /** Called with the new index when a tab is activated. */
   onTabChange?: (index: number) => void;
-  style?: React.CSSProperties;
 }
 
 /** Tabbed switcher. Active tab: red bottom border. Arrow keys navigate between tabs. */
-export function Tabs({ tabs = [], defaultIndex = 0, selectedIndex, onTabChange, style }: TabsProps): React.ReactElement {
+export function Tabs({ tabs = [], defaultIndex = 0, selectedIndex, onTabChange, className, style, ...rest }: TabsProps): React.ReactElement {
   const [internalActive, setInternalActive] = React.useState(defaultIndex);
   const uid = React.useId();
   const tabRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
@@ -45,7 +44,7 @@ export function Tabs({ tabs = [], defaultIndex = 0, selectedIndex, onTabChange, 
   };
 
   return (
-    <div style={style}>
+    <div className={className} style={style} {...rest}>
       <div role="tablist" className={styles.tablist}>
         {tabs.map((tab, i) => (
           <button
