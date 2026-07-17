@@ -19,7 +19,7 @@ jobs:
           cache: npm
           registry-url: https://registry.npmjs.org
       # Node 22 bundles npm 10; trusted publishing needs npm >= 11.5.1
-      - run: npm install -g npm@latest
+      - run: npm install -g npm@11
       - run: npm ci
       # prepublishOnly runs lint, typecheck, tests and build:dist
       - run: npm publish --provenance
