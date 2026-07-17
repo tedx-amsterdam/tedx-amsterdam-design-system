@@ -184,6 +184,15 @@ npm run test:coverage # coverage report
 
 ---
 
+## Storybook
+
+Interactive component playground with a11y checks:
+
+    npm run storybook        # dev server on :6006
+    npm run build-storybook  # static build (CI-verified)
+
+---
+
 ## Build scripts
 
 | Script | What it does |

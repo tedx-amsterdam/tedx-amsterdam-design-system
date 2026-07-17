@@ -6,5 +6,6 @@
     "emitDeclarationOnly": true,
     "rootDir": "components",
     "outDir": "dist/types"
-  }
+  },
+  "exclude": ["components/**/*.stories.tsx"]
 }
