@@ -6,6 +6,17 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased]
+
+### Added
+- `npm run lint` (oxlint) across components, scripts, and tests.
+- GitHub Actions CI: lint, typecheck, tests, and bundle build on every push/PR.
+
+### Fixed
+- Align `@types/react`/`@types/react-dom` with React 18; commit `package-lock.json` for reproducible CI installs.
+
+---
+
 ## [1.1.0] — 2026-06-09
 
 ### Added
