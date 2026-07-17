@@ -1,4 +1,6 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
+import { cn } from '../utils/cn';
 import styles from './Modal.module.css';
 
 export interface ModalProps {
@@ -12,6 +14,7 @@ export interface ModalProps {
   size?: 'sm' | 'md' | 'lg';
   /** Hide the × close button. @default false */
   hideCloseButton?: boolean;
+  className?: string;
   style?: React.CSSProperties;
 }
 
@@ -21,39 +24,45 @@ const maxWidths: Record<NonNullable<ModalProps['size']>, number> = {
   lg: 800,
 };
 
+const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
 /**
- * Overlay dialog. Traps focus, locks scroll, closes on Escape or overlay click.
- * Red top border signals brand dialog.
+ * Overlay dialog rendered through a portal to document.body.
+ * Traps focus, restores focus to the trigger on close, locks scroll
+ * (with scrollbar-width compensation), closes on Escape or overlay click.
  */
-export function Modal({ isOpen, onClose, title, children, size = 'md', hideCloseButton = false, style }: ModalProps): React.ReactElement | null {
+export function Modal({ isOpen, onClose, title, children, size = 'md', hideCloseButton = false, className, style }: ModalProps): React.ReactElement | null {
   const dialogRef = React.useRef<HTMLDivElement>(null);
+  const restoreFocusRef = React.useRef<HTMLElement | null>(null);
   const titleId = `modal-title-${React.useId()}`;
 
-  // Body scroll lock + Escape key
+  // Body scroll lock (with scrollbar compensation) + Escape key
   React.useEffect(() => {
     if (!isOpen) return;
-    const prev = document.body.style.overflow;
+    const prevOverflow = document.body.style.overflow;
+    const prevPadding = document.body.style.paddingRight;
+    const scrollbar = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
+    if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPadding;
       document.removeEventListener('keydown', onKey);
     };
   }, [isOpen, onClose]);
 
-  // Focus trap
+  // Focus trap + focus restore
   React.useEffect(() => {
     if (!isOpen || !dialogRef.current) return;
-    const getFirst = () => dialogRef.current?.querySelectorAll<HTMLElement>(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    )[0];
-    getFirst()?.focus();
+    restoreFocusRef.current =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)[0]?.focus();
+
     const trap = (e: KeyboardEvent) => {
       if (e.key !== 'Tab' || !dialogRef.current) return;
-      const focusable = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      ));
+      const focusable = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE));
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
       if (e.shiftKey) {
@@ -63,12 +72,15 @@ export function Modal({ isOpen, onClose, title, children, size = 'md', hideClose
       }
     };
     document.addEventListener('keydown', trap);
-    return () => document.removeEventListener('keydown', trap);
+    return () => {
+      document.removeEventListener('keydown', trap);
+      restoreFocusRef.current?.focus();
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className={styles.overlay} onClick={onClose}>
       <div
         ref={dialogRef}
@@ -76,7 +88,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md', hideClose
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
         onClick={(e) => e.stopPropagation()}
-        className={styles.dialog}
+        className={cn(styles.dialog, className)}
         style={{ maxWidth: maxWidths[size], ...style }}
       >
         <div className={styles.header}>
@@ -99,6 +111,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md', hideClose
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

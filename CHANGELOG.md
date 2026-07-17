@@ -16,6 +16,8 @@ Versioning: [Semantic Versioning](https://semver.org/).
 ### Fixed
 - Align `@types/react`/`@types/react-dom` with React 18; commit `package-lock.json` for reproducible CI installs.
 - Button: disabled state now blocks clicks and removes `href` on the link variant; hover/press moved from JS inline styles to CSS `:hover`/`:active` driven by tokens (`--accent-hover`, `--surface-light-hover`, `--tedx-white-08`); adds `className`.
+- Modal: renders via `createPortal`, restores focus to the trigger on close, compensates scrollbar width during scroll lock; adds `className`; full test coverage incl. axe.
+- CDN bundle (`_ds_bundle.js`) is now a valid classic script: React/ReactDOM externals resolve via `window.React`/`window.ReactDOM` (previously ESM `import` statements inside the IIFE caused a SyntaxError).
 
 ---
 
