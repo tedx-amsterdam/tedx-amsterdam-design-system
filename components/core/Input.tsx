@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../utils/cn';
+import { useFormField } from './FormField';
 import styles from './Input.module.css';
 
 export interface InputProps {
@@ -30,8 +31,10 @@ export function Input({
   style,
   ...rest
 }: InputProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof InputProps>): React.ReactElement {
-  const inputId = id || `input-${String(label).toLowerCase().replace(/\s+/g, '-')}`;
-  const errorId = inputId ? `${inputId}-error` : undefined;
+  const field = useFormField();
+  const inputId = id || field?.id || `input-${String(label).toLowerCase().replace(/\s+/g, '-')}`;
+  const errorId = `${inputId}-error`;
+  const describedBy = [errorId, field?.errorId].filter(Boolean).join(' ');
 
   return (
     <label className={cn(styles.wrapper, styles[tone])} style={style}>
@@ -42,8 +45,9 @@ export function Input({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        aria-invalid={!!error}
-        aria-describedby={errorId}
+        required={field?.required || undefined}
+        aria-invalid={Boolean(error) || Boolean(field?.invalid)}
+        aria-describedby={describedBy}
         className={cn(styles.input, error && styles.error)}
         {...rest}
       />

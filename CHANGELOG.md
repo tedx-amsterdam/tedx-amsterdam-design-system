@@ -18,6 +18,8 @@ Versioning: [Semantic Versioning](https://semver.org/).
 - Button: disabled state now blocks clicks and removes `href` on the link variant; hover/press moved from JS inline styles to CSS `:hover`/`:active` driven by tokens (`--accent-hover`, `--surface-light-hover`, `--tedx-white-08`); adds `className`.
 - Modal: renders via `createPortal`, restores focus to the trigger on close, compensates scrollbar width during scroll lock; adds `className`; full test coverage incl. axe.
 - CDN bundle (`_ds_bundle.js`) is now a valid classic script: React/ReactDOM externals resolve via `window.React`/`window.ReactDOM` (previously ESM `import` statements inside the IIFE caused a SyntaxError).
+- FormField: auto-wires child Input/Select/Textarea (`id`, `aria-describedby`, `aria-invalid`, `required`) via context; adds `useFormField` and `className`.
+- Accordion: ids namespaced with `useId()` — multiple accordions per page no longer collide; test coverage added.
 
 ---
 
