@@ -77,7 +77,8 @@ React 18 or 19 is a peer dependency. The CDN IIFE bundle (`_ds_bundle.js`) remai
 **Feedback**
 `Modal` · `Toast`
 
-Each ships with a `.jsx` source, a `.d.ts` type declaration, and a `.prompt.md` usage guide.
+Each ships with a `.tsx` source, a CSS Module, and a `.prompt.md` usage guide.
+Type declarations are generated into `dist/types` by `npm run build:dist`.
 
 Open `components/core/core.card.html` in a browser to see all 23 components in one live preview.
 
@@ -145,7 +146,7 @@ The system targets WCAG 2.1 AA:
 - Global `:focus-visible` ring via `--focus-ring` (`#EB0028`) declared in `styles.css`.
 - `prefers-reduced-motion` media query in `styles.css` collapses all transitions/animations (WCAG 2.3.3).
 - Accordion follows the WAI-ARIA Disclosure pattern (`aria-expanded`, `aria-controls`, `role="region"`).
-- Button exposes `aria-disabled` and supports keyboard press feedback (Enter / Space).
+- Button exposes `aria-disabled` and blocks clicks when disabled (a disabled link drops its `href`); hover/press states are CSS-driven and respect reduced motion.
 - Input, Select, Textarea: visible focus ring, `aria-invalid` + `aria-describedby` for error states.
 - FormField: inline error uses a persistent `aria-live="polite"` region (always in DOM so NVDA/Firefox announce changes).
 - Checkbox and Radio: visually-hidden native inputs with associated labels.
@@ -180,7 +181,8 @@ npm run test:watch    # watch mode
 npm run test:coverage # coverage report
 ```
 
-40 tests across 7 files covering behaviour, ARIA attributes, and keyboard interaction.
+130 tests across 12 files covering behaviour, ARIA attributes, keyboard interaction,
+a uniform `className`/rest prop-surface contract, and a library-wide jest-axe sweep.
 
 ---
 
@@ -198,8 +200,10 @@ Interactive component playground with a11y checks:
 | Script | What it does |
 |--------|-------------|
 | `npm run build` | Rebuilds `_ds_bundle.js` — the CDN-ready IIFE bundle of all 23 components. |
+| `npm run build:dist` | Builds the npm package output: ESM `dist/index.js`, `dist/index.css`, and type declarations in `dist/types`. |
 | `npm run build:website` | Compiles `ui_kits/website/*.jsx` → `ui_kits/website/bundle.js` via esbuild. |
-| `npm run typecheck` | Validates all `.d.ts` declarations with TypeScript (`tsc --noEmit`). |
+| `npm run typecheck` | Type-checks component and story sources with TypeScript (`tsc --noEmit`). |
+| `npm run lint` | Runs oxlint across components, scripts, and tests. |
 
 ---
 
