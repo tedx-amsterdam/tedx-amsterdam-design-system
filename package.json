@@ -1,6 +1,26 @@
 {
   "name": "tedx-amsterdam-design-system",
   "version": "1.2.0",
+  "description": "TEDxAmsterdam design system: dark-first React components and CSS design tokens",
+  "license": "MIT",
+  "author": "Julian Aijal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julianaijal/tedx-amsterdam-design-system.git"
+  },
+  "homepage": "https://github.com/julianaijal/tedx-amsterdam-design-system#readme",
+  "bugs": {
+    "url": "https://github.com/julianaijal/tedx-amsterdam-design-system/issues"
+  },
+  "keywords": [
+    "react",
+    "design-system",
+    "components",
+    "design-tokens",
+    "css",
+    "accessibility",
+    "tedx"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
