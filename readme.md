@@ -43,6 +43,18 @@ import 'tedx-amsterdam-design-system/index.css';    // component styles
 
 React 18 or 19 is a peer dependency. The CDN IIFE bundle (`_ds_bundle.js`) remains available for no-build usage.
 
+#### Releasing a new version
+
+Releases are tag-driven. CI publishes to npm via trusted publishing (OIDC):
+
+```bash
+npm version minor        # bumps package.json + creates git tag vX.Y.Z
+git push origin main --follow-tags
+```
+
+The `Release` workflow runs `npm publish`, which triggers `prepublishOnly`
+(lint → typecheck → tests → dist build) before anything is uploaded.
+
 ---
 
 ## What's included
@@ -223,6 +235,14 @@ npm run build:website
 Impact Program · Partners · Gallery · Blog
 
 Responsive: navigation collapses to a hamburger drawer below 860px.
+
+---
+
+## License
+
+Code is [MIT licensed](./LICENSE). The TEDx logo, the TEDxAmsterdam name, and
+event photography are **not** covered by the MIT license — they remain subject
+to [TED's brand guidelines](https://www.ted.com/participate/organize-a-local-tedx-event/tedx-organizer-guide/branding-promotions).
 
 ---
 
