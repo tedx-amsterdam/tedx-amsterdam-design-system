@@ -7,3 +7,5 @@ Primary call-to-action button in TED red; use for "Notify me", "Sign up", "Join 
 ```
 
 Variants: `primary` (red), `secondary` (white), `ghost` (outline). Sizes `sm | md | lg`. Set `arrow` for a trailing →, `href` to render an anchor.
+- `className` merges onto the root element.
+- `disabled` sets `aria-disabled="true"`, blocks clicks, and removes `href` on the link variant. Hover/press styling is pure CSS (`:hover`/`:active`).

@@ -28,6 +28,7 @@
   --tedx-gray-100: #f1f1f1;
 
   /* ---- Alpha helpers ---- */
+  --tedx-white-08: rgba(255, 255, 255, 0.08); /* ghost-surface hover wash */
   --tedx-white-40: rgba(255, 255, 255, 0.4);  /* hairline rules on dark */
   --tedx-white-60: rgba(255, 255, 255, 0.6);
   --tedx-black-25: rgba(0, 0, 0, 0.25);       /* drop-shadow on display type */
@@ -57,5 +58,6 @@
 
   --accent: var(--tedx-red);
   --accent-hover: #c70022;       /* red, pressed/hover darken */
+  --surface-light-hover: #eaeaea; /* hover for white surfaces (secondary button) */
   --focus-ring: var(--tedx-red);
 }
