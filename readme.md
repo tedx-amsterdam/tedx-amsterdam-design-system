@@ -29,6 +29,22 @@ All design tokens are then available as CSS custom properties:
 
 ---
 
+### Using as an npm package
+
+```bash
+npm install tedx-amsterdam-design-system
+```
+
+```jsx
+import { Button, Modal } from 'tedx-amsterdam-design-system';
+import 'tedx-amsterdam-design-system/styles.css';   // design tokens + global a11y styles
+import 'tedx-amsterdam-design-system/index.css';    // component styles
+```
+
+React 18 or 19 is a peer dependency. The CDN IIFE bundle (`_ds_bundle.js`) remains available for no-build usage.
+
+---
+
 ## What's included
 
 | Path | Contents |
