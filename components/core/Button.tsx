@@ -8,87 +8,72 @@ export type ButtonProps = {
   size?: 'sm' | 'md' | 'lg';
   arrow?: boolean;
   disabled?: boolean;
+  className?: string;
   style?: React.CSSProperties;
 } & (
-  | ({ href?: undefined } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'style' | 'disabled'>)
-  | ({ href: string }    & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>,  'style' | 'href'>)
+  | ({ href?: undefined } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'>)
+  | ({ href: string } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>)
 );
 
-// Base backgrounds — must match what tests/Button.test.jsx asserts for non-hovered state
-const BASE_BG: Record<string, string> = {
-  primary:   'var(--tedx-red)',
-  secondary: 'var(--tedx-white)',
-  ghost:     'transparent',
-};
-
-// Hover backgrounds — must match what tests/Button.test.jsx asserts after mouseEnter
-// jsdom normalises #eaeaea -> rgb(234, 234, 234)
-// jsdom normalises rgba(255,255,255,0.08) -> rgba(255, 255, 255, 0.08)
-const HOVER_BG: Record<string, string> = {
-  primary:   'var(--accent-hover)',
-  secondary: '#eaeaea',
-  ghost:     'rgba(255,255,255,0.08)',
-};
-
+/**
+ * Brand button. All visual states (hover, active, disabled) live in CSS via tokens.
+ * Disabled uses `aria-disabled` and gates clicks; a disabled link drops its href.
+ */
 export function Button({
   variant = 'primary',
   size = 'md',
   disabled = false,
   arrow = false,
+  className,
   style,
   children,
   ...rest
 }: ButtonProps): React.ReactElement {
-  const [hovered, setHovered] = React.useState(false);
-  const [pressed, setPressed] = React.useState(false);
+  const classes = cn(styles.btn, styles[variant], styles[size], disabled && styles.disabled, className);
 
-  const isHovered = hovered && !disabled;
-  const isPressed = pressed && !disabled;
-
-  const dynamicStyle: React.CSSProperties = {
-    background: isHovered ? HOVER_BG[variant] : BASE_BG[variant],
-    transform:  isPressed ? 'scale(0.97)' : 'scale(1)',
-    cursor:     disabled ? 'not-allowed' : 'pointer',
-    opacity:    disabled ? 0.45 : 1,
-    ...style,
+  const handleClick: React.MouseEventHandler<HTMLElement> = (e) => {
+    if (disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    (rest as { onClick?: React.MouseEventHandler<HTMLElement> }).onClick?.(e);
   };
 
-  const Tag = (rest as { href?: string }).href ? 'a' : 'button';
+  const content = (
+    <>
+      {children}
+      {arrow && <span className={styles.arrow} aria-hidden="true">→</span>}
+    </>
+  );
 
-  if (Tag === 'a') {
+  if ((rest as { href?: string }).href !== undefined) {
     const { href, ...anchorRest } = rest as { href: string } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
     return (
       <a
-        href={href}
-        className={cn(styles.btn, styles[variant], styles[size])}
-        style={dynamicStyle}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => { setHovered(false); setPressed(false); }}
-        onMouseDown={() => setPressed(true)}
-        onMouseUp={() => setPressed(false)}
         {...anchorRest}
+        href={disabled ? undefined : href}
+        aria-disabled={disabled || undefined}
+        className={classes}
+        style={style}
+        onClick={handleClick}
       >
-        {children}
-        {arrow && <span className={styles.arrow} aria-hidden="true">→</span>}
+        {content}
       </a>
     );
   }
 
-  const { ...buttonRest } = rest as React.ButtonHTMLAttributes<HTMLButtonElement>;
+  const buttonRest = rest as React.ButtonHTMLAttributes<HTMLButtonElement>;
   return (
     <button
-      type="button"
-      aria-disabled={disabled}
-      className={cn(styles.btn, styles[variant], styles[size])}
-      style={dynamicStyle}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => { setHovered(false); setPressed(false); }}
-      onMouseDown={() => setPressed(true)}
-      onMouseUp={() => setPressed(false)}
       {...buttonRest}
+      type={buttonRest.type ?? 'button'}
+      aria-disabled={disabled || undefined}
+      className={classes}
+      style={style}
+      onClick={handleClick}
     >
-      {children}
-      {arrow && <span className={styles.arrow} aria-hidden="true">→</span>}
+      {content}
     </button>
   );
 }
