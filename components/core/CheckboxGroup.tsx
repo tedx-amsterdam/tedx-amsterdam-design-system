@@ -1,17 +1,17 @@
 import React from 'react';
+import { cn } from '../utils/cn';
 import styles from './CheckboxGroup.module.css';
 
-export interface CheckboxGroupProps {
+export interface CheckboxGroupProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
   /** Renders as a <legend> for screen-reader grouping. */
   legend?: string;
   children: React.ReactNode;
-  style?: React.CSSProperties;
 }
 
 /** Fieldset wrapper for accessible grouping of multiple Checkbox components. */
-export function CheckboxGroup({ legend, children, style }: CheckboxGroupProps): React.ReactElement {
+export function CheckboxGroup({ legend, children, className, style, ...rest }: CheckboxGroupProps): React.ReactElement {
   return (
-    <fieldset className={styles.fieldset} style={style}>
+    <fieldset {...rest} className={cn(styles.fieldset, className)} style={style}>
       {legend && (
         <legend className={styles.legend}>{legend}</legend>
       )}

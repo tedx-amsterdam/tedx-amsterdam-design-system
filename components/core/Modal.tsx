@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { cn } from '../utils/cn';
 import styles from './Modal.module.css';
 
-export interface ModalProps {
+export interface ModalProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   isOpen: boolean;
   /** Called on overlay click or Escape key. */
   onClose: () => void;
@@ -14,8 +14,6 @@ export interface ModalProps {
   size?: 'sm' | 'md' | 'lg';
   /** Hide the × close button. @default false */
   hideCloseButton?: boolean;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 const maxWidths: Record<NonNullable<ModalProps['size']>, number> = {
@@ -31,7 +29,7 @@ const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabi
  * Traps focus, restores focus to the trigger on close, locks scroll
  * (with scrollbar-width compensation), closes on Escape or overlay click.
  */
-export function Modal({ isOpen, onClose, title, children, size = 'md', hideCloseButton = false, className, style }: ModalProps): React.ReactElement | null {
+export function Modal({ isOpen, onClose, title, children, size = 'md', hideCloseButton = false, className, style, ...rest }: ModalProps): React.ReactElement | null {
   const dialogRef = React.useRef<HTMLDivElement>(null);
   const restoreFocusRef = React.useRef<HTMLElement | null>(null);
   const titleId = `modal-title-${React.useId()}`;
@@ -83,6 +81,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md', hideClose
   return createPortal(
     <div className={styles.overlay} onClick={onClose}>
       <div
+        {...rest}
         ref={dialogRef}
         role="dialog"
         aria-modal="true"

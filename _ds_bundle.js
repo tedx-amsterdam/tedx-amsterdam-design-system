@@ -28,10 +28,10 @@ var Accordion_default = {
 };
 
 // components/core/Accordion.tsx
-function Accordion({ items = [], defaultOpen = 0, style }) {
+function Accordion({ items = [], defaultOpen = 0, className, style, ...rest }) {
   const [open, setOpen] = React.useState(defaultOpen);
   const uid = React.useId();
-  return /* @__PURE__ */ React.createElement("div", { style }, items.map((it, i) => {
+  return /* @__PURE__ */ React.createElement("div", { className, style, ...rest }, items.map((it, i) => {
     const isOpen = open === i;
     const btnId = `accordion-${uid}-btn-${i}`;
     const panelId = `accordion-${uid}-panel-${i}`;
@@ -97,8 +97,8 @@ var Badge_default = {
 };
 
 // components/core/Badge.tsx
-function Badge({ label, color = "red", size = "md", style }) {
-  return /* @__PURE__ */ React3.createElement("span", { className: cn(Badge_default.badge, Badge_default[color], Badge_default[size]), style }, label);
+function Badge({ label, color = "red", size = "md", className, style, ...rest }) {
+  return /* @__PURE__ */ React3.createElement("span", { className: cn(Badge_default.badge, Badge_default[color], Badge_default[size], className), style, ...rest }, label);
 }
 
 // components/core/Breadcrumb.tsx
@@ -113,8 +113,8 @@ var Breadcrumb_default = {
 };
 
 // components/core/Breadcrumb.tsx
-function Breadcrumb({ items = [], ariaLabel = "Breadcrumb", style }) {
-  return /* @__PURE__ */ React4.createElement("nav", { "aria-label": ariaLabel, style }, /* @__PURE__ */ React4.createElement("ol", { className: Breadcrumb_default.list }, items.map((item, i) => {
+function Breadcrumb({ items = [], ariaLabel = "Breadcrumb", className, style, ...rest }) {
+  return /* @__PURE__ */ React4.createElement("nav", { ...rest, "aria-label": ariaLabel, className, style }, /* @__PURE__ */ React4.createElement("ol", { className: Breadcrumb_default.list }, items.map((item, i) => {
     const isCurrent = i === items.length - 1;
     return /* @__PURE__ */ React4.createElement("li", { key: item.href ?? item.label, className: Breadcrumb_default.item }, !isCurrent && item.href ? /* @__PURE__ */ React4.createElement("a", { href: item.href, className: Breadcrumb_default.link }, item.label) : /* @__PURE__ */ React4.createElement(
       "span",
@@ -207,13 +207,14 @@ var Checkbox_default = {
 };
 
 // components/core/Checkbox.tsx
-function Checkbox({ label, checked, onChange, disabled = false, id, style }) {
+function Checkbox({ label, checked, onChange, disabled = false, id, className, style, ...rest }) {
   const checkId = id || `checkbox-${String(label).toLowerCase().replace(/\s+/g, "-")}`;
   return /* @__PURE__ */ React6.createElement(
     "label",
     {
+      ...rest,
       htmlFor: checkId,
-      className: cn(Checkbox_default.label, disabled && Checkbox_default.disabled),
+      className: cn(Checkbox_default.label, disabled && Checkbox_default.disabled, className),
       style
     },
     /* @__PURE__ */ React6.createElement("span", { className: cn(Checkbox_default.indicator, checked && Checkbox_default.checked) }, checked && /* @__PURE__ */ React6.createElement(
@@ -260,8 +261,8 @@ var CheckboxGroup_default = {
 };
 
 // components/core/CheckboxGroup.tsx
-function CheckboxGroup({ legend, children, style }) {
-  return /* @__PURE__ */ React7.createElement("fieldset", { className: CheckboxGroup_default.fieldset, style }, legend && /* @__PURE__ */ React7.createElement("legend", { className: CheckboxGroup_default.legend }, legend), children);
+function CheckboxGroup({ legend, children, className, style, ...rest }) {
+  return /* @__PURE__ */ React7.createElement("fieldset", { ...rest, className: cn(CheckboxGroup_default.fieldset, className), style }, legend && /* @__PURE__ */ React7.createElement("legend", { className: CheckboxGroup_default.legend }, legend), children);
 }
 
 // components/core/FormField.tsx
@@ -280,7 +281,7 @@ var FormFieldContext = React8.createContext(null);
 function useFormField() {
   return React8.useContext(FormFieldContext);
 }
-function FormField({ label, htmlFor, hint, error, required = false, children, className, style }) {
+function FormField({ label, htmlFor, hint, error, required = false, children, className, style, ...rest }) {
   const autoId = React8.useId();
   const fieldId = htmlFor ?? `field-${autoId}`;
   const errorId = `${fieldId}-formfield-error`;
@@ -288,7 +289,7 @@ function FormField({ label, htmlFor, hint, error, required = false, children, cl
     () => ({ id: fieldId, errorId, invalid: Boolean(error), required }),
     [fieldId, errorId, error, required]
   );
-  return /* @__PURE__ */ React8.createElement(FormFieldContext.Provider, { value: ctx }, /* @__PURE__ */ React8.createElement("div", { className: cn(FormField_default.wrapper, className), style }, label && /* @__PURE__ */ React8.createElement("label", { htmlFor: fieldId, className: FormField_default.label }, label, required && /* @__PURE__ */ React8.createElement("span", { "aria-hidden": "true", className: FormField_default.required }, "*")), hint && /* @__PURE__ */ React8.createElement("span", { className: FormField_default.hint }, hint), children, /* @__PURE__ */ React8.createElement(
+  return /* @__PURE__ */ React8.createElement(FormFieldContext.Provider, { value: ctx }, /* @__PURE__ */ React8.createElement("div", { ...rest, className: cn(FormField_default.wrapper, className), style }, label && /* @__PURE__ */ React8.createElement("label", { htmlFor: fieldId, className: FormField_default.label }, label, required && /* @__PURE__ */ React8.createElement("span", { "aria-hidden": "true", className: FormField_default.required }, "*")), hint && /* @__PURE__ */ React8.createElement("span", { className: FormField_default.hint }, hint), children, /* @__PURE__ */ React8.createElement(
     "span",
     {
       id: errorId,
@@ -322,6 +323,7 @@ function Input({
   tone = "dark",
   error,
   id,
+  className,
   style,
   ...rest
 }) {
@@ -329,7 +331,7 @@ function Input({
   const inputId = id || field?.id || `input-${String(label).toLowerCase().replace(/\s+/g, "-")}`;
   const errorId = `${inputId}-error`;
   const describedBy = [errorId, field?.errorId].filter(Boolean).join(" ");
-  return /* @__PURE__ */ React9.createElement("label", { className: cn(Input_default.wrapper, Input_default[tone]), style }, /* @__PURE__ */ React9.createElement("span", { className: Input_default.label }, label), /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ React9.createElement("label", { className: cn(Input_default.wrapper, Input_default[tone], className), style }, /* @__PURE__ */ React9.createElement("span", { className: Input_default.label }, label), /* @__PURE__ */ React9.createElement(
     "input",
     {
       id: inputId,
@@ -355,7 +357,7 @@ var Logo_default = {
 };
 
 // components/core/Logo.tsx
-function Logo({ tone = "light-on-dark", width = 230, base = "", href, style }) {
+function Logo({ tone = "light-on-dark", width = 230, base = "", href, className, style, ...rest }) {
   const src = tone === "dark-on-light" ? base + "assets/logo-tedxamsterdam.svg" : base + "assets/logo-tedxamsterdam-white.png";
   const img = /* @__PURE__ */ React10.createElement(
     "img",
@@ -366,7 +368,7 @@ function Logo({ tone = "light-on-dark", width = 230, base = "", href, style }) {
       style: { width }
     }
   );
-  return href ? /* @__PURE__ */ React10.createElement("a", { href, className: Logo_default.wrap, style }, img) : /* @__PURE__ */ React10.createElement("span", { className: Logo_default.wrap, style }, img);
+  return href ? /* @__PURE__ */ React10.createElement("a", { href, className: cn(Logo_default.wrap, className), style, ...rest }, img) : /* @__PURE__ */ React10.createElement("span", { className: cn(Logo_default.wrap, className), style, ...rest }, img);
 }
 
 // components/core/MediaCard.tsx
@@ -391,14 +393,17 @@ function MediaCard({
   date,
   href = "#",
   ratio = "4 / 3",
-  style
+  className,
+  style,
+  ...rest
 }) {
   return /* @__PURE__ */ React11.createElement(
     "a",
     {
       href,
-      className: MediaCard_default.card,
-      style
+      className: cn(MediaCard_default.card, className),
+      style,
+      ...rest
     },
     /* @__PURE__ */ React11.createElement(
       "div",
@@ -443,7 +448,7 @@ var maxWidths = {
   lg: 800
 };
 var FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton = false, className, style }) {
+function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton = false, className, style, ...rest }) {
   const dialogRef = React12.useRef(null);
   const restoreFocusRef = React12.useRef(null);
   const titleId = `modal-title-${React12.useId()}`;
@@ -496,6 +501,7 @@ function Modal({ isOpen, onClose, title, children, size = "md", hideCloseButton 
     /* @__PURE__ */ React12.createElement("div", { className: Modal_default.overlay, onClick: onClose }, /* @__PURE__ */ React12.createElement(
       "div",
       {
+        ...rest,
         ref: dialogRef,
         role: "dialog",
         "aria-modal": "true",
@@ -548,7 +554,9 @@ function NavigationBar({
   activePath,
   base = "",
   skipTarget = "#main-content",
-  style
+  className,
+  style,
+  ...rest
 }) {
   const [menuOpen, setMenuOpen] = React13.useState(false);
   const menuId = `nav-mobile-menu-${React13.useId()}`;
@@ -565,7 +573,7 @@ function NavigationBar({
     return () => document.removeEventListener("keydown", onKey);
   }, [menuOpen]);
   const logoSrc = base + "assets/logo-tedxamsterdam-white.png";
-  return /* @__PURE__ */ React13.createElement("header", { className: NavigationBar_default.header, style }, /* @__PURE__ */ React13.createElement("a", { href: skipTarget, className: NavigationBar_default.skipLink }, "Skip to main content"), /* @__PURE__ */ React13.createElement("div", { className: NavigationBar_default.bar }, /* @__PURE__ */ React13.createElement("a", { href: logoHref, className: NavigationBar_default.logoLink }, /* @__PURE__ */ React13.createElement("img", { src: logoSrc, alt: "TEDxAmsterdam", className: NavigationBar_default.logoImg })), /* @__PURE__ */ React13.createElement("div", { className: NavigationBar_default.desktopNav }, /* @__PURE__ */ React13.createElement("nav", { "aria-label": "Main navigation", className: NavigationBar_default.navLinks }, links.map((link) => /* @__PURE__ */ React13.createElement(
+  return /* @__PURE__ */ React13.createElement("header", { ...rest, className: cn(NavigationBar_default.header, className), style }, /* @__PURE__ */ React13.createElement("a", { href: skipTarget, className: NavigationBar_default.skipLink }, "Skip to main content"), /* @__PURE__ */ React13.createElement("div", { className: NavigationBar_default.bar }, /* @__PURE__ */ React13.createElement("a", { href: logoHref, className: NavigationBar_default.logoLink }, /* @__PURE__ */ React13.createElement("img", { src: logoSrc, alt: "TEDxAmsterdam", className: NavigationBar_default.logoImg })), /* @__PURE__ */ React13.createElement("div", { className: NavigationBar_default.desktopNav }, /* @__PURE__ */ React13.createElement("nav", { "aria-label": "Main navigation", className: NavigationBar_default.navLinks }, links.map((link) => /* @__PURE__ */ React13.createElement(
     "a",
     {
       key: link.href,
@@ -623,8 +631,8 @@ var Radio_default = {
 };
 
 // components/core/Radio.tsx
-function Radio({ legend, options = [], value, onChange, name, disabled = false, style }) {
-  return /* @__PURE__ */ React14.createElement("fieldset", { className: Radio_default.fieldset, style }, legend && /* @__PURE__ */ React14.createElement("legend", { className: Radio_default.legend }, legend), options.map((opt) => {
+function Radio({ legend, options = [], value, onChange, name, disabled = false, className, style, ...rest }) {
+  return /* @__PURE__ */ React14.createElement("fieldset", { ...rest, className: cn(Radio_default.fieldset, className), style }, legend && /* @__PURE__ */ React14.createElement("legend", { className: Radio_default.legend }, legend), options.map((opt) => {
     const isSelected = value === opt.value;
     const radioId = `${name}-${opt.value}`;
     return /* @__PURE__ */ React14.createElement(
@@ -693,8 +701,8 @@ function RadioOption({ value, label, _name, _groupValue, _onChange, _disabled })
     /* @__PURE__ */ React15.createElement("span", { className: RadioGroup_default.text }, label)
   );
 }
-function RadioGroupRoot({ name, legend, value, onChange, disabled = false, children, style }) {
-  return /* @__PURE__ */ React15.createElement("fieldset", { className: RadioGroup_default.fieldset, style }, legend && /* @__PURE__ */ React15.createElement("legend", { className: RadioGroup_default.legend }, legend), React15.Children.map(
+function RadioGroupRoot({ name, legend, value, onChange, disabled = false, children, className, style, ...rest }) {
+  return /* @__PURE__ */ React15.createElement("fieldset", { ...rest, className: cn(RadioGroup_default.fieldset, className), style }, legend && /* @__PURE__ */ React15.createElement("legend", { className: RadioGroup_default.legend }, legend), React15.Children.map(
     children,
     (child) => React15.isValidElement(child) ? React15.cloneElement(child, {
       _name: name,
@@ -758,13 +766,16 @@ function SectionHeader({
   link,
   linkHref = "#",
   align = "left",
-  style
+  className,
+  style,
+  ...rest
 }) {
   return /* @__PURE__ */ React17.createElement(
     "div",
     {
-      className: cn(SectionHeader_default.root, align === "center" ? SectionHeader_default.center : SectionHeader_default.left),
-      style
+      className: cn(SectionHeader_default.root, align === "center" ? SectionHeader_default.center : SectionHeader_default.left, className),
+      style,
+      ...rest
     },
     eyebrow && /* @__PURE__ */ React17.createElement(Tag, null, eyebrow),
     /* @__PURE__ */ React17.createElement("h2", { className: SectionHeader_default.title }, title),
@@ -798,6 +809,7 @@ function Select({
   disabled = false,
   error,
   id,
+  className,
   style,
   ...rest
 }) {
@@ -806,7 +818,7 @@ function Select({
   const errorId = selectId && error ? `${selectId}-error` : void 0;
   const describedBy = [errorId, field?.errorId].filter(Boolean).join(" ") || void 0;
   const hasValue = Boolean(value);
-  return /* @__PURE__ */ React18.createElement("div", { className: Select_default.wrapper, style }, label && /* @__PURE__ */ React18.createElement("label", { htmlFor: selectId, className: Select_default.label }, label), /* @__PURE__ */ React18.createElement("div", { className: Select_default.selectWrap }, /* @__PURE__ */ React18.createElement(
+  return /* @__PURE__ */ React18.createElement("div", { className: cn(Select_default.wrapper, className), style }, label && /* @__PURE__ */ React18.createElement("label", { htmlFor: selectId, className: Select_default.label }, label), /* @__PURE__ */ React18.createElement("div", { className: Select_default.selectWrap }, /* @__PURE__ */ React18.createElement(
     "select",
     {
       id: selectId,
@@ -891,8 +903,8 @@ var Stat_default = {
 };
 
 // components/core/Stat.tsx
-function Stat({ value, label, size = "lg", style }) {
-  return /* @__PURE__ */ React20.createElement("div", { className: Stat_default.root, style }, /* @__PURE__ */ React20.createElement("span", { className: cn(Stat_default.value, Stat_default[size]) }, value), label && /* @__PURE__ */ React20.createElement("span", { className: cn(Stat_default.label, size === "xl" && Stat_default.labelXl) }, label));
+function Stat({ value, label, size = "lg", className, style, ...rest }) {
+  return /* @__PURE__ */ React20.createElement("div", { className: cn(Stat_default.root, className), style, ...rest }, /* @__PURE__ */ React20.createElement("span", { className: cn(Stat_default.value, Stat_default[size]) }, value), label && /* @__PURE__ */ React20.createElement("span", { className: cn(Stat_default.label, size === "xl" && Stat_default.labelXl) }, label));
 }
 
 // components/core/Tabs.tsx
@@ -907,7 +919,7 @@ var Tabs_default = {
 };
 
 // components/core/Tabs.tsx
-function Tabs({ tabs = [], defaultIndex = 0, selectedIndex, onTabChange, style }) {
+function Tabs({ tabs = [], defaultIndex = 0, selectedIndex, onTabChange, className, style, ...rest }) {
   const [internalActive, setInternalActive] = React21.useState(defaultIndex);
   const uid = React21.useId();
   const tabRefs = React21.useRef([]);
@@ -928,7 +940,7 @@ function Tabs({ tabs = [], defaultIndex = 0, selectedIndex, onTabChange, style }
       tabRefs.current[prev]?.focus();
     }
   };
-  return /* @__PURE__ */ React21.createElement("div", { style }, /* @__PURE__ */ React21.createElement("div", { role: "tablist", className: Tabs_default.tablist }, tabs.map((tab, i) => /* @__PURE__ */ React21.createElement(
+  return /* @__PURE__ */ React21.createElement("div", { className, style, ...rest }, /* @__PURE__ */ React21.createElement("div", { role: "tablist", className: Tabs_default.tablist }, tabs.map((tab, i) => /* @__PURE__ */ React21.createElement(
     "button",
     {
       key: i,
@@ -980,6 +992,7 @@ function Textarea({
   disabled = false,
   error,
   id,
+  className,
   style,
   ...rest
 }) {
@@ -987,7 +1000,7 @@ function Textarea({
   const taId = id || field?.id || (label ? `textarea-${String(label).toLowerCase().replace(/\s+/g, "-")}` : void 0);
   const errorId = taId && error ? `${taId}-error` : void 0;
   const describedBy = [errorId, field?.errorId].filter(Boolean).join(" ") || void 0;
-  return /* @__PURE__ */ React22.createElement("div", { className: Textarea_default.wrapper, style }, label && /* @__PURE__ */ React22.createElement("label", { htmlFor: taId, className: Textarea_default.label }, label), /* @__PURE__ */ React22.createElement(
+  return /* @__PURE__ */ React22.createElement("div", { className: cn(Textarea_default.wrapper, className), style }, label && /* @__PURE__ */ React22.createElement("label", { htmlFor: taId, className: Textarea_default.label }, label), /* @__PURE__ */ React22.createElement(
     "textarea",
     {
       id: taId,
@@ -1021,7 +1034,7 @@ var Toast_default = {
 };
 
 // components/core/Toast.tsx
-function Toast({ message, type = "info", duration = 4e3, onDismiss, style }) {
+function Toast({ message, type = "info", duration = 4e3, onDismiss, className, style, ...rest }) {
   const [visible, setVisible] = React23.useState(false);
   const onDismissRef = React23.useRef(onDismiss);
   React23.useEffect(() => {
@@ -1045,10 +1058,11 @@ function Toast({ message, type = "info", duration = 4e3, onDismiss, style }) {
   return /* @__PURE__ */ React23.createElement(
     "div",
     {
+      ...rest,
       role: isUrgent ? "alert" : "status",
       "aria-live": isUrgent ? "assertive" : "polite",
       "aria-atomic": "true",
-      className: cn(Toast_default.toast, visible && Toast_default.visible, isUrgent && Toast_default.urgent),
+      className: cn(Toast_default.toast, visible && Toast_default.visible, isUrgent && Toast_default.urgent, className),
       style
     },
     /* @__PURE__ */ React23.createElement("p", { className: Toast_default.message }, message),

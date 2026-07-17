@@ -22,6 +22,7 @@ export interface SelectProps {
   /** Validation message; triggers red error state. */
   error?: string;
   id?: string;
+  className?: string;
   style?: React.CSSProperties;
 }
 
@@ -35,6 +36,7 @@ export function Select({
   disabled = false,
   error,
   id,
+  className,
   style,
   ...rest
 }: SelectProps & Omit<React.SelectHTMLAttributes<HTMLSelectElement>, keyof SelectProps>): React.ReactElement {
@@ -45,7 +47,7 @@ export function Select({
   const hasValue = Boolean(value);
 
   return (
-    <div className={styles.wrapper} style={style}>
+    <div className={cn(styles.wrapper, className)} style={style}>
       {label && (
         <label htmlFor={selectId} className={styles.label}>
           {label}

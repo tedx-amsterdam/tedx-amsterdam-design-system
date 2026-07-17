@@ -15,6 +15,7 @@ export interface InputProps {
   /** Validation message; triggers red error state. */
   error?: string;
   id?: string;
+  className?: string;
   style?: React.CSSProperties;
 }
 
@@ -28,6 +29,7 @@ export function Input({
   tone = 'dark',
   error,
   id,
+  className,
   style,
   ...rest
 }: InputProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof InputProps>): React.ReactElement {
@@ -37,7 +39,7 @@ export function Input({
   const describedBy = [errorId, field?.errorId].filter(Boolean).join(' ');
 
   return (
-    <label className={cn(styles.wrapper, styles[tone])} style={style}>
+    <label className={cn(styles.wrapper, styles[tone], className)} style={style}>
       <span className={styles.label}>{label}</span>
       <input
         id={inputId}
