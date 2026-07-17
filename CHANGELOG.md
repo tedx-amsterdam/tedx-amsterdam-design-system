@@ -25,6 +25,7 @@ Versioning: [Semantic Versioning](https://semver.org/).
 - CDN bundle (`_ds_bundle.js`) is now a valid classic script: React/ReactDOM externals resolve via `window.React`/`window.ReactDOM` (previously ESM `import` statements inside the IIFE caused a SyntaxError).
 - FormField: auto-wires child Input/Select/Textarea (`id`, `aria-describedby`, `aria-invalid`, `required`) via context; adds `useFormField` and `className`.
 - Accordion: ids namespaced with `useId()` — multiple accordions per page no longer collide; test coverage added.
+- Vercel deployments: build command still invoked the obsolete `extend-bundle.js` (expects `.jsx` sources removed in 1.1.0), failing every deploy; now runs `npm run build` and the dead script is deleted.
 
 ---
 
