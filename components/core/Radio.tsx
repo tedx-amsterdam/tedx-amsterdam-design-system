@@ -7,7 +7,7 @@ export interface RadioOption {
   label: string;
 }
 
-export interface RadioProps {
+export interface RadioProps extends Omit<React.FieldsetHTMLAttributes<HTMLFieldSetElement>, 'onChange'> {
   /** Group label rendered as `<legend>`. */
   legend?: string;
   options: RadioOption[];
@@ -17,13 +17,12 @@ export interface RadioProps {
   /** Shared `name` attribute for the radio group — required for native grouping. */
   name: string;
   disabled?: boolean;
-  style?: React.CSSProperties;
 }
 
 /** Radio button group. Selected option shows red dot. Uses fieldset/legend for a11y. */
-export function Radio({ legend, options = [], value, onChange, name, disabled = false, style }: RadioProps): React.ReactElement {
+export function Radio({ legend, options = [], value, onChange, name, disabled = false, className, style, ...rest }: RadioProps): React.ReactElement {
   return (
-    <fieldset className={styles.fieldset} style={style}>
+    <fieldset {...rest} className={cn(styles.fieldset, className)} style={style}>
       {legend && (
         <legend className={styles.legend}>{legend}</legend>
       )}

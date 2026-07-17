@@ -8,7 +8,7 @@ export interface NavLink {
   active?: boolean;
 }
 
-export interface NavigationBarProps {
+export interface NavigationBarProps extends React.HTMLAttributes<HTMLElement> {
   links?: NavLink[];
   /** CTA button label. */
   ctaLabel?: string;
@@ -22,7 +22,6 @@ export interface NavigationBarProps {
   base?: string;
   /** href for the skip-to-content link. @default "#main-content" */
   skipTarget?: string;
-  style?: React.CSSProperties;
 }
 
 /**
@@ -41,7 +40,9 @@ export function NavigationBar({
   activePath,
   base = '',
   skipTarget = '#main-content',
+  className,
   style,
+  ...rest
 }: NavigationBarProps): React.ReactElement {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const menuId = `nav-mobile-menu-${React.useId()}`;
@@ -62,7 +63,7 @@ export function NavigationBar({
   const logoSrc = base + 'assets/logo-tedxamsterdam-white.png';
 
   return (
-    <header className={styles.header} style={style}>
+    <header {...rest} className={cn(styles.header, className)} style={style}>
       <a href={skipTarget} className={styles.skipLink}>
         Skip to main content
       </a>

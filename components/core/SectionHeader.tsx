@@ -4,7 +4,7 @@ import { Tag } from './Tag';
 import { ArrowLink } from './ArrowLink';
 import styles from './SectionHeader.module.css';
 
-export interface SectionHeaderProps {
+export interface SectionHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /** Red uppercase eyebrow above the title. */
   eyebrow?: React.ReactNode;
   title: React.ReactNode;
@@ -14,7 +14,6 @@ export interface SectionHeaderProps {
   linkHref?: string;
   /** @default "left" */
   align?: 'left' | 'center';
-  style?: React.CSSProperties;
 }
 
 /** Eyebrow + heading + description + arrow-link section intro. */
@@ -25,12 +24,15 @@ export function SectionHeader({
   link,
   linkHref = '#',
   align = 'left',
+  className,
   style,
+  ...rest
 }: SectionHeaderProps): React.ReactElement {
   return (
     <div
-      className={cn(styles.root, align === 'center' ? styles.center : styles.left)}
+      className={cn(styles.root, align === 'center' ? styles.center : styles.left, className)}
       style={style}
+      {...rest}
     >
       {eyebrow && <Tag>{eyebrow}</Tag>}
       <h2 className={styles.title}>

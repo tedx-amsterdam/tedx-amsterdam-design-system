@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../utils/cn';
 import styles from './Toast.module.css';
 
-export interface ToastProps {
+export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
   message: string;
   /** @default "info" */
   type?: 'info' | 'success' | 'error' | 'warning';
@@ -10,7 +10,6 @@ export interface ToastProps {
   duration?: number;
   /** Called when the toast finishes its exit animation. Use to remove it from state. */
   onDismiss?: () => void;
-  style?: React.CSSProperties;
 }
 
 /**
@@ -18,7 +17,7 @@ export interface ToastProps {
  * Caller renders/unrenders via state; use `onDismiss` to clean up.
  * error/warning use `role="alert"` (assertive); info/success use `role="status"` (polite).
  */
-export function Toast({ message, type = 'info', duration = 4000, onDismiss, style }: ToastProps): React.ReactElement {
+export function Toast({ message, type = 'info', duration = 4000, onDismiss, className, style, ...rest }: ToastProps): React.ReactElement {
   const [visible, setVisible] = React.useState(false);
   const onDismissRef = React.useRef(onDismiss);
   React.useEffect(() => { onDismissRef.current = onDismiss; });
@@ -39,10 +38,11 @@ export function Toast({ message, type = 'info', duration = 4000, onDismiss, styl
 
   return (
     <div
+      {...rest}
       role={isUrgent ? 'alert' : 'status'}
       aria-live={isUrgent ? 'assertive' : 'polite'}
       aria-atomic="true"
-      className={cn(styles.toast, visible && styles.visible, isUrgent && styles.urgent)}
+      className={cn(styles.toast, visible && styles.visible, isUrgent && styles.urgent, className)}
       style={style}
     >
       <p className={styles.message}>
