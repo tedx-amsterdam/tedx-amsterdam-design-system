@@ -7,5 +7,6 @@
     "rootDir": "components",
     "outDir": "dist/types"
   },
+  "include": ["components/**/*.ts", "components/**/*.tsx"],
   "exclude": ["components/**/*.stories.tsx"]
 }
