@@ -111,6 +111,19 @@ When adding a new token, place it in the correct file and follow the existing na
 6. Add to `tests/fixtures.tsx` for a11y sweep coverage.
 7. Run `npm test && npm run typecheck && npm run lint`.
 
+## Publishing to npm
+
+After merging changes, check if an `npm publish` is needed. A new publish is required when any file included in the package has changed. The `files` field in `package.json` determines what ships:
+
+- `dist/` — built JS + CSS + type declarations
+- `tokens/` — CSS design token files
+- `styles.css` — global stylesheet
+- `readme.md`, `CHANGELOG.md`
+
+**No publish needed** for changes to: tests, config files (`tsconfig`, `vitest.config`), Storybook, scripts, `CLAUDE.md`, devDependencies, or CI.
+
+When publishing: bump the version in `package.json` following semver (`patch` for fixes, `minor` for new components/features, `major` for breaking API changes), update `CHANGELOG.md`, then run `npm publish`. The `prepublishOnly` script will automatically lint, typecheck, test, and build before publishing.
+
 ## What to avoid
 
 - Don't add npm dependencies without justification. The system intentionally has few deps.
