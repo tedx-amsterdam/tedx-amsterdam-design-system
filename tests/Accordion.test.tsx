@@ -33,8 +33,8 @@ describe('Accordion', () => {
   it('wires aria-controls to a panel labelled by the button', () => {
     render(<Accordion items={ITEMS} defaultOpen={0} />);
     const btn = screen.getAllByRole('button')[0];
-    const panelId = btn.getAttribute('aria-controls');
-    const panel = document.getElementById(panelId);
+    const panelId = btn.getAttribute('aria-controls')!;
+    const panel = document.getElementById(panelId)!;
     expect(panel).not.toBeNull();
     expect(panel).toHaveAttribute('aria-labelledby', btn.id);
   });
@@ -52,6 +52,6 @@ describe('Accordion', () => {
 
   it('has no axe violations', async () => {
     const { container } = render(<Accordion items={ITEMS} defaultOpen={0} />);
-    expect(await global.axe(container)).toHaveNoViolations();
+    expect(await globalThis.axe(container)).toHaveNoViolations();
   });
 });

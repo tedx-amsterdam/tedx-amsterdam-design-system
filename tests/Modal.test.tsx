@@ -14,7 +14,7 @@ describe('Modal', () => {
   it('labels the dialog with the title via aria-labelledby', () => {
     render(<Modal isOpen onClose={() => {}} title="My title">Body</Modal>);
     const dialog = screen.getByRole('dialog');
-    const labelledBy = dialog.getAttribute('aria-labelledby');
+    const labelledBy = dialog.getAttribute('aria-labelledby')!;
     expect(labelledBy).toBeTruthy();
     expect(document.getElementById(labelledBy)).toHaveTextContent('My title');
   });
@@ -41,7 +41,7 @@ describe('Modal', () => {
     render(<Modal isOpen onClose={onClose} title="Click">Body</Modal>);
     fireEvent.click(screen.getByRole('dialog'));
     expect(onClose).not.toHaveBeenCalled();
-    fireEvent.click(screen.getByRole('dialog').parentElement);
+    fireEvent.click(screen.getByRole('dialog').parentElement!);
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
@@ -81,6 +81,6 @@ describe('Modal', () => {
   it('has no axe violations', async () => {
     render(<Modal isOpen onClose={() => {}} title="Accessible">Body</Modal>);
     const overlay = screen.getByRole('dialog').parentElement;
-    expect(await global.axe(overlay)).toHaveNoViolations();
+    expect(await globalThis.axe(overlay)).toHaveNoViolations();
   });
 });
