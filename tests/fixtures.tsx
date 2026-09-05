@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ReactElement } from 'react';
 import {
   Accordion, ArrowLink, Badge, Breadcrumb, Button, Checkbox, CheckboxGroup,
   FormField, Input, Logo, MediaCard, Modal, NavigationBar, Radio, RadioGroup,
@@ -6,7 +7,7 @@ import {
 } from '../components/core/index';
 
 /** Minimal renderable element for every component in the library. */
-export const CASES = [
+export const CASES: [string, ReactElement][] = [
   ['Accordion', <Accordion items={[{ q: 'Q1', a: 'A1' }]} />],
   ['ArrowLink', <ArrowLink href="#talks">All talks</ArrowLink>],
   ['Badge', <Badge label="New" />],
