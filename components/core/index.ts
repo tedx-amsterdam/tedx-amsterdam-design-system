@@ -21,3 +21,10 @@ export { Tag }           from './Tag';
 export { Tabs }          from './Tabs';
 export { Textarea }      from './Textarea';
 export { Toast }         from './Toast';
+
+export {
+  TEDX_DISCLAIMER,
+  TEDX_ABOUT_TEDX,
+  TEDX_ABOUT_TED,
+  TEDX_HOMEPAGE_DESCRIPTION,
+} from './tedx-required-content';

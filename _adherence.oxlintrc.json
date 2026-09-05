@@ -117,6 +117,14 @@
       {
         "selector": "JSXOpeningElement[name.name='Tag'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:red|white|muted)$/]",
         "message": "<Tag> color must be one of 'red' | 'white' | 'muted'."
+      },
+      {
+        "selector": "JSXElement:has(JSXOpeningElement[name.name='Logo']) > JSXOpeningElement > JSXAttribute[name.name='style'] JSXExpressionContainer ObjectExpression Property[key.name='background'] > Literal[value!=/^(?:#000(?:000)?|#fff(?:fff)?|var\\(--tedx-black\\)|var\\(--tedx-white\\))$/]",
+        "message": "TEDx guidelines: Logo background must be solid black (#000/#000000/var(--tedx-black)) or white (#fff/#ffffff/var(--tedx-white))."
+      },
+      {
+        "selector": "JSXElement:has(JSXOpeningElement[name.name='Logo']) > JSXOpeningElement > JSXAttribute[name.name='style'] JSXExpressionContainer ObjectExpression Property[key.name='backgroundColor'] > Literal[value!=/^(?:#000(?:000)?|#fff(?:fff)?|var\\(--tedx-black\\)|var\\(--tedx-white\\))$/]",
+        "message": "TEDx guidelines: Logo background must be solid black (#000/#000000/var(--tedx-black)) or white (#fff/#ffffff/var(--tedx-white))."
       }
     ]
   },
