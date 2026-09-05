@@ -6,11 +6,11 @@
   "author": "Julian Aijal",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julianaijal/tedx-amsterdam-design-system.git"
+    "url": "git+https://github.com/tedx-amsterdam/tedx-amsterdam-design-system.git"
   },
-  "homepage": "https://github.com/julianaijal/tedx-amsterdam-design-system#readme",
+  "homepage": "https://github.com/tedx-amsterdam/tedx-amsterdam-design-system#readme",
   "bugs": {
-    "url": "https://github.com/julianaijal/tedx-amsterdam-design-system/issues"
+    "url": "https://github.com/tedx-amsterdam/tedx-amsterdam-design-system/issues"
   },
   "keywords": [
     "react",
