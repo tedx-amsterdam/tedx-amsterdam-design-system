@@ -6,10 +6,13 @@
     "jsx": "react-jsx",
     "strict": true,
     "noEmit": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["vitest/globals"]
   },
   "include": [
     "components/**/*.tsx",
-    "components/**/*.ts"
+    "components/**/*.ts",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
   ]
 }
