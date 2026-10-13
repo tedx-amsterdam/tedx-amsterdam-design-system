@@ -1,0 +1,5 @@
+# Every change to the design system requests a review from the maintainer.
+# This blocks nothing until the ruleset requires code owner review, which
+# waits for a second reviewer after the website's proof of concept (decision
+# 23 and stage E in docs/roadmap.md of tedx-amsterdam-website).
+* @julianaijal
