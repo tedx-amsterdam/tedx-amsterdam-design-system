@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { cn } from '../utils/cn';
 import styles from './Checkbox.module.css';
