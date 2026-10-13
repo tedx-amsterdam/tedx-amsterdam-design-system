@@ -116,6 +116,7 @@ When adding a new token, place it in the correct file and follow the existing na
 After merging changes, check if an `npm publish` is needed. A new publish is required when any file included in the package has changed. The `files` field in `package.json` determines what ships:
 
 - `dist/` — built JS + CSS + type declarations
+- `assets/logo-*`, `assets/icon-*` — images the components load at runtime
 - `tokens/` — CSS design token files
 - `styles.css` — global stylesheet
 - `readme.md`, `CHANGELOG.md`
