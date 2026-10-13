@@ -30,6 +30,8 @@
   ],
   "files": [
     "dist",
+    "assets/logo-*",
+    "assets/icon-*",
     "styles.css",
     "tokens",
     "readme.md",
@@ -43,6 +45,7 @@
     "./index.css": "./dist/index.css",
     "./styles.css": "./styles.css",
     "./tokens/*": "./tokens/*",
+    "./assets/*": "./assets/*",
     "./package.json": "./package.json"
   },
   "peerDependencies": {
