@@ -4,20 +4,20 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Design System — TEDxAmsterdam</title>
-<meta name="description" content="The official TEDxAmsterdam design system — dark-first brand tokens, 23 React components and a full website UI kit built from the 2025 brand-book. Amsterdam Reimagined." />
+<meta name="description" content="The official TEDxAmsterdam design system — dark-first brand tokens and 23 React components." />
 <meta name="robots" content="index, follow" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Design System — TEDxAmsterdam" />
-<meta property="og:description" content="Brand tokens, React components and website UI kit for TEDxAmsterdam — Amsterdam Reimagined." />
+<meta property="og:description" content="Brand tokens and React components for TEDxAmsterdam." />
 <meta property="og:image" content="assets/logo-tedxamsterdam-color.png" />
 <meta property="og:site_name" content="TEDxAmsterdam Design System" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Design System — TEDxAmsterdam" />
-<meta name="twitter:description" content="Brand tokens, React components and website UI kit for TEDxAmsterdam — Amsterdam Reimagined." />
+<meta name="twitter:description" content="Brand tokens and React components for TEDxAmsterdam." />
 <meta name="twitter:image" content="assets/logo-tedxamsterdam-color.png" />
 
 <!-- Structured data -->
@@ -26,7 +26,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "TEDxAmsterdam Design System",
-  "description": "Dark-first brand system for TEDxAmsterdam. Includes design tokens, React components and a full website UI kit.",
+  "description": "Dark-first brand system for TEDxAmsterdam. Includes design tokens and React components.",
   "publisher": {
     "@type": "Organization",
     "name": "TEDxAmsterdam",
@@ -132,9 +132,6 @@
   .pills { display: flex; flex-wrap: wrap; gap: 6px; }
   .pill { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.18); border-radius: 100px; color: rgba(255,255,255,0.55); }
 
-  /* ── Full-bleed kit card ── */
-  .kit-card { min-height: 300px; justify-content: flex-end; background: #060606; }
-  .kit-glow { position: absolute; top: -60px; right: -60px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(235,0,40,0.2) 0%, transparent 65%); pointer-events: none; }
 
   /* ── Footer ── */
   footer { border-top: 1px solid rgba(255,255,255,0.07); }
@@ -370,42 +367,6 @@
     </div>
   </section>
 
-  <!-- ── Website UI Kit ── -->
-  <section class="section">
-    <div class="frame">
-      <div class="section-head">
-        <p class="section-eyebrow">Website</p>
-        <h2 class="section-title">UI Kit</h2>
-      </div>
-      <div class="grid grid-3">
-
-        <a class="card kit-card span-3" href="ui_kits/website/">
-          <div class="kit-glow"></div>
-          <div style="position:absolute; top:28px; left:28px; display:flex; align-items:center; gap:12px;">
-            <img src="assets/logo-tedx.svg" alt="TEDx" style="height:16px; opacity:0.35;" />
-            <span style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.2);">Amsterdam Reimagined</span>
-          </div>
-          <div class="pills" style="margin-bottom:20px;">
-            <span class="pill">Home</span>
-            <span class="pill">Speakers</span>
-            <span class="pill">Speaker detail</span>
-            <span class="pill">Team</span>
-            <span class="pill">About</span>
-            <span class="pill">Event Program</span>
-            <span class="pill">Impact Program</span>
-            <span class="pill">Partners</span>
-            <span class="pill">Gallery</span>
-            <span class="pill">Blog</span>
-          </div>
-          <span class="card-group">Click-through · Responsive · 10 screens</span>
-          <span class="card-title">TEDxAmsterdam Website</span>
-          <span class="card-sub">Full recreation of "Amsterdam Reimagined". Nav collapses to hamburger under 860px.</span>
-          <span class="card-cta">Open website →</span>
-        </a>
-
-      </div>
-    </div>
-  </section>
 
 </main>
 

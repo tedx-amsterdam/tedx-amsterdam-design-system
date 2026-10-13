@@ -11,6 +11,9 @@ Versioning: [Semantic Versioning](https://semver.org/).
 ### Fixed
 - Arimo loads from `fonts/` in the package instead of Google Fonts, so a site using `styles.css` no longer sends its visitors' IP addresses to Google. Bundlers that drop remote `@import`s, such as Next.js, also get the font now: before, it silently never loaded there.
 
+### Removed
+- `ui_kits/website/` and `npm run build:website`: the click-through prototype of the 2025 edition's website, with that year's theme and copy. The designs stay in the Figma file; the website builds its pages from the components. Not part of the npm package, so nothing changes for consumers.
+
 ---
 
 ## [1.3.0] — 2026-10-13
