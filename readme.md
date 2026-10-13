@@ -60,7 +60,7 @@ cp node_modules/tedx-amsterdam-design-system/assets/* public/assets/
 Releases are tag-driven. CI publishes to npm via trusted publishing (OIDC). The version bump goes through a pull request like any other change, so nothing is pushed to `main` directly:
 
 1. On a branch `chore/release-X.Y.Z`: `npm version X.Y.Z --no-git-tag-version`, move the `[Unreleased]` notes in `CHANGELOG.md` under the new version, and open a pull request.
-2. After it is merged, tag the merge commit and push only the tag:
+2. After it is rebased onto `main`, tag the release commit, now the latest commit on `main`, and push only the tag:
 
 ```bash
 git switch main && git pull
