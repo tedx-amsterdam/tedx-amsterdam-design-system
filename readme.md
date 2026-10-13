@@ -87,7 +87,6 @@ The `Release` workflow checks that the tag matches `package.json`, then runs `np
 | `tokens/effects.css` | Radii, shadows, heat-gradient system, motion tokens. |
 | `guidelines/*.html` | Foundation specimen cards — open in a browser for reference. |
 | `components/core/` | 23 React primitives with TypeScript declarations. |
-| `ui_kits/website/` | Click-through website recreation — 10 screens, responsive. |
 | `assets/` | Logos (SVG + PNG), social icons, event photography. |
 
 ### Components
@@ -234,28 +233,8 @@ Interactive component playground with a11y checks:
 |--------|-------------|
 | `npm run build` | Rebuilds `_ds_bundle.js` — the CDN-ready IIFE bundle of all 23 components. |
 | `npm run build:dist` | Builds the npm package output: one ES module per component (keeping `'use client'`), `dist/index.js` re-exporting them, `dist/index.css`, and type declarations in `dist/types`. Then checks it with `scripts/check-dist.js`. |
-| `npm run build:website` | Compiles `ui_kits/website/*.jsx` → `ui_kits/website/bundle.js` via esbuild. |
 | `npm run typecheck` | Type-checks component and story sources with TypeScript (`tsc --noEmit`). |
 | `npm run lint` | Runs oxlint across components, scripts, and tests. |
-
----
-
-## Website UI kit
-
-`ui_kits/website/` is a full click-through recreation of the TEDxAmsterdam
-"Amsterdam Reimagined" website. Open `ui_kits/website/index.html` directly in a
-browser. The JSX is pre-compiled — no Babel required at runtime.
-
-To rebuild after editing JSX source files:
-
-```bash
-npm run build:website
-```
-
-**Screens:** Home · Speakers · Speaker detail · Team · About · Event Program ·
-Impact Program · Partners · Gallery · Blog
-
-Responsive: navigation collapses to a hamburger drawer below 860px.
 
 ---
 
