@@ -43,6 +43,18 @@ import 'tedx-amsterdam-design-system/index.css';    // component styles
 
 React 18 or 19 is a peer dependency. The CDN IIFE bundle (`_ds_bundle.js`) remains available for no-build usage.
 
+#### Images
+
+`Logo`, `NavigationBar` and `SocialLink` load their images from `{base}assets/…` at runtime, so your site has to serve them. The package ships the logos and icons (not the photography) in `assets/`; copy them into your public folder as part of the build and pass the matching `base`:
+
+```bash
+cp node_modules/tedx-amsterdam-design-system/assets/* public/assets/
+```
+
+```jsx
+<Logo base="/" />   // loads /assets/logo-tedxamsterdam-white.png
+```
+
 #### Releasing a new version
 
 Releases are tag-driven. CI publishes to npm via trusted publishing (OIDC):
