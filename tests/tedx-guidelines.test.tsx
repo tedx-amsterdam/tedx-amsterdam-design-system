@@ -69,6 +69,17 @@ describe('TEDx Logo component', () => {
     expect(img.src).toContain('logo-tedxamsterdam.svg');
   });
 
+  it.each([
+    ['light-on-dark', 230, 23],
+    ['dark-on-light', 230, 23],
+    ['light-on-dark', 120, 12],
+  ] as const)('tone="%s" at width %i has explicit dimensions', (tone, width, height) => {
+    const { container } = render(<Logo tone={tone} width={width} />);
+    const img = container.querySelector('img')!;
+    expect(img).toHaveAttribute('width', String(width));
+    expect(img).toHaveAttribute('height', String(height));
+  });
+
   it('wrapper has no own background-color style', () => {
     const { container } = render(<Logo />);
     const wrapper = container.firstElementChild as HTMLElement;
