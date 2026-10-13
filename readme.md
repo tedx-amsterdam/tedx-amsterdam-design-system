@@ -55,6 +55,8 @@ cp node_modules/tedx-amsterdam-design-system/assets/* public/assets/
 <Logo base="/" />   // loads /assets/logo-tedxamsterdam-white.png
 ```
 
+The logos and icons are brand assets, not code: the MIT license does not cover them (see [License](#license)). Only TEDxAmsterdam and sites made for it may show the TEDxAmsterdam logo; `Logo` and `NavigationBar` always render it, so a project of your own needs its own versions of those two. The social icons are the trademarks of their networks.
+
 #### Releasing a new version
 
 Releases are tag-driven. CI publishes to npm via trusted publishing (OIDC). The version bump goes through a pull request like any other change, so nothing is pushed to `main` directly:
@@ -255,8 +257,9 @@ Responsive: navigation collapses to a hamburger drawer below 860px.
 
 ## License
 
-Code is [MIT licensed](./LICENSE). The TEDx logo, the TEDxAmsterdam name, and
-event photography are **not** covered by the MIT license — they remain subject
+Code is [MIT licensed](./LICENSE). The TEDx logo, the TEDxAmsterdam name, the
+logos and icons the npm package ships in `assets/`, and event photography are
+**not** covered by the MIT license — they remain subject
 to [TED's brand guidelines](https://www.ted.com/participate/organize-a-local-tedx-event/tedx-organizer-guide/branding-promotions).
 
 ---
