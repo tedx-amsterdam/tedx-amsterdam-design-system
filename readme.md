@@ -212,7 +212,7 @@ Interactive component playground with a11y checks:
 | Script | What it does |
 |--------|-------------|
 | `npm run build` | Rebuilds `_ds_bundle.js` — the CDN-ready IIFE bundle of all 23 components. |
-| `npm run build:dist` | Builds the npm package output: ESM `dist/index.js`, `dist/index.css`, and type declarations in `dist/types`. |
+| `npm run build:dist` | Builds the npm package output: one ES module per component (keeping `'use client'`), `dist/index.js` re-exporting them, `dist/index.css`, and type declarations in `dist/types`. Then checks it with `scripts/check-dist.js`. |
 | `npm run build:website` | Compiles `ui_kits/website/*.jsx` → `ui_kits/website/bundle.js` via esbuild. |
 | `npm run typecheck` | Type-checks component and story sources with TypeScript (`tsc --noEmit`). |
 | `npm run lint` | Runs oxlint across components, scripts, and tests. |
