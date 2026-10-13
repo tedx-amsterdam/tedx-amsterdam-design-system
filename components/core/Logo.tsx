@@ -2,6 +2,13 @@ import React from 'react';
 import { cn } from '../utils/cn';
 import styles from './Logo.module.css';
 
+// Height over width of each file, so the image gets explicit dimensions
+// and the browser reserves its space before it loads.
+const SOURCES = {
+  'dark-on-light': { file: 'assets/logo-tedxamsterdam.svg', ratio: 24 / 245 },
+  'light-on-dark': { file: 'assets/logo-tedxamsterdam-white.png', ratio: 77 / 783 },
+} as const;
+
 export interface LogoProps extends React.HTMLAttributes<HTMLElement> {
   /** Wordmark colour context. @default "light-on-dark" */
   tone?: 'light-on-dark' | 'dark-on-light';
@@ -14,14 +21,13 @@ export interface LogoProps extends React.HTMLAttributes<HTMLElement> {
 
 /** Locked-up red TEDx + Amsterdam wordmark. */
 export function Logo({ tone = 'light-on-dark', width = 230, base = '', href, className, style, ...rest }: LogoProps): React.ReactElement {
-  const src =
-    tone === 'dark-on-light'
-      ? base + 'assets/logo-tedxamsterdam.svg'
-      : base + 'assets/logo-tedxamsterdam-white.png';
+  const { file, ratio } = SOURCES[tone];
   const img = (
     <img
-      src={src}
+      src={base + file}
       alt="TEDxAmsterdam"
+      width={width}
+      height={Math.round(width * ratio)}
       className={styles.img}
       style={{ width }}
     />
