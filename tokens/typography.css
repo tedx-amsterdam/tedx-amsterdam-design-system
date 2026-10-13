@@ -9,7 +9,7 @@
 
 :root {
   /* ---- Font sizes (desktop) ---- */
-  --fs-display: 121px;  /* hero wordmark — "AMSTERDAM REIMAGINED" */
+  --fs-display: 121px;  /* display headline in the home hero */
   --fs-mega: 140px;     /* oversized stat numbers — "2009" */
   --fs-h1: 80px;        /* H1 — Bold / 100% / -3% */
   --fs-h2: 56px;        /* H2 — Bold / 120% / -3% */
