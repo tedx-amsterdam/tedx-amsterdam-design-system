@@ -6,7 +6,7 @@ Image-led blog / event card: corner category label, UPPERCASE title, muted descr
   category="News"
   title="The power of ideas: 5 talks that changed Amsterdam"
   description="The power of ideas: 5 talks that changed Amsterdam"
-  date="24 Jun 2025"
+  date="24 Jun"
   href="/blog/power-of-ideas"
 />
 ```
