@@ -34,6 +34,7 @@
     "assets/icon-*",
     "styles.css",
     "tokens",
+    "fonts",
     "readme.md",
     "CHANGELOG.md"
   ],
@@ -45,6 +46,7 @@
     "./index.css": "./dist/index.css",
     "./styles.css": "./styles.css",
     "./tokens/*": "./tokens/*",
+    "./fonts/*": "./fonts/*",
     "./assets/*": "./assets/*",
     "./package.json": "./package.json"
   },

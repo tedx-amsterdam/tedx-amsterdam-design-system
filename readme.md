@@ -80,7 +80,8 @@ The `Release` workflow checks that the tag matches `package.json`, then runs `np
 |------|----------|
 | `styles.css` | Global entry point — links this one file to get everything. |
 | `tokens/colors.css` | Brand + neutral palette and semantic aliases. |
-| `tokens/fonts.css` | Font stack declaration + Arimo (Helvetica substitute) webfont. |
+| `tokens/fonts.css` | Font stack declaration + `@font-face` rules for Arimo (Helvetica substitute). |
+| `fonts/` | Arimo woff2 files (Latin and Latin Extended) and their license, `OFL.txt`. |
 | `tokens/typography.css` | Type scale, line-heights, tracking, composite text tokens. |
 | `tokens/spacing.css` | 4px spacing scale + layout tokens (frame, gutters, header). |
 | `tokens/effects.css` | Radii, shadows, heat-gradient system, motion tokens. |
@@ -193,7 +194,10 @@ The system targets WCAG 2.1 AA:
 ## Fonts
 
 The brand font **Helvetica** (Regular + Bold) is not freely redistributable as a webfont.
-This system loads **Arimo** from Google Fonts as a metric-compatible substitute.
+This system ships **Arimo**, a metric-compatible substitute, in `fonts/`. `tokens/fonts.css` loads it
+from there, so no visitor data goes to a font CDN, and browsers only download it where Helvetica is
+missing. A bundler such as Next.js or Vite picks the files up through the relative `url()`s; without
+one, serve `fonts/` next to `tokens/`. Arimo is under the SIL Open Font License (`fonts/OFL.txt`).
 
 For production, supply licensed **Helvetica Neue** woff2 files and update the
 `@font-face` rules in `tokens/fonts.css`.

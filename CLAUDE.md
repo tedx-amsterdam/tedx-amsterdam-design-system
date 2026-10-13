@@ -10,6 +10,7 @@ Dark-first React component library with CSS design tokens for TEDx Amsterdam. Us
 components/core/   — React components (*.tsx) + CSS Modules (*.module.css) + Stories (*.stories.tsx)
 components/utils/  — Shared utilities (e.g. cn() for class joining)
 tokens/            — CSS design tokens (colors, fonts, spacing, typography, effects)
+fonts/             — Arimo woff2 files loaded by tokens/fonts.css, with their license
 tests/             — Vitest test files + fixtures
 scripts/           — Build scripts (esbuild)
 dist/              — Production output (do not edit)
@@ -41,7 +42,7 @@ Tokens are plain CSS custom properties in `tokens/`. Components must always refe
 - **colors.css** — Brand palette + semantic aliases. Always use semantic aliases (`--bg-base`, `--text-primary`, `--accent`) in components, not raw values (`--tedx-red`).
 - **spacing.css** — 4px base unit scale (`--space-1` through `--space-40`). Layout tokens like `--frame-max`, `--gutter`, `--section-gap`.
 - **typography.css** — Font size scale with desktop and mobile variants. Composite tokens (`--text-h1`, `--text-body`) for the `font` shorthand.
-- **fonts.css** — Font stacks. Helvetica is the brand font; Arimo (Google Fonts) is the metric-compatible fallback.
+- **fonts.css** — Font stacks. Helvetica is the brand font; Arimo, self-hosted from `fonts/`, is the metric-compatible fallback. Never load fonts from a CDN such as Google Fonts: it sends every visitor's IP address to a third party.
 - **effects.css** — Radii, shadows, signature heat gradients (`--glow-edge`, `--glow-corner`, `--glow-radial`), and motion tokens.
 
 When adding a new token, place it in the correct file and follow the existing naming pattern. If a value is used by more than one component, it should be a token.
