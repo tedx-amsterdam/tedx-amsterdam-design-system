@@ -70,7 +70,7 @@ export function NavigationBar({
 
       <div className={styles.bar}>
         <a href={logoHref} className={styles.logoLink}>
-          <img src={logoSrc} alt="TEDxAmsterdam" className={styles.logoImg} />
+          <img src={logoSrc} alt="TEDxAmsterdam" width={160} height={16} className={styles.logoImg} />
         </a>
 
         {/* Desktop nav — hidden on mobile via CSS Modules media query */}
