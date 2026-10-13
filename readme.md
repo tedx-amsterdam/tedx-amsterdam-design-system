@@ -1,10 +1,8 @@
 # TEDxAmsterdam Design System
 
-Dark-first brand system for **TEDxAmsterdam** — Amsterdam Reimagined.
+Dark-first brand system for **TEDxAmsterdam**, for every edition and its theme.
 Bold, warm, and confident: a black canvas lit from the edges by TED-red heat,
 oversized Helvetica Bold headlines, and a single red call-to-action colour.
-
-> *Unsung heroes, unstoppable ideas.*
 
 ---
 

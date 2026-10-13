@@ -76,7 +76,7 @@ When adding a new token, place it in the correct file and follow the existing na
 - Use `satisfies Meta<typeof Component>` pattern.
 - Include `tags: ['autodocs']` for auto-generated docs.
 - Title format: `'Primitives/ComponentName'` or `'Layout/ComponentName'`.
-- Cover all variants as separate named exports. Use realistic TEDx content in args (e.g. "Get tickets", "Watch talks"), not "Lorem ipsum".
+- Cover all variants as separate named exports. Use realistic TEDx content in args (e.g. "Get tickets", "Watch talks"), not "Lorem ipsum". Keep examples, comments and docs free of one edition's theme, tagline or year: the design system outlives each edition.
 
 ## Testing requirements
 

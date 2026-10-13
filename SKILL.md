@@ -35,7 +35,8 @@ Then explore the other available files.
 - Signature motif: black lit from the **edges/corners by red→orange heat glows** and
   large radial blooms. Square-cornered media, 10px-radius red buttons, hairline rules.
 - Voice: bold, friendly, inclusive, future-forward. We → you. No emoji.
-  Tagline: *"Unsung heroes, unstoppable ideas."*
+  Each edition has its own theme and tagline: take them from the user or the CMS,
+  never from an earlier edition.
 
 If the user invokes this skill without other guidance, ask what they want to build,
 ask a few focused questions, then act as an expert TEDxAmsterdam designer — output
