@@ -6,7 +6,7 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased]
+## [1.3.0] — 2026-10-13
 
 ### Changed
 - `dist/` has one ES module per component instead of one bundle; `dist/index.js` re-exports them and `dist/index.css` is unchanged. Import paths for consumers stay the same.
@@ -15,6 +15,18 @@ Versioning: [Semantic Versioning](https://semver.org/).
 ### Added
 - `TEDX_DISCLAIMER`, `TEDX_ABOUT_TEDX`, `TEDX_ABOUT_TED` and `TEDX_HOMEPAGE_DESCRIPTION`: the content the TEDx organizer guide requires, exported from the package.
 - `scripts/check-dist.js`, run by `build:dist`: fails the build on a missing module, a lost `'use client'`, a duplicated component or a class name missing from `index.css`.
+- Logos and social icons ship in the package under `assets/` (exported as `./assets/*`), so sites can copy them from `node_modules` instead of keeping their own copies. The event photography is not included.
+
+### Fixed
+- `Logo` and `NavigationBar` give their logo images explicit `width` and `height`, so browsers reserve the space before the image loads.
+- Package metadata points to the `tedx-amsterdam` GitHub organisation.
+
+---
+
+## [1.2.1] — 2026-07-17
+
+### Added
+- npm package metadata, MIT license and a tag-triggered release workflow with trusted publishing and provenance.
 
 ---
 
