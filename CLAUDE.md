@@ -55,6 +55,7 @@ When adding a new token, place it in the correct file and follow the existing na
 - **Disabled state**: use `aria-disabled` instead of the native `disabled` attribute. Gate clicks in the handler. This keeps elements focusable for screen readers.
 - **`button type`**: always default to `type="button"`, never `"submit"`.
 - Every new component must be re-exported from `components/core/index.ts`.
+- **`'use client'`** goes at the top of a component that uses hooks, context, portals or its own event handlers, and only there. The build keeps one module per component, so the others stay server components in Next.js App Router and ship no JavaScript. `npm run build:dist` checks this.
 
 ## Styling rules
 
@@ -103,7 +104,7 @@ When adding a new token, place it in the correct file and follow the existing na
 
 ## Adding a new component
 
-1. Create `components/core/ComponentName.tsx` with named export and props type.
+1. Create `components/core/ComponentName.tsx` with named export and props type, and `'use client'` if it is interactive.
 2. Create `components/core/ComponentName.module.css` using design tokens.
 3. Create `components/core/ComponentName.stories.tsx` with all variants.
 4. Add export to `components/core/index.ts`.

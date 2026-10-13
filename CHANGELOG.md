@@ -6,6 +6,18 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased]
+
+### Changed
+- `dist/` has one ES module per component instead of one bundle; `dist/index.js` re-exports them and `dist/index.css` is unchanged. Import paths for consumers stay the same.
+- The 13 interactive components (Accordion, Button, Checkbox, FormField, Input, Modal, NavigationBar, Radio, RadioGroup, Select, Tabs, Textarea, Toast) start with `'use client'`. In React Server Component frameworks the package can be imported from server components directly, and the other components stay server components.
+
+### Added
+- `TEDX_DISCLAIMER`, `TEDX_ABOUT_TEDX`, `TEDX_ABOUT_TED` and `TEDX_HOMEPAGE_DESCRIPTION`: the content the TEDx organizer guide requires, exported from the package.
+- `scripts/check-dist.js`, run by `build:dist`: fails the build on a missing module, a lost `'use client'`, a duplicated component or a class name missing from `index.css`.
+
+---
+
 ## [1.2.0] — 2026-07-17
 
 ### Changed
