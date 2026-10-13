@@ -1,6 +1,6 @@
 ---
 name: tedxamsterdam-design
-description: Use this skill to generate well-branded interfaces and assets for TEDxAmsterdam, either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
+description: Use this skill to generate well-branded interfaces and assets for TEDxAmsterdam, either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and components for prototyping.
 user-invocable: true
 ---
 
@@ -16,23 +16,12 @@ Then explore the other available files.
 - `guidelines/*.html` — foundation specimen cards (Colors, Type, Spacing, Brand).
 - `components/core/` — React primitives: `Button`, `Tag`, `ArrowLink`, `SectionHeader`,
   `Stat`, `MediaCard`, `Input`, `SocialLink`, `Logo` (each with a `.d.ts` + `.prompt.md`).
-- `ui_kits/website/` — a click-through recreation of the TEDxAmsterdam "Amsterdam
-  Reimagined" website. Screens: **Home** (hero, stats, speakers carousel, red
-  snapshots band, timetable, impact program, newsletter, upcoming events),
-  **Speakers** grid (upcoming line-up + past speakers), **Speaker detail**,
-  **Team** (filterable grid + volunteer openings), **About Us** (vision/mission,
-  values, tone of voice, tagline), **Event Program** (the striped "X" monogram
-  landing — date/venue, "For 750 years", "Up next on stage"), **Impact Program**
-  (visionary hero, pioneer profile, FAQ accordion), **Partners** (become-a-partner
-  + logo wall), **Gallery** (masonry), and **Blog**. The kit is responsive — the
-  nav collapses to a hamburger drawer and grids stack below 860px. Read these for
-  layout patterns.
 - `assets/` — logos (SVG + white PNG), social icons, event photography.
 
 ## How to work
 - **Visual artifacts** (slides, mocks, throwaway prototypes): copy the assets you
   need out of `assets/`, link `styles.css`, and produce static HTML for the user to
-  view. Reuse the patterns in `ui_kits/website/` and the `.prompt.md` usage notes.
+  view. Follow the `.prompt.md` usage notes.
 - **Production code**: copy assets and read the token + guideline files to design
   natively in the brand. The components are framework-agnostic in spirit — they
   reference CSS custom properties only.

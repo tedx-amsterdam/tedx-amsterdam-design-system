@@ -16,8 +16,7 @@
         "patterns": [
           {
             "group": [
-              "components/core/**",
-              "ui_kits/website/**"
+              "components/core/**"
             ],
             "message": "Import design-system components from 'index.js', not component internals."
           }
