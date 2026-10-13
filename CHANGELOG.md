@@ -6,6 +6,13 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased]
+
+### Fixed
+- Arimo loads from `fonts/` in the package instead of Google Fonts, so a site using `styles.css` no longer sends its visitors' IP addresses to Google. Bundlers that drop remote `@import`s, such as Next.js, also get the font now: before, it silently never loaded there.
+
+---
+
 ## [1.3.0] — 2026-10-13
 
 ### Changed
