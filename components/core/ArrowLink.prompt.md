@@ -1,4 +1,4 @@
-Bold red text link with the trailing brand arrow; the gap widens on hover.
+Uppercase bold link in red (or white) with the long brand arrow; the gap widens on hover.
 
 ```jsx
 <ArrowLink href="/speakers">Check out our past Speakers</ArrowLink>
