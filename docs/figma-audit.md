@@ -52,7 +52,7 @@ There is no design for an events overview, About Us or Event Program in the late
 
 | Component | Where in Figma | What differs | Status |
 | --- | --- | --- | --- |
-| `NavigationBar` | Every page | Links in Regular 14px, sentence case, 32px apart, the active one red; logo 225px wide; logo and links in the 1080px column; no border below. The optional CTA stays, in uppercase | ✅ |
+| `NavigationBar` | Every page | Links in Regular 14px, sentence case, 32px apart, the active one red; logo 225px wide; logo and links in the 1080px column; no border below. The optional CTA stays, in uppercase. Mobile, which Figma only shows for home, follows decision 28 in the website: a 52px bar with the CTA visible and a "Menu" button, every control with a 44px tap area | ✅ |
 | `Logo` | Header, footer (full column width) | Same artwork and colors | ✅ |
 | `Button` | Hero, event info, CTA blocks, forms | Figma: fixed size from the grid, 74 to 80px high (66px on mobile), label Bold 14px uppercase; red (primary) and white (forms). Component: the same heights as `sm`, `md` and `lg`, uppercase labels, 12 × 30px padding; the width comes from the layout | ✅ |
 | `ArrowLink` | "Check out our past speakers", "Watch the talk", "View all", "Join us", "Learn more" | Uppercase Bold 14px with the long arrow (a 22px line and a filled head) | ✅ |

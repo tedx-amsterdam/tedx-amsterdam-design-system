@@ -6,6 +6,17 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased]
+
+### Added
+- `--tap-target` (44px) and `--header-height-m` (52px), for touch targets and the mobile header.
+
+### Changed
+- `NavigationBar` on mobile follows common mobile conventions: a 52px bar with a 122px logo, the CTA visible next to the menu instead of only inside it, and a menu button labelled "Menu" next to its icon. The logo, the links, the CTA and the menu button all have a tap area of at least 44px. Below 360px the bar compacts so it fits at 320px.
+- `ArrowLink` and `Breadcrumb` links get an invisible tap area of 44px around their short labels, without changing the layout.
+
+---
+
 ## [1.4.0] — 2026-10-14
 
 Aligns the tokens and every component used in busy.studio's Figma designs with them (`docs/figma-audit.md`). Visual changes only for existing APIs; `Accent`, `imageAlt` on `MediaCard` and the new tokens are additions.
