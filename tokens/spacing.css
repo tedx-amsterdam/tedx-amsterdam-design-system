@@ -33,6 +33,9 @@
   --grid-columns-m: 6;       /* @kind other */ /* mobile columns */
   --grid-gap-m: 15px;        /* mobile gutter between columns */
   --gutter-m: 15px;          /* mobile side padding */
+  --button-height-sm: 66px; /* mobile buttons */
+  --button-height-md: 74px; /* buttons in content */
+  --button-height-lg: 80px; /* form and CTA buttons */
   --header-height: 80px;     /* fixed top nav */
   --section-gap: 120px;      /* between major sections */
   --stack-gap: 32px;         /* default vertical gap inside a block */
