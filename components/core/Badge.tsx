@@ -4,14 +4,14 @@ import styles from './Badge.module.css';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   label: string;
-  /** Fill variant. @default "red" */
-  color?: 'red' | 'white' | 'muted';
+  /** Fill variant. @default "black" */
+  color?: 'black' | 'red' | 'white' | 'muted';
   /** @default "md" */
   size?: 'sm' | 'md';
 }
 
-/** Small inline pill label. Distinct from Tag: no dot, pill shape, inline flow. */
-export function Badge({ label, color = 'red', size = 'md', className, style, ...rest }: BadgeProps): React.ReactElement {
+/** Square label on a filled background, such as "News" or "Event" on a photo. Distinct from Tag, which has no background. */
+export function Badge({ label, color = 'black', size = 'md', className, style, ...rest }: BadgeProps): React.ReactElement {
   return (
     <span className={cn(styles.badge, styles[color], styles[size], className)} style={style} {...rest}>
       {label}

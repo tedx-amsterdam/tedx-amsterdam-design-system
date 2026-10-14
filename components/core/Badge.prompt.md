@@ -1,10 +1,10 @@
-Small inline pill for statuses, counts, or categories. Use `Tag` for eyebrow labels; use `Badge` for inline status chips.
+Square label on a filled background, for categories and statuses on photos and cards ("News", "Podcast", "Event", "Sign-ups closed"). Use `Tag` for eyebrows without a background.
 
 ```jsx
-<Badge label="New" />
+<Badge label="News" />
 <Badge label="Live" color="red" />
 <Badge label="Draft" color="muted" />
 <Badge label="Sold out" color="white" size="sm" />
 ```
 
-Three colour variants: `red` (default, TED red fill), `white` (white fill + black text), `muted` (semi-transparent). Two sizes: `md` (12px, default) and `sm` (10px).
+Colour variants: `black` (default, as in the designs), `red`, `white` (black text) and `muted` (semi-transparent). Labels are uppercase. Sizes: `md` (14px, default) and `sm` (12px, for mobile).

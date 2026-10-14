@@ -1,24 +1,27 @@
 .badge {
   display: inline-block;
-  font-family: var(--font-sans);
-  font-weight: var(--weight-bold);
-  line-height: 1.4;
-  letter-spacing: var(--ls-wide);
-  border-radius: var(--radius-full);
+  font: var(--text-tag);
+  line-height: 1;
+  text-transform: uppercase;
+  border-radius: var(--radius-none);
 }
 
 /* Size variants */
 .sm {
-  font-size: 10px;
-  padding: 2px 8px;
+  font-size: var(--fs-tag-m);
+  padding: var(--space-2);
 }
 
 .md {
-  font-size: 12px;
-  padding: 4px 10px;
+  padding: 10px;
 }
 
 /* Color variants */
+.black {
+  background: var(--tedx-black);
+  color: var(--tedx-white);
+}
+
 .red {
   background: var(--tedx-red);
   color: var(--tedx-white);
