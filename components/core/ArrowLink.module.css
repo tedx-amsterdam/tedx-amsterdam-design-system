@@ -1,17 +1,16 @@
 .link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: var(--fs-tag);
-  line-height: 1.2;
+  gap: var(--space-1);
+  font: var(--text-tag);
+  line-height: 1;
+  text-transform: uppercase;
   text-decoration: none;
   transition: gap var(--dur) var(--ease-out);
 }
 
 .link:hover {
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 /* Color variants */
