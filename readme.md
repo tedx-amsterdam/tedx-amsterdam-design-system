@@ -230,6 +230,8 @@ Interactive component playground with a11y checks:
     npm run storybook        # dev server on :6006
     npm run build-storybook  # static build (CI-verified)
 
+While the dev server runs, `http://localhost:6006/mcp` is an MCP server (`@storybook/addon-mcp`) that coding agents use to look up components, props and stories. Claude Code picks it up from `.mcp.json`; other agents can add the same URL.
+
 ---
 
 ## Build scripts
