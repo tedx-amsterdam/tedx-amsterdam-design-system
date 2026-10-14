@@ -9,15 +9,16 @@
 
 :root {
   /* ---- Font sizes (desktop) ---- */
-  --fs-display: 121px;  /* display headline in the home hero */
-  --fs-mega: 140px;     /* oversized stat numbers — "2009" */
-  --fs-h1: 80px;        /* H1 — Bold / 100% / -3% */
-  --fs-h2: 56px;        /* H2 — Bold / 120% / -3% */
-  --fs-h2-lg: 72px;     /* big section header variant */
+  --fs-display: 115px;  /* display headline in the home hero — Bold / 90% / -3% */
+  --fs-mega: 140px;     /* not in the latest designs */
+  --fs-h1: 80px;        /* page titles and stat numbers — Bold / 110% / no tracking */
+  --fs-h2: 48px;        /* section headings — Bold / 110% / -3% */
+  --fs-h2-lg: 72px;     /* not in the latest designs */
   --fs-h3: 32px;        /* H3 — Bold / 120% / -3% */
-  --fs-h4: 20px;        /* h4 — Bold / 120% */
-  --fs-body: 20px;      /* body-text — Regular / 130% */
-  --fs-body-sm: 16px;   /* description / menu — Regular / 120% */
+  --fs-h4: 20px;        /* h4, card titles — Bold / 120% */
+  --fs-body: 20px;      /* body-text — Regular / 130%; intros next to titles 120% */
+  --fs-body-sm: 16px;   /* meta lines, roles — Regular / 120% */
+  --fs-small: 14px;     /* navigation links, card excerpts — Regular / 120% */
   --fs-tag: 14px;       /* tag / link — Bold / 120% (usually UPPERCASE) */
   --fs-caption: 12px;   /* fine print */
 
@@ -25,26 +26,34 @@
   --fs-h1-m: 55px;      /* Bold / 90% / -3% */
   --fs-h2-m: 30px;
   --fs-h3-m: 20px;
+  --fs-h4-m: 16px;      /* names on cards */
+  --fs-stat-m: 60px;    /* stat numbers */
   --fs-body-m: 16px;
+  --fs-tag-m: 12px;
 
   /* ---- Line heights ---- */
-  --lh-tight: 1;        /* @kind other */ /* display / H1 */
-  --lh-snug: 1.1;       /* @kind other */ /* large headings */
+  --lh-display: 0.9;    /* @kind other */ /* display headline, mobile H1 */
+  --lh-tight: 1;        /* @kind other */ /* stat numbers, single line labels */
+  --lh-snug: 1.1;       /* @kind other */ /* page titles, section headings */
   --lh-heading: 1.2;    /* @kind other */ /* H2–H4 */
   --lh-body: 1.3;       /* @kind other */ /* body copy */
 
   /* ---- Letter spacing ---- */
-  --ls-display: -0.03em;  /* @kind other */ /* -3% on display + headings */
+  --ls-display: -0.03em;  /* @kind other */ /* -3% on display, section headings and H3; page titles use none */
   --ls-normal: 0;         /* @kind other */
   --ls-wide: 0.04em;      /* @kind other */ /* occasional wide caps */
 
   /* ---- Composite text tokens ---- */
-  --text-display: var(--weight-bold) var(--fs-display) / var(--lh-tight) var(--font-display);
-  --text-h1: var(--weight-bold) var(--fs-h1) / var(--lh-tight) var(--font-display);
-  --text-h2: var(--weight-bold) var(--fs-h2) / var(--lh-heading) var(--font-display);
+  --text-display: var(--weight-bold) var(--fs-display) / var(--lh-display) var(--font-display);
+  --text-h1: var(--weight-bold) var(--fs-h1) / var(--lh-snug) var(--font-display);
+  --text-h2: var(--weight-bold) var(--fs-h2) / var(--lh-snug) var(--font-display);
   --text-h3: var(--weight-bold) var(--fs-h3) / var(--lh-heading) var(--font-display);
   --text-h4: var(--weight-bold) var(--fs-h4) / var(--lh-heading) var(--font-sans);
   --text-body: var(--weight-regular) var(--fs-body) / var(--lh-body) var(--font-sans);
+  --text-intro: var(--weight-regular) var(--fs-body) / var(--lh-heading) var(--font-sans);
+  --text-meta: var(--weight-regular) var(--fs-body-sm) / var(--lh-heading) var(--font-sans);
+  --text-small: var(--weight-regular) var(--fs-small) / var(--lh-heading) var(--font-sans);
+  --text-caption: var(--weight-regular) var(--fs-caption) / var(--lh-heading) var(--font-sans);
   --text-tag: var(--weight-bold) var(--fs-tag) / var(--lh-heading) var(--font-sans);
 }
 

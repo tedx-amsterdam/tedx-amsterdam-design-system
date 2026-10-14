@@ -4,7 +4,7 @@ How this design system compares with busy.studio's Figma designs, the design it 
 
 **Direction**: Figma is the reference until the design system matches it (stage A under "Design system" in the website's [roadmap](https://github.com/tedx-amsterdam/tedx-amsterdam-website/blob/main/docs/roadmap.md#design-system)). After that this repository is the source of truth and Figma the original reference: new components and layouts are designed here and shown in Storybook (decision 27 in the website's [decisions](https://github.com/tedx-amsterdam/tedx-amsterdam-website/blob/main/docs/decisions.md)).
 
-**Checked**: October 2026, version 1.3.1, against the latest round of designs on the Figma page `review` (labelled "review", June 2025). Every page was looked at in Figma itself; text, color, size and spacing values come from a `.fig` export of the file, counting only layers that are visible (each home section hides copies of other sections' layers, which otherwise skew the numbers). The components were compared with their Storybook stories. How the website's pages compare is in its [design audit](https://github.com/tedx-amsterdam/tedx-amsterdam-website/blob/main/docs/design-audit.md).
+**Checked**: October 2026, version 1.3.1; foundations updated for the next release, against the latest round of designs on the Figma page `review` (labelled "review", June 2025). Every page was looked at in Figma itself; text, color, size and spacing values come from a `.fig` export of the file, counting only layers that are visible (each home section hides copies of other sections' layers, which otherwise skew the numbers). The components were compared with their Storybook stories. How the website's pages compare is in its [design audit](https://github.com/tedx-amsterdam/tedx-amsterdam-website/blob/main/docs/design-audit.md).
 
 **Scope**: styles and structure, not content. The designs carry the 2025 edition's theme and copy ("Amsterdam Reimagined", its dates and the condensed type in the mobile hero); those change every edition and are left out.
 
@@ -33,17 +33,17 @@ There is no design for an events overview, About Us or Event Program in the late
 
 | Area | Figma | Design system | Status |
 | --- | --- | --- | --- |
-| Colors | Red `#EB0028`, black, white; text in white at 100, 70, 60, 50 and 40%; warm tone `#FF7919` | Red, black, white, white at 60 and 40%; `--tedx-orange` is `#F36C21` | ⚠️ no tokens for 70% and 50%; `#F36C21` unused, `#FF7919` is the one in use |
-| Content column | 1080px column: 12 columns, 20px gutters, 160px side margins at 1400px; header and footer in the same column | `--content-max` (1080px) and `--gutter-wide` (160px) exist; no column or gutter tokens | ⚠️ |
-| Mobile grid | 6 columns, 15px gutters and margins | none | ❌ |
-| Display headline (home hero) | Bold 115px, line height 0.9, −3% | `--fs-display` 121px, line height 1 | ⚠️ |
-| Page title | Bold 80px, line height 1.1, no tracking, uppercase | `--text-h1`: 80px, line height 1, −3% | ⚠️ |
-| Section heading | Bold 48px, line height 1.1, −3%, uppercase, often with words in red | `--text-h2` is 56px with line height 1.2; 56px does not appear in the designs | ⚠️ no 48px token |
+| Colors | Red `#EB0028`, black, white; text in white at 100, 70, 60, 50 and 40%; warm tone `#FF7919` | Red, black, white, white at 70, 60, 50 and 40% (`--tedx-white-*`); the warm tones `--tedx-orange-amber` (`#FF7919`) and `--tedx-orange-glow`. `--tedx-orange` (`#F36C21`) is the brand book value and unused in the designs | ✅ |
+| Content column | 1080px column: 12 columns, 20px gutters, 160px side margins at 1400px; header and footer in the same column | `--content-max` (1080px), `--gutter-wide` (160px), `--grid-columns` (12), `--grid-gap` (20px) | ✅ tokens; `NavigationBar` still spans the full width |
+| Mobile grid | 6 columns, 15px gutters and margins | `--grid-columns-m` (6), `--grid-gap-m` and `--gutter-m` (15px) | ✅ |
+| Display headline (home hero) | Bold 115px, line height 0.9, −3% | `--text-display`: 115px, line height 0.9 (`--lh-display`) | ✅ |
+| Page title | Bold 80px, line height 1.1, no tracking, uppercase | `--text-h1`: 80px, line height 1.1; no tracking (`--ls-normal`) | ✅ |
+| Section heading | Bold 48px, line height 1.1, −3%, uppercase, often with words in red | `--text-h2`: 48px, line height 1.1, with `--ls-display` | ✅ tokens; `SectionHeader` has no way to set words in red yet |
 | h3 and h4 | Bold 32px (1.2, −3%) and Bold 20px (1.2), uppercase | `--text-h3`, `--text-h4` | ✅ |
-| Body | Regular 20px: 1.3 in long text, 1.2 in intros next to titles | `--text-body` (1.3) | ✅ long text, ⚠️ intros |
-| Small text | Regular 16px (1.2) for meta, Regular 14px for navigation and card excerpts, Regular 12px for fine print, Light 12 and 16px for names on photos | `--fs-body-sm` (16px), `--fs-caption` (12px); no Regular 14px or Light | ⚠️ |
+| Body | Regular 20px: 1.3 in long text, 1.2 in intros next to titles | `--text-body` (1.3) for long text, `--text-intro` (1.2) for intros | ✅ |
+| Small text | Regular 16px (1.2) for meta, Regular 14px for navigation and card excerpts, Regular 12px for fine print, Light 12 and 16px for names on photos | `--text-meta` (16px), `--text-small` (14px), `--text-caption` (12px), `--weight-light` | ✅ (Arimo has no light weight, so it shows 400 where Helvetica is missing) |
 | Tags and links | Bold 14px uppercase, line height 1 | `--text-tag` (line height 1.2) | ✅ |
-| Mobile type | Title 55px (0.9), headings 30px, stat numbers 60px, names Bold 16px | `--fs-h1-m` (55px), `--fs-h2-m` (30px) | ⚠️ line height 0.9 is only a comment; no 60px |
+| Mobile type | Title 55px (0.9), headings 30px, stat numbers 60px, names Bold 16px | `--fs-h1-m` (55px) with `--lh-display`, `--fs-h2-m` (30px), `--fs-stat-m` (60px), `--fs-h4-m` (16px), `--fs-tag-m` (12px) | ✅ |
 | Glows | Red and orange shapes with a 100 to 200px blur, including 220px bars along both edges of every page and a red to black footer | Gradient tokens (`--glow-edge`, `--glow-corner`, `--glow-radial`) that approximate them | ⚠️ |
 | Radius | 10px on buttons; everything else square | `--radius-button` 10px; `--radius-card` 12px | ✅ (`--radius-card` is only used by `Modal` and `Toast`) |
 | Lines | 1px white at 40% between rows, 1px white on inputs | `--border-hairline` | ✅ |
