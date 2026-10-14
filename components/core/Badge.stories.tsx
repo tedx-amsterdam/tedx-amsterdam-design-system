@@ -5,6 +5,7 @@ const meta = { title: 'Primitives/Badge', component: Badge, tags: ['autodocs'] }
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Red: Story = { args: { label: 'New' } };
+export const Black: Story = { args: { label: 'News' } };
+export const Red: Story = { args: { label: 'New', color: 'red' } };
 export const White: Story = { args: { label: 'Live', color: 'white' } };
 export const MutedSmall: Story = { args: { label: 'Archive', color: 'muted', size: 'sm' } };
