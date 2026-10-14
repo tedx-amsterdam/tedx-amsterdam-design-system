@@ -1,4 +1,5 @@
-import '@testing-library/jest-dom';
+// The /vitest entry registers the matchers and adds their types to Vitest's expect.
+import '@testing-library/jest-dom/vitest';
 // @ts-expect-error - jest-axe has no type definitions
 import { configureAxe, toHaveNoViolations } from 'jest-axe';
 import { expect } from 'vitest';
@@ -9,10 +10,14 @@ expect.extend(toHaveNoViolations);
 declare global {
   var IS_REACT_ACT_ENVIRONMENT: boolean;
   var axe: (element: Element | Node | Document | Window | null, options?: RunOptions) => Promise<AxeResults>;
-  namespace jest {
-    interface Matchers<R> {
-      toHaveNoViolations(): R;
-    }
+}
+
+// Vitest 5 merges custom matchers into Matchers<R, T>; the type parameters
+// must match its declaration exactly, so T stays although it is unused.
+declare module 'vitest' {
+  // oxlint-disable-next-line no-unused-vars
+  interface Matchers<R, T> {
+    toHaveNoViolations(): R;
   }
 }
 
