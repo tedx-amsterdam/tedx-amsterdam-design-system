@@ -10,12 +10,18 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ### Changed
 - Type tokens follow the Figma designs (`docs/figma-audit.md`): `--fs-display` is 115px with the new `--lh-display` (0.9), `--text-h1` has line height 1.1 for page titles, and `--fs-h2` is 48px with line height 1.1 for section headings (was 56px and 1.2). `SectionHeader` and the medium `Stat` get smaller as a result.
+- `Button`: uppercase labels and the heights from the designs, 66px (`sm`), 74px (`md`, default) and 80px (`lg`); the width comes from the layout.
+- `ArrowLink`: uppercase, with the long arrow from the designs.
+- `Tag`: white by default (was red), without extra tracking. With `dot` it is a meta line: regular weight, sentence case.
+- `Badge`: a square label, black by default (was a red pill), 14px uppercase.
+- `Tabs`: the active tab is red instead of underlined, the others white at 50%, 40px apart.
 
 ### Added
 - Text tokens `--text-intro`, `--text-meta`, `--text-small` and `--text-caption`, the size `--fs-small` and the weight `--weight-light`.
 - Mobile tokens `--fs-h4-m`, `--fs-stat-m` and `--fs-tag-m`.
 - Grid tokens for the 1080px content column: `--grid-columns` (12) and `--grid-gap` (20px), and for mobile `--grid-columns-m` (6), `--grid-gap-m` and `--gutter-m` (15px).
 - `--tedx-white-70` and `--tedx-white-50` for secondary text.
+- `Badge` colour `black`, now the default; `--button-height-sm`, `-md` and `-lg`.
 
 ---
 
