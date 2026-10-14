@@ -83,6 +83,7 @@ The `Release` workflow checks that the tag matches `package.json`, then runs `np
 | `tokens/typography.css` | Type scale, line-heights, tracking, composite text tokens. |
 | `tokens/spacing.css` | 4px spacing scale + layout tokens (frame, gutters, header). |
 | `tokens/effects.css` | Radii, shadows, heat-gradient system, motion tokens. |
+| `docs/figma-audit.md` | How the tokens and components compare with the original Figma designs. |
 | `guidelines/*.html` | Foundation specimen cards — open in a browser for reference. |
 | `components/core/` | 23 React primitives with TypeScript declarations. |
 | `assets/` | Logos (SVG + PNG), social icons, event photography. |
