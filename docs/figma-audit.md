@@ -34,11 +34,11 @@ There is no design for an events overview, About Us or Event Program in the late
 | Area | Figma | Design system | Status |
 | --- | --- | --- | --- |
 | Colors | Red `#EB0028`, black, white; text in white at 100, 70, 60, 50 and 40%; warm tone `#FF7919` | Red, black, white, white at 70, 60, 50 and 40% (`--tedx-white-*`); the warm tones `--tedx-orange-amber` (`#FF7919`) and `--tedx-orange-glow`. `--tedx-orange` (`#F36C21`) is the brand book value and unused in the designs | ✅ |
-| Content column | 1080px column: 12 columns, 20px gutters, 160px side margins at 1400px; header and footer in the same column | `--content-max` (1080px), `--gutter-wide` (160px), `--grid-columns` (12), `--grid-gap` (20px) | ✅ tokens; `NavigationBar` still spans the full width |
+| Content column | 1080px column: 12 columns, 20px gutters, 160px side margins at 1400px; header and footer in the same column | `--content-max` (1080px), `--gutter-wide` (160px), `--grid-columns` (12), `--grid-gap` (20px); `NavigationBar` sits in the column | ✅ |
 | Mobile grid | 6 columns, 15px gutters and margins | `--grid-columns-m` (6), `--grid-gap-m` and `--gutter-m` (15px) | ✅ |
 | Display headline (home hero) | Bold 115px, line height 0.9, −3% | `--text-display`: 115px, line height 0.9 (`--lh-display`) | ✅ |
 | Page title | Bold 80px, line height 1.1, no tracking, uppercase | `--text-h1`: 80px, line height 1.1; no tracking (`--ls-normal`) | ✅ |
-| Section heading | Bold 48px, line height 1.1, −3%, uppercase, often with words in red | `--text-h2`: 48px, line height 1.1, with `--ls-display` | ✅ tokens; `SectionHeader` has no way to set words in red yet |
+| Section heading | Bold 48px, line height 1.1, −3%, uppercase, often with words in red | `--text-h2`: 48px, line height 1.1, with `--ls-display`; `Accent` sets words in red | ✅ |
 | h3 and h4 | Bold 32px (1.2, −3%) and Bold 20px (1.2), uppercase | `--text-h3`, `--text-h4` | ✅ |
 | Body | Regular 20px: 1.3 in long text, 1.2 in intros next to titles | `--text-body` (1.3) for long text, `--text-intro` (1.2) for intros | ✅ |
 | Small text | Regular 16px (1.2) for meta, Regular 14px for navigation and card excerpts, Regular 12px for fine print, Light 12 and 16px for names on photos | `--text-meta` (16px), `--text-small` (14px), `--text-caption` (12px), `--weight-light` | ✅ (Arimo has no light weight, so it shows 400 where Helvetica is missing) |
@@ -52,20 +52,21 @@ There is no design for an events overview, About Us or Event Program in the late
 
 | Component | Where in Figma | What differs | Status |
 | --- | --- | --- | --- |
-| `NavigationBar` | Every page | Figma: links in Regular 14px, sentence case, the active one red, logo and links within the 1080px column, no button. Component: Bold uppercase links with wide tracking, a "Get tickets" button, full width | ⚠️ |
+| `NavigationBar` | Every page | Links in Regular 14px, sentence case, 32px apart, the active one red; logo 225px wide; logo and links in the 1080px column; no border below. The optional CTA stays, in uppercase | ✅ |
 | `Logo` | Header, footer (full column width) | Same artwork and colors | ✅ |
 | `Button` | Hero, event info, CTA blocks, forms | Figma: fixed size from the grid, 74 to 80px high (66px on mobile), label Bold 14px uppercase; red (primary) and white (forms). Component: the same heights as `sm`, `md` and `lg`, uppercase labels, 12 × 30px padding; the width comes from the layout | ✅ |
 | `ArrowLink` | "Check out our past speakers", "Watch the talk", "View all", "Join us", "Learn more" | Uppercase Bold 14px with the long arrow (a 22px line and a filled head) | ✅ |
 | `Tag` | Eyebrows above headings ("Speakers", "About", "Topic") | White eyebrow, Bold 14px uppercase | ✅ |
 | `Tag` with `dot` | Meta lines: a red dot before a name, date or venue | Red dot, then the text in Regular 16px, sentence case, white or `muted` | ✅ |
 | `Badge` | Labels on photos: "Event", "Soon", "News", "Podcast", "Sign-ups closed" | Square black label, white Bold 14px uppercase, 10px padding | ✅ |
-| `SectionHeader` | Above most sections | Figma: white eyebrow, 48px heading with words in red, white text, uppercase arrow link. Component: red eyebrow, 56px heading, text at 60%; no way to set words in red without inline markup | ⚠️ |
-| `Stat` | Home ("2009", "20K") | Figma: Bold 80px without tracking, white label beside the number, stats separated by a line. Component: −3% tracking, label at 60% | ⚠️ |
-| `MediaCard` | Upcoming events (home), blog | Figma: photo with a `Badge` in the corner, title Bold uppercase, excerpt at 40%, date with a red dot. Component: shows the category as plain text and draws the image as a CSS background, so the image has no alt text and cannot load lazily | ⚠️ |
+| `SectionHeader` | Above most sections | White eyebrow, 48px uppercase heading with `Accent` for red words, white text 32px below it, uppercase arrow link 24px below that | ✅ |
+| `Stat` | Home ("2009", "20K") | Bold 80px without tracking, white label in the columns 3:2 of a five-column block. A line between stats in a list is left to the page | ✅ |
+| `MediaCard` | Upcoming events (home), blog | Photo as a lazy `<img>` with `imageAlt`, `Badge` in the corner, title as h4 uppercase, excerpt Regular 14px at 40%, date as a `Tag` meta line | ✅ |
 | `Tabs` | Team filter (All, Exec, Communications, …) | Bold 14px uppercase, 40px apart, active one red, the others white at 50%, above a hairline | ✅ |
 | `Input` | Newsletter and partner forms | Underlined field with a small "Email" label | ✅ |
 | `Checkbox` | Consent line under each form | Small square box with small text | ✅ |
 | `SocialLink` | Footer, speaker detail | Icon and label | ✅ (no Facebook icon) |
+| `Accent` | Red words in headings ("Our **speakers**", "How to become **a partner**") | Wraps words in the accent color | ✅ |
 | `Accordion`, `Breadcrumb`, `Modal`, `Toast`, `Select`, `Radio`, `RadioGroup`, `CheckboxGroup`, `Textarea`, `FormField` | Not in the latest designs | Designed by the design system itself | — keep |
 
 ## Patterns in Figma without a component

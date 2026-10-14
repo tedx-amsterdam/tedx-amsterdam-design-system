@@ -85,13 +85,13 @@ The `Release` workflow checks that the tag matches `package.json`, then runs `np
 | `tokens/effects.css` | Radii, shadows, heat-gradient system, motion tokens. |
 | `docs/figma-audit.md` | How the tokens and components compare with the original Figma designs. |
 | `guidelines/*.html` | Foundation specimen cards — open in a browser for reference. |
-| `components/core/` | 23 React primitives with TypeScript declarations. |
+| `components/core/` | 24 React primitives with TypeScript declarations. |
 | `assets/` | Logos (SVG + PNG), social icons, event photography. |
 
 ### Components
 
 **Primitives**
-`Button` · `Tag` · `Badge` · `ArrowLink` · `Logo`
+`Button` · `Tag` · `Badge` · `ArrowLink` · `Accent` · `Logo`
 
 **Form**
 `Input` · `Select` · `Textarea` · `Checkbox` · `CheckboxGroup` · `Radio` · `RadioGroup` · `FormField`
@@ -108,7 +108,7 @@ The `Release` workflow checks that the tag matches `package.json`, then runs `np
 Each ships with a `.tsx` source, a CSS Module, and a `.prompt.md` usage guide.
 Type declarations are generated into `dist/types` by `npm run build:dist`.
 
-Open `components/core/core.card.html` in a browser to see all 23 components in one live preview.
+Open `components/core/core.card.html` in a browser to see the components in one live preview (not yet `Accent`).
 
 ---
 
@@ -238,7 +238,7 @@ While the dev server runs, `http://localhost:6006/mcp` is an MCP server (`@story
 
 | Script | What it does |
 |--------|-------------|
-| `npm run build` | Rebuilds `_ds_bundle.js` — the CDN-ready IIFE bundle of all 23 components. |
+| `npm run build` | Rebuilds `_ds_bundle.js` — the CDN-ready IIFE bundle of the components (last rebuilt before `Accent`). |
 | `npm run build:dist` | Builds the npm package output: one ES module per component (keeping `'use client'`), `dist/index.js` re-exporting them, `dist/index.css`, and type declarations in `dist/types`. Then checks it with `scripts/check-dist.js`. |
 | `npm run typecheck` | Type-checks component and story sources with TypeScript (`tsc --noEmit`). |
 | `npm run lint` | Runs oxlint across components, scripts, and tests. |
