@@ -28,7 +28,8 @@ export interface NavigationBarProps extends React.HTMLAttributes<HTMLElement> {
 
 /**
  * TEDxAmsterdam — NavigationBar
- * Sticky top bar: logo left, nav links centre, CTA button right.
+ * Sticky top bar in the content column: logo left, links right in regular
+ * sentence case with the active one red, and an optional CTA after them.
  * Responsive layout via CSS Modules (no window.innerWidth, SSR-safe).
  * Includes skip-to-content link (WCAG 2.4.1).
  * Pass `base` to resolve asset paths from nested HTML files.
@@ -72,7 +73,7 @@ export function NavigationBar({
 
       <div className={styles.bar}>
         <a href={logoHref} className={styles.logoLink}>
-          <img src={logoSrc} alt="TEDxAmsterdam" width={160} height={16} className={styles.logoImg} />
+          <img src={logoSrc} alt="TEDxAmsterdam" width={225} height={22} className={styles.logoImg} />
         </a>
 
         {/* Desktop nav — hidden on mobile via CSS Modules media query */}

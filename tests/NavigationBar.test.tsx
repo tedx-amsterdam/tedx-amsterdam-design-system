@@ -66,7 +66,7 @@ describe('NavigationBar — logo', () => {
   it('gives the logo explicit dimensions', () => {
     render(<NavigationBar links={LINKS} />);
     const logo = screen.getByRole('img', { name: 'TEDxAmsterdam' });
-    expect(logo).toHaveAttribute('width', '160');
-    expect(logo).toHaveAttribute('height', '16');
+    expect(logo).toHaveAttribute('width', '225');
+    expect(logo).toHaveAttribute('height', '22');
   });
 });
