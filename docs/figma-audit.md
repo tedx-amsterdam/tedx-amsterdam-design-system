@@ -47,7 +47,7 @@ There is no design for an events overview, About Us or Event Program in the late
 | Mobile type | Title 55px (0.9), headings 30px, stat numbers 60px, names Bold 16px | `--fs-h1-m` (55px) with `--lh-display`, `--fs-h2-m` (30px), `--fs-stat-m` (60px), `--fs-h4-m` (16px), `--fs-tag-m` (12px); below 768px `Tag`, `ArrowLink`, `SectionHeader`, `Stat` and `MediaCard` switch to them (checked in Storybook at 390px) | ✅ |
 | Glows | Red and orange shapes with a 100 to 200px blur, including 220px bars along both edges of every page and a red to black footer | Gradient tokens (`--glow-edge`, `--glow-corner`, `--glow-radial`) that approximate them | ⚠️ |
 | Radius | 10px on buttons; everything else square | `--radius-button` 10px; `--radius-card` 12px | ✅ (`--radius-card` is only used by `Modal` and `Toast`) |
-| Lines | 1px white at 40% between rows and under tabs; 1px white at 100% under inputs and around the checkbox | `--border-hairline` | ⚠️ `Input` and `Checkbox` use the 40% hairline |
+| Lines | 1px white at 40% between rows and under tabs; 1px white at 100% under inputs and around the checkbox | `--border-hairline` (40%) and `--border-strong` (100%) | ✅ |
 
 ## Design system components
 
@@ -64,8 +64,8 @@ There is no design for an events overview, About Us or Event Program in the late
 | `Stat` | Home ("2009", "20K") | Bold 80px without tracking, white label in the columns 3:2 of a five-column block. A line between stats in a list is left to the page | ✅ |
 | `MediaCard` | Upcoming events (home), blog | Photo as a lazy `<img>` with `imageAlt`, `Badge` in the corner, title as h4 uppercase, excerpt Regular 14px at 40%, date as a `Tag` meta line | ✅ |
 | `Tabs` | Team filter (All, Exec, Communications, …) | Bold 14px uppercase, 40px apart, active one red, the others white at 50%, above a hairline | ✅ |
-| `Input` | Newsletter and partner forms | Figma: an underline of 1px white at 100%, placeholder "Email" in Regular 16px at 70%. Component: underline at 40%, no placeholder colour set | ⚠️ |
-| `Checkbox` | Consent line under each form | Figma: a 16px square with a 1px white border and no radius; its label Bold 14px (line height 1.2) at 70%, with "Privacy Policy" underlined. Component: 1.5px border at 40% with a 2px radius, label Regular 16px white | ⚠️ |
+| `Input` | Newsletter and partner forms | An underline of 1px white at 100%, text and placeholder Regular 16px, the placeholder at 70%, as in the designs | ✅ |
+| `Checkbox` | Consent line under each form | A 16px square with a 1px white border and no radius; its label Bold 14px (line height 1.2) at 70%, and it can hold a link, underlined, such as "Privacy Policy" | ✅ |
 | `SocialLink` | Footer, speaker detail | Figma: a 24px icon; in the footer with Regular 20px text 12px from the icon, under a speaker portrait Regular 16px text 6px from it. Component: a 22px icon, one size (20px text, line height 1.3) | ⚠️ (no Facebook icon either) |
 | `Accent` | Red words in headings ("Our **speakers**", "How to become **a partner**") | Wraps words in the accent red. On the red band the designs invert it: black text with the words in white ("Snapshots from **our past events**"); the component has no variant for that | ⚠️ on red |
 | `Accordion`, `Breadcrumb`, `Modal`, `Toast`, `Select`, `Radio`, `RadioGroup`, `CheckboxGroup`, `Textarea`, `FormField` | Not in the latest designs | Designed by the design system itself | — keep |

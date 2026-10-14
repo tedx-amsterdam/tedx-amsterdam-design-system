@@ -15,6 +15,8 @@ Versioning: [Semantic Versioning](https://semver.org/).
 - `NavigationBar` on mobile follows common mobile conventions: a 52px bar with a 122px logo, the CTA visible next to the menu instead of only inside it, and a menu button labelled "Menu" next to its icon. The logo, the links, the CTA and the menu button all have a tap area of at least 44px. Below 360px the bar compacts so it fits at 320px.
 - `ArrowLink` and `Breadcrumb` links get an invisible tap area of 44px around their short labels, without changing the layout.
 - Below 768px the components follow the mobile design's type: `Tag` labels and `ArrowLink` 12px, `Tag` meta lines 12px, `SectionHeader` titles 30px without tracking and descriptions 16px, `Stat` numbers 60px with 16px labels, `MediaCard` titles 16px. Buttons stay 14px, as designed.
+- `Input`: an underline of white at 100% instead of 40%, text at 16px instead of 20px, and the placeholder at 70%, as in the designs.
+- `Checkbox`: a 16px square with a 1px white border instead of a rounded 18px box at 40%, and the label in Bold 14px at 70%. The label now takes any content, so a consent line can link to the privacy policy.
 
 ### Fixed
 - `--font-sans` and `--font-display` start with Helvetica instead of Helvetica Neue. On macOS and iOS, where both are installed, pages showed Helvetica Neue, a different design with other widths and letterforms, while the designs and the live site use Helvetica.
