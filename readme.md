@@ -129,14 +129,18 @@ The signature motif is black lit from edges and corners by red→orange radial g
 ### Typography
 
 Brand font: **Helvetica** Bold + Regular (see [Fonts](#fonts) below).
-Display: tight — 100–110% leading, **−3% tracking**, often ALL-CAPS.
+Display: tight — 90–110% leading, often ALL-CAPS; **−3% tracking** on display, section headings and H3, none on page titles.
 Body: 120–130% leading, 0 tracking, sentence case.
 
 | Token | Usage |
 |-------|-------|
-| `--text-display` | Hero headlines |
-| `--text-h1` – `--text-h4` | Section headings |
-| `--text-body` | Body copy |
+| `--text-display` | Display headline in the home hero (115px / 90%) |
+| `--text-h1` | Page titles (80px / 110%, no tracking) |
+| `--text-h2` | Section headings (48px / 110%) |
+| `--text-h3`, `--text-h4` | Smaller headings, card titles |
+| `--text-body` | Body copy (20px / 130%) |
+| `--text-intro` | Intros next to page titles (20px / 120%) |
+| `--text-meta`, `--text-small`, `--text-caption` | Meta lines (16px), navigation and excerpts (14px), fine print (12px) |
 | `--text-tag` | Eyebrows, labels, button labels |
 
 ### Spacing
@@ -146,8 +150,10 @@ Body: 120–130% leading, 0 tracking, sentence case.
 | Token | Value |
 |-------|-------|
 | `--frame-max` | 1400px |
-| `--gutter` | 40px |
-| `--gutter-wide` | 160px (hero insets) |
+| `--content-max` | 1080px: the content column, header and footer included |
+| `--grid-columns`, `--grid-gap` | 12 columns, 20px gutters (mobile: `-m`, 6 and 15px) |
+| `--gutter` | 40px (narrower screens; mobile `--gutter-m` 15px) |
+| `--gutter-wide` | 160px (column margin at 1400px) |
 | `--section-gap` | 120px |
 
 ### Corners & motion

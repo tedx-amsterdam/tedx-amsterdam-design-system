@@ -10,7 +10,7 @@
   --tedx-red: #eb0028;          /* TED Red — C0 M100 Y90 K0 / 235,0,40 */
   --tedx-black: #000000;        /* Black — primary surface */
   --tedx-white: #ffffff;        /* White — primary type on dark */
-  --tedx-orange: #f36c21;       /* Accent orange — C0 M72 Y98 K0 / 243,108,33 */
+  --tedx-orange: #f36c21;       /* Accent orange — C0 M72 Y98 K0 / 243,108,33; brand book only, the designs use amber and glow */
 
   /* ---- Extended reds / oranges (gradient + glow support) ---- */
   --tedx-red-bright: #ff0000;   /* hot red used inside heat gradients */
@@ -30,7 +30,9 @@
   /* ---- Alpha helpers ---- */
   --tedx-white-08: rgba(255, 255, 255, 0.08); /* ghost-surface hover wash */
   --tedx-white-40: rgba(255, 255, 255, 0.4);  /* hairline rules on dark */
+  --tedx-white-70: rgba(255, 255, 255, 0.7);
   --tedx-white-60: rgba(255, 255, 255, 0.6);
+  --tedx-white-50: rgba(255, 255, 255, 0.5);
   --tedx-black-25: rgba(0, 0, 0, 0.25);       /* drop-shadow on display type */
 
   /* ============================================================
