@@ -54,15 +54,15 @@ There is no design for an events overview, About Us or Event Program in the late
 | --- | --- | --- | --- |
 | `NavigationBar` | Every page | Figma: links in Regular 14px, sentence case, the active one red, logo and links within the 1080px column, no button. Component: Bold uppercase links with wide tracking, a "Get tickets" button, full width | ⚠️ |
 | `Logo` | Header, footer (full column width) | Same artwork and colors | ✅ |
-| `Button` | Hero, event info, CTA blocks, forms | Figma: fixed size from the grid, 74 to 80px high (66px on mobile), label Bold 14px uppercase; red (primary) and white (forms). Component: about 38 to 60px high, sentence case labels | ⚠️ |
-| `ArrowLink` | "Check out our past speakers", "Watch the talk", "View all", "Join us", "Learn more" | Figma: uppercase Bold 14px with a long arrow. Component: sentence case | ⚠️ |
-| `Tag` | Eyebrows above headings ("Speakers", "About", "Topic") | Figma eyebrows are white, the component's default is red | ⚠️ default color |
-| `Tag` with `dot` | Meta lines: a red dot before a name, date or venue | Figma: red dot, text in white or white at 40%, Regular. Component: the text is red and uppercase | ⚠️ |
-| `Badge` | Labels on photos: "Event", "Soon", "News", "Podcast", "Sign-ups closed" | Figma: square black label with white uppercase text. Component: red pill | ⚠️ |
+| `Button` | Hero, event info, CTA blocks, forms | Figma: fixed size from the grid, 74 to 80px high (66px on mobile), label Bold 14px uppercase; red (primary) and white (forms). Component: the same heights as `sm`, `md` and `lg`, uppercase labels, 12 × 30px padding; the width comes from the layout | ✅ |
+| `ArrowLink` | "Check out our past speakers", "Watch the talk", "View all", "Join us", "Learn more" | Uppercase Bold 14px with the long arrow (a 22px line and a filled head) | ✅ |
+| `Tag` | Eyebrows above headings ("Speakers", "About", "Topic") | White eyebrow, Bold 14px uppercase | ✅ |
+| `Tag` with `dot` | Meta lines: a red dot before a name, date or venue | Red dot, then the text in Regular 16px, sentence case, white or `muted` | ✅ |
+| `Badge` | Labels on photos: "Event", "Soon", "News", "Podcast", "Sign-ups closed" | Square black label, white Bold 14px uppercase, 10px padding | ✅ |
 | `SectionHeader` | Above most sections | Figma: white eyebrow, 48px heading with words in red, white text, uppercase arrow link. Component: red eyebrow, 56px heading, text at 60%; no way to set words in red without inline markup | ⚠️ |
 | `Stat` | Home ("2009", "20K") | Figma: Bold 80px without tracking, white label beside the number, stats separated by a line. Component: −3% tracking, label at 60% | ⚠️ |
 | `MediaCard` | Upcoming events (home), blog | Figma: photo with a `Badge` in the corner, title Bold uppercase, excerpt at 40%, date with a red dot. Component: shows the category as plain text and draws the image as a CSS background, so the image has no alt text and cannot load lazily | ⚠️ |
-| `Tabs` | Team filter (All, Exec, Communications, …) | Figma: Bold 14px uppercase, active one red, no underline. Component: active one white with a red underline | ⚠️ |
+| `Tabs` | Team filter (All, Exec, Communications, …) | Bold 14px uppercase, 40px apart, active one red, the others white at 50%, above a hairline | ✅ |
 | `Input` | Newsletter and partner forms | Underlined field with a small "Email" label | ✅ |
 | `Checkbox` | Consent line under each form | Small square box with small text | ✅ |
 | `SocialLink` | Footer, speaker detail | Icon and label | ✅ (no Facebook icon) |
