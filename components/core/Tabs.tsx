@@ -19,7 +19,7 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   onTabChange?: (index: number) => void;
 }
 
-/** Tabbed switcher. Active tab: red bottom border. Arrow keys navigate between tabs. */
+/** Tabbed switcher, such as a filter. Active tab: red text. Arrow keys navigate between tabs. */
 export function Tabs({ tabs = [], defaultIndex = 0, selectedIndex, onTabChange, className, style, ...rest }: TabsProps): React.ReactElement {
   const [internalActive, setInternalActive] = React.useState(defaultIndex);
   const uid = React.useId();
