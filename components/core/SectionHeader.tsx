@@ -5,8 +5,9 @@ import { ArrowLink } from './ArrowLink';
 import styles from './SectionHeader.module.css';
 
 export interface SectionHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
-  /** Red uppercase eyebrow above the title. */
+  /** Uppercase eyebrow above the title (a white `Tag`). */
   eyebrow?: React.ReactNode;
+  /** Wrap words in `Accent` to set them in red. */
   title: React.ReactNode;
   description?: React.ReactNode;
   /** Optional arrow-link CTA below the copy. */
