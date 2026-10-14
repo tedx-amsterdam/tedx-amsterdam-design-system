@@ -4,7 +4,6 @@
   z-index: 100;
   width: 100%;
   background: var(--bg-base);
-  border-bottom: 1px solid var(--border-hairline);
   box-sizing: border-box;
 }
 
@@ -17,9 +16,7 @@
   color: var(--text-primary);
   padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-button);
-  font-family: var(--font-sans);
-  font-weight: var(--weight-bold);
-  font-size: 14px;
+  font: var(--text-tag);
   text-decoration: none;
   transition: top var(--dur-fast) var(--ease-standard);
 }
@@ -31,7 +28,8 @@
   height: var(--header-height);
   display: flex;
   align-items: center;
-  padding: 0 var(--gutter);
+  /* Logo and links sit in the content column, as every section does */
+  padding: 0 max(var(--gutter), (100% - var(--content-max)) / 2);
   gap: var(--space-8);
 }
 
@@ -41,7 +39,7 @@
   flex: none;
 }
 .logoImg {
-  width: 160px;
+  width: 225px;
   height: auto;
   display: block;
 }
@@ -59,13 +57,13 @@
 }
 
 .navLink {
-  font-family: var(--font-sans);
-  font-weight: var(--weight-bold);
-  font-size: var(--fs-tag);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
+  font: var(--text-small);
+  line-height: 1;
   color: var(--text-primary);
   text-decoration: none;
+}
+.navLink:hover {
+  color: var(--text-accent);
 }
 .navLink.active {
   color: var(--text-accent);
@@ -74,10 +72,9 @@
 .ctaLink {
   display: inline-flex;
   align-items: center;
-  font-family: var(--font-sans);
-  font-weight: var(--weight-bold);
-  font-size: 14px;
-  padding: 12px 24px;
+  font: var(--text-tag);
+  text-transform: uppercase;
+  padding: var(--space-3) var(--space-6);
   background: var(--tedx-red);
   color: var(--tedx-white);
   border-radius: var(--radius-button);
@@ -100,7 +97,7 @@
 .mobileMenu {
   background: var(--bg-base);
   border-bottom: 1px solid var(--border-hairline);
-  padding: var(--space-6) var(--gutter);
+  padding: var(--space-6) var(--gutter-m);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
@@ -114,6 +111,12 @@
 }
 
 @media (max-width: 767px) {
+  .bar {
+    padding: 0 var(--gutter-m);
+  }
+  .logoImg {
+    width: 160px;
+  }
   .desktopNav {
     display: none;
   }
