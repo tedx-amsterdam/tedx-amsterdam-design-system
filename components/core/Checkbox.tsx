@@ -5,18 +5,19 @@ import { cn } from '../utils/cn';
 import styles from './Checkbox.module.css';
 
 export interface CheckboxProps extends Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> {
-  /** Visible label beside the checkbox. */
-  label: string;
+  /** Visible label beside the checkbox. Can hold a link, such as the privacy policy in a consent line. */
+  label: React.ReactNode;
   checked: boolean;
   onChange?: (checked: boolean) => void;
   disabled?: boolean;
-  /** Associates the native input; defaults to a slug of label. */
+  /** Associates the native input; defaults to a slug of a text label, or a generated id. */
   id?: string;
 }
 
 /** Single checkbox. Checked state: red fill + white tick. */
 export function Checkbox({ label, checked, onChange, disabled = false, id, className, style, ...rest }: CheckboxProps): React.ReactElement {
-  const checkId = id || `checkbox-${String(label).toLowerCase().replace(/\s+/g, '-')}`;
+  const generatedId = `checkbox-${React.useId()}`;
+  const checkId = id || (typeof label === 'string' ? `checkbox-${label.toLowerCase().replace(/\s+/g, '-')}` : generatedId);
 
   return (
     <label
