@@ -230,6 +230,8 @@ Interactive component playground with a11y checks:
     npm run storybook        # dev server on :6006
     npm run build-storybook  # static build (CI-verified)
 
+Every pull request gets its own Storybook at `https://tedx-amsterdam.github.io/tedx-amsterdam-design-system/pr-<number>/`, and `main` lives at `/main/`. The Storybook preview workflow posts the link on the pull request, together with before and after screenshots of every story that visibly changed on a phone (390px) or desktop (1280px). The builds sit on the `gh-pages` branch, kept at a single commit; a pull request's folder is removed when it closes.
+
 While the dev server runs, `http://localhost:6006/mcp` is an MCP server (`@storybook/addon-mcp`) that coding agents use to look up components, props and stories. Claude Code picks it up from `.mcp.json`; other agents can add the same URL.
 
 ---

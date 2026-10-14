@@ -76,6 +76,7 @@ When adding a new token, place it in the correct file and follow the existing na
 
 ## Storybook conventions
 
+- Every pull request gets a Storybook preview on GitHub Pages and a comment with before and after screenshots of the stories that changed (`.github/workflows/storybook-preview.yml`, `scripts/story-screenshots.js`). Check that comment before asking for review: it is how the maintainer sees a visual change without running Storybook.
 - `npm run storybook` also serves an MCP endpoint at `http://localhost:6006/mcp` (`@storybook/addon-mcp`, registered in `.mcp.json`). Coding agents use it to list components, read their props and docs, and preview stories. Its component descriptions come from the JSDoc comment above each component, so keep that comment current.
 - Story file sits next to the component: `Component.stories.tsx`.
 - Use `satisfies Meta<typeof Component>` pattern.
