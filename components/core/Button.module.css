@@ -3,10 +3,10 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-family: var(--font-sans);
-  font-weight: var(--weight-bold);
+  padding: var(--space-3) 30px;
+  font: var(--text-tag);
   line-height: 1;
-  letter-spacing: 0.01em;
+  text-transform: uppercase;
   border-radius: var(--radius-button);
   text-decoration: none;
   cursor: pointer;
@@ -19,9 +19,10 @@
 
 .btn:active:not(.disabled) { transform: scale(0.97); }
 
-.sm { font-size: 14px; padding: 12px 24px; }
-.md { font-size: 14px; padding: 16px 30px; }
-.lg { font-size: 16px; padding: 22px 34px; }
+/* Heights from the Figma grid; the width comes from the layout. */
+.sm { min-height: var(--button-height-sm); }
+.md { min-height: var(--button-height-md); }
+.lg { min-height: var(--button-height-lg); }
 
 .primary { border: none; color: var(--tedx-white); background: var(--tedx-red); }
 .primary:hover:not(.disabled) { background: var(--accent-hover); }
