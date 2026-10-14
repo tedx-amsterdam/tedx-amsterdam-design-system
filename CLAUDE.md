@@ -35,6 +35,10 @@ Each component follows the pattern: `Component.tsx`, `Component.module.css`, `Co
 - Use conventional commit prefixes: `feat:`, `fix:`, `chore:`, `test:`, `refactor:`, `docs:`.
 - Keep messages concise — focus on *why*, not *what*.
 
+## Roadmap
+
+This repository has no roadmap of its own: its plans live in the website's `docs/roadmap.md` (stages under "Design system", and "Now"). Every pull request here that finishes or advances one of those items gets a matching update there the same day, in an open website pull request or a small docs one. Name the item in this pull request's description.
+
 ## Figma
 
 The design system was built from busy.studio's Figma designs. `docs/figma-audit.md` lists how each token and component compares with them. Read the row of a token or component before changing it, and update the row in the same pull request. Figma is the reference until the audit shows everything aligned; after that this repository is the source of truth and new designs start here, in Storybook. Take styles from the designs, never the 2025 theme or copy.
