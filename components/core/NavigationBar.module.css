@@ -34,9 +34,19 @@
 }
 
 .logoLink {
+  position: relative;
   display: inline-flex;
   text-decoration: none;
   flex: none;
+}
+
+/* Links shorter than a tap target get an invisible hit area of
+   --tap-target, without changing the layout. */
+.logoLink::before,
+.navLink::before {
+  content: "";
+  position: absolute;
+  inset: min(0px, (100% - var(--tap-target)) / 2) 0;
 }
 .logoImg {
   width: 225px;
@@ -57,6 +67,7 @@
 }
 
 .navLink {
+  position: relative;
   font: var(--text-small);
   line-height: 1;
   color: var(--text-primary);
@@ -72,6 +83,8 @@
 .ctaLink {
   display: inline-flex;
   align-items: center;
+  box-sizing: border-box;
+  min-height: var(--tap-target);
   font: var(--text-tag);
   text-transform: uppercase;
   padding: var(--space-3) var(--space-6);
@@ -86,7 +99,12 @@
 .hamburger {
   display: none;
   align-items: center;
+  gap: var(--space-2);
   margin-left: auto;
+  min-width: var(--tap-target);
+  min-height: var(--tap-target);
+  font: var(--text-tag);
+  text-transform: uppercase;
   background: none;
   border: none;
   cursor: pointer;
@@ -103,24 +121,49 @@
   gap: var(--space-4);
 }
 .mobileLink {
-  display: block;
-  padding: var(--space-2) 0;
-}
-.mobileCta {
-  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  min-height: var(--tap-target);
 }
 
 @media (max-width: 767px) {
   .bar {
+    height: var(--header-height-m);
     padding: 0 var(--gutter-m);
+    gap: var(--space-4);
   }
   .logoImg {
-    width: 160px;
+    width: 122px;
+  }
+  .ctaLink {
+    margin-left: auto;
+    padding-inline: var(--space-4);
+  }
+  .ctaLink + .hamburger {
+    margin-left: 0;
   }
   .desktopNav {
     display: none;
   }
   .hamburger {
     display: flex;
+  }
+}
+
+/* Below the smallest common phone (360px), as at 400% zoom on a laptop:
+   logo, call to action and menu button only fit without the "Menu" word.
+   The button keeps its accessible name through aria-label. */
+@media (max-width: 359px) {
+  .bar {
+    gap: var(--space-3);
+  }
+  .logoImg {
+    width: 100px;
+  }
+  .ctaLink {
+    padding-inline: var(--space-3);
+  }
+  .hamburgerLabel {
+    display: none;
   }
 }
