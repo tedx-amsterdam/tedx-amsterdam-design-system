@@ -32,12 +32,14 @@ describe('TEDx token compliance', () => {
     expect(colorCSS).toMatch(/--tedx-red:\s*#eb0028/);
   });
 
-  it('--font-sans contains Helvetica', () => {
-    expect(fontCSS).toMatch(/--font-sans:.*Helvetica/);
+  // Helvetica itself, not Helvetica Neue: a different design that macOS
+  // would otherwise pick first.
+  it('--font-sans starts with Helvetica', () => {
+    expect(fontCSS).toMatch(/--font-sans:\s*Helvetica,/);
   });
 
-  it('--font-display contains Helvetica', () => {
-    expect(fontCSS).toMatch(/--font-display:.*Helvetica/);
+  it('--font-display starts with Helvetica', () => {
+    expect(fontCSS).toMatch(/--font-display:\s*Helvetica,/);
   });
 
   it('logo background tokens are limited to solid black and white', () => {

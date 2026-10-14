@@ -203,7 +203,7 @@ from there, so no visitor data goes to a font CDN, and browsers only download it
 missing. A bundler such as Next.js or Vite picks the files up through the relative `url()`s; without
 one, serve `fonts/` next to `tokens/`. Arimo is under the SIL Open Font License (`fonts/OFL.txt`).
 
-For production, supply licensed **Helvetica Neue** woff2 files and update the
+For production, supply licensed **Helvetica** woff2 files and update the
 `@font-face` rules in `tokens/fonts.css`.
 
 ---
