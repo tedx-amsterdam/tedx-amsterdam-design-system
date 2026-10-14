@@ -1,3 +1,4 @@
+export { Accent }        from './Accent';
 export { Accordion }     from './Accordion';
 export { ArrowLink }     from './ArrowLink';
 export { Badge }         from './Badge';
