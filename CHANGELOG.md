@@ -6,6 +6,19 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased]
+
+### Changed
+- Type tokens follow the Figma designs (`docs/figma-audit.md`): `--fs-display` is 115px with the new `--lh-display` (0.9), `--text-h1` has line height 1.1 for page titles, and `--fs-h2` is 48px with line height 1.1 for section headings (was 56px and 1.2). `SectionHeader` and the medium `Stat` get smaller as a result.
+
+### Added
+- Text tokens `--text-intro`, `--text-meta`, `--text-small` and `--text-caption`, the size `--fs-small` and the weight `--weight-light`.
+- Mobile tokens `--fs-h4-m`, `--fs-stat-m` and `--fs-tag-m`.
+- Grid tokens for the 1080px content column: `--grid-columns` (12) and `--grid-gap` (20px), and for mobile `--grid-columns-m` (6), `--grid-gap-m` and `--gutter-m` (15px).
+- `--tedx-white-70` and `--tedx-white-50` for secondary text.
+
+---
+
 ## [1.3.1] — 2026-10-13
 
 ### Fixed
