@@ -1,11 +1,15 @@
 .root {
-  display: flex;
-  align-items: flex-start;
-  gap: 28px;
+  /* Value and label share the columns 3:2, so labels line up down a list */
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  align-items: center;
+  column-gap: var(--grid-gap);
+  /* Five columns of the content grid, as in the designs */
+  max-width: calc((var(--content-max) - 11 * var(--grid-gap)) / 12 * 5 + 4 * var(--grid-gap));
 }
 
 .value {
-  letter-spacing: var(--ls-display);
+  letter-spacing: var(--ls-normal);
   color: var(--text-primary);
   line-height: 1;
   font-weight: 700;
@@ -27,11 +31,10 @@
 
 .label {
   font: var(--text-body);
-  color: var(--text-secondary);
-  max-width: 170px;
-  padding-top: 14px;
+  color: var(--text-primary);
 }
 
 .labelXl {
-  padding-top: 24px;
+  align-self: start;
+  padding-top: var(--space-6);
 }
