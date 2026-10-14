@@ -10,7 +10,7 @@ export interface ArrowLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEle
   style?: React.CSSProperties;
 }
 
-/** Bold red text link with the trailing brand arrow. */
+/** Uppercase red text link with the trailing brand arrow. */
 export function ArrowLink({ children, href = '#', color = 'red', style, className, ...rest }: ArrowLinkProps): React.ReactElement {
   return (
     <a
@@ -20,9 +20,9 @@ export function ArrowLink({ children, href = '#', color = 'red', style, classNam
       {...rest}
     >
       {children}
-      <svg width="18" height="9" viewBox="0 0 18 9" fill="none" aria-hidden="true">
-        <path d="M0 4.5h15" stroke="currentColor" strokeWidth="1.6" />
-        <path d="M11.5 1l4 3.5-4 3.5" stroke="currentColor" strokeWidth="1.6" fill="none" />
+      <svg width="29" height="8" viewBox="0 0 29 8" fill="none" aria-hidden="true">
+        <path d="M0 4h22" stroke="currentColor" strokeWidth="2" />
+        <path d="M21.5 0.7L29 4l-7.5 3.3z" fill="currentColor" />
       </svg>
     </a>
   );
