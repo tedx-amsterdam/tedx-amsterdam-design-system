@@ -4,18 +4,18 @@ import styles from './Tag.module.css';
 
 export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode;
-  /** @default "red" */
+  /** @default "white" */
   color?: 'red' | 'white' | 'muted';
-  /** Leading red bullet (for meta / dated labels). @default false */
+  /** Leading red dot. Turns the label into a meta line (a name, date or venue): regular weight, sentence case. @default false */
   dot?: boolean;
   style?: React.CSSProperties;
 }
 
-/** Uppercase eyebrow / meta label. Red by default. */
-export function Tag({ children, color = 'red', dot = false, style, className, ...rest }: TagProps): React.ReactElement {
+/** Uppercase eyebrow label, white by default; with `dot`, a meta line. */
+export function Tag({ children, color = 'white', dot = false, style, className, ...rest }: TagProps): React.ReactElement {
   return (
     <span
-      className={cn(styles.tag, styles[color], className)}
+      className={cn(styles.tag, dot && styles.meta, styles[color], className)}
       style={style}
       {...rest}
     >
