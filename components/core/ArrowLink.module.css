@@ -1,4 +1,5 @@
 .link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -7,6 +8,14 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: gap var(--dur) var(--ease-out);
+}
+
+/* An invisible hit area of --tap-target around the 14px label, without
+   changing the layout. */
+.link::before {
+  content: "";
+  position: absolute;
+  inset: min(0px, (100% - var(--tap-target)) / 2) 0;
 }
 
 .link:hover {

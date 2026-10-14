@@ -20,8 +20,16 @@
 }
 
 .link {
+  position: relative;
   color: var(--text-secondary);
   text-decoration: none;
+}
+
+/* An invisible hit area of --tap-target around the short label. */
+.link::before {
+  content: "";
+  position: absolute;
+  inset: min(0px, (100% - var(--tap-target)) / 2) 0;
 }
 
 .current {
