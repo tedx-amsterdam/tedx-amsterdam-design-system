@@ -5,11 +5,23 @@ const meta = { title: 'Content/MediaCard', component: MediaCard, tags: ['autodoc
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const GradientFallback: Story = {
+export const WithImage: Story = {
   args: {
-    category: 'NEWS',
+    image: 'assets/photo-audience.jpg',
+    category: 'News',
     title: 'Speaker line-up announced',
     description: 'Meet the twelve voices taking the stage this June.',
-    date: '12 JUNE 2026',
+    date: '12 June',
+    style: { maxWidth: 360 },
+  },
+};
+
+export const GradientFallback: Story = {
+  args: {
+    category: 'Podcast',
+    title: 'Speaker line-up announced',
+    description: 'Meet the twelve voices taking the stage this June.',
+    date: '12 June',
+    style: { maxWidth: 360 },
   },
 };
