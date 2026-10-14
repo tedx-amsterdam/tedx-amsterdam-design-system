@@ -29,3 +29,12 @@ it('ships the fonts the tokens load', () => {
   const { files } = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
   expect(files).toContain('fonts');
 });
+
+it('defines every token the stylesheets and components use', () => {
+  const read = (dir: string, ext: string) =>
+    fs.readdirSync(path.join(ROOT, dir)).filter((file) => file.endsWith(ext)).map((file) => fs.readFileSync(path.join(ROOT, dir, file), 'utf8'));
+  const sources = [...stylesheets.map((file) => fs.readFileSync(path.join(ROOT, file), 'utf8')), ...read('components/core', '.css'), ...read('components/core', '.tsx')];
+  const defined = new Set(sources.flatMap((css) => [...css.matchAll(/(--[\w-]+)\s*:/g)].map(([, name]) => name)));
+  const used = new Set(sources.flatMap((css) => [...css.matchAll(/var\(\s*(--[\w-]+)/g)].map(([, name]) => name)));
+  expect([...used].filter((name) => !defined.has(name))).toEqual([]);
+});
