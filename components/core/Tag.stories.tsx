@@ -5,6 +5,6 @@ const meta = { title: 'Primitives/Tag', component: Tag, tags: ['autodocs'] } sat
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Red: Story = { args: { children: 'EVENT' } };
-export const White: Story = { args: { children: 'PODCAST', color: 'white' } };
-export const WithDot: Story = { args: { children: '12 JUNE 2026', dot: true } };
+export const Eyebrow: Story = { args: { children: 'About speakers' } };
+export const Red: Story = { args: { children: 'Event', color: 'red' } };
+export const MetaLine: Story = { args: { children: '12 June', dot: true } };
