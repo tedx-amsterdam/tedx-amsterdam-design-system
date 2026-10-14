@@ -56,6 +56,7 @@
   --font-sans: 'Helvetica Neue', Helvetica, 'Arimo', Arial, sans-serif;
   --font-display: 'Helvetica Neue', Helvetica, 'Arimo', Arial, sans-serif;
 
+  --weight-light: 300;   /* names on photos; Arimo has no light weight, so it falls back to 400 */
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-bold: 700;
