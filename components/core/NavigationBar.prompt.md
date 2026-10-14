@@ -1,4 +1,4 @@
-Sticky top navigation bar. Desktop: logo left, nav links centre, CTA right. Mobile: collapses to hamburger.
+Sticky top navigation bar in the content column. Desktop: logo left, links and the CTA right. Mobile (below 768px): a 52px bar with the logo, the CTA (it stays visible, never only in the menu) and a "Menu" button that opens the links. Every control has a tap area of at least 44px.
 
 ```jsx
 <NavigationBar

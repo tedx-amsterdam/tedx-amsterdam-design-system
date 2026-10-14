@@ -70,3 +70,19 @@ describe('NavigationBar — logo', () => {
     expect(logo).toHaveAttribute('height', '22');
   });
 });
+
+describe('NavigationBar — mobile', () => {
+  it('labels the menu button with a visible word', () => {
+    render(<NavigationBar links={LINKS} />);
+    const btn = screen.getByRole('button', { name: /open menu/i });
+    expect(btn).toHaveTextContent('Menu');
+    fireEvent.click(btn);
+    expect(screen.getByRole('button', { name: /close menu/i })).toHaveTextContent('Close');
+  });
+
+  it('keeps the call to action outside the menu, rendered once', () => {
+    render(<NavigationBar links={LINKS} ctaLabel="Get tickets" ctaHref="/tickets" />);
+    fireEvent.click(screen.getByRole('button', { name: /open menu/i }));
+    expect(screen.getAllByRole('link', { name: 'Get tickets' })).toHaveLength(1);
+  });
+});

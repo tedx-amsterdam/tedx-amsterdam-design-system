@@ -90,12 +90,14 @@ export function NavigationBar({
               </a>
             ))}
           </nav>
-          {ctaHref && ctaLabel && (
-            <a href={ctaHref} className={styles.ctaLink}>
-              {ctaLabel}
-            </a>
-          )}
         </div>
+
+        {/* The call to action stays visible on mobile, outside the menu. */}
+        {ctaHref && ctaLabel && (
+          <a href={ctaHref} className={styles.ctaLink}>
+            {ctaLabel}
+          </a>
+        )}
 
         {/* Hamburger — hidden on desktop via CSS Modules media query */}
         <button
@@ -121,6 +123,8 @@ export function NavigationBar({
               </>
             )}
           </svg>
+          {/* A visible word next to the icon: people find a labelled menu more easily. */}
+          <span className={styles.hamburgerLabel}>{menuOpen ? 'Close' : 'Menu'}</span>
         </button>
       </div>
 
@@ -139,15 +143,6 @@ export function NavigationBar({
               </a>
             ))}
           </nav>
-          {ctaHref && ctaLabel && (
-            <a
-              href={ctaHref}
-              onClick={() => setMenuOpen(false)}
-              className={cn(styles.ctaLink, styles.mobileCta)}
-            >
-              {ctaLabel}
-            </a>
-          )}
         </div>
       )}
     </header>
