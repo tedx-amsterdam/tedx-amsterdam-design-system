@@ -30,3 +30,10 @@
 .white {
   color: var(--tedx-white);
 }
+
+/* Mobile sizes from the mobile design (below 768px, decision 28 in the website). */
+@media (max-width: 767px) {
+  .link {
+    font-size: var(--fs-tag-m);
+  }
+}
