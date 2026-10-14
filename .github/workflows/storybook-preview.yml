@@ -1,0 +1,105 @@
+name: Storybook preview
+
+# Publishes Storybook to GitHub Pages: main at /main/ and every pull
+# request at /pr-<number>/, and comments on the pull request with its link
+# and with before and after screenshots of every story that visibly
+# changed on a phone or desktop (scripts/story-screenshots.js). It reports
+# only and never fails a pull request, so it is not a required check.
+# A pull request's folder is removed when it closes.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# One run at a time: every run rewrites the gh-pages branch.
+concurrency:
+  group: storybook-preview
+  cancel-in-progress: false
+
+env:
+  PAGES: https://tedx-amsterdam.github.io/tedx-amsterdam-design-system
+
+jobs:
+  main:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build-storybook
+      - run: .github/scripts/publish-pages.sh main storybook-static
+
+  pull-request:
+    # Pull requests from forks get a read-only token and cannot publish.
+    if: github.event_name == 'pull_request' && github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Build Storybook of this pull request and of its base
+        run: |
+          npm ci
+          npm run build-storybook
+          (cd base && npm ci && npm run build-storybook)
+      - name: Compare the stories
+        env:
+          NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python3 -m http.server 6101 --bind 127.0.0.1 --directory base/storybook-static > /dev/null 2>&1 &
+          python3 -m http.server 6102 --bind 127.0.0.1 --directory storybook-static > /dev/null 2>&1 &
+          sleep 2
+          base="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/gh-pages/pr-$NUMBER/screenshots"
+          node scripts/story-screenshots.js http://127.0.0.1:6101 http://127.0.0.1:6102 storybook-static/screenshots "$base" \
+            > "$RUNNER_TEMP/screenshots.md"
+      - name: Publish this pull request's Storybook
+        env:
+          NUMBER: ${{ github.event.pull_request.number }}
+        run: .github/scripts/publish-pages.sh "pr-$NUMBER" storybook-static
+      - name: Post or update the comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          {
+            echo "<!-- storybook-preview -->"
+            echo "**Storybook preview:** $PAGES/pr-$NUMBER/ (live a minute after this comment; pick a phone in the viewport menu)"
+            echo
+            cat "$RUNNER_TEMP/screenshots.md"
+            echo
+            echo "<sub>Updated on every push by the Storybook preview workflow. Removed when the pull request closes.</sub>"
+          } > "$RUNNER_TEMP/comment.md"
+          id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments" --paginate \
+            --jq '.[] | select(.body | startswith("<!-- storybook-preview -->")) | .id' | head -n 1)"
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -F body=@"$RUNNER_TEMP/comment.md" > /dev/null
+          else
+            gh pr comment "$NUMBER" --body-file "$RUNNER_TEMP/comment.md"
+          fi
+
+  clean-up:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Remove this pull request's Storybook
+        env:
+          NUMBER: ${{ github.event.pull_request.number }}
+        run: .github/scripts/publish-pages.sh "pr-$NUMBER"
