@@ -6,7 +6,9 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased]
+## [1.4.0] — 2026-10-14
+
+Aligns the tokens and every component used in busy.studio's Figma designs with them (`docs/figma-audit.md`). Visual changes only for existing APIs; `Accent`, `imageAlt` on `MediaCard` and the new tokens are additions.
 
 ### Changed
 - Type tokens follow the Figma designs (`docs/figma-audit.md`): `--fs-display` is 115px with the new `--lh-display` (0.9), `--text-h1` has line height 1.1 for page titles, and `--fs-h2` is 48px with line height 1.1 for section headings (was 56px and 1.2). `SectionHeader` and the medium `Stat` get smaller as a result.
