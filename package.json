@@ -1,6 +1,6 @@
 {
   "name": "tedx-amsterdam-design-system",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "TEDxAmsterdam design system: dark-first React components and CSS design tokens",
   "license": "MIT",
   "author": "Julian Aijal",
