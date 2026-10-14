@@ -7,7 +7,7 @@ export interface StatProps extends React.HTMLAttributes<HTMLDivElement> {
   value: React.ReactNode;
   /** Supporting caption to the right. */
   label?: React.ReactNode;
-  /** @default "lg" (80px); "xl" = 140px, "md" = 56px */
+  /** @default "lg" (80px, as in the designs); "xl" = 140px, "md" = 48px */
   size?: 'md' | 'lg' | 'xl';
 }
 
