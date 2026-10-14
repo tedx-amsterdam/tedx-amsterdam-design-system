@@ -15,6 +15,10 @@ Versioning: [Semantic Versioning](https://semver.org/).
 - `Tag`: white by default (was red), without extra tracking. With `dot` it is a meta line: regular weight, sentence case.
 - `Badge`: a square label, black by default (was a red pill), 14px uppercase.
 - `Tabs`: the active tab is red instead of underlined, the others white at 50%, 40px apart.
+- `NavigationBar`: logo and links sit in the 1080px content column, links in regular sentence case with the active one red, a 225px logo, no border below; the optional CTA is uppercase.
+- `SectionHeader`: uppercase title, white description 32px below it, link 24px below that.
+- `Stat`: no tracking on the number, a white label, value and label in a 3:2 grid five columns wide.
+- `MediaCard`: renders the image as a lazy `<img>` with the new `imageAlt` prop (was a CSS background without alt text), the category as a `Badge`, the date as a `Tag` meta line, and the text styles from the designs.
 
 ### Added
 - Text tokens `--text-intro`, `--text-meta`, `--text-small` and `--text-caption`, the size `--fs-small` and the weight `--weight-light`.
@@ -22,6 +26,7 @@ Versioning: [Semantic Versioning](https://semver.org/).
 - Grid tokens for the 1080px content column: `--grid-columns` (12) and `--grid-gap` (20px), and for mobile `--grid-columns-m` (6), `--grid-gap-m` and `--gutter-m` (15px).
 - `--tedx-white-70` and `--tedx-white-50` for secondary text.
 - `Badge` colour `black`, now the default; `--button-height-sm`, `-md` and `-lg`.
+- `Accent`: sets words of a heading in red, as the designs do.
 
 ---
 
