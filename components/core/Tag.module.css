@@ -35,3 +35,13 @@
   background: var(--tedx-red);
   flex: none;
 }
+
+/* Mobile sizes from the mobile design (below 768px, decision 28 in the website). */
+@media (max-width: 767px) {
+  .tag {
+    font-size: var(--fs-tag-m);
+  }
+  .meta {
+    font-size: var(--fs-caption);
+  }
+}

@@ -34,3 +34,15 @@
   /* 24px below the description */
   margin-top: var(--space-1);
 }
+
+/* Mobile sizes from the mobile design (below 768px, decision 28 in the website). */
+@media (max-width: 767px) {
+  .title {
+    font-size: var(--fs-h2-m);
+    letter-spacing: var(--ls-normal);
+  }
+  .description {
+    font-size: var(--fs-body-m);
+    line-height: var(--lh-heading);
+  }
+}
