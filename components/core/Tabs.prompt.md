@@ -1,4 +1,4 @@
-Tabbed content switcher. Active tab has a red bottom border. Left/Right arrow keys move between tabs.
+Tabbed content switcher, also used as a filter (the team page). The active tab is red, the others white at 50%, above a hairline. Left/Right arrow keys move between tabs.
 
 ```jsx
 <Tabs
