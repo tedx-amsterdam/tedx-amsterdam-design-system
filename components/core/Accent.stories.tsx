@@ -13,3 +13,12 @@ export const InHeading: Story = {
     </h2>
   ),
 };
+export const OnRed: Story = {
+  args: { children: 'our past events', color: 'white' },
+  globals: { backgrounds: { value: 'red' } },
+  render: (args) => (
+    <h2 className="tedx-h2" style={{ color: 'var(--text-inverse)' }}>
+      Snapshots from <Accent {...args} />
+    </h2>
+  ),
+};

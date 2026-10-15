@@ -1,3 +1,8 @@
-.accent {
+.red {
   color: var(--text-accent);
+}
+
+/* On the red band the heading is black and the accented words white. */
+.white {
+  color: var(--text-primary);
 }
