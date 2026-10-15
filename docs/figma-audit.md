@@ -33,7 +33,7 @@ There is no design for an events overview, About Us or Event Program in the late
 
 | Area | Figma | Design system | Status |
 | --- | --- | --- | --- |
-| Colors | Red `#EB0028`, black, white; text in white at 100, 70, 60, 50 and 40%; warm tone `#FF7919` | Red, black, white, white at 70, 60, 50 and 40% (`--tedx-white-*`); the warm tones `--tedx-orange-amber` (`#FF7919`) and `--tedx-orange-glow`. `--tedx-orange` (`#F36C21`) is the brand book value and unused in the designs | ✅ tokens; `Tag` `muted` uses `--tedx-gray-400` (about 58% white) where the designs use white at 40% for roles and excerpts |
+| Colors | Red `#EB0028`, black, white; text in white at 100, 70, 60, 50 and 40%; warm tone `#FF7919` | Red, black, white, white at 70, 60, 50 and 40% (`--tedx-white-*`); the warm tones `--tedx-orange-amber` (`#FF7919`) and `--tedx-orange-glow`. `--tedx-orange` (`#F36C21`) is the brand book value and unused in the designs | ✅ tokens; roles and excerpts use `--text-subtle`, white at 50% instead of the designs' 40%: 40% is 3.7:1 on black, below WCAG AA, 50% is 5.3:1 |
 | Content column | 1080px column: 12 columns, 20px gutters, 160px side margins at 1400px; header and footer in the same column | `--content-max` (1080px), `--gutter-wide` (160px), `--grid-columns` (12), `--grid-gap` (20px); `NavigationBar` sits in the column | ✅ |
 | Mobile grid | 6 columns, 15px gutters and margins | `--grid-columns-m` (6), `--grid-gap-m` and `--gutter-m` (15px) | ✅ |
 | Typeface | Helvetica Regular and Bold; the live Webflow site loads Helvetica files too | `--font-sans` and `--font-display` start with Helvetica, then Helvetica Neue, then the bundled Arimo | ✅ on macOS and iOS; Windows and Android show Arimo until there is a Helvetica webfont licence |
@@ -58,16 +58,16 @@ There is no design for an events overview, About Us or Event Program in the late
 | `Button` | Hero, event info, CTA blocks, forms | Figma: fixed size from the grid, 74 to 80px high (66px on mobile), label Bold 14px uppercase; red (primary) and white (forms). Component: the same heights as `sm`, `md` and `lg`, uppercase labels, 12 × 30px padding; the width comes from the layout | ✅ |
 | `ArrowLink` | "Check out our past speakers", "Watch the talk", "View all", "Join us", "Learn more" | Uppercase Bold 14px with the long arrow (a 22px line and a filled head) | ✅ |
 | `Tag` | Eyebrows above headings ("Speakers", "About", "Topic") | White eyebrow, Bold 14px uppercase | ✅ |
-| `Tag` with `dot` | Meta lines: a red dot before a name, date or venue | Red dot, then the text in Regular 16px, sentence case, white or `muted` | ⚠️ `muted` is gray `#939393`; the designs use white at 40% for roles |
+| `Tag` with `dot` | Meta lines: a red dot before a name, date or venue | Red dot, then the text in Regular 16px, sentence case, white or `muted` (white at 50%, see Colors) | ✅ |
 | `Badge` | Labels on photos: "Event", "Soon", "News", "Podcast", "Sign-ups closed" | Square black label, white Bold 14px uppercase, 10px padding | ✅ |
 | `SectionHeader` | Above most sections | White eyebrow, 48px uppercase heading with `Accent` for red words, white text 32px below it, uppercase arrow link 24px below that | ✅ |
 | `Stat` | Home ("2009", "20K") | Bold 80px without tracking, white label in the columns 3:2 of a five-column block. A line between stats in a list is left to the page | ✅ |
-| `MediaCard` | Upcoming events (home), blog | Photo as a lazy `<img>` with `imageAlt`, `Badge` in the corner, title as h4 uppercase, excerpt Regular 14px at 40%, date as a `Tag` meta line | ✅ |
+| `MediaCard` | Upcoming events (home), blog | Photo as a lazy `<img>` with `imageAlt`, `Badge` in the corner, title as h4 uppercase, excerpt Regular 14px at 50% (see Colors), date as a `Tag` meta line | ✅ |
 | `Tabs` | Team filter (All, Exec, Communications, …) | Bold 14px uppercase, 40px apart, active one red, the others white at 50%, above a hairline | ✅ |
 | `Input` | Newsletter and partner forms | An underline of 1px white at 100%, text and placeholder Regular 16px, the placeholder at 70%, as in the designs | ✅ |
 | `Checkbox` | Consent line under each form | A 16px square with a 1px white border and no radius; its label Bold 14px (line height 1.2) at 70%, and it can hold a link, underlined, such as "Privacy Policy" | ✅ |
-| `SocialLink` | Footer, speaker detail | Figma: a 24px icon; in the footer with Regular 20px text 12px from the icon, under a speaker portrait Regular 16px text 6px from it. Component: a 22px icon, one size (20px text, line height 1.3) | ⚠️ (no Facebook icon either) |
-| `Accent` | Red words in headings ("Our **speakers**", "How to become **a partner**") | Wraps words in the accent red. On the red band the designs invert it: black text with the words in white ("Snapshots from **our past events**"); the component has no variant for that | ⚠️ on red |
+| `SocialLink` | Footer, speaker detail | Figma: a 24px icon; in the footer with Regular 20px text 12px from the icon, under a speaker portrait Regular 16px text 6px from it. Component: a 24px icon in two sizes, `md` (20px text, 12px gap) and `sm` (16px text, 6px gap) | ✅ sizes; ⚠️ no Facebook icon |
+| `Accent` | Red words in headings ("Our **speakers**", "How to become **a partner**") | Wraps words in the accent red. On the red band the designs invert it: black text with the words in white ("Snapshots from **our past events**"); `color="white"` sets the words in white; the heading's black comes from the band | ✅ |
 | `Accordion`, `Breadcrumb`, `Modal`, `Toast`, `Select`, `Radio`, `RadioGroup`, `CheckboxGroup`, `Textarea`, `FormField` | Not in the latest designs | Designed by the design system itself | — keep |
 
 ## Patterns in Figma without a component
