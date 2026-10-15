@@ -12,18 +12,20 @@ export interface SocialLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEl
   network: 'linkedin' | 'instagram' | 'youtube';
   label?: React.ReactNode;
   href?: string;
+  /** `md` for the footer (20px text), `sm` under a speaker portrait (16px text). @default "md" */
+  size?: 'md' | 'sm';
   /** Path prefix to the project's assets/ folder. @default "" */
   base?: string;
   style?: React.CSSProperties;
 }
 
 /** White social icon + label that reddens on hover. */
-export function SocialLink({ network, label, href = '#', base = '', style, className, ...rest }: SocialLinkProps): React.ReactElement {
+export function SocialLink({ network, label, href = '#', size = 'md', base = '', style, className, ...rest }: SocialLinkProps): React.ReactElement {
   const src = base + (ICONS[network] || ICONS.linkedin);
   return (
     <a
       href={href}
-      className={cn(styles.link, className)}
+      className={cn(styles.link, styles[size], className)}
       style={style}
       {...rest}
     >
@@ -31,6 +33,8 @@ export function SocialLink({ network, label, href = '#', base = '', style, class
         src={src}
         alt=""
         aria-hidden="true"
+        width={24}
+        height={24}
         className={styles.icon}
       />
       {label || network}
