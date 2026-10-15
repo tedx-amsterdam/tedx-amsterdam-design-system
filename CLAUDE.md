@@ -108,6 +108,7 @@ When adding a new token, place it in the correct file and follow the existing na
 ## TEDx brand rules
 
 - **TEDx red is `#EB0028`.** Do not alter brand colors.
+- **No photography**: stories use the placeholders in `assets/` (`sample-image.svg`, `event-hero-x.png`), not photos from Figma or elsewhere. Sites bring their own photos.
 - **Logo backgrounds**: the Logo component must only render on black (`#000`) or white (`#FFF`) backgrounds per TEDx guidelines. This is enforced by lint rules.
 - **Required content**: legal/disclaimer text constants live in `components/core/tedx-required-content.ts`. These are mandated by the TEDx organizer guide and must appear on the website.
 - **Typography**: Helvetica is the brand font. Don't introduce other typefaces.
