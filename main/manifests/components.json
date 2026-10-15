@@ -1,0 +1,2201 @@
+{
+  "v": 0,
+  "components": {
+    "primitives-accent": {
+      "id": "primitives-accent",
+      "name": "Accent",
+      "path": "./components/core/Accent.stories.tsx",
+      "jsDocTags": {},
+      "description": "Sets words inside a heading in the accent red, as the designs do (\"Our <Accent>speakers</Accent>\"); on the red band, in white.",
+      "reactDocgen": {
+        "description": "Sets words inside a heading in the accent red, as the designs do (\"Our <Accent>speakers</Accent>\"); on the red band, in white.",
+        "methods": [],
+        "displayName": "Accent",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Accent.tsx",
+        "actualName": "Accent",
+        "exportName": "Accent",
+        "props": {
+          "children": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": ""
+          },
+          "color": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'red' | 'white'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'red'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'white'"
+                }
+              ]
+            },
+            "description": "`white` on the red band, where the designs set the heading in black and these words in white. @default \"red\"",
+            "defaultValue": {
+              "value": "'red'",
+              "computed": false
+            }
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "primitives-accent--in-heading",
+          "name": "In Heading",
+          "snippet": "const InHeading = () => <h2 className=\"tedx-h2\">Our <Accent>Speakers</Accent>\n</h2>;"
+        },
+        {
+          "id": "primitives-accent--on-red",
+          "name": "On Red",
+          "snippet": "const OnRed = () => <h2 className=\"tedx-h2\" style={{ color: 'var(--text-inverse)' }}>Snapshots from <Accent color=\"white\">our past events</Accent>\n</h2>;"
+        }
+      ],
+      "import": "import { Accent } from 'tedx-amsterdam-design-system';"
+    },
+    "content-accordion": {
+      "id": "content-accordion",
+      "name": "Accordion",
+      "path": "./components/core/Accordion.stories.tsx",
+      "jsDocTags": {},
+      "description": "FAQ-style disclosure list; one row open at a time, red active question.",
+      "reactDocgen": {
+        "description": "FAQ-style disclosure list; one row open at a time, red active question.",
+        "methods": [],
+        "displayName": "Accordion",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Accordion.tsx",
+        "actualName": "Accordion",
+        "exportName": "Accordion",
+        "props": {
+          "items": {
+            "required": false,
+            "tsType": {
+              "name": "Array",
+              "elements": [
+                {
+                  "name": "AccordionItem"
+                }
+              ],
+              "raw": "AccordionItem[]"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "[]",
+              "computed": false
+            }
+          },
+          "defaultOpen": {
+            "required": false,
+            "tsType": {
+              "name": "number"
+            },
+            "description": "Index open on mount; -1 for all closed. @default 0",
+            "defaultValue": {
+              "value": "0",
+              "computed": false
+            }
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "content-accordion--faq",
+          "name": "FAQ",
+          "snippet": "const FAQ = () => <Accordion\n    items={[\n      { q: 'What is TEDxAmsterdam?', a: 'An independently organised TED event in Amsterdam.' },\n      { q: 'When is the next edition?', a: 'June 2026, at the Royal Theatre Carré.' },\n      { q: 'How do I get tickets?', a: 'Registration opens three months before the event.' },\n    ]} />;"
+        },
+        {
+          "id": "content-accordion--all-closed",
+          "name": "All Closed",
+          "snippet": "const AllClosed = () => <Accordion\n    items={[\n      { q: 'What is TEDxAmsterdam?', a: 'An independently organised TED event in Amsterdam.' },\n      { q: 'When is the next edition?', a: 'June 2026, at the Royal Theatre Carré.' },\n      { q: 'How do I get tickets?', a: 'Registration opens three months before the event.' },\n    ]}\n    defaultOpen={-1} />;"
+        }
+      ],
+      "import": "import { Accordion } from 'tedx-amsterdam-design-system';"
+    },
+    "primitives-arrowlink": {
+      "id": "primitives-arrowlink",
+      "name": "ArrowLink",
+      "path": "./components/core/ArrowLink.stories.tsx",
+      "jsDocTags": {},
+      "description": "Uppercase red text link with the trailing brand arrow.",
+      "reactDocgen": {
+        "description": "Uppercase red text link with the trailing brand arrow.",
+        "methods": [],
+        "displayName": "ArrowLink",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/ArrowLink.tsx",
+        "actualName": "ArrowLink",
+        "exportName": "ArrowLink",
+        "props": {
+          "children": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": ""
+          },
+          "href": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "'#'",
+              "computed": false
+            }
+          },
+          "color": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'red' | 'white'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'red'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'white'"
+                }
+              ]
+            },
+            "description": "@default \"red\"",
+            "defaultValue": {
+              "value": "'red'",
+              "computed": false
+            }
+          },
+          "style": {
+            "required": false,
+            "tsType": {
+              "name": "ReactCSSProperties",
+              "raw": "React.CSSProperties"
+            },
+            "description": ""
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "primitives-arrowlink--red",
+          "name": "Red",
+          "snippet": "const Red = () => <ArrowLink href=\"#\">All talks</ArrowLink>;"
+        },
+        {
+          "id": "primitives-arrowlink--white",
+          "name": "White",
+          "snippet": "const White = () => <ArrowLink href=\"#\" color=\"white\">Read the story</ArrowLink>;"
+        }
+      ],
+      "import": "import { ArrowLink } from 'tedx-amsterdam-design-system';"
+    },
+    "primitives-badge": {
+      "id": "primitives-badge",
+      "name": "Badge",
+      "path": "./components/core/Badge.stories.tsx",
+      "jsDocTags": {},
+      "description": "Square label on a filled background, such as \"News\" or \"Event\" on a photo. Distinct from Tag, which has no background.",
+      "reactDocgen": {
+        "description": "Square label on a filled background, such as \"News\" or \"Event\" on a photo. Distinct from Tag, which has no background.",
+        "methods": [],
+        "displayName": "Badge",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Badge.tsx",
+        "actualName": "Badge",
+        "exportName": "Badge",
+        "props": {
+          "label": {
+            "required": true,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "color": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'black' | 'red' | 'white' | 'muted'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'black'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'red'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'white'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'muted'"
+                }
+              ]
+            },
+            "description": "Fill variant. @default \"black\"",
+            "defaultValue": {
+              "value": "'black'",
+              "computed": false
+            }
+          },
+          "size": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'sm' | 'md'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'sm'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'md'"
+                }
+              ]
+            },
+            "description": "@default \"md\"",
+            "defaultValue": {
+              "value": "'md'",
+              "computed": false
+            }
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "primitives-badge--black",
+          "name": "Black",
+          "snippet": "const Black = () => <Badge label=\"News\" />;"
+        },
+        {
+          "id": "primitives-badge--red",
+          "name": "Red",
+          "snippet": "const Red = () => <Badge label=\"New\" color=\"red\" />;"
+        },
+        {
+          "id": "primitives-badge--white",
+          "name": "White",
+          "snippet": "const White = () => <Badge label=\"Live\" color=\"white\" />;"
+        },
+        {
+          "id": "primitives-badge--muted-small",
+          "name": "Muted Small",
+          "snippet": "const MutedSmall = () => <Badge label=\"Archive\" color=\"muted\" size=\"sm\" />;"
+        }
+      ],
+      "import": "import { Badge } from 'tedx-amsterdam-design-system';"
+    },
+    "navigation-breadcrumb": {
+      "id": "navigation-breadcrumb",
+      "name": "Breadcrumb",
+      "path": "./components/core/Breadcrumb.stories.tsx",
+      "jsDocTags": {},
+      "description": "Hierarchical navigation trail. Last item is current page.",
+      "reactDocgen": {
+        "description": "Hierarchical navigation trail. Last item is current page.",
+        "methods": [],
+        "displayName": "Breadcrumb",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Breadcrumb.tsx",
+        "actualName": "Breadcrumb",
+        "exportName": "Breadcrumb",
+        "props": {
+          "items": {
+            "required": false,
+            "tsType": {
+              "name": "Array",
+              "elements": [
+                {
+                  "name": "BreadcrumbItem"
+                }
+              ],
+              "raw": "BreadcrumbItem[]"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "[]",
+              "computed": false
+            }
+          },
+          "ariaLabel": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "`aria-label` on the `<nav>`. @default \"Breadcrumb\"",
+            "defaultValue": {
+              "value": "'Breadcrumb'",
+              "computed": false
+            }
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "navigation-breadcrumb--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <Breadcrumb\n    items={[\n      { label: 'Home', href: '/' },\n      { label: 'Talks', href: '/talks' },\n      { label: 'The power of quiet' },\n    ]} />;"
+        }
+      ],
+      "import": "import { Breadcrumb } from 'tedx-amsterdam-design-system';"
+    },
+    "primitives-button": {
+      "id": "primitives-button",
+      "name": "Button",
+      "path": "./components/core/Button.stories.tsx",
+      "jsDocTags": {},
+      "description": "Brand button. All visual states (hover, active, disabled) live in CSS via tokens.\nDisabled uses `aria-disabled` and gates clicks; a disabled link drops its href.",
+      "reactDocgen": {
+        "description": "Brand button. All visual states (hover, active, disabled) live in CSS via tokens.\nDisabled uses `aria-disabled` and gates clicks; a disabled link drops its href.",
+        "methods": [],
+        "displayName": "Button",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Button.tsx",
+        "actualName": "Button",
+        "exportName": "Button",
+        "props": {
+          "children": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": ""
+          },
+          "variant": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'primary' | 'secondary' | 'ghost'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'primary'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'secondary'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'ghost'"
+                }
+              ]
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "'primary'",
+              "computed": false
+            }
+          },
+          "size": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'sm' | 'md' | 'lg'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'sm'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'md'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'lg'"
+                }
+              ]
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "'md'",
+              "computed": false
+            }
+          },
+          "arrow": {
+            "required": false,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "false",
+              "computed": false
+            }
+          },
+          "disabled": {
+            "required": false,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "false",
+              "computed": false
+            }
+          },
+          "className": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "style": {
+            "required": false,
+            "tsType": {
+              "name": "ReactCSSProperties",
+              "raw": "React.CSSProperties"
+            },
+            "description": ""
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "primitives-button--primary",
+          "name": "Primary",
+          "snippet": "const Primary = () => <Button>Get tickets</Button>;"
+        },
+        {
+          "id": "primitives-button--secondary",
+          "name": "Secondary",
+          "snippet": "const Secondary = () => <Button variant=\"secondary\">Learn more</Button>;"
+        },
+        {
+          "id": "primitives-button--ghost",
+          "name": "Ghost",
+          "snippet": "const Ghost = () => <Button variant=\"ghost\">Watch talks</Button>;"
+        },
+        {
+          "id": "primitives-button--with-arrow",
+          "name": "With Arrow",
+          "snippet": "const WithArrow = () => <Button arrow>Explore program</Button>;"
+        },
+        {
+          "id": "primitives-button--disabled",
+          "name": "Disabled",
+          "snippet": "const Disabled = () => <Button disabled>Sold out</Button>;"
+        },
+        {
+          "id": "primitives-button--as-link",
+          "name": "As Link",
+          "snippet": "const AsLink = () => <Button href=\"https://ted.com\">Visit TED.com</Button>;"
+        }
+      ],
+      "import": "import { Button } from 'tedx-amsterdam-design-system';"
+    },
+    "form-checkbox": {
+      "id": "form-checkbox",
+      "name": "Checkbox",
+      "path": "./components/core/Checkbox.stories.tsx",
+      "jsDocTags": {},
+      "description": "Single checkbox. Checked state: red fill + white tick.",
+      "reactDocgen": {
+        "description": "Single checkbox. Checked state: red fill + white tick.",
+        "methods": [],
+        "displayName": "Checkbox",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Checkbox.tsx",
+        "actualName": "Checkbox",
+        "exportName": "Checkbox",
+        "props": {
+          "label": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "Visible label beside the checkbox. Can hold a link, such as the privacy policy in a consent line."
+          },
+          "checked": {
+            "required": true,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": ""
+          },
+          "onChange": {
+            "required": false,
+            "tsType": {
+              "name": "signature",
+              "type": "function",
+              "raw": "(checked: boolean) => void",
+              "signature": {
+                "arguments": [
+                  {
+                    "type": {
+                      "name": "boolean"
+                    },
+                    "name": "checked"
+                  }
+                ],
+                "return": {
+                  "name": "void"
+                }
+              }
+            },
+            "description": ""
+          },
+          "disabled": {
+            "required": false,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "false",
+              "computed": false
+            }
+          },
+          "id": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Associates the native input; defaults to a slug of a text label, or a generated id."
+          }
+        },
+        "composes": [
+          "Omit"
+        ]
+      },
+      "stories": [
+        {
+          "id": "form-checkbox--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <ControlledCheckbox label=\"Email me event updates\" />;"
+        },
+        {
+          "id": "form-checkbox--disabled",
+          "name": "Disabled",
+          "snippet": "const Disabled = () => <ControlledCheckbox label=\"Unavailable option\" disabled />;"
+        },
+        {
+          "id": "form-checkbox--consent-line",
+          "name": "Consent Line",
+          "snippet": "const ConsentLine = () => (\n  <div style={{ maxWidth: 440 }}>\n    <ControlledCheckbox\n      label={\n        <>\n          I agree to the processing of my personal data for the purpose of receiving emails from TEDxAmsterdam, in accordance with\n          the <a href=\"#privacy\">Privacy Policy</a>.\n        </>\n      }\n    />\n  </div>\n);"
+        }
+      ],
+      "import": "import { Checkbox } from 'tedx-amsterdam-design-system';"
+    },
+    "form-checkboxgroup": {
+      "id": "form-checkboxgroup",
+      "name": "CheckboxGroup",
+      "path": "./components/core/CheckboxGroup.stories.tsx",
+      "jsDocTags": {},
+      "description": "Fieldset wrapper for accessible grouping of multiple Checkbox components.",
+      "reactDocgen": {
+        "description": "Fieldset wrapper for accessible grouping of multiple Checkbox components.",
+        "methods": [],
+        "displayName": "CheckboxGroup",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/CheckboxGroup.tsx",
+        "actualName": "CheckboxGroup",
+        "exportName": "CheckboxGroup",
+        "props": {
+          "legend": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Renders as a <legend> for screen-reader grouping."
+          },
+          "children": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": ""
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "form-checkboxgroup--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <Demo />;"
+        }
+      ],
+      "import": "import { Checkbox, CheckboxGroup } from 'tedx-amsterdam-design-system';"
+    },
+    "form-formfield": {
+      "id": "form-formfield",
+      "name": "FormField",
+      "path": "./components/core/FormField.stories.tsx",
+      "jsDocTags": {},
+      "description": "Slot-based form wrapper: label → hint → children → error.\nProvides FormFieldContext so Input/Select/Textarea auto-wire\nid, aria-describedby, aria-invalid, and required.",
+      "reactDocgen": {
+        "description": "Slot-based form wrapper: label → hint → children → error.\nProvides FormFieldContext so Input/Select/Textarea auto-wire\nid, aria-describedby, aria-invalid, and required.",
+        "methods": [],
+        "displayName": "FormField",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/FormField.tsx",
+        "actualName": "FormField",
+        "exportName": "FormField",
+        "props": {
+          "label": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Visible label above the slot."
+          },
+          "htmlFor": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "`id` for the child control. Auto-generated when omitted."
+          },
+          "hint": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Optional helper text shown below the label."
+          },
+          "error": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Validation message shown below children; announced via `aria-live=\"polite\"`."
+          },
+          "required": {
+            "required": false,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": "Appends a red `*` and marks the wired control as required. @default false",
+            "defaultValue": {
+              "value": "false",
+              "computed": false
+            }
+          },
+          "children": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "The input, select, textarea, or any form element."
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "form-formfield--with-input",
+          "name": "With Input",
+          "snippet": "const WithInput = () => <FormField label=\"Your email\" hint=\"We only use this for ticket updates.\">\n    <Input label=\"Email\" />\n</FormField>;"
+        },
+        {
+          "id": "form-formfield--with-error-and-required",
+          "name": "With Error And Required",
+          "snippet": "const WithErrorAndRequired = () => <FormField label=\"Your email\" error=\"Required field\" required>\n    <Input label=\"Email\" />\n</FormField>;"
+        }
+      ],
+      "import": "import { FormField, Input } from 'tedx-amsterdam-design-system';"
+    },
+    "form-input": {
+      "id": "form-input",
+      "name": "Input",
+      "path": "./components/core/Input.stories.tsx",
+      "jsDocTags": {},
+      "description": "Underline form field; rule turns red on focus.",
+      "reactDocgen": {
+        "description": "Underline form field; rule turns red on focus.",
+        "methods": [],
+        "displayName": "Input",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Input.tsx",
+        "actualName": "Input",
+        "exportName": "Input",
+        "props": {
+          "label": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "Field label shown above the line. @default \"Email\"",
+            "defaultValue": {
+              "value": "'Email'",
+              "computed": false
+            }
+          },
+          "type": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "'email'",
+              "computed": false
+            }
+          },
+          "placeholder": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "''",
+              "computed": false
+            }
+          },
+          "value": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "onChange": {
+            "required": false,
+            "tsType": {
+              "name": "signature",
+              "type": "function",
+              "raw": "(e: React.ChangeEvent<HTMLInputElement>) => void",
+              "signature": {
+                "arguments": [
+                  {
+                    "type": {
+                      "name": "ReactChangeEvent",
+                      "raw": "React.ChangeEvent<HTMLInputElement>",
+                      "elements": [
+                        {
+                          "name": "HTMLInputElement"
+                        }
+                      ]
+                    },
+                    "name": "e"
+                  }
+                ],
+                "return": {
+                  "name": "void"
+                }
+              }
+            },
+            "description": ""
+          },
+          "tone": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'dark' | 'light'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'dark'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'light'"
+                }
+              ]
+            },
+            "description": "Surface tone. @default \"dark\"",
+            "defaultValue": {
+              "value": "'dark'",
+              "computed": false
+            }
+          },
+          "error": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Validation message; triggers red error state."
+          },
+          "id": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "className": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "style": {
+            "required": false,
+            "tsType": {
+              "name": "ReactCSSProperties",
+              "raw": "React.CSSProperties"
+            },
+            "description": ""
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "form-input--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <Input label=\"Email\" placeholder=\"you@example.com\" />;"
+        },
+        {
+          "id": "form-input--with-error",
+          "name": "With Error",
+          "snippet": "const WithError = () => <Input label=\"Email\" error=\"Enter a valid email address\" />;"
+        },
+        {
+          "id": "form-input--light-tone",
+          "name": "Light Tone",
+          "snippet": "const LightTone = () => <Input label=\"Email\" tone=\"light\" />;"
+        }
+      ],
+      "import": "import { Input } from 'tedx-amsterdam-design-system';"
+    },
+    "primitives-logo": {
+      "id": "primitives-logo",
+      "name": "Logo",
+      "path": "./components/core/Logo.stories.tsx",
+      "jsDocTags": {},
+      "description": "Locked-up red TEDx + Amsterdam wordmark.",
+      "reactDocgen": {
+        "description": "Locked-up red TEDx + Amsterdam wordmark.",
+        "methods": [],
+        "displayName": "Logo",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Logo.tsx",
+        "actualName": "Logo",
+        "exportName": "Logo",
+        "props": {
+          "tone": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'light-on-dark' | 'dark-on-light'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'light-on-dark'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'dark-on-light'"
+                }
+              ]
+            },
+            "description": "Wordmark colour context. @default \"light-on-dark\"",
+            "defaultValue": {
+              "value": "'light-on-dark'",
+              "computed": false
+            }
+          },
+          "width": {
+            "required": false,
+            "tsType": {
+              "name": "number"
+            },
+            "description": "Rendered width in px. @default 230",
+            "defaultValue": {
+              "value": "230",
+              "computed": false
+            }
+          },
+          "base": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Path prefix to the project's assets/ folder. @default \"\"",
+            "defaultValue": {
+              "value": "''",
+              "computed": false
+            }
+          },
+          "href": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "primitives-logo--light-on-dark",
+          "name": "Light On Dark",
+          "snippet": "const LightOnDark = () => <Logo />;"
+        },
+        {
+          "id": "primitives-logo--dark-on-light",
+          "name": "Dark On Light",
+          "snippet": "const DarkOnLight = () => <Logo tone=\"dark-on-light\" />;"
+        },
+        {
+          "id": "primitives-logo--as-link",
+          "name": "As Link",
+          "snippet": "const AsLink = () => <Logo href=\"/\" />;"
+        }
+      ],
+      "import": "import { Logo } from 'tedx-amsterdam-design-system';"
+    },
+    "content-mediacard": {
+      "id": "content-mediacard",
+      "name": "MediaCard",
+      "path": "./components/core/MediaCard.stories.tsx",
+      "jsDocTags": {},
+      "description": "Image-led blog / event card: photo with a category badge, uppercase title, excerpt and a dated meta line.",
+      "reactDocgen": {
+        "description": "Image-led blog / event card: photo with a category badge, uppercase title, excerpt and a dated meta line.",
+        "methods": [],
+        "displayName": "MediaCard",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/MediaCard.tsx",
+        "actualName": "MediaCard",
+        "exportName": "MediaCard",
+        "props": {
+          "image": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Image URL. Falls back to the red-orange tile gradient."
+          },
+          "imageAlt": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Alt text for the image. Leave empty when the title already says what the image shows. @default \"\"",
+            "defaultValue": {
+              "value": "''",
+              "computed": false
+            }
+          },
+          "category": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "Category in a `Badge` in the image's corner, e.g. \"News\" or \"Podcast\"."
+          },
+          "title": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": ""
+          },
+          "description": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "Short excerpt below the title."
+          },
+          "date": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "Meta line with a red dot, such as the date."
+          },
+          "ratio": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "CSS aspect-ratio for the image. @default \"4 / 3\"",
+            "defaultValue": {
+              "value": "'4 / 3'",
+              "computed": false
+            }
+          },
+          "href": {
+            "defaultValue": {
+              "value": "'#'",
+              "computed": false
+            },
+            "required": false
+          }
+        },
+        "composes": [
+          "Omit"
+        ]
+      },
+      "stories": [
+        {
+          "id": "content-mediacard--with-image",
+          "name": "With Image",
+          "snippet": "const WithImage = () => <MediaCard\n    image=\"assets/sample-image.svg\"\n    category=\"News\"\n    title=\"Speaker line-up announced\"\n    description=\"Meet the twelve voices taking the stage this June.\"\n    date=\"12 June\"\n    style={{ maxWidth: 360 }} />;"
+        },
+        {
+          "id": "content-mediacard--gradient-fallback",
+          "name": "Gradient Fallback",
+          "snippet": "const GradientFallback = () => <MediaCard\n    category=\"Podcast\"\n    title=\"Speaker line-up announced\"\n    description=\"Meet the twelve voices taking the stage this June.\"\n    date=\"12 June\"\n    style={{ maxWidth: 360 }} />;"
+        }
+      ],
+      "import": "import { MediaCard } from 'tedx-amsterdam-design-system';"
+    },
+    "feedback-modal": {
+      "id": "feedback-modal",
+      "name": "Modal",
+      "path": "./components/core/Modal.stories.tsx",
+      "jsDocTags": {},
+      "error": {
+        "name": "No component definition found",
+        "message": "File: /home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Modal.tsx\nError:\nNo suitable component definition found.\nYou can debug your component file in this playground: https://react-docgen.dev/playground\nCode:\n'use client';\n\nimport React from 'react';\nimport { createPortal } from 'react-dom';\nimport { cn } from '../utils/cn';\nimport styles from './Modal.module.css';\n\nexport interface ModalProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {\n  isOpen: boolean;\n  /** Called on overlay click or Escape key. */\n  onClose: () => void;\n  /** Dialog heading. Rendered as `<h2>` and linked via `aria-labelledby`. */\n  title?: string;\n  children?: React.ReactNode;\n  /** Dialog width. @default \"md\" */\n  size?: 'sm' | 'md' | 'lg';\n  /** Hide the × close button. @default false */\n  hideCloseButton?: boolean;\n}\n\nconst maxWidths: Record<NonNullable<ModalProps['size']>, number> = {\n  sm: 480,\n  md: 640,\n  lg: 800,\n};\n\nconst FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])';\n\n/**\n * Overlay dialog rendered through a portal to document.body.\n * Traps focus, restores focus to the trigger on close, locks scroll\n * (with scrollbar-width compensation), closes on Escape or overlay click.\n */\nexport function Modal({ isOpen, onClose, title, children, size = 'md', hideCloseButton = false, className, style, ...rest }: ModalProps): React.ReactElement | null {\n  const dialogRef = React.useRef<HTMLDivElement>(null);\n  const restoreFocusRef = React.useRef<HTMLElement | null>(null);\n  const titleId = `modal-title-${React.useId()}`;\n\n  // Body scroll lock (with scrollbar compensation) + Escape key\n  React.useEffect(() => {\n    if (!isOpen) return;\n    const prevOverflow = document.body.style.overflow;\n    const prevPadding = document.body.style.paddingRight;\n    const scrollbar = window.innerWidth - document.documentElement.clientWidth;\n    document.body.style.overflow = 'hidden';\n    if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;\n    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };\n    document.addEventListener('keydown', onKey);\n    return () => {\n      document.body.style.overflow = prevOverflow;\n      document.body.style.paddingRight = prevPadding;\n      document.removeEventListener('keydown', onKey);\n    };\n  }, [isOpen, onClose]);\n\n  // Focus trap + focus restore\n  React.useEffect(() => {\n    if (!isOpen || !dialogRef.current) return;\n    restoreFocusRef.current =\n      document.activeElement instanceof HTMLElement ? document.activeElement : null;\n    dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)[0]?.focus();\n\n    const trap = (e: KeyboardEvent) => {\n      if (e.key !== 'Tab' || !dialogRef.current) return;\n      const focusable = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE));\n      const first = focusable[0];\n      const last = focusable[focusable.length - 1];\n      if (e.shiftKey) {\n        if (document.activeElement === first) { e.preventDefault(); last?.focus(); }\n      } else {\n        if (document.activeElement === last) { e.preventDefault(); first?.focus(); }\n      }\n    };\n    document.addEventListener('keydown', trap);\n    return () => {\n      document.removeEventListener('keydown', trap);\n      restoreFocusRef.current?.focus();\n    };\n  }, [isOpen]);\n\n  if (!isOpen) return null;\n\n  return createPortal(\n    <div className={styles.overlay} onClick={onClose}>\n      <div\n        {...rest}\n        ref={dialogRef}\n        role=\"dialog\"\n        aria-modal=\"true\"\n        aria-labelledby={title ? titleId : undefined}\n        onClick={(e) => e.stopPropagation()}\n        className={cn(styles.dialog, className)}\n        style={{ maxWidth: maxWidths[size], ...style }}\n      >\n        <div className={styles.header}>\n          {title && (\n            <h2 id={titleId} className={styles.title}>\n              {title}\n            </h2>\n          )}\n          {!hideCloseButton && (\n            <button\n              onClick={onClose}\n              aria-label=\"Close dialog\"\n              className={styles.closeBtn}\n            >\n              ×\n            </button>\n          )}\n        </div>\n        <div className={styles.body}>\n          {children}\n        </div>\n      </div>\n    </div>,\n    document.body,\n  );\n}\n"
+      },
+      "stories": [
+        {
+          "id": "feedback-modal--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <ModalDemo />;"
+        },
+        {
+          "id": "feedback-modal--small",
+          "name": "Small",
+          "snippet": "const Small = () => <ModalDemo size=\"sm\" />;"
+        }
+      ],
+      "import": "import { Button, Modal } from 'tedx-amsterdam-design-system';"
+    },
+    "navigation-navigationbar": {
+      "id": "navigation-navigationbar",
+      "name": "NavigationBar",
+      "path": "./components/core/NavigationBar.stories.tsx",
+      "jsDocTags": {},
+      "description": "TEDxAmsterdam — NavigationBar\nSticky top bar in the content column: logo left, links right in regular\nsentence case with the active one red, and an optional CTA after them.\nResponsive layout via CSS Modules (no window.innerWidth, SSR-safe).\nIncludes skip-to-content link (WCAG 2.4.1).\nPass `base` to resolve asset paths from nested HTML files.\nPass `skipTarget` to override skip link destination (default \"#main-content\").",
+      "reactDocgen": {
+        "description": "TEDxAmsterdam — NavigationBar\nSticky top bar in the content column: logo left, links right in regular\nsentence case with the active one red, and an optional CTA after them.\nResponsive layout via CSS Modules (no window.innerWidth, SSR-safe).\nIncludes skip-to-content link (WCAG 2.4.1).\nPass `base` to resolve asset paths from nested HTML files.\nPass `skipTarget` to override skip link destination (default \"#main-content\").",
+        "methods": [],
+        "displayName": "NavigationBar",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/NavigationBar.tsx",
+        "actualName": "NavigationBar",
+        "exportName": "NavigationBar",
+        "props": {
+          "links": {
+            "required": false,
+            "tsType": {
+              "name": "Array",
+              "elements": [
+                {
+                  "name": "NavLink"
+                }
+              ],
+              "raw": "NavLink[]"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "[]",
+              "computed": false
+            }
+          },
+          "ctaLabel": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "CTA button label."
+          },
+          "ctaHref": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "CTA button destination."
+          },
+          "logoHref": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Logo link destination. @default \"/\"",
+            "defaultValue": {
+              "value": "'/'",
+              "computed": false
+            }
+          },
+          "activePath": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Marks the matching link as active (`aria-current=\"page\"`)."
+          },
+          "base": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Asset path prefix. Use `\"../../\"` from nested HTML files. @default \"\"",
+            "defaultValue": {
+              "value": "''",
+              "computed": false
+            }
+          },
+          "skipTarget": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "href for the skip-to-content link. @default \"#main-content\"",
+            "defaultValue": {
+              "value": "'#main-content'",
+              "computed": false
+            }
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "navigation-navigationbar--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <NavigationBar\n    links={[\n      { label: 'Talks', href: '/talks' },\n      { label: 'Events', href: '/events' },\n      { label: 'About', href: '/about' },\n    ]}\n    ctaLabel=\"Get tickets\"\n    ctaHref=\"/tickets\"\n    activePath=\"/talks\" />;"
+        }
+      ],
+      "import": "import { NavigationBar } from 'tedx-amsterdam-design-system';"
+    },
+    "form-radio": {
+      "id": "form-radio",
+      "name": "Radio",
+      "path": "./components/core/Radio.stories.tsx",
+      "jsDocTags": {},
+      "description": "Radio button group. Selected option shows red dot. Uses fieldset/legend for a11y.",
+      "reactDocgen": {
+        "description": "Radio button group. Selected option shows red dot. Uses fieldset/legend for a11y.",
+        "methods": [],
+        "displayName": "Radio",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Radio.tsx",
+        "actualName": "Radio",
+        "exportName": "Radio",
+        "props": {
+          "legend": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Group label rendered as `<legend>`."
+          },
+          "options": {
+            "required": false,
+            "tsType": {
+              "name": "Array",
+              "elements": [
+                {
+                  "name": "RadioOption"
+                }
+              ],
+              "raw": "RadioOption[]"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "[]",
+              "computed": false
+            }
+          },
+          "value": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Controlled selected value."
+          },
+          "onChange": {
+            "required": false,
+            "tsType": {
+              "name": "signature",
+              "type": "function",
+              "raw": "(value: string) => void",
+              "signature": {
+                "arguments": [
+                  {
+                    "type": {
+                      "name": "string"
+                    },
+                    "name": "value"
+                  }
+                ],
+                "return": {
+                  "name": "void"
+                }
+              }
+            },
+            "description": ""
+          },
+          "name": {
+            "required": true,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Shared `name` attribute for the radio group — required for native grouping."
+          },
+          "disabled": {
+            "required": false,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "false",
+              "computed": false
+            }
+          }
+        },
+        "composes": [
+          "Omit"
+        ]
+      },
+      "stories": [
+        {
+          "id": "form-radio--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <Demo />;"
+        }
+      ],
+      "import": "import { Radio } from 'tedx-amsterdam-design-system';"
+    },
+    "form-radiogroup": {
+      "id": "form-radiogroup",
+      "name": "RadioGroup",
+      "path": "./components/core/RadioGroup.stories.tsx",
+      "jsDocTags": {},
+      "reactDocgen": {
+        "description": "",
+        "methods": [],
+        "displayName": "RadioGroupRoot",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/RadioGroup.tsx",
+        "actualName": "RadioGroupRoot",
+        "props": {
+          "name": {
+            "required": true,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Shared name attribute for the radio inputs."
+          },
+          "legend": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "value": {
+            "required": true,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Currently selected value (controlled)."
+          },
+          "onChange": {
+            "required": true,
+            "tsType": {
+              "name": "signature",
+              "type": "function",
+              "raw": "(value: string) => void",
+              "signature": {
+                "arguments": [
+                  {
+                    "type": {
+                      "name": "string"
+                    },
+                    "name": "value"
+                  }
+                ],
+                "return": {
+                  "name": "void"
+                }
+              }
+            },
+            "description": ""
+          },
+          "disabled": {
+            "required": false,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "false",
+              "computed": false
+            }
+          },
+          "children": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": ""
+          }
+        },
+        "composes": [
+          "Omit"
+        ]
+      },
+      "stories": [
+        {
+          "id": "form-radiogroup--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <Demo />;"
+        }
+      ],
+      "import": "import { RadioGroup } from 'tedx-amsterdam-design-system';"
+    },
+    "content-sectionheader": {
+      "id": "content-sectionheader",
+      "name": "SectionHeader",
+      "path": "./components/core/SectionHeader.stories.tsx",
+      "jsDocTags": {},
+      "description": "Eyebrow + heading + description + arrow-link section intro.",
+      "reactDocgen": {
+        "description": "Eyebrow + heading + description + arrow-link section intro.",
+        "methods": [],
+        "displayName": "SectionHeader",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/SectionHeader.tsx",
+        "actualName": "SectionHeader",
+        "exportName": "SectionHeader",
+        "props": {
+          "eyebrow": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "Uppercase eyebrow above the title (a white `Tag`)."
+          },
+          "title": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "Wrap words in `Accent` to set them in red."
+          },
+          "description": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": ""
+          },
+          "link": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "Optional arrow-link CTA below the copy."
+          },
+          "linkHref": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "'#'",
+              "computed": false
+            }
+          },
+          "align": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'left' | 'center'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'left'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'center'"
+                }
+              ]
+            },
+            "description": "@default \"left\"",
+            "defaultValue": {
+              "value": "'left'",
+              "computed": false
+            }
+          }
+        },
+        "composes": [
+          "Omit"
+        ]
+      },
+      "stories": [
+        {
+          "id": "content-sectionheader--full",
+          "name": "Full",
+          "snippet": "const Full = () => <SectionHeader\n    eyebrow=\"Talks\"\n    title={<>Ideas worth <Accent>spreading</Accent></>}\n    description=\"Watch every talk from our latest edition.\"\n    link=\"All talks\"\n    linkHref=\"#\" />;"
+        },
+        {
+          "id": "content-sectionheader--centered",
+          "name": "Centered",
+          "snippet": "const Centered = () => <SectionHeader title={<>Our <Accent>partners</Accent></>} align=\"center\" />;"
+        }
+      ],
+      "import": "import { Accent, SectionHeader } from 'tedx-amsterdam-design-system';\nimport { Accent } from './Accent';"
+    },
+    "form-select": {
+      "id": "form-select",
+      "name": "Select",
+      "path": "./components/core/Select.stories.tsx",
+      "jsDocTags": {},
+      "description": "Branded native dropdown matching the Input underline style.",
+      "reactDocgen": {
+        "description": "Branded native dropdown matching the Input underline style.",
+        "methods": [],
+        "displayName": "Select",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Select.tsx",
+        "actualName": "Select",
+        "exportName": "Select",
+        "props": {
+          "label": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Visible label above the select."
+          },
+          "options": {
+            "required": false,
+            "tsType": {
+              "name": "Array",
+              "elements": [
+                {
+                  "name": "SelectOption"
+                }
+              ],
+              "raw": "SelectOption[]"
+            },
+            "description": "Array of options.",
+            "defaultValue": {
+              "value": "[]",
+              "computed": false
+            }
+          },
+          "value": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Controlled selected value."
+          },
+          "onChange": {
+            "required": false,
+            "tsType": {
+              "name": "signature",
+              "type": "function",
+              "raw": "(value: string) => void",
+              "signature": {
+                "arguments": [
+                  {
+                    "type": {
+                      "name": "string"
+                    },
+                    "name": "value"
+                  }
+                ],
+                "return": {
+                  "name": "void"
+                }
+              }
+            },
+            "description": ""
+          },
+          "placeholder": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Placeholder shown when no value selected. @default \"Select…\"",
+            "defaultValue": {
+              "value": "'Select…'",
+              "computed": false
+            }
+          },
+          "disabled": {
+            "required": false,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "false",
+              "computed": false
+            }
+          },
+          "error": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Validation message; triggers red error state."
+          },
+          "id": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "className": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "style": {
+            "required": false,
+            "tsType": {
+              "name": "ReactCSSProperties",
+              "raw": "React.CSSProperties"
+            },
+            "description": ""
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "form-select--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <ControlledSelect />;"
+        },
+        {
+          "id": "form-select--with-error",
+          "name": "With Error",
+          "snippet": "const WithError = () => <ControlledSelect error=\"Choose a city\" />;"
+        },
+        {
+          "id": "form-select--disabled",
+          "name": "Disabled",
+          "snippet": "const Disabled = () => <ControlledSelect disabled />;"
+        }
+      ],
+      "import": "import { Select } from 'tedx-amsterdam-design-system';"
+    },
+    "navigation-sociallink": {
+      "id": "navigation-sociallink",
+      "name": "SocialLink",
+      "path": "./components/core/SocialLink.stories.tsx",
+      "jsDocTags": {},
+      "description": "White social icon + label that reddens on hover.",
+      "reactDocgen": {
+        "description": "White social icon + label that reddens on hover.",
+        "methods": [],
+        "displayName": "SocialLink",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/SocialLink.tsx",
+        "actualName": "SocialLink",
+        "exportName": "SocialLink",
+        "props": {
+          "network": {
+            "required": true,
+            "tsType": {
+              "name": "union",
+              "raw": "'linkedin' | 'instagram' | 'youtube'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'linkedin'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'instagram'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'youtube'"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "label": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": ""
+          },
+          "href": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "'#'",
+              "computed": false
+            }
+          },
+          "size": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'md' | 'sm'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'md'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'sm'"
+                }
+              ]
+            },
+            "description": "`md` for the footer (20px text), `sm` under a speaker portrait (16px text). @default \"md\"",
+            "defaultValue": {
+              "value": "'md'",
+              "computed": false
+            }
+          },
+          "base": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Path prefix to the project's assets/ folder. @default \"\"",
+            "defaultValue": {
+              "value": "''",
+              "computed": false
+            }
+          },
+          "style": {
+            "required": false,
+            "tsType": {
+              "name": "ReactCSSProperties",
+              "raw": "React.CSSProperties"
+            },
+            "description": ""
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "navigation-sociallink--linked-in",
+          "name": "Linked In",
+          "snippet": "const LinkedIn = () => <SocialLink network=\"linkedin\" label=\"LinkedIn\" />;"
+        },
+        {
+          "id": "navigation-sociallink--instagram",
+          "name": "Instagram",
+          "snippet": "const Instagram = () => <SocialLink network=\"instagram\" label=\"Instagram\" />;"
+        },
+        {
+          "id": "navigation-sociallink--you-tube",
+          "name": "You Tube",
+          "snippet": "const YouTube = () => <SocialLink network=\"youtube\" label=\"YouTube\" />;"
+        },
+        {
+          "id": "navigation-sociallink--small",
+          "name": "Small",
+          "snippet": "const Small = () => <SocialLink network=\"linkedin\" label=\"LinkedIn\" size=\"sm\" />;"
+        }
+      ],
+      "import": "import { SocialLink } from 'tedx-amsterdam-design-system';"
+    },
+    "content-stat": {
+      "id": "content-stat",
+      "name": "Stat",
+      "path": "./components/core/Stat.stories.tsx",
+      "jsDocTags": {},
+      "description": "Oversized stat figure with supporting label.",
+      "reactDocgen": {
+        "description": "Oversized stat figure with supporting label.",
+        "methods": [],
+        "displayName": "Stat",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Stat.tsx",
+        "actualName": "Stat",
+        "exportName": "Stat",
+        "props": {
+          "value": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "The big figure, e.g. \"2009\" or \"20K\"."
+          },
+          "label": {
+            "required": false,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": "Supporting caption to the right."
+          },
+          "size": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'md' | 'lg' | 'xl'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'md'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'lg'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'xl'"
+                }
+              ]
+            },
+            "description": "@default \"lg\" (80px, as in the designs); \"xl\" = 140px, \"md\" = 48px",
+            "defaultValue": {
+              "value": "'lg'",
+              "computed": false
+            }
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "content-stat--large",
+          "name": "Large",
+          "snippet": "const Large = () => <Stat value=\"2009\" label=\"Founded in Amsterdam\" />;"
+        },
+        {
+          "id": "content-stat--extra-large",
+          "name": "Extra Large",
+          "snippet": "const ExtraLarge = () => <Stat value=\"20K\" label=\"Attendees to date\" size=\"xl\" />;"
+        },
+        {
+          "id": "content-stat--medium",
+          "name": "Medium",
+          "snippet": "const Medium = () => <Stat value=\"350+\" label=\"Talks published\" size=\"md\" />;"
+        }
+      ],
+      "import": "import { Stat } from 'tedx-amsterdam-design-system';"
+    },
+    "content-tabs": {
+      "id": "content-tabs",
+      "name": "Tabs",
+      "path": "./components/core/Tabs.stories.tsx",
+      "jsDocTags": {},
+      "description": "Tabbed switcher, such as a filter. Active tab: red text. Arrow keys navigate between tabs.",
+      "reactDocgen": {
+        "description": "Tabbed switcher, such as a filter. Active tab: red text. Arrow keys navigate between tabs.",
+        "methods": [],
+        "displayName": "Tabs",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Tabs.tsx",
+        "actualName": "Tabs",
+        "exportName": "Tabs",
+        "props": {
+          "tabs": {
+            "required": false,
+            "tsType": {
+              "name": "Array",
+              "elements": [
+                {
+                  "name": "TabItem"
+                }
+              ],
+              "raw": "TabItem[]"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "[]",
+              "computed": false
+            }
+          },
+          "defaultIndex": {
+            "required": false,
+            "tsType": {
+              "name": "number"
+            },
+            "description": "Initially active tab index (uncontrolled). @default 0",
+            "defaultValue": {
+              "value": "0",
+              "computed": false
+            }
+          },
+          "selectedIndex": {
+            "required": false,
+            "tsType": {
+              "name": "number"
+            },
+            "description": "Active tab index (controlled). Provide onTabChange alongside this."
+          },
+          "onTabChange": {
+            "required": false,
+            "tsType": {
+              "name": "signature",
+              "type": "function",
+              "raw": "(index: number) => void",
+              "signature": {
+                "arguments": [
+                  {
+                    "type": {
+                      "name": "number"
+                    },
+                    "name": "index"
+                  }
+                ],
+                "return": {
+                  "name": "void"
+                }
+              }
+            },
+            "description": "Called with the new index when a tab is activated."
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "content-tabs--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <Tabs\n    tabs={[\n      { label: 'Program', content: 'Talks, performances, and breaks.' },\n      { label: 'Speakers', content: 'Twelve speakers across four themes.' },\n      { label: 'Venue', content: 'Royal Theatre Carré, Amsterdam.' },\n    ]} />;"
+        }
+      ],
+      "import": "import { Tabs } from 'tedx-amsterdam-design-system';"
+    },
+    "primitives-tag": {
+      "id": "primitives-tag",
+      "name": "Tag",
+      "path": "./components/core/Tag.stories.tsx",
+      "jsDocTags": {},
+      "description": "Uppercase eyebrow label, white by default; with `dot`, a meta line.",
+      "reactDocgen": {
+        "description": "Uppercase eyebrow label, white by default; with `dot`, a meta line.",
+        "methods": [],
+        "displayName": "Tag",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Tag.tsx",
+        "actualName": "Tag",
+        "exportName": "Tag",
+        "props": {
+          "children": {
+            "required": true,
+            "tsType": {
+              "name": "ReactReactNode",
+              "raw": "React.ReactNode"
+            },
+            "description": ""
+          },
+          "color": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'red' | 'white' | 'muted'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'red'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'white'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'muted'"
+                }
+              ]
+            },
+            "description": "@default \"white\"",
+            "defaultValue": {
+              "value": "'white'",
+              "computed": false
+            }
+          },
+          "dot": {
+            "required": false,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": "Leading red dot. Turns the label into a meta line (a name, date or venue): regular weight, sentence case. @default false",
+            "defaultValue": {
+              "value": "false",
+              "computed": false
+            }
+          },
+          "style": {
+            "required": false,
+            "tsType": {
+              "name": "ReactCSSProperties",
+              "raw": "React.CSSProperties"
+            },
+            "description": ""
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "primitives-tag--eyebrow",
+          "name": "Eyebrow",
+          "snippet": "const Eyebrow = () => <Tag>About speakers</Tag>;"
+        },
+        {
+          "id": "primitives-tag--red",
+          "name": "Red",
+          "snippet": "const Red = () => <Tag color=\"red\">Event</Tag>;"
+        },
+        {
+          "id": "primitives-tag--meta-line",
+          "name": "Meta Line",
+          "snippet": "const MetaLine = () => <Tag dot>12 June</Tag>;"
+        },
+        {
+          "id": "primitives-tag--muted-meta-line",
+          "name": "Muted Meta Line",
+          "snippet": "const MutedMetaLine = () => <Tag dot color=\"muted\">Computational artist</Tag>;"
+        }
+      ],
+      "import": "import { Tag } from 'tedx-amsterdam-design-system';"
+    },
+    "form-textarea": {
+      "id": "form-textarea",
+      "name": "Textarea",
+      "path": "./components/core/Textarea.stories.tsx",
+      "jsDocTags": {},
+      "description": "Multi-line text input matching the Input underline style.",
+      "reactDocgen": {
+        "description": "Multi-line text input matching the Input underline style.",
+        "methods": [],
+        "displayName": "Textarea",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Textarea.tsx",
+        "actualName": "Textarea",
+        "exportName": "Textarea",
+        "props": {
+          "label": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Visible label above the field."
+          },
+          "value": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "onChange": {
+            "required": false,
+            "tsType": {
+              "name": "signature",
+              "type": "function",
+              "raw": "(value: string) => void",
+              "signature": {
+                "arguments": [
+                  {
+                    "type": {
+                      "name": "string"
+                    },
+                    "name": "value"
+                  }
+                ],
+                "return": {
+                  "name": "void"
+                }
+              }
+            },
+            "description": ""
+          },
+          "placeholder": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "rows": {
+            "required": false,
+            "tsType": {
+              "name": "number"
+            },
+            "description": "Initial visible row count. @default 4",
+            "defaultValue": {
+              "value": "4",
+              "computed": false
+            }
+          },
+          "disabled": {
+            "required": false,
+            "tsType": {
+              "name": "boolean"
+            },
+            "description": "",
+            "defaultValue": {
+              "value": "false",
+              "computed": false
+            }
+          },
+          "error": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": "Validation message; triggers red error state."
+          },
+          "id": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "className": {
+            "required": false,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "style": {
+            "required": false,
+            "tsType": {
+              "name": "ReactCSSProperties",
+              "raw": "React.CSSProperties"
+            },
+            "description": ""
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "form-textarea--basic",
+          "name": "Basic",
+          "snippet": "const Basic = () => <Textarea label=\"Message\" placeholder=\"Tell us your idea…\" />;"
+        },
+        {
+          "id": "form-textarea--with-error",
+          "name": "With Error",
+          "snippet": "const WithError = () => <Textarea label=\"Message\" error=\"Message is too short\" />;"
+        }
+      ],
+      "import": "import { Textarea } from 'tedx-amsterdam-design-system';"
+    },
+    "feedback-toast": {
+      "id": "feedback-toast",
+      "name": "Toast",
+      "path": "./components/core/Toast.stories.tsx",
+      "jsDocTags": {},
+      "description": "Transient bottom-right notification. Slides in from right, auto-dismisses.\nCaller renders/unrenders via state; use `onDismiss` to clean up.\nerror/warning use `role=\"alert\"` (assertive); info/success use `role=\"status\"` (polite).",
+      "reactDocgen": {
+        "description": "Transient bottom-right notification. Slides in from right, auto-dismisses.\nCaller renders/unrenders via state; use `onDismiss` to clean up.\nerror/warning use `role=\"alert\"` (assertive); info/success use `role=\"status\"` (polite).",
+        "methods": [],
+        "displayName": "Toast",
+        "definedInFile": "/home/runner/work/tedx-amsterdam-design-system/tedx-amsterdam-design-system/components/core/Toast.tsx",
+        "actualName": "Toast",
+        "exportName": "Toast",
+        "props": {
+          "message": {
+            "required": true,
+            "tsType": {
+              "name": "string"
+            },
+            "description": ""
+          },
+          "type": {
+            "required": false,
+            "tsType": {
+              "name": "union",
+              "raw": "'info' | 'success' | 'error' | 'warning'",
+              "elements": [
+                {
+                  "name": "literal",
+                  "value": "'info'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'success'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'error'"
+                },
+                {
+                  "name": "literal",
+                  "value": "'warning'"
+                }
+              ]
+            },
+            "description": "@default \"info\"",
+            "defaultValue": {
+              "value": "'info'",
+              "computed": false
+            }
+          },
+          "duration": {
+            "required": false,
+            "tsType": {
+              "name": "number"
+            },
+            "description": "Auto-dismiss delay in ms. 0 = persist until manually dismissed. @default 4000",
+            "defaultValue": {
+              "value": "4000",
+              "computed": false
+            }
+          },
+          "onDismiss": {
+            "required": false,
+            "tsType": {
+              "name": "signature",
+              "type": "function",
+              "raw": "() => void",
+              "signature": {
+                "arguments": [],
+                "return": {
+                  "name": "void"
+                }
+              }
+            },
+            "description": "Called when the toast finishes its exit animation. Use to remove it from state."
+          }
+        }
+      },
+      "stories": [
+        {
+          "id": "feedback-toast--info",
+          "name": "Info",
+          "snippet": "const Info = () => <Toast message=\"Schedule updated.\" duration={0} />;"
+        },
+        {
+          "id": "feedback-toast--success",
+          "name": "Success",
+          "snippet": "const Success = () => <Toast message=\"Your seat is reserved.\" type=\"success\" duration={0} />;"
+        },
+        {
+          "id": "feedback-toast--error-toast",
+          "name": "Error Toast",
+          "snippet": "const ErrorToast = () => <Toast message=\"Payment failed.\" type=\"error\" duration={0} />;"
+        },
+        {
+          "id": "feedback-toast--warning",
+          "name": "Warning",
+          "snippet": "const Warning = () => <Toast message=\"Only 4 seats left.\" type=\"warning\" duration={0} />;"
+        }
+      ],
+      "import": "import { Toast } from 'tedx-amsterdam-design-system';"
+    }
+  },
+  "meta": {
+    "docgen": "react-docgen",
+    "durationMs": 463
+  }
+}
