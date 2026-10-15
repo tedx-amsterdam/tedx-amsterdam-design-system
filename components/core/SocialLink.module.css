@@ -1,11 +1,19 @@
 .link {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
-  font: var(--text-body);
   color: var(--text-primary);
   transition: color var(--dur) var(--ease-standard);
+}
+
+.md {
+  gap: var(--space-3);
+  font: var(--text-body);
+}
+
+.sm {
+  gap: calc(var(--space-3) / 2);
+  font: var(--text-meta);
 }
 
 .link:hover {
@@ -13,8 +21,8 @@
 }
 
 .icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
