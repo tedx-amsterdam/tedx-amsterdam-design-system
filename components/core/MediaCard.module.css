@@ -52,7 +52,7 @@
 .description {
   margin: 0;
   font: var(--text-small);
-  color: var(--tedx-white-40);
+  color: var(--text-subtle);
 }
 
 /* Mobile sizes from the mobile design (below 768px, decision 28 in the website). */

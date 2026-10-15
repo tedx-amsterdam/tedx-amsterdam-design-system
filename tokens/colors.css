@@ -50,6 +50,7 @@
   --text-primary: var(--tedx-white);       /* on dark */
   --text-secondary: var(--tedx-white-60);
   --text-muted: var(--tedx-gray-400);
+  --text-subtle: var(--tedx-white-50);    /* roles, excerpts: the designs' 40% raised to pass AA on black */
   --text-on-light: var(--tedx-black);       /* on white surfaces */
   --text-accent: var(--tedx-red);           /* tags, links, emphasis */
   --text-inverse: var(--tedx-black);
