@@ -43,7 +43,7 @@ React 18 or 19 is a peer dependency. The CDN IIFE bundle (`_ds_bundle.js`) remai
 
 #### Images
 
-`Logo`, `NavigationBar` and `SocialLink` load their images from `{base}assets/…` at runtime, so your site has to serve them. The package ships the logos and icons (not the photography) in `assets/`; copy them into your public folder as part of the build and pass the matching `base`:
+`Logo`, `NavigationBar` and `SocialLink` load their images from `{base}assets/…` at runtime, so your site has to serve them. The package ships the logos and icons in `assets/`; copy them into your public folder as part of the build and pass the matching `base`:
 
 ```bash
 cp node_modules/tedx-amsterdam-design-system/assets/* public/assets/
@@ -86,7 +86,7 @@ The `Release` workflow checks that the tag matches `package.json`, then runs `np
 | `docs/figma-audit.md` | How the tokens and components compare with the original Figma designs. |
 | `guidelines/*.html` | Foundation specimen cards — open in a browser for reference. |
 | `components/core/` | 24 React primitives with TypeScript declarations. |
-| `assets/` | Logos (SVG + PNG), social icons, event photography. |
+| `assets/` | Logos (SVG + PNG), social icons, and placeholder images for the stories. |
 
 ### Components
 
@@ -250,7 +250,7 @@ While the dev server runs, `http://localhost:6006/mcp` is an MCP server (`@story
 ## License
 
 Code is [MIT licensed](./LICENSE). The TEDx logo, the TEDxAmsterdam name, the
-logos and icons the npm package ships in `assets/`, and event photography are
+logos and icons the npm package ships in `assets/` are
 **not** covered by the MIT license — they remain subject
 to [TED's brand guidelines](https://www.ted.com/participate/organize-a-local-tedx-event/tedx-organizer-guide/branding-promotions).
 

@@ -16,7 +16,7 @@ Then explore the other available files.
 - `guidelines/*.html` — foundation specimen cards (Colors, Type, Spacing, Brand).
 - `components/core/` — React primitives: `Button`, `Tag`, `ArrowLink`, `SectionHeader`,
   `Stat`, `MediaCard`, `Input`, `SocialLink`, `Logo` (each with a `.d.ts` + `.prompt.md`).
-- `assets/` — logos (SVG + white PNG), social icons, event photography.
+- `assets/` — logos (SVG + white PNG), social icons, placeholder images for the stories.
 
 ## How to work
 - **Visual artifacts** (slides, mocks, throwaway prototypes): copy the assets you
