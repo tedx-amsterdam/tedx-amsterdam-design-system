@@ -1,4 +1,4 @@
-Image-led blog / event card: photo with a category `Badge` in the corner, uppercase title, an excerpt at 40% white and a meta line with a red dot.
+Image-led blog / event card: photo with a category `Badge` in the corner, uppercase title, an excerpt at 50% white and a meta line with a red dot.
 
 ```jsx
 <MediaCard
