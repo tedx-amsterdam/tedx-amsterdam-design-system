@@ -8,3 +8,4 @@ type Story = StoryObj<typeof meta>;
 export const LinkedIn: Story = { args: { network: 'linkedin', label: 'LinkedIn' } };
 export const Instagram: Story = { args: { network: 'instagram', label: 'Instagram' } };
 export const YouTube: Story = { args: { network: 'youtube', label: 'YouTube' } };
+export const Small: Story = { args: { network: 'linkedin', label: 'LinkedIn', size: 'sm' } };
