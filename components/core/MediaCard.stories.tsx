@@ -7,7 +7,7 @@ type Story = StoryObj<typeof meta>;
 
 export const WithImage: Story = {
   args: {
-    image: 'assets/photo-audience.jpg',
+    image: 'assets/sample-image.svg',
     category: 'News',
     title: 'Speaker line-up announced',
     description: 'Meet the twelve voices taking the stage this June.',
