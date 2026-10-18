@@ -8,6 +8,12 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+---
+
+## [1.5.0] — 2026-10-18
+
+Follows the mobile design and the rest of a full pass through Figma (`docs/figma-audit.md`): mobile type sizes, 44px tap targets, the mobile header, the form, and Helvetica first in the font stacks. Visual changes only for existing APIs; `SocialLink` `size`, `Accent` `color` and the new tokens are additions.
+
 ### Added
 - `--tap-target` (44px) and `--header-height-m` (52px), for touch targets and the mobile header.
 - `--text-subtle` (white at 50%), for roles and excerpts.
