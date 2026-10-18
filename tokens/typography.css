@@ -57,6 +57,15 @@
   --text-tag: var(--weight-bold) var(--fs-tag) / var(--lh-heading) var(--font-sans);
 }
 
+/* Body text follows the mobile design below 768px, so every component and
+   page that sets font: var(--text-body) gets 16px there without its own
+   media query. At 20px a phone fits some 30 characters per line. */
+@media (max-width: 767px) {
+  :root {
+    --text-body: var(--weight-regular) var(--fs-body-m) / var(--lh-body) var(--font-sans);
+  }
+}
+
 /* ---- Optional utility classes (foundation cards / quick markup) ---- */
 .tedx-h1 { font: var(--text-h1); letter-spacing: var(--ls-display); color: var(--text-primary); margin: 0; }
 .tedx-h2 { font: var(--text-h2); letter-spacing: var(--ls-display); color: var(--text-primary); margin: 0; }
