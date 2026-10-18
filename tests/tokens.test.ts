@@ -30,6 +30,12 @@ it('ships the fonts the tokens load', () => {
   expect(files).toContain('fonts');
 });
 
+it('sets body text at the mobile size below 768px', () => {
+  const css = fs.readFileSync(path.join(ROOT, 'tokens/typography.css'), 'utf8');
+  const mobile = css.match(/@media \(max-width: 767px\) \{([\s\S]*?)\n\}/)?.[1] ?? '';
+  expect(mobile).toMatch(/--text-body:[^;]*var\(--fs-body-m\)/);
+});
+
 it('defines every token the stylesheets and components use', () => {
   const read = (dir: string, ext: string) =>
     fs.readdirSync(path.join(ROOT, dir)).filter((file) => file.endsWith(ext)).map((file) => fs.readFileSync(path.join(ROOT, dir, file), 'utf8'));
