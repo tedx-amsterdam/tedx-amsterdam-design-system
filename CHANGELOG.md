@@ -8,6 +8,12 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+---
+
+## [1.5.1] — 2026-10-18
+
+Body text follows the mobile design below 768px.
+
 ### Changed
 - `--text-body` is 16px below 768px (`--fs-body-m`) instead of 20px, as in the mobile design. Every component and site style that uses it follows without its own media query; `--fs-body` stays 20px.
 
