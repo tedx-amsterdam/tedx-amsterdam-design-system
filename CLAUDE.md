@@ -67,12 +67,12 @@ When adding a new token, place it in the correct file and follow the existing na
 - Every new component must be re-exported from `components/core/index.ts`.
 - **`'use client'`** goes at the top of a component that uses hooks, context, portals or its own event handlers, and only there. The build keeps one module per component, so the others stay server components in Next.js App Router and ship no JavaScript. `npm run build:dist` checks this.
 - **Class names** in a CSS Module, for new components:
-  - The outermost element is `.root`.
-  - A part is named for what it is, in full words and camelCase: `.label`, `.icon`, `.errorMessage`, not `.btn`, `.wrap` or `.msg`.
-  - A variant is named after its prop value, so `styles[size]` or `styles[color]` finds it: `.sm`, `.md`, `.red`.
-  - A state is an adjective on the element it changes: `.open`, `.active`, `.checked`, `.disabled`.
+  - The outermost element is `.root`; it takes the `className` prop.
+  - A part is named for what it is, in full words and camelCase: `.label`, `.icon`, `.errorMessage`, not `.btn`, `.wrap` or `.msg`. No dashes: esbuild exports names as written.
+  - A variant is named after its prop value, so `styles[size]` or `styles[color]` finds it: `.sm`, `.md`, `.red`. A prop value never equals a part name or a reserved word such as `default`.
+  - A state that HTML or ARIA already exposes is styled from that attribute, not from a class: `[aria-disabled='true']`, `[aria-expanded='true']`, `[aria-current='page']`, `[aria-selected='true']`, `:checked`, `[open]`. Parts follow it by nesting: `.trigger[aria-expanded='true'] .icon`. Only a visual state with no such attribute gets a class, an adjective: `.closing`.
 
-  Existing components differ (`.btn`, `.wrapper`, `.errorMsg`). Their class names ship in `dist/index.css` as `Button_btn` and so on, so renaming one can break a site that targets it: rename them only in a major release, not in passing.
+  Class names are an implementation detail: sites style through `className` and tokens. Existing components differ (`.btn`, `.wrapper`, `.errorMsg`, state classes such as `.disabled` and `.active`). Their names ship in `dist/index.css` as `Button_btn` and so on, so rename or remove one only in a major release, not in passing.
 
 ## Styling rules
 
