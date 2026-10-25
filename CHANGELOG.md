@@ -8,6 +8,12 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+---
+
+## [1.7.0] — 2026-10-26
+
+Components take every colour and all spacing and type from tokens, the glows have the designs' values, and the readme says what the public API is.
+
 ### Added
 - Tokens for the last raw pixel values in components: `--space-1-5` (6px) and `--space-2-5` (10px) as half steps, `--button-padding-x` (30px), `--focus-offset` (2px), `--dot-size` (8px), `--icon-size` (24px), `--logo-width`, `--logo-width-m` and `--logo-width-xs` (225, 122 and 100px), and `--overlay-blur` (4px). Their values are unchanged.
 - Semantic colour tokens for the last raw and palette colours in components: `--text-label` (white at 70%, checkbox labels and placeholders), `--surface-hover`, `--surface-muted`, `--overlay` and `--border-on-light`. Components now use semantic tokens only; their colours are unchanged.
