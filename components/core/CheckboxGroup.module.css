@@ -9,7 +9,7 @@
 
 .legend {
   font: var(--text-body);
-  font-size: 16px;
+  font-size: var(--fs-body-sm);
   color: var(--text-primary);
   opacity: 0.85;
   padding: 0;
