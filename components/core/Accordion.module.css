@@ -13,13 +13,13 @@
   justify-content: space-between;
   align-items: center;
   gap: var(--space-6);
-  padding: 26px 0;
+  padding: var(--space-6) 0;
   text-align: left;
 }
 
 .question {
-  font: 700 22px/1.2 var(--font-display);
-  letter-spacing: -0.01em;
+  font: var(--text-h4);
+  letter-spacing: var(--ls-normal);
   text-transform: uppercase;
   color: var(--text-primary);
   transition: color var(--dur) var(--ease-standard);
@@ -79,7 +79,7 @@
 
 .answer {
   margin: 0;
-  padding: 0 0 26px;
+  padding: 0 0 var(--space-6);
   font: var(--text-body);
   color: var(--text-secondary);
   max-width: 760px;
