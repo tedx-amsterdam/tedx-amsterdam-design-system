@@ -24,8 +24,8 @@
 }
 
 .indicator.checked {
-  background: var(--tedx-red);
-  border-color: var(--tedx-red);
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .tick {
@@ -46,7 +46,7 @@
 
 .text {
   font: var(--text-tag);
-  color: var(--tedx-white-70);
+  color: var(--text-label);
 }
 
 .text a {

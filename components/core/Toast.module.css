@@ -4,7 +4,7 @@
   right: var(--space-6);
   max-width: 360px;
   background: var(--bg-elevated);
-  border-left: 3px solid var(--tedx-white);
+  border-left: 3px solid var(--border-strong);
   border-radius: var(--radius-card);
   padding: var(--space-4) var(--space-6);
   box-shadow: var(--shadow-card);
@@ -23,7 +23,7 @@
 }
 
 .toast.urgent {
-  border-left-color: var(--tedx-red);
+  border-left-color: var(--accent);
 }
 
 .message {
