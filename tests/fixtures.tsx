@@ -7,7 +7,7 @@ import {
 } from '../components/core/index';
 
 /** Minimal renderable element for every component in the library. */
-export const CASES: [string, ReactElement][] = [
+export const CASES: [string, ReactElement<Record<string, unknown>>][] = [
   ['Accent', <Accent>speakers</Accent>],
   ['Accordion', <Accordion items={[{ q: 'Q1', a: 'A1' }]} />],
   ['ArrowLink', <ArrowLink href="#talks">All talks</ArrowLink>],
