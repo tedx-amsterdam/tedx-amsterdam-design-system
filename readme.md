@@ -55,6 +55,16 @@ cp node_modules/tedx-amsterdam-design-system/assets/* public/assets/
 
 The logos and icons are brand assets, not code: the MIT license does not cover them (see [License](#license)). Only TEDxAmsterdam and sites made for it may show the TEDxAmsterdam logo; `Logo` and `NavigationBar` always render it, so a project of your own needs its own versions of those two. The social icons are the trademarks of their networks.
 
+#### Webflow
+
+The Webflow site cannot use the components or `tokens/`, so `webflow/site.css` carries the site-wide styles its Style panel cannot express. Load it in the site's head code, pinned to a release, so the site only changes when you change the version:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tedx-amsterdam-design-system@X.Y.Z/webflow/site.css">
+```
+
+It reads the site's own Webflow variables (the "TEDx DS" collection and the colour palette) and falls back to the token each one mirrors; `tests/webflow.test.ts` fails when a token changes and the fallback does not. After a release that changes it, raise the version in Webflow, publish to staging and check it before going live.
+
 #### Releasing a new version
 
 Releases are tag-driven. CI publishes to npm via trusted publishing (OIDC). The version bump goes through a pull request like any other change, so nothing is pushed to `main` directly:
