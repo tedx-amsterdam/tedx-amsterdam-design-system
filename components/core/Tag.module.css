@@ -16,11 +16,11 @@
 
 /* Color variants */
 .red {
-  color: var(--tedx-red);
+  color: var(--text-accent);
 }
 
 .white {
-  color: var(--tedx-white);
+  color: var(--text-primary);
 }
 
 .muted {
@@ -32,7 +32,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--tedx-red);
+  background: var(--accent);
   flex: none;
 }
 

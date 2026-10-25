@@ -17,7 +17,7 @@
 }
 
 .link:hover {
-  color: var(--tedx-red);
+  color: var(--text-accent);
 }
 
 .icon {

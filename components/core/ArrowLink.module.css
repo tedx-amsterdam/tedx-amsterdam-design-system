@@ -24,11 +24,11 @@
 
 /* Color variants */
 .red {
-  color: var(--tedx-red);
+  color: var(--text-accent);
 }
 
 .white {
-  color: var(--tedx-white);
+  color: var(--text-primary);
 }
 
 /* Mobile sizes from the mobile design (below 768px, decision 28 in the website). */
