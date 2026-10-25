@@ -77,6 +77,7 @@ When adding a new token, place it in the correct file and follow the existing na
 - Transitions use `--dur`, `--dur-fast`, `--dur-slow` with `--ease-standard` or `--ease-out`.
 - Headings are frequently ALL-CAPS with `letter-spacing: var(--ls-display)`.
 - No `!important`. If specificity is a problem, restructure the selectors.
+- `tests/styles.test.ts` fails on raw colours, palette tokens and raw lengths in component stylesheets. Border widths and a component's own width and height may stay raw. A value the designs set exactly, off the token scale, keeps a `/* Figma: … */` comment on its line.
 - Mobile sizes exist as `--fs-*-m` tokens — use them in media queries. `--text-body` switches to `--fs-body-m` below 768px by itself.
 
 ## Storybook conventions
