@@ -13,7 +13,7 @@
 }
 
 .md {
-  padding: 10px;
+  padding: var(--space-2-5);
 }
 
 /* Color variants */

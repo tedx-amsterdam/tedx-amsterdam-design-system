@@ -9,7 +9,7 @@
 
 /* With a dot it is a meta line (a name, date or venue), not a label. */
 .meta {
-  gap: 5px;
+  gap: 5px; /* Figma: 5.06px between dot and text in every meta line */
   font: var(--text-meta);
   text-transform: none;
 }
@@ -29,8 +29,8 @@
 
 /* Dot bullet */
 .dot {
-  width: 8px;
-  height: 8px;
+  width: var(--dot-size);
+  height: var(--dot-size);
   border-radius: 50%;
   background: var(--accent);
   flex: none;

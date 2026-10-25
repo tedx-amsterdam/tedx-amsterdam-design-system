@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   background: var(--overlay);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(var(--overlay-blur));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +40,7 @@
   border: none;
   cursor: pointer;
   color: var(--text-secondary);
-  font-size: 24px;
+  font-size: var(--icon-size);
   line-height: 1;
   padding: var(--space-1);
   margin-left: var(--space-4);
@@ -50,5 +50,5 @@
 .body {
   color: var(--text-secondary);
   font: var(--text-body);
-  font-size: 16px;
+  font-size: var(--fs-body-sm);
 }

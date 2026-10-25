@@ -10,7 +10,9 @@
 :root {
   /* ---- Spacing scale (px) ---- */
   --space-1: 4px;
+  --space-1-5: 6px;   /* half steps for the designs' 6px and 10px gaps */
   --space-2: 8px;
+  --space-2-5: 10px;
   --space-3: 12px;
   --space-4: 16px;
   --space-5: 20px;
@@ -36,9 +38,18 @@
   --button-height-sm: 66px; /* mobile buttons */
   --button-height-md: 74px; /* buttons in content */
   --button-height-lg: 80px; /* form and CTA buttons */
+  --button-padding-x: 30px; /* side padding of every button */
   --header-height: 80px;
   --header-height-m: 52px;  /* mobile header, as in the mobile design */
   --tap-target: 44px;       /* hit area of controls used on touch (decision 28 in the website: WCAG 2.5.5, Apple, Material) */     /* fixed top nav */
+  --focus-offset: 2px;      /* focus outline around inputs, inside their underline */
   --section-gap: 120px;      /* between major sections */
   --stack-gap: 32px;         /* default vertical gap inside a block */
+
+  /* ---- Sizes ---- */
+  --dot-size: 8px;          /* red dot in meta lines and radios */
+  --icon-size: 24px;        /* social icons and close buttons */
+  --logo-width: 225px;      /* header logo */
+  --logo-width-m: 122px;    /* header logo below 768px */
+  --logo-width-xs: 100px;   /* header logo below 360px */
 }

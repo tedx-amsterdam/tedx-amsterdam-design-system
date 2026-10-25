@@ -9,8 +9,8 @@
 
 .skipLink {
   position: absolute;
-  top: -40px;
-  left: 16px;
+  top: calc(-1 * var(--space-10));
+  left: var(--space-4);
   z-index: 200;
   background: var(--bg-elevated);
   color: var(--text-primary);
@@ -21,7 +21,7 @@
   transition: top var(--dur-fast) var(--ease-standard);
 }
 .skipLink:focus {
-  top: 8px;
+  top: var(--space-2);
 }
 
 .bar {
@@ -49,7 +49,7 @@
   inset: min(0px, (100% - var(--tap-target)) / 2) 0;
 }
 .logoImg {
-  width: 225px;
+  width: var(--logo-width);
   height: auto;
   display: block;
 }
@@ -133,7 +133,7 @@
     gap: var(--space-4);
   }
   .logoImg {
-    width: 122px;
+    width: var(--logo-width-m);
   }
   .ctaLink {
     margin-left: auto;
@@ -158,7 +158,7 @@
     gap: var(--space-3);
   }
   .logoImg {
-    width: 100px;
+    width: var(--logo-width-xs);
   }
   .ctaLink {
     padding-inline: var(--space-3);
