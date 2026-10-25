@@ -14,12 +14,12 @@ Link the single entry point. It imports every token layer in the correct order:
 <link rel="stylesheet" href="styles.css" />
 ```
 
-All design tokens are then available as CSS custom properties:
+All design tokens are then available as CSS custom properties. Use the semantic aliases, which say what a colour is for, rather than the brand palette (`--tedx-*`):
 
 ```css
 .my-cta {
-  background: var(--tedx-red);
-  color: var(--tedx-white);
+  background: var(--bg-accent);
+  color: var(--text-primary);
   border-radius: var(--radius-button);
   font: var(--text-tag);
 }
@@ -39,7 +39,7 @@ import 'tedx-amsterdam-design-system/styles.css';   // design tokens + global a1
 import 'tedx-amsterdam-design-system/index.css';    // component styles
 ```
 
-React 18 or 19 is a peer dependency. The CDN IIFE bundle (`_ds_bundle.js`) remains available for no-build usage.
+React 18 or 19 is a peer dependency. The repository also holds a CDN bundle, `_ds_bundle.js`, for use without a build step. It is not in the npm package and is out of date (it predates `Accent`), so use the package.
 
 #### Images
 
@@ -64,6 +64,24 @@ The Webflow site cannot use the components or `tokens/`, so `webflow/site.css` c
 ```
 
 It reads the site's own Webflow variables (the "TEDx DS" collection and the colour palette) and falls back to the token each one mirrors; `tests/webflow.test.ts` fails when a token changes and the fallback does not. After a release that changes it, raise the version in Webflow, publish to staging and check it before going live.
+
+### What is public
+
+The package follows [semantic versioning](https://semver.org). These parts are its public API:
+
+- The components exported from the package, and their props, including `className` and the rest props each component passes on.
+- The tokens: every CSS custom property in `tokens/` and `styles.css`.
+- The exported constants, such as `TEDX_DISCLAIMER`.
+- `webflow/site.css`, and the Webflow variables it reads.
+- The paths in the `exports` map: `styles.css`, `index.css`, `tokens/*`, `fonts/*`, `assets/*`.
+
+Class names in `dist/index.css` (such as `Button_btn`) and the markup inside a component are an implementation detail. Style a component through `className` and tokens, not by targeting its classes or elements. Class names are still only renamed in a major release, but do not rely on them.
+
+- **Major:** removing or renaming a component, prop, token, constant or export path, or changing what a prop does by default.
+- **Minor:** additions, and visual changes that bring a component closer to the designs.
+- **Patch:** fixes.
+
+To retire something, mark it deprecated in a minor release and name its replacement: `@deprecated` in the component's JSDoc, a comment next to the token, and a line in `CHANGELOG.md`. Remove it in the next major release.
 
 #### Releasing a new version
 
@@ -131,10 +149,13 @@ Open `components/core/core.card.html` in a browser to see the components in one 
 | Primary accent | `--tedx-red` | `#EB0028` |
 | Canvas | `--tedx-black` | `#000000` |
 | Ink | `--tedx-white` | `#FFFFFF` |
-| Gradient accent | `--tedx-orange` | `#F36C21` |
+| Glow core | `--tedx-orange-glow` | `#FF9B19` |
+| Glow warm tone | `--tedx-orange-amber` | `#FF7919` |
 
-Orange appears **only inside gradients** — never as a flat fill.
-The signature motif is black lit from edges and corners by red→orange radial glows.
+These are the brand palette. Components and sites use the semantic aliases in `tokens/colors.css` (`--bg-base`, `--text-primary`, `--accent` and others), which point to it.
+
+Orange appears **only inside glows and gradients**, never as a flat fill. The brand book's `--tedx-orange` (`#F36C21`) is in the tokens but not in the designs.
+The signature motif is black lit from the edges by red→orange glows (`--glow-edge`, drawn `--glow-edge-width` wide and blurred by `--glow-blur`).
 
 ### Typography
 
@@ -228,8 +249,7 @@ npm run test:watch    # watch mode
 npm run test:coverage # coverage report
 ```
 
-130 tests across 12 files covering behaviour, ARIA attributes, keyboard interaction,
-a uniform `className`/rest prop-surface contract, and a library-wide jest-axe sweep.
+The tests cover behaviour, ARIA attributes, keyboard interaction, a uniform `className`/rest prop-surface contract and a library-wide jest-axe sweep. Others check the tokens, the shipped stylesheets, the mobile type sizes, that component styles use tokens only, and that `webflow/site.css` matches the tokens.
 
 ---
 
