@@ -1,0 +1,50 @@
+name: Webflow drift
+
+# Every Monday, compares the live Webflow site with this design system
+# (scripts/check-webflow.js): the variables it compiles into its
+# stylesheet against tokens/, and the version it loads webflow/site.css
+# from against the latest release. Opens an issue on drift, keeps it up to
+# date while the drift lasts and closes it once the site matches again. It
+# reads public pages only, so it needs no Webflow token.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  TITLE: Webflow differs from the design system
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+      # Exit 1 is drift and goes to the issue; anything else fails the run.
+      - id: check
+        run: |
+          set +e
+          node scripts/check-webflow.js > report.md
+          status=$?
+          cat report.md
+          [ "$status" -le 1 ] || exit "$status"
+          echo "drift=$status" >> "$GITHUB_OUTPUT"
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          DRIFT: ${{ steps.check.outputs.drift }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          issue=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number')
+          if [ "$DRIFT" = 1 ]; then
+            printf '\nFound by [this run](%s). Fix the variable in Webflow or the token here, or update the version in the site head.\n' "$RUN" >> report.md
+            if [ -n "$issue" ]; then gh issue edit "$issue" --body-file report.md; else gh issue create --title "$TITLE" --body-file report.md; fi
+          elif [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "The site matches the design system again ([run]($RUN))."
+          fi
