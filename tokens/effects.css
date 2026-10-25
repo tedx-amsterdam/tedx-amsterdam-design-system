@@ -17,14 +17,18 @@
   /* ---- Shadows ---- */
   --shadow-display: 0 4px 4px var(--tedx-black-25);  /* on large headings */
   --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.5);
-  --shadow-glow-red: 0 0 80px rgba(235, 0, 40, 0.45);
+  --shadow-glow-red: 0 0 37.4px var(--tedx-red);      /* around photos; Figma effect style "red blur" */
 
   /* ============================================================
      SIGNATURE GRADIENTS
      ============================================================ */
 
   /* Vertical edge-glow strip — runs down the left & right edges
-     of dark sections (Figma: 220px-wide gradient bars). */
+     of dark sections (Figma: 220px-wide gradient bars). Draw it
+     --glow-edge-width wide with filter: blur(var(--glow-blur));
+     turned 90deg it is the band behind a centred call to action. */
+  --glow-edge-width: 220px;
+  --glow-blur: 50px;  /* Figma's layer blur of 100: CSS blur() takes half of Figma's value */
   --glow-edge: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0) -13.89%,
