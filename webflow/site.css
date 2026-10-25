@@ -1,0 +1,272 @@
+/* ============================================================
+   TEDxAmsterdam — Webflow site styles
+   The site-wide rules the Webflow Style panel cannot express:
+   the centred content column, the edge glow, tap targets, the
+   mobile header and the footer form.
+
+   Load it in Webflow (Site settings > Custom code > Head), pinned
+   to a released version, so the site only changes when the
+   version number does:
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tedx-amsterdam-design-system@X.Y.Z/webflow/site.css">
+
+   Webflow does not load tokens/, so values come from the site's
+   own variables: the "TEDx DS" collection (--_tedx-ds---*, with a
+   Mobile mode below 768px) and the colour palette (--red,
+   --white-70, ...). Every var() falls back to the token it
+   mirrors; tests/webflow.test.ts checks the fallbacks against
+   tokens/.
+   ============================================================ */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Content column (--content-max, --gutter, --gutter-m) ----
+   From 768px the column centres at 1080px and never sits closer
+   than the gutter to the edge. */
+@media (min-width: 768px) {
+  .padding-global,
+  .navbar1_component.padding-global,
+  .container-2,
+  .video-overlay,
+  .after-growth-event-info {
+    padding-left: max(var(--_tedx-ds---layout--gutter, 40px), calc((100% - var(--_tedx-ds---layout--content-max, 1080px)) / 2));
+    padding-right: max(var(--_tedx-ds---layout--gutter, 40px), calc((100% - var(--_tedx-ds---layout--content-max, 1080px)) / 2));
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .video-overlay,
+  .after-growth-event-info {
+    padding-left: var(--_tedx-ds---layout--gutter, 15px);
+    padding-right: var(--_tedx-ds---layout--gutter, 15px);
+  }
+}
+
+/* ---- Edge glow (--glow-edge) ----
+   220px bars down both edges of every page, full height. Replaces
+   the per-page .gradient-left / .gradient-right embeds. */
+.gradient-left,
+.gradient-right {
+  display: none;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: -120px;
+  bottom: -120px;
+  width: 220px;
+  z-index: 999;
+  pointer-events: none;
+  filter: blur(50px);
+  opacity: 0.55;
+  background: linear-gradient(
+    90deg,
+    transparent -13.89%,
+    var(--red, #eb0028) 53.72%,
+    var(--orange-glow, #ff9b19) 71.91%,
+    var(--red, #eb0028) 86.11%,
+    transparent 104.29%
+  );
+}
+
+body::before {
+  left: -200px;
+}
+
+body::after {
+  right: -200px;
+  transform: scaleX(-1);
+}
+
+/* Below 992px text sits 15 to 40px from the edge: keep the glow
+   under 1% there so small red text keeps 4.5:1 (WCAG 1.4.3). */
+@media (max-width: 991px) {
+  body::before {
+    left: -300px;
+  }
+
+  body::after {
+    right: -300px;
+  }
+}
+
+@media (forced-colors: active), print {
+  body::before,
+  body::after {
+    display: none;
+  }
+}
+
+/* ---- Screen reader text ---- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Tap targets (--tap-target) ----
+   A 44px hit area around short links without changing the
+   layout, as ArrowLink does. */
+a.text-size-small.link,
+.footer a.text-footer,
+.div-block-29 a {
+  position: relative;
+}
+
+a.text-size-small.link::before,
+.footer a.text-footer::before,
+.div-block-29 a::before {
+  content: "";
+  position: absolute;
+  inset: min(0px, (100% - var(--_tedx-ds---layout--tap-target, 44px)) / 2) 0;
+}
+
+/* ---- Header (--header-height, --header-height-m) ----
+   Layout inside the navbar component the Style panel cannot
+   target. */
+@media (min-width: 992px) {
+  .navbar1_link.nav-link {
+    font-size: var(--_tedx-ds---type--small, 14px);
+    line-height: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .w-nav .navbar1_menu-button.w-nav-button {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    min-width: var(--_tedx-ds---layout--tap-target, 44px);
+    min-height: var(--_tedx-ds---layout--tap-target, 44px);
+  }
+
+  .menu-icon1 {
+    flex: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar1_container {
+    column-gap: 12px;
+    justify-content: flex-start;
+  }
+
+  .navbar1_container .div-block-40 {
+    margin-left: auto;
+    flex: none;
+  }
+
+  .navbar1_container .div-block-40 .button {
+    width: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .menu-icon1 {
+    width: 24px;
+    height: var(--_tedx-ds---layout--tap-target, 44px);
+    margin-right: 0;
+  }
+
+  .footer a.link.footer {
+    font-size: var(--_tedx-ds---type--meta, 16px);
+  }
+}
+
+@media (max-width: 359px) {
+  .navbar1_menu-label {
+    display: none;
+  }
+
+  .navbar1_logo {
+    width: 100px;
+    max-width: 100px;
+  }
+
+  .navbar1_container .div-block-40 .button {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* Two-up cards are about 116px wide here: long title words
+     hyphenate instead of overflowing. */
+  .heading-style-h4 {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    overflow-wrap: break-word;
+  }
+}
+
+/* ---- Text colours (--text-subtle, --text-secondary) ---- */
+.text-size-small.opacity {
+  color: var(--white-50, rgba(255, 255, 255, 0.5));
+}
+
+.form_input::placeholder {
+  color: var(--white-70, rgba(255, 255, 255, 0.7));
+}
+
+/* ---- Footer form (Checkbox) ---- */
+.footer .w-checkbox {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 12px;
+  padding-left: 0;
+}
+
+.footer .w-checkbox-input.custom-checkbox {
+  float: none;
+  flex: none;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  border: 1px solid var(--white, #ffffff);
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.footer .w-checkbox-input.custom-checkbox.w--redirected-checked {
+  background-color: var(--red, #eb0028);
+  border-color: var(--red, #eb0028);
+}
+
+.footer .w-checkbox .w-form-label {
+  font-size: var(--_tedx-ds---type--small, 14px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--white-70, rgba(255, 255, 255, 0.7));
+}
+
+.footer .w-checkbox .w-form-label a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .footer a.link.footer {
+    font-size: var(--_tedx-ds---type--body, 20px);
+    line-height: 1.2;
+  }
+
+  .footer .speaker-modal-wrapper.gap-24.footer {
+    row-gap: 18px;
+  }
+
+  .footer a.speaker-modal-wrapper.flex-horizontal {
+    font-size: var(--_tedx-ds---type--body, 20px);
+    column-gap: 12px;
+    align-items: center;
+  }
+}
