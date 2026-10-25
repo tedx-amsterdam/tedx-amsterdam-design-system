@@ -12,7 +12,7 @@
 }
 
 .required {
-  color: var(--tedx-red);
+  color: var(--text-accent);
   margin-left: 2px;
 }
 
@@ -23,6 +23,6 @@
 
 .error {
   font: var(--text-tag);
-  color: var(--tedx-red);
+  color: var(--text-accent);
   min-height: 1em;
 }

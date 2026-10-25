@@ -40,7 +40,7 @@
 }
 
 .indicator.selected {
-  border-color: var(--tedx-red);
+  border-color: var(--accent);
 }
 
 .dot {
@@ -51,7 +51,7 @@
   width: 8px;
   height: 8px;
   border-radius: var(--radius-full);
-  background: var(--tedx-red);
+  background: var(--accent);
 }
 
 .nativeInput {

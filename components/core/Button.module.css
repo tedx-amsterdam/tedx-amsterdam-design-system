@@ -24,14 +24,14 @@
 .md { min-height: var(--button-height-md); }
 .lg { min-height: var(--button-height-lg); }
 
-.primary { border: none; color: var(--tedx-white); background: var(--tedx-red); }
+.primary { border: none; color: var(--text-primary); background: var(--bg-accent); }
 .primary:hover:not(.disabled) { background: var(--accent-hover); }
 
-.secondary { border: none; color: var(--tedx-black); background: var(--tedx-white); }
+.secondary { border: none; color: var(--text-on-light); background: var(--bg-inverse); }
 .secondary:hover:not(.disabled) { background: var(--surface-light-hover); }
 
-.ghost { border: 1.5px solid var(--border-hairline); color: var(--tedx-white); background: transparent; }
-.ghost:hover:not(.disabled) { background: var(--tedx-white-08); }
+.ghost { border: 1.5px solid var(--border-hairline); color: var(--text-primary); background: transparent; }
+.ghost:hover:not(.disabled) { background: var(--surface-hover); }
 
 .disabled { cursor: not-allowed; opacity: 0.45; }
 

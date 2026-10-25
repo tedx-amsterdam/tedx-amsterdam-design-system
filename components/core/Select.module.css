@@ -41,7 +41,7 @@
 
 /* Error state */
 .select.error {
-  border-bottom-color: var(--tedx-red);
+  border-bottom-color: var(--accent);
 }
 
 /* Disabled state */
@@ -52,11 +52,11 @@
 
 /* Focus via CSS — no JS state */
 .select:focus {
-  border-bottom-color: var(--tedx-red);
+  border-bottom-color: var(--focus-ring);
 }
 
 .select.error:focus {
-  border-bottom-color: var(--tedx-red);
+  border-bottom-color: var(--accent);
 }
 
 .select:focus-visible {
@@ -75,5 +75,5 @@
 
 .errorMsg {
   font: var(--text-tag);
-  color: var(--tedx-red);
+  color: var(--text-accent);
 }

@@ -88,8 +88,8 @@
   font: var(--text-tag);
   text-transform: uppercase;
   padding: var(--space-3) var(--space-6);
-  background: var(--tedx-red);
-  color: var(--tedx-white);
+  background: var(--bg-accent);
+  color: var(--text-primary);
   border-radius: var(--radius-button);
   text-decoration: none;
   flex: none;

@@ -46,17 +46,22 @@
 
   --surface-card: var(--tedx-black);
   --surface-image: var(--tedx-gray-200);  /* placeholder before a photo loads */
+  --surface-hover: var(--tedx-white-08);  /* ghost button hover */
+  --surface-muted: rgba(255, 255, 255, 0.12); /* muted badge */
+  --overlay: rgba(0, 0, 0, 0.8);          /* behind a modal */
 
   --text-primary: var(--tedx-white);       /* on dark */
   --text-secondary: var(--tedx-white-60);
   --text-muted: var(--tedx-gray-400);
   --text-subtle: var(--tedx-white-50);    /* roles, excerpts: the designs' 40% raised to pass AA on black */
+  --text-label: var(--tedx-white-70);     /* checkbox labels and placeholders, as in the designs */
   --text-on-light: var(--tedx-black);       /* on white surfaces */
   --text-accent: var(--tedx-red);           /* tags, links, emphasis */
   --text-inverse: var(--tedx-black);
 
   --border-hairline: var(--tedx-white-40);
   --border-hairline-dark: rgba(0, 0, 0, 0.5);
+  --border-on-light: rgba(0, 0, 0, 0.3);  /* input underline on white */
   --border-strong: var(--tedx-white);
 
   --accent: var(--tedx-red);

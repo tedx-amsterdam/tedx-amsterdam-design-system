@@ -6,11 +6,11 @@
 
 /* Label colour by tone */
 .dark .label {
-  color: var(--tedx-white);
+  color: var(--text-primary);
 }
 
 .light .label {
-  color: var(--tedx-black);
+  color: var(--text-on-light);
 }
 
 .label {
@@ -35,7 +35,7 @@
 
 /* Placeholder at 70%, as in the designs ("Email"). */
 .input::placeholder {
-  color: var(--tedx-white-70);
+  color: var(--text-label);
 }
 
 .light .input::placeholder {
@@ -45,11 +45,11 @@
 
 /* For the light tone, override border colour to a translucent dark */
 .light .input {
-  border-bottom-color: rgba(0, 0, 0, 0.3);
+  border-bottom-color: var(--border-on-light);
 }
 
 .input:focus {
-  border-bottom-color: var(--tedx-red);
+  border-bottom-color: var(--focus-ring);
 }
 
 .input:focus-visible {
@@ -59,10 +59,10 @@
 
 /* Error state */
 .input.error {
-  border-bottom-color: var(--tedx-red);
+  border-bottom-color: var(--accent);
 }
 
 .errorMsg {
   font: var(--text-tag);
-  color: var(--tedx-red);
+  color: var(--text-accent);
 }

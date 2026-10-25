@@ -9,6 +9,7 @@ Versioning: [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Semantic colour tokens for the last raw and palette colours in components: `--text-label` (white at 70%, checkbox labels and placeholders), `--surface-hover`, `--surface-muted`, `--overlay` and `--border-on-light`. Components now use semantic tokens only; their colours are unchanged.
 - `--glow-edge-width` (220px) and `--glow-blur` (50px), so the edge glow can be drawn as designed: `--glow-edge` at that width, blurred by that much. Figma's layer blur of 100 is 50px in CSS.
 
 ### Changed
