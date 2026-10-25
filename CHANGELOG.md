@@ -8,6 +8,9 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- `webflow/site.css`: the site-wide styles of the Webflow site (content column, edge glow, tap targets, mobile header, footer form), so the site loads them from a released version instead of keeping its own copy in custom code. Its fallbacks are checked against `tokens/`.
+
 ---
 
 ## [1.5.1] — 2026-10-18
