@@ -66,6 +66,13 @@ When adding a new token, place it in the correct file and follow the existing na
 - **`button type`**: always default to `type="button"`, never `"submit"`.
 - Every new component must be re-exported from `components/core/index.ts`.
 - **`'use client'`** goes at the top of a component that uses hooks, context, portals or its own event handlers, and only there. The build keeps one module per component, so the others stay server components in Next.js App Router and ship no JavaScript. `npm run build:dist` checks this.
+- **Class names** in a CSS Module, for new components:
+  - The outermost element is `.root`.
+  - A part is named for what it is, in full words and camelCase: `.label`, `.icon`, `.errorMessage`, not `.btn`, `.wrap` or `.msg`.
+  - A variant is named after its prop value, so `styles[size]` or `styles[color]` finds it: `.sm`, `.md`, `.red`.
+  - A state is an adjective on the element it changes: `.open`, `.active`, `.checked`, `.disabled`.
+
+  Existing components differ (`.btn`, `.wrapper`, `.errorMsg`). Their class names ship in `dist/index.css` as `Button_btn` and so on, so renaming one can break a site that targets it: rename them only in a major release, not in passing.
 
 ## Styling rules
 
