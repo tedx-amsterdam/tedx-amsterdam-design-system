@@ -8,6 +8,12 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+---
+
+## [1.6.0] — 2026-10-25
+
+The Webflow site can load its site-wide styles from the package.
+
 ### Added
 - `webflow/site.css`: the site-wide styles of the Webflow site (content column, edge glow, tap targets, mobile header, footer form), so the site loads them from a released version instead of keeping its own copy in custom code. Its fallbacks are checked against `tokens/`.
 
