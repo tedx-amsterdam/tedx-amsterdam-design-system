@@ -14,6 +14,8 @@ Versioning: [Semantic Versioning](https://semver.org/).
 - `--glow-edge-width` (220px) and `--glow-blur` (50px), so the edge glow can be drawn as designed: `--glow-edge` at that width, blurred by that much. Figma's layer blur of 100 is 50px in CSS.
 
 ### Changed
+- `Accordion` follows the token scale: 24px instead of 26px around each question and answer, and the question in the H4 style (20px instead of 22px, no tracking). The component is not in the designs.
+- The `Toast` close button is 24px, the same as the `Modal` close button, instead of 18px.
 - `--shadow-glow-red` is the designs' photo shadow, 37.4px of solid red, instead of 80px at 45%. No component uses it.
 
 ---
