@@ -2,8 +2,10 @@ name: Webflow drift
 
 # Every Monday, compares the live Webflow site with this design system
 # (scripts/check-webflow.js): the variables it compiles into its
-# stylesheet against tokens/, and the version it loads webflow/site.css
-# from against the latest release. Opens an issue on drift, keeps it up to
+# stylesheet against tokens/, the version it loads webflow/site.css
+# from against the latest release, and every page in the sitemap for
+# oversized or lazy images at the top, one h1, the brand name and named
+# links. Opens an issue on drift, keeps it up to
 # date while the drift lasts and closes it once the site matches again. It
 # reads public pages only, so it needs no Webflow token.
 
@@ -43,7 +45,7 @@ jobs:
         run: |
           issue=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number')
           if [ "$DRIFT" = 1 ]; then
-            printf '\nFound by [this run](%s). Fix the variable in Webflow or the token here, or update the version in the site head.\n' "$RUN" >> report.md
+            printf '\nFound by [this run](%s). Fix the variable or the page in Webflow, the token here, or the version in the site head.\n' "$RUN" >> report.md
             if [ -n "$issue" ]; then gh issue edit "$issue" --body-file report.md; else gh issue create --title "$TITLE" --body-file report.md; fi
           elif [ -n "$issue" ]; then
             gh issue close "$issue" --comment "The site matches the design system again ([run]($RUN))."
