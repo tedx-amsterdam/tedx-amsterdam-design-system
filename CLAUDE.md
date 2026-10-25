@@ -34,6 +34,7 @@ Each component follows the pattern: `Component.tsx`, `Component.module.css`, `Co
 - **Atomic commits.** Each commit does exactly one thing. Never mix unrelated changes.
 - Use conventional commit prefixes: `feat:`, `fix:`, `chore:`, `test:`, `refactor:`, `docs:`.
 - Keep messages concise — focus on *why*, not *what*.
+- Pull request descriptions cover the change and what a reviewer needs, nothing else.
 
 ## Roadmap
 
