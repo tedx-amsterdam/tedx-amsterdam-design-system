@@ -12,6 +12,7 @@
   "include": [
     "components/**/*.tsx",
     "components/**/*.ts",
+    "webflow/**/*.ts",
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ]
