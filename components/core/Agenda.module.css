@@ -6,7 +6,7 @@
 
 .item {
   display: grid;
-  grid-template-columns: var(--space-40) 1fr auto;
+  grid-template-columns: var(--space-40) minmax(0, 1fr) minmax(0, max-content);
   gap: var(--space-6);
   align-items: baseline;
   padding-block: var(--space-8);
@@ -20,6 +20,7 @@
 
 .content {
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .title {
@@ -34,6 +35,13 @@
   margin: var(--space-2) 0 0;
   font: var(--text-body);
   color: var(--text-secondary);
+}
+
+/* A long label wraps instead of squeezing the title. */
+.label {
+  max-width: 240px;
+  justify-self: start;
+  line-height: var(--lh-heading);
 }
 
 /* Mobile sizes from the mobile design (below 768px, decision 28 in the website). */

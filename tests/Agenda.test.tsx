@@ -45,6 +45,11 @@ describe('Agenda', () => {
     error.mockRestore();
   });
 
+  it('keeps its list role for Safari VoiceOver, which drops it with list-style none', () => {
+    render(<Agenda items={items} />);
+    expect(screen.getByRole('list')).toHaveAttribute('role', 'list');
+  });
+
   it('renders an empty list without items', () => {
     render(<Agenda items={[]} />);
     expect(screen.getByRole('list')).toBeEmptyDOMElement();

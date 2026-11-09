@@ -24,7 +24,7 @@ const CLOCK_TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
 export function Agenda({ items, headingLevel = 3, className, ...rest }: AgendaProps): React.ReactElement {
   const Title = `h${headingLevel}` as const;
   return (
-    <ol className={cn(styles.root, className)} {...rest}>
+    <ol role="list" className={cn(styles.root, className)} {...rest}>
       {items.map(({ time, title, description, label }, index) => (
         <li key={`${index}-${time}-${title}`} className={styles.item}>
           <time className={styles.time} dateTime={CLOCK_TIME.test(time) ? time : undefined}>
