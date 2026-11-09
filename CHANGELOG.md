@@ -8,6 +8,12 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+---
+
+## [1.8.0] — 2026-11-09
+
+`Agenda` for event schedules, which also marks the running item on the event day, and the same agenda states for the Webflow site.
+
 ### Added
 - `Agenda` for event schedules: start time, title and, per item, an optional end time, speakers line, description and label, as an ordered list. With a `date`, the running item is marked "Now" on the event day and earlier items step back, in Amsterdam time.
 - `webflow/site.css` styles the same states for the Webflow agenda, and `dist/webflow/agenda-clock.js` is the script that sets them there.
