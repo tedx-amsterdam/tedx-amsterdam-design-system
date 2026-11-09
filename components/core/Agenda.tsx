@@ -25,8 +25,8 @@ export function Agenda({ items, headingLevel = 3, className, ...rest }: AgendaPr
   const Title = `h${headingLevel}` as const;
   return (
     <ol className={cn(styles.root, className)} {...rest}>
-      {items.map(({ time, title, description, label }) => (
-        <li key={`${time}-${title}`} className={styles.item}>
+      {items.map(({ time, title, description, label }, index) => (
+        <li key={`${index}-${time}-${title}`} className={styles.item}>
           <time className={styles.time} dateTime={CLOCK_TIME.test(time) ? time : undefined}>
             {time}
           </time>

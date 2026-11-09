@@ -37,6 +37,14 @@ describe('Agenda', () => {
     expect(screen.getByText('2pm')).not.toHaveAttribute('datetime');
   });
 
+  it('renders duplicate entries without a key warning', () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    render(<Agenda items={[{ time: '14:00', title: 'Break' }, { time: '14:00', title: 'Break' }]} />);
+    expect(within(screen.getByRole('list')).getAllByRole('listitem')).toHaveLength(2);
+    expect(error).not.toHaveBeenCalled();
+    error.mockRestore();
+  });
+
   it('renders an empty list without items', () => {
     render(<Agenda items={[]} />);
     expect(screen.getByRole('list')).toBeEmptyDOMElement();
