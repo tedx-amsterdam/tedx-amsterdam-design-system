@@ -71,4 +71,7 @@ for (const file of readdirSync(DIST)) {
 // Node and bundlers need the extension in ES module imports.
 writeFileSync(join(DIST, 'index.js'), index.replace(/from '\.\/([A-Za-z-]+)'/g, "from './$1.js'"));
 
+// The agenda clock for the Webflow site, as one plain script.
+await build({ ...shared, entryPoints: [join(ROOT, 'webflow/agenda-clock.ts')], outfile: join(DIST, 'webflow/agenda-clock.js'), format: 'iife', minify: true });
+
 console.log(`✓ dist/ built: ${modules.length} modules (${modules.filter(isClient).length} client) + index.css`);
