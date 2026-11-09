@@ -18,6 +18,7 @@ const MIRRORS: Record<string, string[]> = {
   '--_tedx-ds---type--body': ['--fs-body', '--fs-body-m'],
   '--_tedx-ds---type--meta': ['--fs-body-sm'],
   '--_tedx-ds---type--small': ['--fs-small'],
+  '--_tedx-ds---type--tag': ['--fs-tag', '--fs-tag-m'],
   '--red': ['--tedx-red'],
   '--orange-glow': ['--tedx-orange-glow'],
   '--white': ['--tedx-white'],

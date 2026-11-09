@@ -270,3 +270,27 @@ a.text-size-small.link::before,
     align-items: center;
   }
 }
+
+/* ---- Agenda on the event day (agenda-clock.js, --text-tag, --text-subtle) ----
+   dist/webflow/agenda-clock.js marks the running row with
+   aria-current="time" and every row with data-agenda-state, as the
+   Agenda component does. The Style panel cannot select attributes. */
+.agenda-item[aria-current='time'] .agenda-content::before {
+  content: 'Now';
+  display: block;
+  margin-bottom: 8px;
+  font-size: var(--_tedx-ds---type--tag, 14px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--red, #eb0028);
+}
+
+.agenda-item[data-agenda-state='past'] .agenda-time,
+.agenda-item[data-agenda-state='past'] .agenda-title {
+  color: var(--white-50, rgba(255, 255, 255, 0.5));
+}
+
+.agenda-item[data-agenda-state='past'] .agenda-label {
+  display: none;
+}
