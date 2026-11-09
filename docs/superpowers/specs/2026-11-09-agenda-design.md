@@ -134,6 +134,16 @@ Beschrijvingen blijven leeg tot ze aangeleverd worden.
 - **Op de event-template**: dezelfde lijst, gefilterd op het huidige event, en verborgen als er geen agendapunten zijn. Dit kan na donderdag.
 - **Publiceren** gebeurt pas na akkoord.
 
+## Aanvulling na onderzoek (9 november)
+
+Uit het onderzoek naar agenda's van grote events (`reports/Agenda componenten van events.md`, niet in git):
+
+- **Eindtijd (`endTime`, optioneel)**: onder de starttijd, klein en in `--text-secondary`, als "to 15:00" met een eigen `<time>`. Leeg bij open einde, zoals een afterparty.
+- **Sprekers (`speakers`, optioneel)**: één regel tekst onder de titel, als `Tag` met stip (de meta-regel), zonder tijden per talk, zoals TEDx-sites het meestal doen.
+- **Niet gedaan**: een markering voor wat nu bezig is. Die vraagt een client-component en eigen JavaScript in Webflow, voor één dag gebruik.
+
+In Webflow krijgt "Agenda items" de velden End time en Speakers (PlainText).
+
 ## Structured data
 
 De agenda krijgt geen eigen JSON-LD. Het Event op `/after-growth` blijft zoals het is: `startDate` 14:00 en `endDate` 18:30.

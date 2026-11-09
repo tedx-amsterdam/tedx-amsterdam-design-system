@@ -6,10 +6,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const mainEvent = [
-  { time: '14:00', title: 'Doors open' },
-  { time: '15:00', title: 'Talks start', label: 'No entry after start' },
-  { time: '16:30', title: 'Break' },
-  { time: '17:00', title: 'Talks resume', label: 'No entry after start' },
+  { time: '14:00', endTime: '15:00', title: 'Doors open' },
+  { time: '15:00', endTime: '16:30', title: 'Talks start', speakers: 'Amira Haddad, Jonas de Vries, Mei Lin Tan', label: 'No entry after start' },
+  { time: '16:30', endTime: '17:00', title: 'Break' },
+  { time: '17:00', endTime: '18:30', title: 'Talks resume', speakers: 'Sofia Ruiz, Daan Bakker', label: 'No entry after start' },
   { time: '18:30', title: 'Afterparty' },
 ];
 
