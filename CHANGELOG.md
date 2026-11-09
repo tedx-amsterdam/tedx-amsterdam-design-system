@@ -8,6 +8,9 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- `Agenda` for event schedules: time, title, optional description and label per item, as an ordered list.
+
 ---
 
 ## [1.7.0] — 2026-10-26
