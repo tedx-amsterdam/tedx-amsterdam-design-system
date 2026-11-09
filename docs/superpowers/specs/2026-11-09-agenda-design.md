@@ -134,8 +134,16 @@ Beschrijvingen blijven leeg tot ze aangeleverd worden.
 - **Op de event-template**: dezelfde lijst, gefilterd op het huidige event, en verborgen als er geen agendapunten zijn. Dit kan na donderdag.
 - **Publiceren** gebeurt pas na akkoord.
 
+## Structured data
+
+De agenda krijgt geen eigen JSON-LD. Het Event op `/after-growth` blijft zoals het is: `startDate` 14:00 en `endDate` 18:30.
+
+- **Geen `subEvent`.** Google gebruikt `subEvent` niet voor rich results, maar controleert elk sub-event wel als `Event`, met `name`, `startDate` en `location` verplicht. Een onvolledig sub-event levert dezelfde fout in Search Console op die op 9 november is opgelost. De JSON-LD van de pagina is bovendien vaste tekst en niet aan het CMS gekoppeld, dus het programma zou op twee plekken moeten staan.
+- **Geen `doorTime`.** Die valt samen met `startDate`.
+- **`startDate` blijft 14:00, niet 15:00.** Google toont die tijd in de zoekresultaten, en na de start is er geen toegang meer.
+- De tijden staan in de HTML in `<time datetime="HH:MM">`, en de tekst komt rechtstreeks uit het CMS.
+
 ## Buiten scope
 
 - Een pill-rand om het label (dan wordt het een `Tag`-variant).
 - Agendapunten die na middernacht vallen; die zouden verkeerd sorteren op tijd.
-- Gestructureerde data per agendapunt (`subEvent`).
