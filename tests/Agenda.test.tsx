@@ -65,6 +65,26 @@ describe('Agenda', () => {
     expect(screen.getByRole('list')).toHaveAttribute('role', 'list');
   });
 
+  describe('on the event day', () => {
+    afterEach(() => vi.useRealTimers());
+
+    it('marks the running item as the current time and the earlier ones as past', () => {
+      vi.useFakeTimers({ toFake: ['Date', 'setInterval', 'clearInterval'] });
+      vi.setSystemTime(new Date('2026-11-12T14:10:00Z')); // 15:10 in Amsterdam
+      render(<Agenda date="2026-11-12" items={[{ time: '14:00', endTime: '15:00', title: 'Doors open' }, { time: '15:00', endTime: '16:30', title: 'Talks start' }, { time: '16:30', title: 'Break' }]} />);
+      const [doors, talks, pause] = within(screen.getByRole('list')).getAllByRole('listitem');
+      expect(talks).toHaveAttribute('aria-current', 'time');
+      expect(doors).not.toHaveAttribute('aria-current');
+      expect(doors).toHaveAttribute('data-agenda-state', 'past');
+      expect(pause).toHaveAttribute('data-agenda-state', 'upcoming');
+    });
+
+    it('marks nothing without a date', () => {
+      render(<Agenda items={items} />);
+      within(screen.getByRole('list')).getAllByRole('listitem').forEach((row) => expect(row).not.toHaveAttribute('aria-current'));
+    });
+  });
+
   it('renders an empty list without items', () => {
     render(<Agenda items={[]} />);
     expect(screen.getByRole('list')).toBeEmptyDOMElement();

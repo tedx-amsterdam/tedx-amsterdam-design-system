@@ -140,7 +140,7 @@ Uit het onderzoek naar agenda's van grote events (`reports/Agenda componenten va
 
 - **Eindtijd (`endTime`, optioneel)**: onder de starttijd, klein en in `--text-secondary`, als "to 15:00" met een eigen `<time>`. Leeg bij open einde, zoals een afterparty.
 - **Sprekers (`speakers`, optioneel)**: één regel tekst onder de titel, als `Tag` met stip (de meta-regel), zonder tijden per talk, zoals TEDx-sites het meestal doen.
-- **Niet gedaan**: een markering voor wat nu bezig is. Die vraagt een client-component en eigen JavaScript in Webflow, voor één dag gebruik.
+- **Op de dag zelf (`date`, optioneel)**: het lopende punt krijgt `aria-current="time"` en een rood "Now" boven de titel; eerdere punten krijgen `data-agenda-state="past"`, een gedimde tijd en titel, en geen label. De tijdlogica staat één keer in `components/utils/agenda-clock.ts` en rekent in Europe/Amsterdam. React gebruikt hem via de kleine client-component `AgendaClock`, zodat `Agenda` een servercomponent blijft; Webflow laadt dezelfde code als `dist/webflow/agenda-clock.js`, met de stijlen in `webflow/site.css`. De states hangen aan attributen in plaats van classes, omdat het script ook de Webflow-markup moet herkennen.
 
 In Webflow krijgt "Agenda items" de velden End time en Speakers (PlainText).
 
