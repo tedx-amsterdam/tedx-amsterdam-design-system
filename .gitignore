@@ -2,3 +2,7 @@
 node_modules/
 dist/
 storybook-static/
+
+# Deep research notes and reports
+research_notes/
+reports/
