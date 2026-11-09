@@ -1,5 +1,6 @@
 export { Accent }        from './Accent';
 export { Accordion }     from './Accordion';
+export { Agenda }        from './Agenda';
 export { ArrowLink }     from './ArrowLink';
 export { Badge }         from './Badge';
 export { Breadcrumb }    from './Breadcrumb';

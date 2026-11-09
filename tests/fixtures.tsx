@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ReactElement } from 'react';
 import {
-  Accent, Accordion, ArrowLink, Badge, Breadcrumb, Button, Checkbox, CheckboxGroup,
+  Accent, Accordion, Agenda, ArrowLink, Badge, Breadcrumb, Button, Checkbox, CheckboxGroup,
   FormField, Input, Logo, MediaCard, Modal, NavigationBar, Radio, RadioGroup,
   SectionHeader, Select, SocialLink, Stat, Tabs, Tag, Textarea, Toast,
 } from '../components/core/index';
@@ -10,6 +10,7 @@ import {
 export const CASES: [string, ReactElement<Record<string, unknown>>][] = [
   ['Accent', <Accent>speakers</Accent>],
   ['Accordion', <Accordion items={[{ q: 'Q1', a: 'A1' }]} />],
+  ['Agenda', <Agenda items={[{ time: '14:00', title: 'Doors open', label: 'No entry after start' }]} />],
   ['ArrowLink', <ArrowLink href="#talks">All talks</ArrowLink>],
   ['Badge', <Badge label="New" />],
   ['Breadcrumb', <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Talks' }]} />],
