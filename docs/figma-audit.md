@@ -69,6 +69,7 @@ There is no design for an events overview, About Us or Event Program in the late
 | `SocialLink` | Footer, speaker detail | Figma: a 24px icon; in the footer with Regular 20px text 12px from the icon, under a speaker portrait Regular 16px text 6px from it. Component: a 24px icon in two sizes, `md` (20px text, 12px gap) and `sm` (16px text, 6px gap) | ✅ sizes; ⚠️ no Facebook icon |
 | `Accent` | Red words in headings ("Our **speakers**", "How to become **a partner**") | Wraps words in the accent red. On the red band the designs invert it: black text with the words in white ("Snapshots from **our past events**"); `color="white"` sets the words in white; the heading's black comes from the band | ✅ |
 | `Accordion`, `Breadcrumb`, `Modal`, `Toast`, `Select`, `Radio`, `RadioGroup`, `CheckboxGroup`, `Textarea`, `FormField` | Not in the latest designs | Designed by the design system itself | — keep |
+| `Agenda` | Not in the designs | Designed in Storybook for event pages: red time, uppercase title, description, optional red Tag, hairline between items | — |
 
 ## Patterns in Figma without a component
 
