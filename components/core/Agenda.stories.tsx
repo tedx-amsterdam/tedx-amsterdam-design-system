@@ -28,3 +28,6 @@ export const Salon: Story = {
 export const WithoutLabels: Story = {
   args: { items: mainEvent.map(({ time, title }) => ({ time, title })) },
 };
+
+/** With a `date`, the running item says "Now" on that day and earlier items step back. After the day every item has passed. */
+export const AfterTheEvent: Story = { args: { items: mainEvent, date: '2000-01-01' } };
