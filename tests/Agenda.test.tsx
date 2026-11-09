@@ -37,6 +37,21 @@ describe('Agenda', () => {
     expect(screen.getByText('2pm')).not.toHaveAttribute('datetime');
   });
 
+  it('reads a range as "14:00 to 15:00" when an end time is given', () => {
+    render(<Agenda items={[{ time: '14:00', endTime: '15:00', title: 'Doors open' }, { time: '18:30', title: 'Afterparty' }]} />);
+    const [first, second] = within(screen.getByRole('list')).getAllByRole('listitem');
+    expect(first).toHaveTextContent(/14:00\s*to\s*15:00/);
+    expect(screen.getByText('15:00')).toHaveAttribute('datetime', '15:00');
+    expect(second).not.toHaveTextContent(/to\s/);
+  });
+
+  it('shows the speakers of an item only when given', () => {
+    render(<Agenda items={[{ time: '15:00', title: 'Talks start', speakers: 'Fieke Opdam, Joe Wilson' }, { time: '16:30', title: 'Break' }]} />);
+    const [first, second] = within(screen.getByRole('list')).getAllByRole('listitem');
+    expect(first).toHaveTextContent('Fieke Opdam, Joe Wilson');
+    expect(second.querySelector('p')).toBeNull();
+  });
+
   it('renders duplicate entries without a key warning', () => {
     const error = vi.spyOn(console, 'error').mockImplementation(() => {});
     render(<Agenda items={[{ time: '14:00', title: 'Break' }, { time: '14:00', title: 'Break' }]} />);

@@ -13,9 +13,24 @@
   border-bottom: 1px solid var(--border-hairline);
 }
 
+.times {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
 .time {
   font: var(--text-h3);
   color: var(--text-accent);
+}
+
+.endTime {
+  font: var(--text-meta);
+  color: var(--text-secondary);
+}
+
+.speakers {
+  margin: var(--space-2) 0 0;
 }
 
 .content {

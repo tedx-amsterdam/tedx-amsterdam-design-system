@@ -9,7 +9,7 @@ Versioning: [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
-- `Agenda` for event schedules: time, title, optional description and label per item, as an ordered list.
+- `Agenda` for event schedules: start time, title and, per item, an optional end time, speakers line, description and label, as an ordered list.
 
 ---
 
