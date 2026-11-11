@@ -87,6 +87,10 @@ When adding a new token, place it in the correct file and follow the existing na
 - `tests/styles.test.ts` fails on raw colours, palette tokens and raw lengths in component stylesheets. Border widths and a component's own width and height may stay raw. A value the designs set exactly, off the token scale, keeps a `/* Figma: … */` comment on its line.
 - Mobile sizes exist as `--fs-*-m` tokens — use them in media queries. `--text-body` switches to `--fs-body-m` below 768px by itself.
 
+## Modern Web Guidance
+
+Chrome's Modern Web Guidance skill is installed in `.agents/skills/modern-web-guidance` (Claude Code reads it through the symlink in `.claude/skills`, `skills-lock.json` pins it). Agents search it before writing HTML, CSS or client-side JS. Where its advice conflicts with this file, this file wins: tokens only, `aria-disabled` instead of `disabled`, no new dependencies, no fonts from a CDN. Update it with `npx modern-web-guidance@latest update` and commit the result as a `chore:`. `/modern-web-guidance Modernize the code in this directory` scans the codebase for legacy patterns; treat its findings as suggestions and check each one against the Figma audit.
+
 ## Storybook conventions
 
 - Every pull request gets a Storybook preview on GitHub Pages and a comment with before and after screenshots of the stories that changed (`.github/workflows/storybook-preview.yml`, `scripts/story-screenshots.js`). Check that comment before asking for review: it is how the maintainer sees a visual change without running Storybook.
