@@ -264,6 +264,8 @@ Every pull request gets its own Storybook at `https://tedx-amsterdam.github.io/t
 
 While the dev server runs, `http://localhost:6006/mcp` is an MCP server (`@storybook/addon-mcp`) that coding agents use to look up components, props and stories. Claude Code picks it up from `.mcp.json`; other agents can add the same URL.
 
+The repository also ships Chrome's [Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance) skill in `.agents/skills/` (linked for Claude Code from `.claude/skills/`), so agents look up current web platform practice and browser support before they write HTML, CSS or client-side JS. `npx modern-web-guidance@latest update` updates it.
+
 ---
 
 ## Build scripts
